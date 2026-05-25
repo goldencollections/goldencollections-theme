@@ -133,3 +133,38 @@ No reply has been sent yet for this latest Eloise message.
 A true desktop/browser recording path was validated with Microsoft Edge and ffmpeg available on the Windows machine. The visible browser shows the address bar and full page chrome, which addresses the latest reviewer complaint.
 
 Dry-run blocker: Edge is not currently authenticated into Pinterest for this OAuth flow. Opening the OAuth URL redirects to Pinterest login, and choosing Google opens a Google sign-in window. Owner login is required in the visible browser before Codex can record the complete OAuth consent, callback, API-check, and Pin-creation flow.
+
+## Full desktop recording submitted - 2026-05-25
+
+A new full desktop/browser recording was created using the authenticated Google Chrome profile so Pinterest can see the browser chrome, URL bar, OAuth consent page, localhost callback, live API checks, and created Pin page.
+
+- New desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`
+- Format: MP4, H.264, 1920x1080, 90 seconds.
+- Verified with `ffprobe`: valid MP4, H.264 video stream, 1920x1080.
+- Visual frame checks confirmed:
+  - local demo page with full Chrome window and URL bar,
+  - Pinterest OAuth consent screen with `Give access`,
+  - localhost callback with authorization code and server-side token exchange,
+  - live API check screen,
+  - created Pin displayed on Pinterest.
+
+Live API result from the final desktop recording:
+
+- Production board read succeeded: `GET /v5/boards`, `200 OK`.
+- Production Pin creation returned the expected Trial restriction: `POST /v5/pins`, `403`.
+- Sandbox Pin creation succeeded: `POST /v5/pins`, `201 Created`.
+- Created sandbox Pin ID: `485825878576972966`
+- Created sandbox Pin URL: `https://www.pinterest.com/pin/485825878576972966/`
+- Destination URL: `https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-guide`
+
+Submission status:
+
+- The desktop MP4 uploaded successfully in the Pinterest Standard access upgrade form.
+- The form was submitted successfully.
+- Pinterest Developer app page now shows `Requested access: Upgrade to Standard access pending`.
+
+Support reply:
+
+- A reply was sent to Eloise confirming the new full desktop screen recording and resubmission.
+- Gmail sent message ID: `19e5fb8f34de93a5`
+- Gmail thread ID: `19e4ae2ca2b6199d`

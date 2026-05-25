@@ -362,16 +362,17 @@
     "status": "blocked",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "Owner must complete Pinterest/Google login in the visible Microsoft Edge window, then tell Codex to resume the full desktop recording from the start.",
-    "acceptance": "Pinterest/Google login is complete in Edge so Codex can record a visibly continuous desktop OAuth consent, localhost callback, live API checks, and created Pin flow.",
+    "next_action": "Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.",
+    "acceptance": "Pinterest grants Standard access, or any new reviewer feedback is converted into the next concrete follow-up action.",
     "evidence": [
-      "Desktop recording dry run reached Pinterest login and Google sign-in: owner login required in visible Edge before recording can continue.",
-      "Latest Eloise denial: Gmail message ID `19e5f5ab317b3879`; reviewer says the demo still appears to show screenshots and requests a screen recording of OAuth and Pin creation.",
-      "Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`",
-      "Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`"
+      "Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after full desktop MP4 upload.",
+      "New full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`",
+      "Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`",
+      "Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
+      "Support reply sent to Eloise after desktop resubmission: Gmail message ID `19e5fb8f34de93a5`."
     ],
-    "body": "Owner: codex / owner\nArea: Pinterest\n\nBlocked reason: Microsoft Edge is not authenticated into Pinterest/Google for the OAuth consent flow.\n\nNext action: Owner must complete Pinterest/Google login in the visible Microsoft Edge window, then tell Codex to resume the full desktop recording from the start.\n\nAcceptance: Pinterest/Google login is complete in Edge so Codex can record a visibly continuous desktop OAuth consent, localhost callback, live API checks, and created Pin flow.\n\nEvidence:\n- Desktop recording dry run reached Pinterest login and Google sign-in: owner login required in visible Edge before recording can continue.\n- Latest Eloise denial: Gmail message ID `19e5f5ab317b3879`; reviewer says the demo still appears to show screenshots and requests a screen recording of OAuth and Pin creation.\n- Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`\n- Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
-    "blocked_reason": "Microsoft Edge is not authenticated into Pinterest/Google for the OAuth consent flow."
+    "body": "Owner: codex / owner\nArea: Pinterest\n\nBlocked reason: Full desktop recording has been uploaded and Standard access request is pending Pinterest review.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any new reviewer feedback is converted into the next concrete follow-up action.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after full desktop MP4 upload.\n- New full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`\n- Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`\n- Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Support reply sent to Eloise after desktop resubmission: Gmail message ID `19e5fb8f34de93a5`.",
+    "blocked_reason": "Full desktop recording has been uploaded and Standard access request is pending Pinterest review."
   },
   {
     "id": "GC-THEME-002",
