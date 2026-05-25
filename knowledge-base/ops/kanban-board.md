@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 16:36:28
+Last exported from Hermes: 2026-05-25 16:39:26
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -253,13 +253,13 @@ Every Codex or Hermes session must close with a board update:
 
 - Owner: codex / owner
 - Area: Pinterest
-- Blocked by: Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.
-- Next action: Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.
-- Acceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.
+- Blocked by: Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision.
+- Next action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.
+- Acceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.
 - Evidence:
+  - Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.
   - `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`
   - `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
-  - Pinterest form showed `Upload successful!` for the MP4.
   - Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`
 
 ## Review

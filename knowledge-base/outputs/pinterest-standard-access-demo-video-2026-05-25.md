@@ -38,3 +38,12 @@ The Pinterest Standard access upgrade form was opened for app `1570604`.
 - Existing use case selections included Pin creation/scheduling and Reporting.
 - Existing audience selections included Creators and Advertisers.
 - Final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.
+
+## Submitted - 2026-05-25
+
+The owner completed the reCAPTCHA and clicked submit. The Pinterest Developer app page now shows:
+
+- Current access: `Trial access active`
+- Requested access: `Upgrade to Standard access pending`
+
+The next step is to wait for Pinterest's review decision. A short reply to the support thread is recommended so Eloise has the context that the corrected Standard access request has been submitted.

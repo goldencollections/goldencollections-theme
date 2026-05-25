@@ -362,16 +362,16 @@
     "status": "blocked",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.",
-    "acceptance": "Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.",
+    "next_action": "Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.",
+    "acceptance": "Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.",
     "evidence": [
+      "Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.",
       "`pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`",
       "`knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
-      "Pinterest form showed `Upload successful!` for the MP4.",
       "Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`"
     ],
-    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.\n\nNext action: Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.\n\nAcceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.\n\nEvidence:\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Pinterest form showed `Upload successful!` for the MP4.\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
-    "blocked_reason": "Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification."
+    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
+    "blocked_reason": "Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision."
   },
   {
     "id": "GC-THEME-002",
