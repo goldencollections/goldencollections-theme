@@ -166,7 +166,7 @@
   {
     "id": "GC-GBP-001",
     "title": "Wait for Google Business Profile API quota/access",
-    "status": "blocked",
+    "status": "scheduled",
     "owner": "owner",
     "area": "Google Business Profile",
     "next_action": "Follow up on case 6-0195000040588 if Google does not respond inside the expected window.",

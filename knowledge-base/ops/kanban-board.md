@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 15:39:21
+Last exported from Hermes: 2026-05-25 15:52:13
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -226,16 +226,6 @@ Every Codex or Hermes session must close with a board update:
 - Acceptance: Diagnostics command succeeds and blocker counts are refreshed.
 - Evidence:
   - knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md
-
-### GC-GBP-001 - Wait for Google Business Profile API quota/access
-
-- Owner: owner
-- Area: Google Business Profile
-- Blocked by: Google review / zero quota.
-- Next action: Follow up on case 6-0195000040588 if Google does not respond inside the expected window.
-- Acceptance: Non-zero quota is granted and account/location discovery works.
-- Evidence:
-  - knowledge-base/outputs/google-business-profile-api-followup-2026-05-21.md
 
 ### GC-WABA-001 - Fix WhatsApp Business eligibility payment issue
 
