@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 13:27:35
+Last exported from Hermes: 2026-05-25 13:40:27
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -366,6 +366,16 @@ Every Codex or Hermes session must close with a board update:
   - scripts/sync-kanban-board.py
   - knowledge-base/ops/kanban-board.md
   - knowledge-base/ops/kanban-cards.json
+
+### GC-GH-001 - Move project GitHub remote to goldencollections
+
+- Owner: codex
+- Area: GitHub / operations
+- Result: Created goldencollections/goldencollections-theme, preserved old remote as shanaya-origin, pushed main, and pushed Kanban sync commit d4193c8.
+- Acceptance: GitHub repo exists under goldencollections, local origin points there, main is pushed, and Kanban sync files are committed.
+- Evidence:
+  - https://github.com/goldencollections/goldencollections-theme
+  - commit d4193c8 Add Hermes Kanban sync board
 
 ## Commands
 

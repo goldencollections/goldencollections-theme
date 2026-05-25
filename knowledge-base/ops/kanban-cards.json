@@ -466,5 +466,20 @@
     ],
     "body": "Area: operations\nOwner: Codex\nStatus from repo board: done\n\nNext action: Use python scripts/sync-kanban-board.py status/export/import to keep Hermes and repo aligned.\n\nAcceptance: status shows zero drift after export; import updates details without changing existing Hermes statuses unless --apply-status is used.\n\nEvidence:\n- scripts/sync-kanban-board.py\n- knowledge-base/ops/kanban-board.md\n- knowledge-base/ops/kanban-cards.json",
     "result": "Created scripts/sync-kanban-board.py with status, export, and controlled import; verified zero drift after export and no status overwrite on import."
+  },
+  {
+    "id": "GC-GH-001",
+    "title": "Move project GitHub remote to goldencollections",
+    "status": "done",
+    "owner": "codex",
+    "area": "GitHub / operations",
+    "next_action": "Keep origin pointed at goldencollections/goldencollections-theme and use shanaya-origin only as the old reference remote.",
+    "acceptance": "GitHub repo exists under goldencollections, local origin points there, main is pushed, and Kanban sync files are committed.",
+    "evidence": [
+      "https://github.com/goldencollections/goldencollections-theme",
+      "commit d4193c8 Add Hermes Kanban sync board"
+    ],
+    "body": "Area: GitHub / operations\nOwner: Codex\nStatus from repo board: done\n\nNext action: Keep origin pointed at goldencollections/goldencollections-theme and use shanaya-origin only as the old reference remote.\n\nAcceptance: GitHub repo exists under goldencollections, local origin points there, main is pushed, and Kanban sync files are committed.\n\nEvidence:\n- https://github.com/goldencollections/goldencollections-theme\n- commit d4193c8 Add Hermes Kanban sync board",
+    "result": "Created goldencollections/goldencollections-theme, preserved old remote as shanaya-origin, pushed main, and pushed Kanban sync commit d4193c8."
   }
 ]
