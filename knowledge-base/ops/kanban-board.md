@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 16:28:32
+Last exported from Hermes: 2026-05-25 16:36:28
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -249,6 +249,19 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`
   - `knowledge-base/wiki/content-roadmap.md`
 
+### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
+
+- Owner: codex / owner
+- Area: Pinterest
+- Blocked by: Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.
+- Next action: Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.
+- Acceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.
+- Evidence:
+  - `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`
+  - `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
+  - Pinterest form showed `Upload successful!` for the MP4.
+  - Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`
+
 ## Review
 
 ### GC-THEME-001 - Verify public custom-domain footer hours and schema cache
@@ -260,18 +273,6 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - knowledge-base/outputs/store-hours-consistency-audit-2026-05-20.md
   - knowledge-base/ops/open-loops.md
-
-### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
-
-- Owner: codex / owner
-- Area: Pinterest
-- Next action: Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.
-- Acceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.
-- Evidence:
-  - `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`
-  - `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
-  - Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`
-  - OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video.
 
 ### GC-THEME-002 - Verify social/entity fixes on rendered storefront
 

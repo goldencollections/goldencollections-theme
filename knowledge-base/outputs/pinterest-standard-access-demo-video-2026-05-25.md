@@ -27,3 +27,14 @@
 ## Next action
 
 Upload the MP4 in the Pinterest Standard access upgrade flow and submit the request again. The card should stay in review until Pinterest submission is completed, then move to waiting if Pinterest has not responded yet.
+
+## Submission attempt - 2026-05-25
+
+The Pinterest Standard access upgrade form was opened for app `1570604`.
+
+- The MP4 upload completed successfully; Pinterest displayed `Upload successful!`.
+- The company website field was updated to `https://www.goldencollections.com/`.
+- The app purpose field was updated to explain the internal Golden Collections OAuth-to-Pin publishing workflow.
+- Existing use case selections included Pin creation/scheduling and Reporting.
+- Existing audience selections included Creators and Advertisers.
+- Final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.

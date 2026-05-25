@@ -359,18 +359,19 @@
   {
     "id": "GC-PIN-002",
     "title": "Record revised Pinterest OAuth-to-Pin demo",
-    "status": "review",
+    "status": "blocked",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.",
+    "next_action": "Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.",
     "acceptance": "Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.",
     "evidence": [
       "`pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`",
       "`knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
-      "Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
-      "OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video."
+      "Pinterest form showed `Upload successful!` for the MP4.",
+      "Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`"
     ],
-    "body": "Owner: Codex / owner\nArea: Pinterest\n\nNext action: Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.\n\nAcceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.\n\nEvidence:\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`\n- OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video."
+    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification.\n\nNext action: Owner solves the reCAPTCHA on the open Pinterest upgrade page, then Codex clicks Submit and moves the card to waiting for Pinterest review.\n\nAcceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.\n\nEvidence:\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Pinterest form showed `Upload successful!` for the MP4.\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
+    "blocked_reason": "Pinterest Standard access upgrade form is filled and the MP4 upload succeeded, but final submit is blocked by a live Google reCAPTCHA image challenge that requires human verification."
   },
   {
     "id": "GC-THEME-002",
