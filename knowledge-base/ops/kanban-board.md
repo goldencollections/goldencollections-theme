@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 16:08:20
+Last exported from Hermes: 2026-05-25 16:28:32
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -166,15 +166,6 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/ops/open-loops.md`
   - `knowledge-base/wiki/business-entity.md`
 
-### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
-
-- Owner: codex / owner
-- Area: Pinterest
-- Next action: after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.
-- Acceptance: demo is submitted to Pinterest.
-- Evidence:
-  - `knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`
-
 ## Blocked
 
 ### GC-PROOF-001 - Capture seven crown ruler proof SKUs
@@ -269,6 +260,18 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - knowledge-base/outputs/store-hours-consistency-audit-2026-05-20.md
   - knowledge-base/ops/open-loops.md
+
+### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
+
+- Owner: codex / owner
+- Area: Pinterest
+- Next action: Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.
+- Acceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.
+- Evidence:
+  - `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`
+  - `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
+  - Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`
+  - OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video.
 
 ### GC-THEME-002 - Verify social/entity fixes on rendered storefront
 

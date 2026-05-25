@@ -359,16 +359,18 @@
   {
     "id": "GC-PIN-002",
     "title": "Record revised Pinterest OAuth-to-Pin demo",
-    "status": "ready",
+    "status": "review",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.",
-    "acceptance": "demo is submitted to Pinterest.",
+    "next_action": "Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.",
+    "acceptance": "Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.",
     "evidence": [
-      "`knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`"
+      "`pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`",
+      "`knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
+      "Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
+      "OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video."
     ],
-    "body": "- Owner: Codex / owner\n- Area: Pinterest\n- Blocked by: Pinterest Trial access must be re-enabled first.\n- Next action: after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.\n- Acceptance: demo is submitted to Pinterest.\n- Evidence: `knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`",
-    "blocked_reason": "Pinterest Trial access must be re-enabled first."
+    "body": "Owner: Codex / owner\nArea: Pinterest\n\nNext action: Upload the recorded MP4 in the Pinterest Standard access upgrade flow and submit the request again.\n\nAcceptance: Demo is submitted to Pinterest and the card moves to waiting for Pinterest review.\n\nEvidence:\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`\n- OAuth consent, callback, production board read, Trial production create restriction, sandbox create success, and created Pin page were captured in the video."
   },
   {
     "id": "GC-THEME-002",
