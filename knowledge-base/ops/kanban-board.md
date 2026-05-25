@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 20:04:54
+Last exported from Hermes: 2026-05-25 20:25:15
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -169,20 +169,6 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/ops/open-loops.md`
   - `knowledge-base/wiki/business-entity.md`
 
-### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
-
-- Owner: codex / owner
-- Area: Pinterest
-- Next action: Record a true desktop/browser screen recording with visible browser chrome, URL bar, cursor movement, OAuth consent click, localhost callback, live API checks, and created Pin; then upload it in the Pinterest Standard access upgrade flow and submit again.
-- Acceptance: Pinterest receives a visibly continuous screen recording of OAuth and Pin creation, and the app page shows Standard access pending or approved after resubmission.
-- Evidence:
-  - Latest Eloise denial: Gmail message ID `19e5f5ab317b3879`; reviewer says the demo still appears to show screenshots and requests a screen recording of OAuth and Pin creation.
-  - Previous uncut page-viewport video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`
-  - Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`
-  - Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
-  - Created uncut-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972078/`
-  - Support reply sent to Eloise after uncut resubmission: Gmail message ID `19e5f55be049aa62`.
-
 ## Blocked
 
 ### GC-PROOF-001 - Capture seven crown ruler proof SKUs
@@ -265,6 +251,19 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`
   - `knowledge-base/wiki/content-roadmap.md`
+
+### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
+
+- Owner: codex / owner
+- Area: Pinterest
+- Blocked by: Microsoft Edge is not authenticated into Pinterest/Google for the OAuth consent flow.
+- Next action: Owner must complete Pinterest/Google login in the visible Microsoft Edge window, then tell Codex to resume the full desktop recording from the start.
+- Acceptance: Pinterest/Google login is complete in Edge so Codex can record a visibly continuous desktop OAuth consent, localhost callback, live API checks, and created Pin flow.
+- Evidence:
+  - Desktop recording dry run reached Pinterest login and Google sign-in: owner login required in visible Edge before recording can continue.
+  - Latest Eloise denial: Gmail message ID `19e5f5ab317b3879`; reviewer says the demo still appears to show screenshots and requests a screen recording of OAuth and Pin creation.
+  - Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`
+  - Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
 
 ## Review
 

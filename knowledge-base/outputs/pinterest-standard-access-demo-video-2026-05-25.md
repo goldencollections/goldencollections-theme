@@ -127,3 +127,9 @@ Eloise replied again in the same Pinterest support thread:
 Likely interpretation: the Playwright page-viewport recording is continuous, but it does not show browser chrome, the URL bar, or cursor movement, so the reviewer may still interpret it as a screenshot-style demo. The next attempt should be a true desktop/browser recording with the visible browser window, URL bar, cursor, OAuth consent click, localhost callback, live API checks, and created Pin.
 
 No reply has been sent yet for this latest Eloise message.
+
+## Desktop recording dry run - 2026-05-25
+
+A true desktop/browser recording path was validated with Microsoft Edge and ffmpeg available on the Windows machine. The visible browser shows the address bar and full page chrome, which addresses the latest reviewer complaint.
+
+Dry-run blocker: Edge is not currently authenticated into Pinterest for this OAuth flow. Opening the OAuth URL redirects to Pinterest login, and choosing Google opens a Google sign-in window. Owner login is required in the visible browser before Codex can record the complete OAuth consent, callback, API-check, and Pin-creation flow.
