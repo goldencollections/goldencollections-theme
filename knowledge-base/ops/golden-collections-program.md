@@ -23,6 +23,7 @@ Prioritize work that helps:
 ## Operating Rules
 
 - Read the source map before starting a Golden Collections task.
+- If working with Hermes, read `knowledge-base/ops/codex-hermes-environments.md` before trusting Kanban status. Codex and Hermes may be in separate filesystems; GitHub is the bridge.
 - Read `knowledge-base/ops/knowledge-quality-rules.md` before using memory for public copy, schema, support replies, automations, or other fact-sensitive work.
 - Treat `knowledge-base/wiki/` as stable truth and `knowledge-base/outputs/` as reports or working recommendations.
 - Prefer improving existing pages, products, collections, and workflows before creating new ones.

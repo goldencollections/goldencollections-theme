@@ -1,8 +1,10 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 16:42:15
+Last exported from Hermes: 2026-05-25 17:05:09
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
+
+Environment note: Codex and Hermes may run in separate filesystems. Use GitHub as the bridge and follow `knowledge-base/ops/codex-hermes-environments.md` before treating an empty local board as authoritative.
 
 ## Operating Rule
 
@@ -12,6 +14,7 @@ Every Codex or Hermes session must close with a board update:
 
 - update Hermes Kanban first
 - export Hermes to the repo with `python scripts/sync-kanban-board.py export`
+- pull/import the repo backup first when switching machines or agent environments
 - create cards for new open loops found during the session
 - mark blockers with the exact blocking reason
 - add verification notes, output files, URLs, or command evidence
@@ -380,6 +383,21 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - tools/kanban-viewer/
   - knowledge-base/ops/kanban-cards.json
+
+### GC-KAN-005 - Document Codex/Hermes environment split and bootstrap
+
+- Owner: codex
+- Area: operations
+- Result: Documented Codex/Hermes separate filesystem model and added a GitHub-backed Hermes Kanban bootstrap/recovery path.
+- Acceptance: Codex/Hermes environment split is documented, bootstrap script exists, and sync script accepts --board before or after the command.
+- Evidence:
+  - `knowledge-base/ops/codex-hermes-environments.md`
+  - `scripts/hermes-kanban-bootstrap.sh`
+  - `scripts/sync-kanban-board.py`
+  - `knowledge-base/README.md`
+  - `knowledge-base/ops/golden-collections-program.md`
+  - `knowledge-base/wiki/index.md`
+  - `knowledge-base/ops/source-map.md`
 
 ## Commands
 

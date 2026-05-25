@@ -501,5 +501,25 @@
     ],
     "body": "Area: operations\nOwner: Codex\nStatus from repo board: done\n\nNext action: Open http://127.0.0.1:8787/tools/kanban-viewer/ after starting a local server.\n\nAcceptance: Simple visual board renders exported Kanban cards with counts, filters, quick action lanes, details, and copyable execution prompts.\n\nEvidence:\n- tools/kanban-viewer/\n- knowledge-base/ops/kanban-cards.json",
     "result": "Created tools/kanban-viewer static page with counts, filters, quick lanes, detail drawer, copyable execution prompt, and README. Verified locally at http://127.0.0.1:8787/tools/kanban-viewer/."
+  },
+  {
+    "id": "GC-KAN-005",
+    "title": "Document Codex/Hermes environment split and bootstrap",
+    "status": "done",
+    "owner": "codex",
+    "area": "operations",
+    "next_action": "Use GitHub bootstrap workflow whenever Hermes is in a fresh Linux environment or reports an empty board.",
+    "acceptance": "Codex/Hermes environment split is documented, bootstrap script exists, and sync script accepts --board before or after the command.",
+    "evidence": [
+      "`knowledge-base/ops/codex-hermes-environments.md`",
+      "`scripts/hermes-kanban-bootstrap.sh`",
+      "`scripts/sync-kanban-board.py`",
+      "`knowledge-base/README.md`",
+      "`knowledge-base/ops/golden-collections-program.md`",
+      "`knowledge-base/wiki/index.md`",
+      "`knowledge-base/ops/source-map.md`"
+    ],
+    "body": "Owner: codex\nArea: operations\n\nNext action: Use GitHub bootstrap workflow whenever Hermes is in a fresh Linux environment or reports an empty board.\n\nAcceptance: Codex/Hermes environment split is documented, bootstrap script exists, and sync script accepts --board before or after the command.\n\nEvidence:\n- `knowledge-base/ops/codex-hermes-environments.md`\n- `scripts/hermes-kanban-bootstrap.sh`\n- `scripts/sync-kanban-board.py`\n- `knowledge-base/README.md`\n- `knowledge-base/ops/golden-collections-program.md`\n- `knowledge-base/wiki/index.md`\n- `knowledge-base/ops/source-map.md`",
+    "result": "Documented Codex/Hermes separate filesystem model and added a GitHub-backed Hermes Kanban bootstrap/recovery path."
   }
 ]

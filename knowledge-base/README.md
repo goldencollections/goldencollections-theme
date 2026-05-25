@@ -34,6 +34,7 @@ This folder is the working knowledge base for Golden Collections SEO, GEO, and a
 ## Current Ops Memory
 
 - [[ops/golden-collections-program.md]] - operating instructions for Codex or future internal assistants.
+- [[ops/codex-hermes-environments.md]] - Codex/Hermes filesystem separation, GitHub bridge, and Kanban bootstrap/recovery commands.
 - [[ops/knowledge-quality-rules.md]] - fact-quality, source-tier, contradiction, and do-not-publish rules.
 - [[ops/source-map.md]] - task-based source map so future sessions read focused context instead of the full repo.
 - [[ops/owner-brief.md]] - current owner-facing growth and operations brief.

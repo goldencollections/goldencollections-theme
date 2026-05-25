@@ -196,6 +196,8 @@ def render_markdown(cards: list[Card]) -> str:
         "",
         "Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.",
         "",
+        "Environment note: Codex and Hermes may run in separate filesystems. Use GitHub as the bridge and follow `knowledge-base/ops/codex-hermes-environments.md` before treating an empty local board as authoritative.",
+        "",
         "## Operating Rule",
         "",
         "A task is not finished until the board is updated.",
@@ -204,6 +206,7 @@ def render_markdown(cards: list[Card]) -> str:
         "",
         "- update Hermes Kanban first",
         "- export Hermes to the repo with `python scripts/sync-kanban-board.py export`",
+        "- pull/import the repo backup first when switching machines or agent environments",
         "- create cards for new open loops found during the session",
         "- mark blockers with the exact blocking reason",
         "- add verification notes, output files, URLs, or command evidence",
@@ -253,8 +256,8 @@ def render_markdown(cards: list[Card]) -> str:
 def export_repo(args: argparse.Namespace) -> None:
     cards = load_hermes_cards(args.board)
     OPS_DIR.mkdir(parents=True, exist_ok=True)
-    CARDS_JSON.write_text(json.dumps([card.to_json() for card in cards], indent=2) + "\n", encoding="utf-8")
-    BOARD_MD.write_text(render_markdown(cards), encoding="utf-8")
+    CARDS_JSON.write_text(json.dumps([card.to_json() for card in cards], indent=2) + "\n", encoding="utf-8", newline="\n")
+    BOARD_MD.write_text(render_markdown(cards), encoding="utf-8", newline="\n")
     print(f"Exported {len(cards)} Hermes cards to {BOARD_MD} and {CARDS_JSON}")
 
 
@@ -365,10 +368,17 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Sync Golden Collections Kanban between Hermes and repo files.")
     parser.add_argument("--board", default=DEFAULT_BOARD, help="Hermes board slug")
     sub = parser.add_subparsers(dest="command", required=True)
-    sub.add_parser("export", help="Export Hermes board to repo markdown and JSON")
+
+    def add_board_arg(subparser: argparse.ArgumentParser) -> None:
+        subparser.add_argument("--board", default=argparse.SUPPRESS, help="Hermes board slug")
+
+    export_parser = sub.add_parser("export", help="Export Hermes board to repo markdown and JSON")
+    add_board_arg(export_parser)
     import_parser = sub.add_parser("import", help="Import repo cards into Hermes")
+    add_board_arg(import_parser)
     import_parser.add_argument("--apply-status", action="store_true", help="Also overwrite existing Hermes statuses from repo")
-    sub.add_parser("status", help="Show drift between Hermes and repo")
+    status_parser = sub.add_parser("status", help="Show drift between Hermes and repo")
+    add_board_arg(status_parser)
     args = parser.parse_args()
     if args.command == "export":
         export_repo(args)

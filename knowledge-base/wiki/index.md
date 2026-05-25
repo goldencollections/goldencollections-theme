@@ -16,6 +16,7 @@ Source rule: do not publish uncertain claims. Anything not confirmed by the live
 
 Future Codex sessions should check these workflow pages before proposing manual channel work:
 
+- [[../ops/codex-hermes-environments.md]] - Codex and Hermes can run in separate Windows/Linux filesystems; use GitHub as the bridge before trusting Kanban status.
 - [[search-console-workflow.md]] - Google Search Console API is connected and working. Use it for page 2 goldmine audits, query/page performance analysis, CTR issues, and SEO/GEO prioritization.
 - [[pinterest-publishing-workflow.md]] - Pinterest developer app and OAuth are set up. Standard access needs re-review after Pinterest requested privacy-policy wording and a fuller OAuth/integration demo.
 - [[google-business-profile-workflow.md]] - Google Business Profile OAuth works locally. API access/quota request is pending under GBP Help case `6-0195000040588`.

@@ -12,7 +12,8 @@ Use this file to avoid rereading the whole repo. Start with the smallest source 
 4. `knowledge-base/ops/open-loops.md`
 5. `knowledge-base/ops/decisions.md`
 6. `knowledge-base/ops/context-pack.md` if it exists
-7. the relevant task section below
+7. `knowledge-base/ops/codex-hermes-environments.md` when Hermes, Kanban, or cross-agent state is involved
+8. the relevant task section below
 
 ## Stable Business Truth
 
@@ -114,6 +115,7 @@ Use for automation status, support drafts, review-request safety, abandoned chec
 
 ## Hermes Agent Operations
 
+- `knowledge-base/ops/codex-hermes-environments.md`
 - `knowledge-base/ops/hermes-agent-guardrails.md`
 - `knowledge-base/ops/hermes-email-access.md`
 - `knowledge-base/ops/hermes-x-access.md`
