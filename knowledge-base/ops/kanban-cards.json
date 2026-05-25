@@ -1,0 +1,470 @@
+[
+  {
+    "id": "GC-KAN-001",
+    "title": "Mirror this repo board into Hermes Kanban",
+    "status": "done",
+    "owner": "owner / hermes",
+    "area": "operations",
+    "next_action": "Create or switch to Hermes board goldencollections and import active cards from knowledge-base/ops/kanban-board.md.",
+    "acceptance": "Hermes dashboard/CLI shows the same active cards; repo board remains durable backup.",
+    "evidence": [
+      "knowledge-base/ops/kanban-board.md",
+      "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban"
+    ],
+    "body": "Area: operations\nOwner: owner / Hermes\nStatus from repo board: ready\n\nNext action: Create or switch to Hermes board goldencollections and import active cards from knowledge-base/ops/kanban-board.md.\n\nAcceptance: Hermes dashboard/CLI shows the same active cards; repo board remains durable backup.\n\nEvidence:\n- knowledge-base/ops/kanban-board.md\n- https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+    "result": "Hermes CLI installed locally, goldencollections board created, and all repo-board cards mirrored."
+  },
+  {
+    "id": "GC-KAN-002",
+    "title": "Add board closeout line to every Codex/Hermes brief",
+    "status": "ready",
+    "owner": "codex / hermes",
+    "area": "operations",
+    "next_action": "Append the closeout rule to future agent goal specs and Hermes briefs.",
+    "acceptance": "Every future session ends with board changes or an explicit no-board-changes note.",
+    "evidence": [
+      "knowledge-base/ops/kanban-board.md"
+    ],
+    "body": "Area: operations\nOwner: Codex / Hermes\nStatus from repo board: ready\n\nNext action: Append the closeout rule to future agent goal specs and Hermes briefs.\n\nAcceptance: Every future session ends with board changes or an explicit no-board-changes note.\n\nEvidence:\n- knowledge-base/ops/kanban-board.md"
+  },
+  {
+    "id": "GC-SEO-001",
+    "title": "Manually request GSC indexing for the arangetram checklist page",
+    "status": "ready",
+    "owner": "owner",
+    "area": "Search Console",
+    "next_action": "Use Google Search Console URL Inspection to request indexing for the live checklist URL.",
+    "acceptance": "Manual indexing request submitted and date recorded.",
+    "evidence": [
+      "knowledge-base/outputs/arangetram-rangapravesam-checklist-launch-next-steps-2026-05-24.md"
+    ],
+    "body": "Area: Search Console\nOwner: owner\nStatus from repo board: todo\n\nNext action: Use Google Search Console URL Inspection to request indexing for the live checklist URL.\n\nAcceptance: Manual indexing request submitted and date recorded.\n\nEvidence:\n- knowledge-base/outputs/arangetram-rangapravesam-checklist-launch-next-steps-2026-05-24.md"
+  },
+  {
+    "id": "GC-SEO-002",
+    "title": "Request indexing for seven clean product rescue URLs",
+    "status": "ready",
+    "owner": "owner / codex",
+    "area": "Search Console",
+    "next_action": "After cache checks, inspect and request indexing for BDS017, BLN026, BLN012, VHL027, DSN056, BHA-011, and BHA-008.",
+    "acceptance": "Indexing requests submitted or documented as unnecessary.",
+    "evidence": [
+      "knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md"
+    ],
+    "body": "Area: Search Console\nOwner: owner / Codex\nStatus from repo board: todo\n\nNext action: After cache checks, inspect and request indexing for BDS017, BLN026, BLN012, VHL027, DSN056, BHA-011, and BHA-008.\n\nAcceptance: Indexing requests submitted or documented as unnecessary.\n\nEvidence:\n- knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md"
+  },
+  {
+    "id": "GC-PROOF-001",
+    "title": "Capture seven crown ruler proof SKUs",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "proof / UCP",
+    "next_action": "Capture ruler/tape proof for DGC269, DGC267, DGC272, DGC263, DGC255, DGC259, and DGC270.",
+    "acceptance": "Height, inside/bottom width, relevant side/depth, and placement view exist for each SKU.",
+    "evidence": [
+      "knowledge-base/ops/proof-asset-shot-list.md"
+    ],
+    "body": "Area: proof / UCP\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Capture ruler/tape proof for DGC269, DGC267, DGC272, DGC263, DGC255, DGC259, and DGC270.\n\nAcceptance: Height, inside/bottom width, relevant side/depth, and placement view exist for each SKU.\n\nBlocked reason: Physical product/photo capture needed.\n\nEvidence:\n- knowledge-base/ops/proof-asset-shot-list.md",
+    "blocked_reason": "Physical product/photo capture needed."
+  },
+  {
+    "id": "GC-PROOF-002",
+    "title": "Review remaining Tier 2 deity crown visual proof rows",
+    "status": "ready",
+    "owner": "codex",
+    "area": "proof / UCP",
+    "next_action": "Review remaining contact-sheet rows and approve only visibly measured ruler/tape photos.",
+    "acceptance": "Next batch of approved crown measurement alt updates is prepared or applied, with skipped rows documented.",
+    "evidence": [
+      "tmp/crown-ucp-sprint/crown-ucp-sprint-report.md"
+    ],
+    "body": "Area: proof / UCP\nOwner: Codex\nStatus from repo board: ready\n\nNext action: Review remaining contact-sheet rows and approve only visibly measured ruler/tape photos.\n\nAcceptance: Next batch of approved crown measurement alt updates is prepared or applied, with skipped rows documented.\n\nEvidence:\n- tmp/crown-ucp-sprint/crown-ucp-sprint-report.md"
+  },
+  {
+    "id": "GC-DATA-001",
+    "title": "Provide deity compatibility sheet",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "catalog data",
+    "next_action": "Provide SKU/product-handle compatibility fields for primary deity, also-fits, broad-use, not-for, size note, and special symbol.",
+    "acceptance": "Sheet exists and Codex can safely run deity-specific collection/metadata passes.",
+    "evidence": [
+      "knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md"
+    ],
+    "body": "Area: catalog data\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Provide SKU/product-handle compatibility fields for primary deity, also-fits, broad-use, not-for, size note, and special symbol.\n\nAcceptance: Sheet exists and Codex can safely run deity-specific collection/metadata passes.\n\nBlocked reason: Owner product truth required.\n\nEvidence:\n- knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md",
+    "blocked_reason": "Owner product truth required."
+  },
+  {
+    "id": "GC-DATA-002",
+    "title": "Confirm material for VDF057 and VDF0311",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "Varalakshmi catalog",
+    "next_action": "Confirm material for VDF057 and VDF0311.",
+    "acceptance": "Materials recorded and blocked Varalakshmi doll-face pass can run.",
+    "evidence": [
+      "knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md"
+    ],
+    "body": "Area: Varalakshmi catalog\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Confirm material for VDF057 and VDF0311.\n\nAcceptance: Materials recorded and blocked Varalakshmi doll-face pass can run.\n\nBlocked reason: Owner/product material confirmation required.\n\nEvidence:\n- knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md",
+    "blocked_reason": "Owner/product material confirmation required."
+  },
+  {
+    "id": "GC-CATALOG-001",
+    "title": "Decide deity jhumki product truth",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "catalog / UCP",
+    "next_action": "Decide whether DGE201/DGE202 should be activated, current DGE products can be called jhumki, or the prompt remains a product gap.",
+    "acceptance": "Decision recorded and no deceptive jhumki wording is used.",
+    "evidence": [
+      "knowledge-base/outputs/deity-earrings-ucp-sprint-report-2026-05-19.md"
+    ],
+    "body": "Area: catalog / UCP\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Decide whether DGE201/DGE202 should be activated, current DGE products can be called jhumki, or the prompt remains a product gap.\n\nAcceptance: Decision recorded and no deceptive jhumki wording is used.\n\nBlocked reason: Catalog decision required.\n\nEvidence:\n- knowledge-base/outputs/deity-earrings-ucp-sprint-report-2026-05-19.md",
+    "blocked_reason": "Catalog decision required."
+  },
+  {
+    "id": "GC-MERCHANT-001",
+    "title": "Refresh Merchant Center OAuth token",
+    "status": "blocked",
+    "owner": "owner / codex",
+    "area": "Merchant Center",
+    "next_action": "Reauthorize Merchant OAuth and rerun diagnostics for account 767542510.",
+    "acceptance": "Diagnostics command succeeds and blocker counts are refreshed.",
+    "evidence": [
+      "knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md"
+    ],
+    "body": "Area: Merchant Center\nOwner: owner / Codex\nStatus from repo board: blocked\n\nNext action: Reauthorize Merchant OAuth and rerun diagnostics for account 767542510.\n\nAcceptance: Diagnostics command succeeds and blocker counts are refreshed.\n\nBlocked reason: Expired/revoked Merchant OAuth refresh token.\n\nEvidence:\n- knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md",
+    "blocked_reason": "Expired/revoked Merchant OAuth refresh token."
+  },
+  {
+    "id": "GC-OUTREACH-001",
+    "title": "Review first 15 USA dance-school outreach replies before WhatsApp follow-up",
+    "status": "ready",
+    "owner": "owner / codex",
+    "area": "outreach",
+    "next_action": "On or after 2026-05-28, check support inbox for bounces/replies and decide whether to WhatsApp only 5-7 best-fit schools.",
+    "acceptance": "Reply/bounce status updated in CSV tracker and follow-up decision recorded.",
+    "evidence": [
+      "knowledge-base/outputs/usa-dance-school-outreach-first-15-manual-send-2026-05-24.md",
+      "knowledge-base/outputs/usa-dance-school-outreach-first-15-ready-2026-05-24.csv"
+    ],
+    "body": "Area: outreach\nOwner: owner / Codex\nStatus from repo board: todo\n\nNext action: On or after 2026-05-28, check support inbox for bounces/replies and decide whether to WhatsApp only 5-7 best-fit schools.\n\nAcceptance: Reply/bounce status updated in CSV tracker and follow-up decision recorded.\n\nEvidence:\n- knowledge-base/outputs/usa-dance-school-outreach-first-15-manual-send-2026-05-24.md\n- knowledge-base/outputs/usa-dance-school-outreach-first-15-ready-2026-05-24.csv"
+  },
+  {
+    "id": "GC-PIN-001",
+    "title": "Reply to Pinterest after privacy-policy cache is visibly refreshed",
+    "status": "ready",
+    "owner": "owner / codex",
+    "area": "Pinterest",
+    "next_action": "Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.",
+    "acceptance": "Pinterest receives the reply for app 1570604 and status is recorded.",
+    "evidence": [
+      "knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md"
+    ],
+    "body": "Area: Pinterest\nOwner: owner / Codex\nStatus from repo board: ready\n\nNext action: Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.\n\nAcceptance: Pinterest receives the reply for app 1570604 and status is recorded.\n\nEvidence:\n- knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md"
+  },
+  {
+    "id": "GC-GBP-001",
+    "title": "Wait for Google Business Profile API quota/access",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "Google Business Profile",
+    "next_action": "Follow up on case 6-0195000040588 if Google does not respond inside the expected window.",
+    "acceptance": "Non-zero quota is granted and account/location discovery works.",
+    "evidence": [
+      "knowledge-base/outputs/google-business-profile-api-followup-2026-05-21.md"
+    ],
+    "body": "Area: Google Business Profile\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Follow up on case 6-0195000040588 if Google does not respond inside the expected window.\n\nAcceptance: Non-zero quota is granted and account/location discovery works.\n\nBlocked reason: Google review / zero quota.\n\nEvidence:\n- knowledge-base/outputs/google-business-profile-api-followup-2026-05-21.md",
+    "blocked_reason": "Google review / zero quota."
+  },
+  {
+    "id": "GC-WABA-001",
+    "title": "Fix WhatsApp Business eligibility payment issue",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "WhatsApp",
+    "next_action": "Fix WABA billing/payment setup before any paid template pilot.",
+    "acceptance": "Paid template delivery succeeds in a controlled test.",
+    "evidence": [
+      "knowledge-base/ops/open-loops.md"
+    ],
+    "body": "Area: WhatsApp\nOwner: owner\nStatus from repo board: blocked\n\nNext action: Fix WABA billing/payment setup before any paid template pilot.\n\nAcceptance: Paid template delivery succeeds in a controlled test.\n\nBlocked reason: Meta error 131042 Business eligibility payment issue.\n\nEvidence:\n- knowledge-base/ops/open-loops.md",
+    "blocked_reason": "Meta error 131042 Business eligibility payment issue."
+  },
+  {
+    "id": "GC-THEME-001",
+    "title": "Verify public custom-domain footer hours and schema cache",
+    "status": "review",
+    "owner": "codex",
+    "area": "theme / entity consistency",
+    "next_action": "Verify www.goldencollections.com footer and LocalBusiness schema, then decide whether goldencollections.in needs cleanup.",
+    "acceptance": "Public custom domain shows corrected hours; legacy-site decision documented.",
+    "evidence": [
+      "knowledge-base/outputs/store-hours-consistency-audit-2026-05-20.md",
+      "knowledge-base/ops/open-loops.md"
+    ],
+    "body": "Area: theme / entity consistency\nOwner: Codex\nStatus from repo board: review\n\nNext action: Verify www.goldencollections.com footer and LocalBusiness schema, then decide whether goldencollections.in needs cleanup.\n\nAcceptance: Public custom domain shows corrected hours; legacy-site decision documented.\n\nEvidence:\n- knowledge-base/outputs/store-hours-consistency-audit-2026-05-20.md\n- knowledge-base/ops/open-loops.md"
+  },
+  {
+    "id": "GC-HERMES-001",
+    "title": "Test Hermes Telegram voice note input",
+    "status": "ready",
+    "owner": "owner",
+    "area": "Hermes",
+    "next_action": "send a short Telegram voice note to the private Hermes bot.",
+    "acceptance": "Hermes transcribes and replies in text; failures are recorded.",
+    "evidence": [
+      "`knowledge-base/ops/open-loops.md`",
+      "`knowledge-base/outputs/hermes-telegram-voice-input-setup-2026-05-20.md`"
+    ],
+    "body": "- Owner: owner\n- Area: Hermes\n- Next action: send a short Telegram voice note to the private Hermes bot.\n- Acceptance: Hermes transcribes and replies in text; failures are recorded.\n- Evidence: `knowledge-base/ops/open-loops.md`, `knowledge-base/outputs/hermes-telegram-voice-input-setup-2026-05-20.md`"
+  },
+  {
+    "id": "GC-SEO-003",
+    "title": "Recheck BHA-011 and BHA-008 normal product route cache",
+    "status": "ready",
+    "owner": "codex",
+    "area": "SEO / Shopify",
+    "next_action": "re-fetch normal live product routes and confirm the title/meta now match the Admin and `?view=ajax` output.",
+    "acceptance": "BHA-011 and BHA-008 normal routes show updated SEO output without `?view=ajax`.",
+    "evidence": [
+      "`knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: SEO / Shopify\n- Next action: re-fetch normal live product routes and confirm the title/meta now match the Admin and `?view=ajax` output.\n- Acceptance: BHA-011 and BHA-008 normal routes show updated SEO output without `?view=ajax`.\n- Evidence: `knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md`"
+  },
+  {
+    "id": "GC-SEO-004",
+    "title": "Monitor GSC parameterized product URL sample",
+    "status": "ready",
+    "owner": "codex",
+    "area": "Search Console",
+    "next_action": "rerun the parameter URL audit after a recrawl cycle or after the next major theme deployment.",
+    "acceptance": "current emitted crawlable product links still show zero tracked parameters; GSC sample trend noted.",
+    "evidence": [
+      "`knowledge-base/outputs/p1b-parameter-product-url-audit-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: Search Console\n- Next action: rerun the parameter URL audit after a recrawl cycle or after the next major theme deployment.\n- Acceptance: current emitted crawlable product links still show zero tracked parameters; GSC sample trend noted.\n- Evidence: `knowledge-base/outputs/p1b-parameter-product-url-audit-2026-05-24.md`"
+  },
+  {
+    "id": "GC-MERCHANT-002",
+    "title": "Monitor remaining Merchant availability notices",
+    "status": "ready",
+    "owner": "codex",
+    "area": "Merchant Center",
+    "next_action": "after Merchant OAuth is refreshed, rerun diagnostics and confirm hard blockers remain at zero except expected availability notices.",
+    "acceptance": "blocker counts are recorded; no broad delete pass is run without fresh diagnostics.",
+    "evidence": [
+      "`knowledge-base/outputs/merchant-feed-cleanup-triage-2026-05-17.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: Merchant Center\n- Next action: after Merchant OAuth is refreshed, rerun diagnostics and confirm hard blockers remain at zero except expected availability notices.\n- Acceptance: blocker counts are recorded; no broad delete pass is run without fresh diagnostics.\n- Evidence: `knowledge-base/outputs/merchant-feed-cleanup-triage-2026-05-17.md`"
+  },
+  {
+    "id": "GC-PROOF-003",
+    "title": "Run broader deity fit proof capture session",
+    "status": "ready",
+    "owner": "owner",
+    "area": "proof / content",
+    "next_action": "schedule a 60-90 minute capture session for crowns, short harams, long harams, Varalakshmi setup items, and Balaji/Vishnu examples.",
+    "acceptance": "raw assets and SKU notes are placed in a dated local folder; Codex can triage proof tiers.",
+    "evidence": [
+      "`knowledge-base/outputs/proof-capture-review-ucp-revenue-operational-brief-2026-05-19.md`",
+      "`knowledge-base/ops/proof-asset-shot-list.md`"
+    ],
+    "body": "- Owner: owner\n- Area: proof / content\n- Next action: schedule a 60-90 minute capture session for crowns, short harams, long harams, Varalakshmi setup items, and Balaji/Vishnu examples.\n- Acceptance: raw assets and SKU notes are placed in a dated local folder; Codex can triage proof tiers.\n- Evidence: `knowledge-base/outputs/proof-capture-review-ucp-revenue-operational-brief-2026-05-19.md`, `knowledge-base/ops/proof-asset-shot-list.md`"
+  },
+  {
+    "id": "GC-OUTREACH-002",
+    "title": "Decide whether to scale arangetram checklist outreach",
+    "status": "ready",
+    "owner": "owner",
+    "area": "outreach",
+    "next_action": "after two weeks of first-batch signals, decide whether to create a teacher PDF, partner code, sponsorship option, or second outreach batch.",
+    "acceptance": "decision documented before any scale-up.",
+    "evidence": [
+      "`knowledge-base/outputs/arangetram-rangapravesam-checklist-launch-next-steps-2026-05-24.md`"
+    ],
+    "body": "- Owner: owner\n- Area: outreach\n- Next action: after two weeks of first-batch signals, decide whether to create a teacher PDF, partner code, sponsorship option, or second outreach batch.\n- Acceptance: decision documented before any scale-up.\n- Evidence: `knowledge-base/outputs/arangetram-rangapravesam-checklist-launch-next-steps-2026-05-24.md`"
+  },
+  {
+    "id": "GC-WA-002",
+    "title": "Prepare WhatsApp review trigger for controlled live pilot",
+    "status": "ready",
+    "owner": "codex",
+    "area": "WhatsApp / reviews",
+    "next_action": "complete migration, monitoring, dry-run validation, true delivery-event observation, and manual suppression rules before live sends.",
+    "acceptance": "dry-run evidence exists; suppression list is implemented; owner approves a small pilot.",
+    "evidence": [
+      "`knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`",
+      "`knowledge-base/outputs/whatsapp-review-trigger-delivery-source-audit-2026-05-16.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: WhatsApp / reviews\n- Next action: complete migration, monitoring, dry-run validation, true delivery-event observation, and manual suppression rules before live sends.\n- Acceptance: dry-run evidence exists; suppression list is implemented; owner approves a small pilot.\n- Evidence: `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`, `knowledge-base/outputs/whatsapp-review-trigger-delivery-source-audit-2026-05-16.md`"
+  },
+  {
+    "id": "GC-HERMES-002",
+    "title": "Sync changed wiki/ops context to Hermes VPS",
+    "status": "ready",
+    "owner": "codex / hermes",
+    "area": "Hermes",
+    "next_action": "after meaningful KB/wiki/ops changes, run `scripts/sync-hermes-knowledge.ps1` and, if relevant, `scripts/sync-hermes-ops.ps1`.",
+    "acceptance": "sync completes and hashes/target paths are verified.",
+    "evidence": [
+      "`knowledge-base/outputs/hermes-wiki-sync-verification-2026-05-20.md`"
+    ],
+    "body": "- Owner: Codex / Hermes\n- Area: Hermes\n- Next action: after meaningful KB/wiki/ops changes, run `scripts/sync-hermes-knowledge.ps1` and, if relevant, `scripts/sync-hermes-ops.ps1`.\n- Acceptance: sync completes and hashes/target paths are verified.\n- Evidence: `knowledge-base/outputs/hermes-wiki-sync-verification-2026-05-20.md`"
+  },
+  {
+    "id": "GC-ADMIN-001",
+    "title": "Decide whether to change Shopify Admin email",
+    "status": "ready",
+    "owner": "owner",
+    "area": "admin cleanup",
+    "next_action": "decide whether Shopify Admin `shop.email` should remain `goldencollections9@gmail.com` or be changed manually.",
+    "acceptance": "decision documented; public contact remains `support@goldencollections.com`.",
+    "evidence": [
+      "`knowledge-base/ops/open-loops.md`",
+      "`knowledge-base/wiki/business-entity.md`"
+    ],
+    "body": "- Owner: owner\n- Area: admin cleanup\n- Next action: decide whether Shopify Admin `shop.email` should remain `goldencollections9@gmail.com` or be changed manually.\n- Acceptance: decision documented; public contact remains `support@goldencollections.com`.\n- Evidence: `knowledge-base/ops/open-loops.md`, `knowledge-base/wiki/business-entity.md`"
+  },
+  {
+    "id": "GC-X-001",
+    "title": "Resolve X API CreditsDepleted state",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "X / social",
+    "next_action": "buy/link credits or keep Hermes X as unavailable for read calls.",
+    "acceptance": "read-only X brief calls succeed or the channel is explicitly deprioritized.",
+    "evidence": [
+      "`knowledge-base/ops/open-loops.md`"
+    ],
+    "body": "- Owner: owner\n- Area: X / social\n- Blocked by: X developer account has `$0.00` credits.\n- Next action: buy/link credits or keep Hermes X as unavailable for read calls.\n- Acceptance: read-only X brief calls succeed or the channel is explicitly deprioritized.\n- Evidence: `knowledge-base/ops/open-loops.md`",
+    "blocked_reason": "X developer account has `$0.00` credits."
+  },
+  {
+    "id": "GC-YT-001",
+    "title": "Update YouTube metadata or reauthorize broader scope",
+    "status": "blocked",
+    "owner": "owner",
+    "area": "YouTube",
+    "next_action": "manually update YouTube metadata for `6CyaMiZmGXs` or reauthorize with broader YouTube scope.",
+    "acceptance": "metadata update is completed and documented.",
+    "evidence": [
+      "`knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`",
+      "`knowledge-base/wiki/content-roadmap.md`"
+    ],
+    "body": "- Owner: owner\n- Area: YouTube\n- Blocked by: token lacks update scope.\n- Next action: manually update YouTube metadata for `6CyaMiZmGXs` or reauthorize with broader YouTube scope.\n- Acceptance: metadata update is completed and documented.\n- Evidence: `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`, `knowledge-base/wiki/content-roadmap.md`",
+    "blocked_reason": "token lacks update scope."
+  },
+  {
+    "id": "GC-PIN-002",
+    "title": "Record revised Pinterest OAuth-to-Pin demo",
+    "status": "blocked",
+    "owner": "codex / owner",
+    "area": "Pinterest",
+    "next_action": "after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.",
+    "acceptance": "demo is submitted to Pinterest.",
+    "evidence": [
+      "`knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex / owner\n- Area: Pinterest\n- Blocked by: Pinterest Trial access must be re-enabled first.\n- Next action: after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.\n- Acceptance: demo is submitted to Pinterest.\n- Evidence: `knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`",
+    "blocked_reason": "Pinterest Trial access must be re-enabled first."
+  },
+  {
+    "id": "GC-THEME-002",
+    "title": "Verify social/entity fixes on rendered storefront",
+    "status": "review",
+    "owner": "codex",
+    "area": "theme / schema",
+    "next_action": "spot-check rendered pages after cache propagation.",
+    "acceptance": "live rendered schema/source shows corrected `goldencollections` Facebook URL and canonical organization/website IDs.",
+    "evidence": [
+      "`knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: theme / schema\n- Review needed: source assets corrected Facebook URL typo, X profile, rich-text H1 behavior, collection H1 handling, and product breadcrumb schema.\n- Next action: spot-check rendered pages after cache propagation.\n- Acceptance: live rendered schema/source shows corrected `goldencollections` Facebook URL and canonical organization/website IDs.\n- Evidence: `knowledge-base/outputs/non-owner-data-seo-ucp-execution-report-2026-05-24.md`"
+  },
+  {
+    "id": "GC-LINK-001",
+    "title": "Recheck cached internal-link sections",
+    "status": "review",
+    "owner": "codex",
+    "area": "internal linking",
+    "next_action": "recheck after Shopify/CDN refresh.",
+    "acceptance": "both live sections show the new links; URL Inspection follow-up can proceed later.",
+    "evidence": [
+      "`knowledge-base/outputs/internal-link-rescue-and-redirect-fix-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: internal linking\n- Review needed: Admin confirmed links, but `bharatanatyam-long-necklace` and `deity-short-harams` live sections were cached.\n- Next action: recheck after Shopify/CDN refresh.\n- Acceptance: both live sections show the new links; URL Inspection follow-up can proceed later.\n- Evidence: `knowledge-base/outputs/internal-link-rescue-and-redirect-fix-2026-05-24.md`"
+  },
+  {
+    "id": "GC-OUTREACH-000",
+    "title": "Send first 15 USA dance-school outreach emails",
+    "status": "done",
+    "owner": "codex / owner",
+    "area": "outreach",
+    "next_action": "Review this card in Hermes and add the next action.",
+    "acceptance": "Acceptance criteria not recorded yet.",
+    "evidence": [
+      "`knowledge-base/outputs/usa-dance-school-outreach-first-15-manual-send-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex / owner\n- Area: outreach\n- Result: all 15 emails sent individually through Titan SMTP; Sent folder verification found all 15.\n- Evidence: `knowledge-base/outputs/usa-dance-school-outreach-first-15-manual-send-2026-05-24.md`",
+    "result": "Imported as done from repo Kanban board."
+  },
+  {
+    "id": "GC-SEO-000",
+    "title": "Apply seven-product clean indexing rescue",
+    "status": "done",
+    "owner": "codex",
+    "area": "SEO / Shopify",
+    "next_action": "Review this card in Hermes and add the next action.",
+    "acceptance": "Acceptance criteria not recorded yet.",
+    "evidence": [
+      "`knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: SEO / Shopify\n- Result: seven in-stock, technically indexable product pages were strengthened; no risky canonical/noindex/redirect changes were made.\n- Evidence: `knowledge-base/outputs/clean-product-indexing-rescue-2026-05-25.md`",
+    "result": "Imported as done from repo Kanban board."
+  },
+  {
+    "id": "GC-LINK-000",
+    "title": "Fix confirmed bad redirects and add selective internal links",
+    "status": "done",
+    "owner": "codex",
+    "area": "internal linking / redirects",
+    "next_action": "Review this card in Hermes and add the next action.",
+    "acceptance": "Acceptance criteria not recorded yet.",
+    "evidence": [
+      "`knowledge-base/outputs/internal-link-rescue-and-redirect-fix-2026-05-24.md`"
+    ],
+    "body": "- Owner: Codex\n- Area: internal linking / redirects\n- Result: DGC279 homepage fall-through and two short-to-long necklace redirects were fixed; relevant internal links were added.\n- Evidence: `knowledge-base/outputs/internal-link-rescue-and-redirect-fix-2026-05-24.md`",
+    "result": "Imported as done from repo Kanban board."
+  },
+  {
+    "id": "GC-KAN-000",
+    "title": "Create initial repo-backed board",
+    "status": "done",
+    "owner": "codex",
+    "area": "operations",
+    "next_action": "Review this card in Hermes and add the next action.",
+    "acceptance": "Acceptance criteria not recorded yet.",
+    "evidence": [
+      "this file"
+    ],
+    "body": "- Owner: Codex\n- Area: operations\n- Result: initial Kanban board created from `knowledge-base/ops/open-loops.md` and recent `knowledge-base/outputs`.\n- Evidence: this file",
+    "result": "Imported as done from repo Kanban board."
+  },
+  {
+    "id": "GC-KAN-003",
+    "title": "Create controlled Hermes/repo Kanban sync",
+    "status": "done",
+    "owner": "codex",
+    "area": "operations",
+    "next_action": "Use python scripts/sync-kanban-board.py status/export/import to keep Hermes and repo aligned.",
+    "acceptance": "status shows zero drift after export; import updates details without changing existing Hermes statuses unless --apply-status is used.",
+    "evidence": [
+      "scripts/sync-kanban-board.py",
+      "knowledge-base/ops/kanban-board.md",
+      "knowledge-base/ops/kanban-cards.json"
+    ],
+    "body": "Area: operations\nOwner: Codex\nStatus from repo board: done\n\nNext action: Use python scripts/sync-kanban-board.py status/export/import to keep Hermes and repo aligned.\n\nAcceptance: status shows zero drift after export; import updates details without changing existing Hermes statuses unless --apply-status is used.\n\nEvidence:\n- scripts/sync-kanban-board.py\n- knowledge-base/ops/kanban-board.md\n- knowledge-base/ops/kanban-cards.json",
+    "result": "Created scripts/sync-kanban-board.py with status, export, and controlled import; verified zero drift after export and no status overwrite on import."
+  }
+]
