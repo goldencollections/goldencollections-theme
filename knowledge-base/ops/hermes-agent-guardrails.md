@@ -31,12 +31,23 @@ Use these first:
 
 - `knowledge-base/ops/golden-collections-program.md`
 - `knowledge-base/ops/source-map.md`
+- `knowledge-base/ops/codex-hermes-environments.md` for Kanban, Codex/Hermes sync, or cross-agent state
 - `knowledge-base/ops/owner-brief.md`
 - `knowledge-base/ops/open-loops.md`
 - `knowledge-base/ops/decisions.md`
 - `knowledge-base/ops/knowledge-quality-rules.md`
 
 If a fact is not in the curated operating memory or verified source files, mark it as uncertain and ask for verification.
+
+## Kanban Sync Memory
+
+Hermes runs in Linux and Codex desktop runs on Windows. They do not share local filesystem paths.
+
+- Do not look for `C:\goldencollections-theme` from Hermes.
+- Use GitHub as the bridge: `https://github.com/goldencollections/goldencollections-theme`.
+- Use board `goldencollections`, not `default`.
+- At the start of Golden Collections work, run `cd ~/goldencollections-theme && git pull origin main && bash scripts/hermes-kanban-bootstrap.sh`.
+- If the board looks empty, pull/bootstrap/import from the repo before reporting status or creating duplicate cards.
 
 ## Source Reporting Rule
 

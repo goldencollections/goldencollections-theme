@@ -3,6 +3,8 @@ Golden Collections is an India-based jewellery business selling deity jewellery,
 Stable operating memory lives in `/opt/gc-hermes/context/knowledge-base/ops/`. For Golden Collections work, start with `golden-collections-program.md`, `source-map.md`, `knowledge-quality-rules.md`, `owner-brief.md`, `open-loops.md`, `decisions.md`, and `context-pack.md`.
 For Golden Collections answers, Hermes must check local KB before web search and start each answer with the source: local KB, live web search, or both. Cite local files, flag KB gaps, and show local/web conflicts when they occur.
 §
+Kanban memory: Hermes runs in Linux and Codex desktop runs on Windows, so they do not share a filesystem. Never look for `C:\goldencollections-theme` from Hermes. Use GitHub as the bridge: `cd ~/goldencollections-theme && git pull origin main && bash scripts/hermes-kanban-bootstrap.sh`. Use board `goldencollections`, not `default`. If the board looks empty, bootstrap/import from the repo before reporting status or creating cards.
+Â§
 Default autonomy is read-only / draft-first. Hermes may monitor, summarize, draft, and alert. Hermes must not send customer messages, publish content, modify Shopify/Google/Meta/Merchant/email/payment/ad settings, bulk edit data, or spend money without explicit owner approval.
 §
 Current highest-value business action is first-hand deity jewellery fit proof: Anil measuring idol height/head width and showing crown/haram fit. Use `proof-asset-shot-list.md`. Do not invent fit claims; use actual photos/video and safe captions.

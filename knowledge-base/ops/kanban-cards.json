@@ -517,9 +517,12 @@
       "`knowledge-base/README.md`",
       "`knowledge-base/ops/golden-collections-program.md`",
       "`knowledge-base/wiki/index.md`",
-      "`knowledge-base/ops/source-map.md`"
+      "`knowledge-base/ops/source-map.md`",
+      "`knowledge-base/ops/hermes-runtime/HERMES.md`",
+      "`knowledge-base/ops/hermes-runtime/MEMORY.md`",
+      "`knowledge-base/ops/hermes-agent-guardrails.md`"
     ],
-    "body": "Owner: codex\nArea: operations\n\nNext action: Use GitHub bootstrap workflow whenever Hermes is in a fresh Linux environment or reports an empty board.\n\nAcceptance: Codex/Hermes environment split is documented, bootstrap script exists, and sync script accepts --board before or after the command.\n\nEvidence:\n- `knowledge-base/ops/codex-hermes-environments.md`\n- `scripts/hermes-kanban-bootstrap.sh`\n- `scripts/sync-kanban-board.py`\n- `knowledge-base/README.md`\n- `knowledge-base/ops/golden-collections-program.md`\n- `knowledge-base/wiki/index.md`\n- `knowledge-base/ops/source-map.md`",
+    "body": "Owner: codex\nArea: operations\n\nNext action: Use GitHub bootstrap workflow whenever Hermes is in a fresh Linux environment or reports an empty board.\n\nAcceptance: Codex/Hermes environment split is documented, bootstrap script exists, and sync script accepts --board before or after the command.\n\nEvidence:\n- `knowledge-base/ops/codex-hermes-environments.md`\n- `scripts/hermes-kanban-bootstrap.sh`\n- `scripts/sync-kanban-board.py`\n- `knowledge-base/README.md`\n- `knowledge-base/ops/golden-collections-program.md`\n- `knowledge-base/wiki/index.md`\n- `knowledge-base/ops/source-map.md`\n- `knowledge-base/ops/hermes-runtime/HERMES.md`\n- `knowledge-base/ops/hermes-runtime/MEMORY.md`\n- `knowledge-base/ops/hermes-agent-guardrails.md`",
     "result": "Documented Codex/Hermes separate filesystem model and added a GitHub-backed Hermes Kanban bootstrap/recovery path."
   }
 ]

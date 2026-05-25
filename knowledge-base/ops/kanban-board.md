@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 17:05:09
+Last exported from Hermes: 2026-05-25 17:34:39
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -398,6 +398,9 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/ops/golden-collections-program.md`
   - `knowledge-base/wiki/index.md`
   - `knowledge-base/ops/source-map.md`
+  - `knowledge-base/ops/hermes-runtime/HERMES.md`
+  - `knowledge-base/ops/hermes-runtime/MEMORY.md`
+  - `knowledge-base/ops/hermes-agent-guardrails.md`
 
 ## Commands
 

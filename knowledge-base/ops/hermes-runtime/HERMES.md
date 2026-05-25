@@ -2,18 +2,33 @@
 
 This file is the project context for Hermes sessions running from `/opt/gc-hermes/context`.
 
+## Non-Negotiable Kanban Startup Memory
+
+Hermes runs in a Linux environment that is separate from Codex desktop on Windows. Do not look for `C:\goldencollections-theme` from Hermes.
+
+For Golden Collections Kanban, GitHub is the bridge. At the start of Golden Collections work, run:
+
+```bash
+cd ~/goldencollections-theme
+git pull origin main
+bash scripts/hermes-kanban-bootstrap.sh
+```
+
+Use board `goldencollections`, not `default`. If the board looks empty, do not recreate cards manually. Pull the repo and run the bootstrap/import first.
+
 ## Source Order
 
 For any Golden Collections business task, read only the smallest useful source set:
 
 1. `knowledge-base/ops/golden-collections-program.md`
 2. `knowledge-base/ops/source-map.md`
-3. `knowledge-base/ops/knowledge-quality-rules.md`
-4. `knowledge-base/ops/owner-brief.md`
-5. `knowledge-base/ops/open-loops.md`
-6. `knowledge-base/ops/decisions.md`
-7. `knowledge-base/ops/context-pack.md`
-8. Task-specific wiki/output files from `source-map.md`
+3. `knowledge-base/ops/codex-hermes-environments.md` when Kanban, Codex, cross-agent state, or repo sync is involved
+4. `knowledge-base/ops/knowledge-quality-rules.md`
+5. `knowledge-base/ops/owner-brief.md`
+6. `knowledge-base/ops/open-loops.md`
+7. `knowledge-base/ops/decisions.md`
+8. `knowledge-base/ops/context-pack.md`
+9. Task-specific wiki/output files from `source-map.md`
 
 Do not scan the whole theme or repo for routine briefs.
 
