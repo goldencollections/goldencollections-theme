@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 15:52:13
+Last exported from Hermes: 2026-05-25 16:08:20
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -80,15 +80,6 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - knowledge-base/outputs/usa-dance-school-outreach-first-15-manual-send-2026-05-24.md
   - knowledge-base/outputs/usa-dance-school-outreach-first-15-ready-2026-05-24.csv
-
-### GC-PIN-001 - Reply to Pinterest after privacy-policy cache is visibly refreshed
-
-- Owner: owner / codex
-- Area: Pinterest
-- Next action: Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.
-- Acceptance: Pinterest receives the reply for app 1570604 and status is recorded.
-- Evidence:
-  - knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md
 
 ### GC-HERMES-001 - Test Hermes Telegram voice note input
 
@@ -175,6 +166,15 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/ops/open-loops.md`
   - `knowledge-base/wiki/business-entity.md`
 
+### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
+
+- Owner: codex / owner
+- Area: Pinterest
+- Next action: after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.
+- Acceptance: demo is submitted to Pinterest.
+- Evidence:
+  - `knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`
+
 ## Blocked
 
 ### GC-PROOF-001 - Capture seven crown ruler proof SKUs
@@ -258,16 +258,6 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`
   - `knowledge-base/wiki/content-roadmap.md`
 
-### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
-
-- Owner: codex / owner
-- Area: Pinterest
-- Blocked by: Pinterest Trial access must be re-enabled first.
-- Next action: after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.
-- Acceptance: demo is submitted to Pinterest.
-- Evidence:
-  - `knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md`
-
 ## Review
 
 ### GC-THEME-001 - Verify public custom-domain footer hours and schema cache
@@ -309,6 +299,15 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - knowledge-base/ops/kanban-board.md
   - https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
+
+### GC-PIN-001 - Reply to Pinterest after privacy-policy cache is visibly refreshed
+
+- Owner: owner / codex
+- Area: Pinterest
+- Result: Pinterest reply was sent on 2026-05-24 with updated privacy policy and demo attachment. Pinterest responded on 2026-05-25 confirming Trial access for app 1570604 is approved again.
+- Acceptance: Pinterest receives the reply for app 1570604 and status is recorded.
+- Evidence:
+  - knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md
 
 ### GC-OUTREACH-000 - Send first 15 USA dance-school outreach emails
 

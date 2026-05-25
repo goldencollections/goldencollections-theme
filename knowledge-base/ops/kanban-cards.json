@@ -153,7 +153,7 @@
   {
     "id": "GC-PIN-001",
     "title": "Reply to Pinterest after privacy-policy cache is visibly refreshed",
-    "status": "ready",
+    "status": "done",
     "owner": "owner / codex",
     "area": "Pinterest",
     "next_action": "Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.",
@@ -161,7 +161,8 @@
     "evidence": [
       "knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md"
     ],
-    "body": "Area: Pinterest\nOwner: owner / Codex\nStatus from repo board: ready\n\nNext action: Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.\n\nAcceptance: Pinterest receives the reply for app 1570604 and status is recorded.\n\nEvidence:\n- knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md"
+    "body": "Area: Pinterest\nOwner: owner / Codex\nStatus from repo board: ready\n\nNext action: Confirm public privacy policy displays the Pinterest API section, then send the prepared reply.\n\nAcceptance: Pinterest receives the reply for app 1570604 and status is recorded.\n\nEvidence:\n- knowledge-base/outputs/pinterest-standard-access-remediation-2026-05-24.md",
+    "result": "Pinterest reply was sent on 2026-05-24 with updated privacy policy and demo attachment. Pinterest responded on 2026-05-25 confirming Trial access for app 1570604 is approved again."
   },
   {
     "id": "GC-GBP-001",
@@ -358,7 +359,7 @@
   {
     "id": "GC-PIN-002",
     "title": "Record revised Pinterest OAuth-to-Pin demo",
-    "status": "blocked",
+    "status": "ready",
     "owner": "codex / owner",
     "area": "Pinterest",
     "next_action": "after Trial returns, record the revised demo showing OAuth, board listing, pin setup, API result, and owner approval control.",
