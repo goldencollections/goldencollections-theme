@@ -480,6 +480,6 @@
       "commit d4193c8 Add Hermes Kanban sync board"
     ],
     "body": "Area: GitHub / operations\nOwner: Codex\nStatus from repo board: done\n\nNext action: Keep origin pointed at goldencollections/goldencollections-theme and use shanaya-origin only as the old reference remote.\n\nAcceptance: GitHub repo exists under goldencollections, local origin points there, main is pushed, and Kanban sync files are committed.\n\nEvidence:\n- https://github.com/goldencollections/goldencollections-theme\n- commit d4193c8 Add Hermes Kanban sync board",
-    "result": "Created goldencollections/goldencollections-theme, preserved old remote as shanaya-origin, pushed main, and pushed Kanban sync commit d4193c8."
+    "result": "Created goldencollections/goldencollections-theme, preserved old remote as shanaya-origin, pushed main, pushed Kanban sync commits, and imported the full safe workspace in commit 1b2314a. Excluded ignored local secrets, tmp scratch output, caches, logs, and files over GitHub's normal limit."
   }
 ]
