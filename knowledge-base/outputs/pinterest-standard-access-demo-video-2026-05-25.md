@@ -77,3 +77,40 @@ Required next demo:
 6. Run the API check live in terminal: production board list, production Trial create restriction, sandbox Pin creation.
 7. Open the created Pin on Pinterest.
 8. Stop recording only after the created Pin is visible.
+
+## Uncut demo recorded and resubmitted - 2026-05-25
+
+The corrected Standard access request was submitted after Pinterest rejected the screenshot-based video.
+
+- New video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`
+- Format: MP4, H.264, 1280x720, 25 fps, about 40 seconds.
+- Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`
+- Submission status verified on Pinterest Developer app page: `Requested access: Upgrade to Standard access pending`
+
+What the uncut video shows:
+
+1. Local Golden Collections Pinterest API demo page.
+2. Pinterest OAuth authorization screen for `Golden Collections Content Publisher`.
+3. `Give access` action while logged in as `GoldenCollections`.
+4. Redirect to localhost callback with authorization code and state visible on-screen.
+5. Server-side token exchange success, without printing access token, refresh token, or app secret.
+6. Live API checks:
+   - Production board read succeeded: `GET /v5/boards`, `200 OK`.
+   - Production Pin creation showed expected Trial restriction: `POST /v5/pins`, `403`.
+   - Sandbox Pin creation succeeded: `POST /v5/pins`, `201 Created`.
+7. Created sandbox Pin displayed on Pinterest.
+
+Created Pin from the corrected uncut demo:
+
+- Pin ID: `485825878576972078`
+- Pin URL: `https://www.pinterest.com/pin/485825878576972078/`
+- Destination URL: `https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-guide`
+
+Security note: the video displays the temporary authorization code and callback URL because Pinterest requested proof of the OAuth redirect/code step. It does not display any access token, refresh token, app secret, or sandbox token.
+
+## Support reply sent after uncut resubmission - 2026-05-25
+
+A short reply was sent to Eloise confirming that a new Standard access request was submitted with a continuous uncut MP4 demo.
+
+- Gmail sent message ID: `19e5f55be049aa62`
+- Gmail thread ID: `19e4ae2ca2b6199d`

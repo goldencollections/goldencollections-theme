@@ -359,20 +359,22 @@
   {
     "id": "GC-PIN-002",
     "title": "Record revised Pinterest OAuth-to-Pin demo",
-    "status": "ready",
+    "status": "blocked",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "Record a continuous uncut screen recording that starts before the OAuth URL, shows Give access, localhost callback with code, server-side token exchange, live API checks, sandbox Pin creation, and the created Pin on Pinterest; then submit a new Standard access request.",
-    "acceptance": "New uncut video is submitted through the Pinterest Standard access flow and Pinterest review resumes.",
+    "next_action": "Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.",
+    "acceptance": "Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.",
     "evidence": [
-      "Latest denial email from Eloise: Gmail message ID `19e5eee4393326fd`.",
-      "Pinterest reason: video was screenshots and did not show the full uncut process.",
-      "`knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
-      "Previous screenshot-based video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`",
-      "Sandbox Pin from previous attempt: `https://www.pinterest.com/pin/485825878576971431/`"
+      "Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after the uncut MP4 upload.",
+      "New uncut video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`",
+      "Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`",
+      "Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
+      "Created uncut-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972078/`",
+      "Latest denial email that triggered this fix: Gmail message ID `19e5eee4393326fd`.",
+      "Support reply sent to Eloise after uncut resubmission: Gmail message ID `19e5f55be049aa62`."
     ],
-    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Pinterest denied Standard access again because the uploaded MP4 was composed of screenshots and did not show the full uncut process.\n\nNext action: Record a continuous uncut screen recording that starts before the OAuth URL, shows Give access, localhost callback with code, server-side token exchange, live API checks, sandbox Pin creation, and the created Pin on Pinterest; then submit a new Standard access request.\n\nAcceptance: New uncut video is submitted through the Pinterest Standard access flow and Pinterest review resumes.\n\nEvidence:\n- Latest denial email from Eloise: Gmail message ID `19e5eee4393326fd`.\n- Pinterest reason: video was screenshots and did not show the full uncut process.\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Previous screenshot-based video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- Sandbox Pin from previous attempt: `https://www.pinterest.com/pin/485825878576971431/`",
-    "blocked_reason": "Pinterest denied Standard access again because the uploaded MP4 was composed of screenshots and did not show the full uncut process."
+    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Corrected uncut Standard access demo has been recorded, uploaded, and submitted; waiting for Pinterest review decision.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after the uncut MP4 upload.\n- New uncut video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`\n- Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`\n- Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Created uncut-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972078/`\n- Latest denial email that triggered this fix: Gmail message ID `19e5eee4393326fd`.\n- Support reply sent to Eloise after uncut resubmission: Gmail message ID `19e5f55be049aa62`.",
+    "blocked_reason": "Corrected uncut Standard access demo has been recorded, uploaded, and submitted; waiting for Pinterest review decision."
   },
   {
     "id": "GC-THEME-002",
