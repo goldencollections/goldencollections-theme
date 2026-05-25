@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "proof_stories_hub": {
+      "type": "gc-proof-stories-hub",
+      "settings": {
+        "layout_variant": "page",
+        "blog": "jewellery-guides",
+        "tag_filter": "temple alankaram proof",
+        "eyebrow": "Golden Collections proof stories",
+        "heading": "Alankaram proof stories",
+        "subheading": "<p>Real deity jewellery and alankaram examples shared with permission, including temple and festival proof stories that show practical fit, measurement support, preparation and final alankaram outcomes.</p>",
+        "post_limit": 6,
+        "show_view_all": false,
+        "view_all_label": "View all proof stories",
+        "view_all_link": "",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "proof_stories_hub"
+  ]
+}

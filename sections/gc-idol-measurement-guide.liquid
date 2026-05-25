@@ -1,0 +1,829 @@
+{%- liquid
+  assign guide_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign hub_url = pages['deity-jewellery-alankaram-guide'].url | default: '/pages/deity-jewellery-alankaram-guide'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign whatsapp_number = section.settings.whatsapp_number | default: '917337294499'
+  assign whatsapp_text = 'Hello Golden Collections, I measured my deity idol and need help choosing jewellery size.' | url_encode
+  assign deity_crowns_url = collections['deity-crowns-1'].url | default: '/collections/deity-crowns-1'
+  assign deity_necklace_url = collections['deity-necklace'].url | default: '/collections/deity-necklace'
+  assign deity_vaddanam_url = collections['waist-belt-vaddanam-jewellery-for-hindu-gods-goddess-1'].url | default: '/collections/waist-belt-vaddanam-jewellery-for-hindu-gods-goddess-1'
+  assign proof_url = pages['temple-alankaram-proof'].url | default: '/pages/temple-alankaram-proof'
+  assign hanuman_proof_url = '/blogs/jewellery-guides/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026'
+-%}
+
+<section class="gc-measure-guide color-{{ section.settings.color_scheme }}" data-gc-measure-guide>
+  <div class="page-width">
+    <nav class="gc-measure-guide__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ hub_url }}">Deity jewellery guides</a>
+      <span>/</span>
+      <span>Idol measurement guide</span>
+    </nav>
+
+    <header class="gc-measure-guide__hero">
+      <div>
+        <p class="gc-measure-guide__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.subheading }}</p>
+      </div>
+      <aside class="gc-measure-guide__visual" aria-label="Idol measurement example">
+        <span>Measure in this order</span>
+        <ol>
+          <li><strong>Idol height</strong><em>Top to base</em></li>
+          <li><strong>Head / face width</strong><em>For crown fit</em></li>
+          <li><strong>Chest and drop</strong><em>For haram placement</em></li>
+          <li><strong>Waist and altar space</strong><em>For vaddanam and decor</em></li>
+        </ol>
+      </aside>
+      <div class="gc-measure-guide__hero-actions">
+        <a href="#gc-measure-checklist">Use checklist</a>
+        <a href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_text }}" target="_blank" rel="noopener" class="gc-measure-guide__secondary">
+          WhatsApp fit help
+        </a>
+      </div>
+    </header>
+
+    <section class="gc-measure-guide__answer" aria-labelledby="gc-measure-answer">
+      <p class="gc-measure-guide__eyebrow">Direct Answer</p>
+      <h2 id="gc-measure-answer">What should I measure before buying deity jewellery?</h2>
+      <p>Measure the full idol height, head or face width for crowns, neck and chest width for harams, waist placement for vaddanam, and the exact area where earrings, nose rings, tilak, namam, hands, feet, arch or base accessories will sit. Also take clear front and side photos because posture, draping, hairstyle and altar space can change the fit.</p>
+    </section>
+
+    <div class="gc-measure-guide__quick" aria-label="Measurement summary">
+      <article>
+        <strong>1. Measure the idol</strong>
+        <span>Start with idol height, then measure the ornament placement area.</span>
+      </article>
+      <article>
+        <strong>2. Compare product photos</strong>
+        <span>Use measurement-tape images and product dimensions before choosing.</span>
+      </article>
+      <article>
+        <strong>3. Ask before ordering</strong>
+        <span>Share photos and measurements with Golden Collections when fit is unclear.</span>
+      </article>
+      <article>
+        <strong>Real example to study</strong>
+        <span>The Hanuman Jayanti temple alankaram proof story shows why front photos, side photos, head width, crown clearance, chest scale, hand position and arch space should be checked before choosing deity jewellery. <a href="{{ hanuman_proof_url }}">View proof story</a>.</span>
+      </article>
+    </div>
+
+    <nav class="gc-measure-guide__nav" aria-label="Guide sections">
+      <a href="#gc-measure-checklist">Checklist</a>
+      <a href="#gc-measure-crowns">Crowns</a>
+      <a href="#gc-measure-harams">Harams</a>
+      <a href="#gc-measure-waist">Vaddanam</a>
+      <a href="#gc-measure-small">Small accessories</a>
+      <a href="#gc-measure-video">Video script</a>
+    </nav>
+
+    <section id="gc-measure-checklist" class="gc-measure-guide__section">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Interactive Checklist</p>
+        <h2>Record your idol measurements before shopping</h2>
+      </div>
+      <div class="gc-measure-guide__tool">
+        <form class="gc-measure-guide__form" data-gc-measure-form>
+          <label>
+            <span>Idol height</span>
+            <input name="idolHeight" type="text" inputmode="decimal" placeholder="Example: 12 inches">
+          </label>
+          <label>
+            <span>Head or face width</span>
+            <input name="headWidth" type="text" inputmode="decimal" placeholder="For crown / mukut">
+          </label>
+          <label>
+            <span>Crown space height</span>
+            <input name="crownHeight" type="text" inputmode="decimal" placeholder="Space above the head">
+          </label>
+          <label>
+            <span>Neck or upper chest width</span>
+            <input name="chestWidth" type="text" inputmode="decimal" placeholder="For short necklace">
+          </label>
+          <label>
+            <span>Desired haram drop</span>
+            <input name="haramDrop" type="text" inputmode="decimal" placeholder="Neck to end point">
+          </label>
+          <label>
+            <span>Waist placement width</span>
+            <input name="waistWidth" type="text" inputmode="decimal" placeholder="For vaddanam">
+          </label>
+          <label class="gc-measure-guide__full">
+            <span>Posture or fit caveats</span>
+            <textarea name="fitNotes" rows="3" placeholder="Seated idol, trunk direction, hairstyle, dress bulk, flute, weapons, arch space..."></textarea>
+          </label>
+          <div class="gc-measure-guide__form-actions">
+            <button type="submit">Save checklist on this device</button>
+            <button type="button" data-gc-measure-copy>Copy WhatsApp summary</button>
+          </div>
+        </form>
+        <aside class="gc-measure-guide__summary" aria-live="polite">
+          <strong>Your measurement summary</strong>
+          <p data-gc-measure-summary>Fill the checklist and save it to create a WhatsApp-ready summary.</p>
+          <a href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_text }}" target="_blank" rel="noopener">Send on WhatsApp</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="gc-measure-crowns" class="gc-measure-guide__section">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Crowns / Mukut / Kireedam</p>
+        <h2>Measure crown fit by style, not only by idol height</h2>
+      </div>
+      <div class="gc-measure-guide__grid gc-measure-guide__grid--two">
+        <article class="gc-measure-guide__card">
+          <h3>Open-back or half crown</h3>
+          <p>Measure the head or face width from side to side where the crown sits. Then compare crown width, height and depth with the product measurement photos.</p>
+          <ul>
+            <li>Best checks: head width, crown height, side clearance.</li>
+            <li>Useful for: many Amman, Lakshmi, Ganesha and general deity crowns.</li>
+          </ul>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Full-round crown</h3>
+          <p>Measure around the idol head where the crown will sit. A full-round crown needs circumference or arc fit, not just front width.</p>
+          <ul>
+            <li>Best checks: circumference, crown height, depth.</li>
+            <li>Watch for: hairstyle, trunk direction, tilted crown style and posture.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="gc-measure-guide__collection-link"><a href="{{ deity_crowns_url }}">Shop deity crowns, mukut and kireedam</a></p>
+    </section>
+
+    {%- render 'gc-anil-half-crown-fit-video',
+      eyebrow: 'Watch the measurement',
+      heading: 'Anil measures a deity face for half crown fit',
+      intro: 'Use this example when you are choosing a half crown, mukut or kireedam for an Amman, Lakshmi, Varalakshmi or other deity face. The key is not only idol height; face width, crown width and visible facial details matter.',
+      caption: 'Anil Tunk demonstrates how to measure the deity face and compare a half crown before choosing crown size.',
+      schema_name: 'How to Measure a Deity Face for Half Crown Fit',
+      whatsapp_number: whatsapp_number
+    -%}
+
+    <section id="gc-measure-harams" class="gc-measure-guide__section">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Necklaces And Harams</p>
+        <h2>Choose short or long placement before choosing design</h2>
+      </div>
+      <div class="gc-measure-guide__grid">
+        <article class="gc-measure-guide__card">
+          <h3>Short necklace</h3>
+          <p>Measure the neck or upper chest width where the necklace should sit. This is usually the first visible jewellery layer below the face.</p>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Long haram</h3>
+          <p>Measure from the neck to the lower chest, body or saree drape where you want the haram to end.</p>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Chest necklace</h3>
+          <p>Chest necklace styles need extra care because deity group, chest width, drape and placement can change suitability.</p>
+        </article>
+      </div>
+      <p class="gc-measure-guide__collection-link"><a href="{{ deity_necklace_url }}">Shop deity necklaces and harams</a></p>
+    </section>
+
+    <section id="gc-measure-waist" class="gc-measure-guide__section">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Vaddanam / Oddiyanam</p>
+        <h2>Measure after the idol is dressed or draped</h2>
+      </div>
+      <div class="gc-measure-guide__grid gc-measure-guide__grid--two">
+        <article class="gc-measure-guide__card">
+          <h3>Front visible width</h3>
+          <p>If the vaddanam is mostly decorative from the front, measure the visible waist area after the dress, saree or cloth is placed.</p>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Wrap or tie fit</h3>
+          <p>If the waist ornament wraps around, measure the full waist circumference and check whether the product ties or sits flat.</p>
+        </article>
+      </div>
+      <p class="gc-measure-guide__collection-link"><a href="{{ deity_vaddanam_url }}">Shop deity vaddanam and waist belts</a></p>
+    </section>
+
+    <section id="gc-measure-small" class="gc-measure-guide__section">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Small Accessories</p>
+        <h2>Small pieces still need exact placement checks</h2>
+      </div>
+      <div class="gc-measure-guide__grid">
+        <article class="gc-measure-guide__card">
+          <h3>Earrings and nose rings</h3>
+          <p>Measure the face area and check earring height, side clearance and attachment style.</p>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Tilak, namam and shanku chakra</h3>
+          <p>Match deity-specific symbols carefully. Vishnu/Balaji/Perumal items should not be treated as universal decor.</p>
+        </article>
+        <article class="gc-measure-guide__card">
+          <h3>Hands, feet, arch and base</h3>
+          <p>Measure the exact body, altar, arch or base placement. Posture and dress volume can affect whether the item sits correctly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gc-measure-video" class="gc-measure-guide__section gc-measure-guide__video">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">Video script</p>
+        <h2>Anil can film this same measurement flow later</h2>
+      </div>
+      <div class="gc-measure-guide__video-card">
+        <strong>Ready-to-film flow</strong>
+        <p>Show an idol, soft measuring tape, notebook and phone. Measure full idol height, head/face width, crown space, neck/chest, haram drop, waist placement and small accessory placement. End by asking customers to send photos with the tape visible on WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="gc-measure-guide__section gc-measure-guide__faq" aria-labelledby="gc-measure-faq">
+      <div class="gc-measure-guide__section-head">
+        <p class="gc-measure-guide__eyebrow">FAQ</p>
+        <h2 id="gc-measure-faq">Common deity jewellery measuring questions</h2>
+      </div>
+      <details>
+        <summary>Can I choose deity jewellery only by idol height?</summary>
+        <p>No. Idol height is the starting point, but crown width, face width, chest width, waist placement, posture, dress volume and ornament style also affect fit.</p>
+      </details>
+      <details>
+        <summary>What photos should I send for size help?</summary>
+        <p>Send one front photo, one side photo, and one photo with a measuring tape visible near the placement area. For crowns, include the head or face width clearly.</p>
+      </details>
+      <details>
+        <summary>Are general deity accessories suitable for every idol?</summary>
+        <p>No. General/common accessories can work across multiple deity idols only when size, placement, symbol, posture and draping match.</p>
+      </details>
+      <details>
+        <summary>Can Golden Collections help before I order?</summary>
+        <p>Yes. Share idol photos and measurements on WhatsApp so Golden Collections can help check the likely fit before ordering.</p>
+      </details>
+    </section>
+
+    <footer class="gc-measure-guide__footer">
+      <p>Guide reviewed for Golden Collections' deity jewellery compatibility model. For author context, see <a href="{{ anil_url }}">Anil Tunk</a>. For all guides, visit the <a href="{{ hub_url }}">deity jewellery authority hub</a>.</p>
+    </footer>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const section = document.querySelector('[data-gc-measure-guide]');
+    if (!section) return;
+    const form = section.querySelector('[data-gc-measure-form]');
+    const summary = section.querySelector('[data-gc-measure-summary]');
+    const copyButton = section.querySelector('[data-gc-measure-copy]');
+    const storageKey = 'gc-idol-measurement-checklist';
+
+    const fields = [
+      ['idolHeight', 'Idol height'],
+      ['headWidth', 'Head/face width'],
+      ['crownHeight', 'Crown space'],
+      ['chestWidth', 'Neck/chest width'],
+      ['haramDrop', 'Haram drop'],
+      ['waistWidth', 'Waist placement'],
+      ['fitNotes', 'Fit notes']
+    ];
+
+    const getValues = () => Object.fromEntries(new FormData(form).entries());
+    const buildText = (values) => {
+      const lines = fields
+        .map(([name, label]) => values[name] ? `${label}: ${values[name]}` : '')
+        .filter(Boolean);
+      if (!lines.length) return 'Fill the checklist and save it to create a WhatsApp-ready summary.';
+      return `Deity jewellery measurements:\n${lines.join('\n')}`;
+    };
+    const render = (values) => {
+      if (!summary) return;
+      summary.textContent = buildText(values);
+    };
+
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(storageKey) || '{}');
+      for (const [name] of fields) {
+        if (saved[name] && form.elements[name]) form.elements[name].value = saved[name];
+      }
+      render(saved);
+    } catch (error) {
+      render({});
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const values = getValues();
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify(values));
+      } catch (error) {}
+      render(values);
+    });
+
+    if (copyButton) {
+      copyButton.addEventListener('click', async () => {
+        const text = buildText(getValues());
+        try {
+          await navigator.clipboard.writeText(text);
+          copyButton.textContent = 'Copied';
+          window.setTimeout(() => {
+            copyButton.textContent = 'Copy WhatsApp summary';
+          }, 1800);
+        } catch (error) {
+          render(getValues());
+        }
+      });
+    }
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ guide_url }}#webpage",
+      "url": "{{ shop.url }}{{ guide_url }}",
+      "name": "How to Measure Your Idol for Deity Jewellery",
+      "description": "Golden Collections guide to measuring deity idols before buying crowns, harams, vaddanam, earrings and alankaram accessories.",
+      "about": [
+        "Deity jewellery sizing",
+        "Hindu idol alankaram",
+        "Deity crown fit",
+        "Mukut and kireedam measurement",
+        "Haram and vaddanam fit"
+      ],
+      "author": { "@id": "{{ shop.url }}{{ anil_url }}#person" },
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "{{ shop.url }}{{ guide_url }}#howto",
+      "name": "How to measure your idol for deity jewellery",
+      "description": "Measure idol height, head or face width, crown space, chest width, haram drop, waist placement and small accessory placement before choosing deity jewellery.",
+      "step": [
+        { "@type": "HowToStep", "name": "Measure idol height", "text": "Measure the full idol height and note whether the base should be included for the ornament decision." },
+        { "@type": "HowToStep", "name": "Measure crown placement", "text": "Measure head or face width, crown height space, and circumference or arc where relevant." },
+        { "@type": "HowToStep", "name": "Measure necklace and haram placement", "text": "Measure neck width, chest width and the desired haram drop." },
+        { "@type": "HowToStep", "name": "Measure waist and accessory placement", "text": "Measure waist placement after draping, plus the exact area for earrings, nose rings, tilak, namam, hands, feet, arch or base accessories." },
+        { "@type": "HowToStep", "name": "Take photos", "text": "Take clear front and side photos, including at least one image with a measuring tape visible." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}{{ guide_url }}#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I choose deity jewellery only by idol height?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Idol height is the starting point, but crown width, face width, chest width, waist placement, posture, dress volume and ornament style also affect fit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What photos should I send for size help?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send one front photo, one side photo, and one photo with a measuring tape visible near the placement area. For crowns, include the head or face width clearly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are general deity accessories suitable for every idol?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. General/common accessories can work across multiple deity idols only when size, placement, symbol, posture and draping match."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-measure-guide {
+    background: #fffaf0;
+    color: #20170d;
+    padding: 1.4rem 0 4rem;
+  }
+
+  .gc-measure-guide__breadcrumb {
+    color: #6f6254;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.16rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .gc-measure-guide__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-measure-guide__hero {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .gc-measure-guide__eyebrow {
+    color: #8f5f11;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .gc-measure-guide h1,
+  .gc-measure-guide h2,
+  .gc-measure-guide h3,
+  .gc-measure-guide strong {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-measure-guide h1 {
+    font-size: 3.45rem;
+    line-height: 1.02;
+    margin: 0;
+    max-width: 900px;
+  }
+
+  .gc-measure-guide h2 {
+    font-size: 2.35rem;
+    line-height: 1.12;
+    margin: 0;
+  }
+
+  .gc-measure-guide h3 {
+    font-size: 1.72rem;
+    line-height: 1.14;
+    margin: 0;
+  }
+
+  .gc-measure-guide p,
+  .gc-measure-guide li,
+  .gc-measure-guide span,
+  .gc-measure-guide label {
+    color: #4f463c;
+    font-size: 1.18rem;
+    line-height: 1.45;
+  }
+
+  .gc-measure-guide__hero p:not(.gc-measure-guide__eyebrow) {
+    font-size: 1.3rem;
+    margin: 0.85rem 0 0;
+    max-width: 820px;
+  }
+
+  .gc-measure-guide__hero-actions,
+  .gc-measure-guide__form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .gc-measure-guide__hero-actions a,
+  .gc-measure-guide__summary a,
+  .gc-measure-guide__form-actions button {
+    align-items: center;
+    background: #8f1f18;
+    border: 1px solid #8f1f18;
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-measure-guide__hero-actions .gc-measure-guide__secondary,
+  .gc-measure-guide__form-actions button[data-gc-measure-copy] {
+    background: #fffdf8;
+    border-color: rgba(143, 31, 24, 0.28);
+    color: #8f1f18;
+  }
+
+  .gc-measure-guide__visual {
+    background: #1a0e05;
+    border-left: 4px solid #c9972a;
+    border-radius: 8px;
+    box-shadow: 0 12px 34px rgba(32, 23, 13, 0.12);
+    padding: 1rem;
+  }
+
+  .gc-measure-guide__visual span {
+    color: #c9972a;
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 800;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .gc-measure-guide__visual ol {
+    counter-reset: measure-step;
+    display: grid;
+    gap: 0.55rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-measure-guide__visual li {
+    align-items: center;
+    background: rgba(253, 246, 236, 0.08);
+    border: 1px solid rgba(201, 151, 42, 0.18);
+    border-radius: 6px;
+    display: grid;
+    gap: 0.1rem;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    padding: 0.55rem;
+  }
+
+  .gc-measure-guide__visual li::before {
+    align-items: center;
+    background: #c9972a;
+    border-radius: 999px;
+    color: #1a0e05;
+    content: counter(measure-step);
+    counter-increment: measure-step;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 900;
+    height: 1.65rem;
+    justify-content: center;
+    width: 1.65rem;
+  }
+
+  .gc-measure-guide__visual strong,
+  .gc-measure-guide__visual em {
+    grid-column: 2;
+  }
+
+  .gc-measure-guide__visual strong {
+    color: #fff8ea;
+    font-size: 1.08rem;
+    line-height: 1.1;
+  }
+
+  .gc-measure-guide__visual em {
+    color: #d8cbb7;
+    font-size: 0.98rem;
+    font-style: normal;
+  }
+
+  .gc-measure-guide__answer,
+  .gc-measure-guide__quick article,
+  .gc-measure-guide__tool,
+  .gc-measure-guide__card,
+  .gc-measure-guide__video-card,
+  .gc-measure-guide__faq details,
+  .gc-measure-guide__footer {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .gc-measure-guide__answer {
+    border-left: 4px solid #8f1f18;
+    margin-bottom: 1rem;
+  }
+
+  .gc-measure-guide__quick,
+  .gc-measure-guide__grid {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .gc-measure-guide__quick {
+    margin-bottom: 1rem;
+  }
+
+  .gc-measure-guide__quick article {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .gc-measure-guide__quick strong {
+    font-size: 1.4rem;
+    line-height: 1.15;
+  }
+
+  .gc-measure-guide__nav {
+    display: flex;
+    gap: 0.55rem;
+    margin: 0 -1.5rem 1.4rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.4rem;
+  }
+
+  .gc-measure-guide__nav a {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 999px;
+    color: #5e3d13;
+    flex: 0 0 auto;
+    font-size: 1.08rem;
+    font-weight: 700;
+    padding: 0.6rem 0.85rem;
+    text-decoration: none;
+  }
+
+  .gc-measure-guide__section {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding: 1.5rem 0;
+  }
+
+  .gc-measure-guide__section-head {
+    margin-bottom: 1rem;
+  }
+
+  .gc-measure-guide__tool {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .gc-measure-guide__form {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gc-measure-guide__form label {
+    display: grid;
+    font-weight: 700;
+    gap: 0.35rem;
+  }
+
+  .gc-measure-guide__form input,
+  .gc-measure-guide__form textarea {
+    background: #fffaf0;
+    border: 1px solid rgba(81, 57, 25, 0.24);
+    border-radius: 6px;
+    color: #20170d;
+    font: inherit;
+    min-height: 44px;
+    padding: 0.7rem 0.8rem;
+    width: 100%;
+  }
+
+  .gc-measure-guide__summary {
+    background: #24180b;
+    border-radius: 8px;
+    display: grid;
+    align-content: start;
+    gap: 0.7rem;
+    padding: 1rem;
+  }
+
+  .gc-measure-guide__summary strong,
+  .gc-measure-guide__summary p {
+    color: #fff8ea;
+    white-space: pre-line;
+  }
+
+  .gc-measure-guide__summary a {
+    background: #fffaf0;
+    border-color: #fffaf0;
+    color: #8f1f18;
+    width: fit-content;
+  }
+
+  .gc-measure-guide__card {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .gc-measure-guide__card ul {
+    margin: 0.2rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .gc-measure-guide__collection-link a,
+  .gc-measure-guide__footer a {
+    color: #8f1f18;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .gc-measure-guide__video-card {
+    border-left: 4px solid #0f5132;
+  }
+
+  .gc-measure-guide__faq details + details {
+    margin-top: 0.75rem;
+  }
+
+  .gc-measure-guide__faq summary {
+    color: #20170d;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-measure-guide__form-actions button,
+    .gc-measure-guide__hero-actions a {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-measure-guide {
+      padding: 1.8rem 0 5rem;
+    }
+
+    .gc-measure-guide__hero {
+      align-items: stretch;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+    }
+
+    .gc-measure-guide h1 {
+      font-size: clamp(4rem, 4.2vw, 5.2rem);
+    }
+
+    .gc-measure-guide__hero-actions {
+      grid-column: 1 / -1;
+      margin-top: 0.25rem;
+    }
+
+    .gc-measure-guide__quick,
+    .gc-measure-guide__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-measure-guide__grid--two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-measure-guide__tool {
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+    }
+
+    .gc-measure-guide__form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-measure-guide__full,
+    .gc-measure-guide__form-actions {
+      grid-column: 1 / -1;
+    }
+
+    .gc-measure-guide__nav {
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC idol measurement guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Deity jewellery size guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to Measure Your Idol for Deity Jewellery"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Use this Golden Collections checklist before choosing deity crowns, mukut, kireedam, harams, vaddanam, earrings, tilak, namam, hastham, padam, arch or other Hindu idol alankaram accessories."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number with country code",
+      "default": "917337294499"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC idol measurement guide"
+    }
+  ]
+}
+{% endschema %}

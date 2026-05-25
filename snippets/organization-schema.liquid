@@ -3,11 +3,15 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://goldencollections.com/#organization",
+      "@type": ["JewelryStore", "LocalBusiness", "Organization"],
+      "@id": "https://www.goldencollections.com/#organization",
       "name": "Golden Collections",
-      "url": "https://goldencollections.com",
+      "url": "https://www.goldencollections.com/",
       "logo": {
+        "@type": "ImageObject",
+        "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/golden-collections-logo-1200-x-1200-without-background.png?v=1764310151"
+      },
+      "image": {
         "@type": "ImageObject",
         "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/golden-collections-logo-1200-x-1200-without-background.png?v=1764310151"
       },
@@ -17,31 +21,9 @@
       },
       "foundingDate": "2012",
       "description": "Golden Collections specializes in Bharatanatyam jewellery, real kemp temple jewellery, deity jewellery, and Hindu idol alankaram accessories.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "support@goldencollections.com",
-        "telephone": "+91-7337294499",
-        "contactType": "customer support",
-        "areaServed": "IN"
-      },
-      "sameAs": [
-        "https://www.facebook.com/bharatanatyamdancejewellery/",
-        "https://www.facebook.com/deityjewelry/",
-        "https://www.instagram.com/bharatanatyamjewellery",
-        "https://www.instagram.com/deity_jewellery",
-        "https://www.instagram.com/goldencollections_gbs",
-        "https://www.youtube.com/@Goldencollections",
-        "https://www.youtube.com/@BharatanatyamDanceJewellery"
-      ]
-    },
-    {
-      "@type": "JewelryStore",
-      "@id": "https://goldencollections.com/#localbusiness",
-      "name": "Golden Collections",
-      "image": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/golden-collections-logo-1200-x-1200-without-background.png?v=1764310151",
-      "priceRange": "INR",
       "telephone": "+91-7337294499",
       "email": "support@goldencollections.com",
+      "priceRange": "INR",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Plot no: 9, Krishnapuri Colony, Lakshmi Nagar, West Marredpally",
@@ -55,13 +37,53 @@
         "latitude": 17.4541835,
         "longitude": 78.5048272
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "11:00",
-        "closes": "20:00"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "11:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday"],
+          "opens": "13:00",
+          "closes": "20:00"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@goldencollections.com",
+        "telephone": "+91-7337294499",
+        "contactType": "customer support",
+        "areaServed": "IN"
       },
-      "url": "https://goldencollections.com"
+      "sameAs": [
+        "https://www.facebook.com/bharatanatyamdancejewellery/",
+        "https://www.facebook.com/deityjewelry/",
+        "https://www.facebook.com/goldencollections/",
+        "https://www.instagram.com/bharatanatyamjewellery",
+        "https://www.instagram.com/deity_jewellery",
+        "https://www.instagram.com/goldencollections_gbs",
+        "https://dk.pinterest.com/goldencollectionsjewelry",
+        "https://www.youtube.com/@Goldencollections",
+        "https://www.youtube.com/@BharatanatyamDanceJewellery",
+        "https://www.trustpilot.com/review/goldencollections.com",
+        "https://x.com/GCJewellery",
+        "https://www.linkedin.com/in/anil-tunk-35764388/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.goldencollections.com/#website",
+      "url": "https://www.goldencollections.com/",
+      "name": "Golden Collections",
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.goldencollections.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
   ]
 }

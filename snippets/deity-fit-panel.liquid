@@ -4,18 +4,24 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign primary_deity_ref = product.metafields.custom.primary_deity.value
-  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity | default: 'Deity alankaram'
-  assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class | default: 'General/Common'
-  assign ornament_ref = product.metafields.custom.ornament_type.value
-  assign ornament_type = ornament_ref.name.value | default: ornament_ref.name | default: product.metafields.custom.ornament_type.value | default: product.metafields.custom.ornament_type | default: 'Ornament'
-  assign placement = product.metafields.custom.placement.value | default: product.metafields.custom.placement | default: 'Check product image'
-  assign confidence = product.metafields.custom.size_confidence.value | default: product.metafields.custom.size_confidence | default: 'Image / product details'
+  assign primary_deity_ref = product.metafields.custom.primary_deity_ref.value | default: product.metafields.custom.primary_deity.value
+  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity
+  assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class
+  assign ornament_ref = product.metafields.custom.ornament_type_ref.value | default: product.metafields.custom.ornament_type.value
+  assign ornament_type = ornament_ref.name.value | default: ornament_ref.name | default: product.metafields.custom.ornament_type.value | default: product.metafields.custom.ornament_type
+  assign placement = product.metafields.custom.placement.value | default: product.metafields.custom.placement
+  assign product_title_lc = product.title | downcase
+  assign confidence = product.metafields.custom.size_confidence.value | default: product.metafields.custom.size_confidence
   assign idol_min = product.metafields.custom.idol_height_min_in.value | default: product.metafields.custom.idol_height_min_in
   assign idol_max = product.metafields.custom.idol_height_max_in.value | default: product.metafields.custom.idol_height_max_in
   assign ornament_width = product.metafields.custom.ornament_width_in.value | default: product.metafields.custom.ornament_width_in
   assign ornament_height = product.metafields.custom.ornament_height_in.value | default: product.metafields.custom.ornament_height_in
   assign ornament_depth = product.metafields.custom.ornament_depth_in.value | default: product.metafields.custom.ornament_depth_in
+  assign crown_style = product.metafields.custom.crown_style.value | default: product.metafields.custom.crown_style
+  assign crown_inner_width = product.metafields.custom.crown_inner_width_in.value | default: product.metafields.custom.crown_inner_width_in
+  assign crown_outer_width = product.metafields.custom.crown_outer_width_in.value | default: product.metafields.custom.crown_outer_width_in
+  assign crown_inner_circumference = product.metafields.custom.crown_inner_circumference_in.value | default: product.metafields.custom.crown_inner_circumference_in
+  assign crown_arc_length = product.metafields.custom.crown_arc_length_in.value | default: product.metafields.custom.crown_arc_length_in
   assign material = product.metafields.custom.material.value | default: product.metafields.custom.material
   assign fit_notes = product.metafields.custom.fit_notes.value | default: product.metafields.custom.fit_notes
   assign regional_names_metafield = product.metafields.custom.regional_names
@@ -30,6 +36,31 @@
   assign regional_name_5 = regional_names_metafield.value[5]
   assign regional_name_6 = regional_names_metafield.value[6]
   assign regional_name_7 = regional_names_metafield.value[7]
+
+  if ornament_type == blank
+    if product_title_lc contains 'crown' or product_title_lc contains 'mukut' or product_title_lc contains 'kireed' or product_title_lc contains 'kirita'
+      assign ornament_type = 'Crown / Mukut / Kireedam'
+    elsif product_title_lc contains 'haram'
+      assign ornament_type = 'Haram'
+    elsif product_title_lc contains 'vaddanam' or product_title_lc contains 'waist'
+      assign ornament_type = 'Vaddanam / waist belt'
+    elsif product_title_lc contains 'earring'
+      assign ornament_type = 'Earrings'
+    endif
+  endif
+
+  if placement == blank
+    if ornament_type contains 'Crown'
+      assign placement = 'Head'
+    elsif ornament_type contains 'Haram'
+      assign placement = 'Neck / chest'
+    elsif ornament_type contains 'Vaddanam'
+      assign placement = 'Waist'
+    elsif ornament_type contains 'Earrings'
+      assign placement = 'Ears'
+    endif
+  endif
+
   assign measured_size = ''
   if ornament_width != blank
     assign measured_size = 'W ' | append: ornament_width | append: ' in'
@@ -46,6 +77,29 @@
     endif
     assign measured_size = measured_size | append: 'D ' | append: ornament_depth | append: ' in'
   endif
+
+  assign crown_measurement = ''
+  if crown_inner_width != blank
+    assign crown_measurement = 'Inner W ' | append: crown_inner_width | append: ' in'
+  elsif crown_outer_width != blank
+    assign crown_measurement = 'Outer W ' | append: crown_outer_width | append: ' in'
+  endif
+  if crown_inner_circumference != blank
+    if crown_measurement != blank
+      assign crown_measurement = crown_measurement | append: ' / '
+    endif
+    assign crown_measurement = crown_measurement | append: 'Circ. ' | append: crown_inner_circumference | append: ' in'
+  endif
+  if crown_arc_length != blank
+    if crown_measurement != blank
+      assign crown_measurement = crown_measurement | append: ' / '
+    endif
+    assign crown_measurement = crown_measurement | append: 'Arc ' | append: crown_arc_length | append: ' in'
+  endif
+  assign is_crown_product = false
+  if product_title_lc contains 'crown' or product_title_lc contains 'mukut' or product_title_lc contains 'kireed' or product_title_lc contains 'kirita' or ornament_type contains 'Crown' or ornament_type contains 'Mukut' or ornament_type contains 'Kireed'
+    assign is_crown_product = true
+  endif
 -%}
 
 {%- capture idol_range -%}
@@ -60,6 +114,18 @@
   {%- endif -%}
 {%- endcapture -%}
 
+{%- capture suggested_for -%}
+  {%- if primary_deity != blank and compatibility != blank -%}
+    {{ primary_deity }} - {{ compatibility }}
+  {%- elsif primary_deity != blank -%}
+    {{ primary_deity }}
+  {%- elsif compatibility != blank -%}
+    {{ compatibility }}
+  {%- else -%}
+    Match by deity, placement and measured size
+  {%- endif -%}
+{%- endcapture -%}
+
 {%- capture regional_names_display -%}
   {%- if regional_name_0 != blank -%}
     {{ regional_name_0 }}{% if regional_name_1 != blank %}, {{ regional_name_1 }}{% endif %}{% if regional_name_2 != blank %}, {{ regional_name_2 }}{% endif %}{% if regional_name_3 != blank %}, {{ regional_name_3 }}{% endif %}{% if regional_name_4 != blank %}, {{ regional_name_4 }}{% endif %}{% if regional_name_5 != blank %}, {{ regional_name_5 }}{% endif %}{% if regional_name_6 != blank %}, {{ regional_name_6 }}{% endif %}{% if regional_name_7 != blank %}, {{ regional_name_7 }}{% endif %}
@@ -69,55 +135,66 @@
 {%- if mode == 'compact' -%}
   <div class="gc-deity-fit-brief" id="deity-fit-summary">
     <div class="gc-deity-fit-brief__head">
-      <span>Size and fit check</span>
-      <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need help checking deity jewellery size for ' | append: product.title | url_encode }}">
-        WhatsApp help
-      </a>
+      <span>Check fit before ordering</span>
+      <div>
+        <a href="/pages/how-to-measure-idol-for-deity-jewellery">Size guide</a>
+        <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need help checking deity jewellery size for ' | append: product.title | url_encode }}">
+          Ask Anil
+        </a>
+      </div>
     </div>
     <dl class="gc-deity-fit-brief__grid">
       <div>
-        <dt>Generally suitable for idol size</dt>
+        <dt>Idol height fit</dt>
         <dd>{{ idol_range | strip }}</dd>
       </div>
       <div>
-        <dt>Actual ornament measurement</dt>
+        <dt>Product measurement</dt>
         <dd>
           {%- if measured_size != blank -%}
             {{ measured_size }}
           {%- else -%}
-            See measuring tape image
+            Select size below
           {%- endif -%}
         </dd>
       </div>
       <div>
-        <dt>Made for</dt>
-        <dd>{{ primary_deity }}</dd>
+        <dt>Ornament type</dt>
+        <dd>{{ ornament_type | default: 'Deity ornament' }}</dd>
       </div>
       <div>
         <dt>Placement</dt>
-        <dd>{{ placement }}</dd>
+        <dd>{{ placement | default: 'See product photos' }}</dd>
+      </div>
+      <div>
+        <dt>Suggested for</dt>
+        <dd>{{ suggested_for | strip }}</dd>
       </div>
     </dl>
     <p>
-      Check the measuring tape image before ordering. Idol posture, head width, crown shape, and draping can affect fit.
+      Use the measuring tape photos and selected size before ordering. For crowns, compare head width or full circumference depending on crown style.
     </p>
   </div>
 {%- else -%}
 <div class="gc-deity-fit" id="deity-fit-panel">
   <div class="gc-deity-fit__badges" aria-label="Product fit summary">
-    <span>Made for {{ primary_deity }}</span>
-    <span>{{ compatibility }}</span>
+    {%- if primary_deity != blank -%}
+      <span>Made for {{ primary_deity }}</span>
+    {%- endif -%}
+    {%- if compatibility != blank -%}
+      <span>{{ compatibility }}</span>
+    {%- endif -%}
     <span>Quality checked</span>
   </div>
 
   <div class="gc-deity-fit__grid">
     <div>
-      <span>Generally suitable for idol size</span>
+      <span>Idol height fit</span>
       <strong>{{ idol_range | strip }}</strong>
     </div>
     <div>
       <span>Ornament type</span>
-      <strong>{{ ornament_type }}</strong>
+      <strong>{{ ornament_type | default: 'Check product details' }}</strong>
     </div>
     <div>
       <span>Actual ornament measurement</span>
@@ -129,9 +206,21 @@
         {%- endif -%}
       </strong>
     </div>
+    {%- if crown_measurement != blank or crown_style != blank -%}
+      <div>
+        <span>Crown fit check</span>
+        <strong>
+          {%- if crown_measurement != blank -%}
+            {{ crown_measurement }}
+          {%- else -%}
+            {{ crown_style }}
+          {%- endif -%}
+        </strong>
+      </div>
+    {%- endif -%}
     <div>
       <span>Placement</span>
-      <strong>{{ placement }}</strong>
+      <strong>{{ placement | default: 'Check product image' }}</strong>
     </div>
     {%- if material != blank -%}
       <div>
@@ -145,7 +234,7 @@
     {%- if fit_notes != blank -%}
       {{ fit_notes }}
     {%- else -%}
-      Idol posture, head width, crown shape, and draping can affect fit. Use the measuring tape image before ordering.
+      Idol posture, head width, crown shape, and draping can affect fit. Use the selected size and measuring tape image before ordering.
     {%- endif -%}
   </p>
 
@@ -153,16 +242,27 @@
     <strong>Before ordering, check</strong>
     <ul>
       <li>Generally suitable idol size is close to your idol height.</li>
-      <li>Actual ornament measurement fits the area where it will sit.</li>
+      <li>Selected product measurement fits the area where it will sit.</li>
       <li>Placement and deity match how you plan to decorate the idol.</li>
     </ul>
   </div>
 
   <div class="gc-deity-fit__actions">
-    <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need help checking deity jewellery size for ' | append: product.title | url_encode }}" class="gc-deity-fit__whatsapp">
-      Ask size help on WhatsApp
+    <a href="/pages/how-to-measure-idol-for-deity-jewellery" class="gc-deity-fit__guide">
+      Open size guide
     </a>
-    <span>Fit confidence: {{ confidence }}</span>
+    <a href="/pages/how-golden-collections-checks-deity-jewellery-fit" class="gc-deity-fit__guide">
+      See fit process
+    </a>
+    {%- if is_crown_product -%}
+      <a href="/pages/deity-crown-mukut-kireedam-size-guide" class="gc-deity-fit__guide">
+        Crown size guide
+      </a>
+    {%- endif -%}
+    <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need help checking deity jewellery size for ' | append: product.title | url_encode }}" class="gc-deity-fit__whatsapp">
+      Ask Anil on WhatsApp
+    </a>
+    <span>Fit confidence: {{ confidence | default: 'Check product image' }}</span>
   </div>
 
   {%- if regional_names_manual_display != blank or regional_names_display != blank or regional_names != blank -%}
@@ -199,6 +299,13 @@
     margin-bottom: 0.9rem;
   }
 
+  .gc-deity-fit-brief__head div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: flex-end;
+  }
+
   .gc-deity-fit-brief__head span {
     color: #20180f;
     font-size: 1.35rem;
@@ -207,7 +314,7 @@
   }
 
   .gc-deity-fit-brief__head a {
-    color: #1f7a4d;
+    color: #8f1f18;
     font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
@@ -316,8 +423,8 @@
   .gc-deity-fit__checklist {
     border: 1px solid rgba(31, 122, 77, 0.18);
     border-radius: 8px;
-    background: #f3faf4;
-    color: #214c35;
+    background: #fff7e8;
+    color: #5e3d13;
     margin-top: 1.2rem;
     padding: 1.1rem 1.2rem;
   }
@@ -370,8 +477,22 @@
     justify-content: center;
     min-height: 44px;
     border-radius: 6px;
-    background: #1f7a4d;
+    background: #8f1f18;
     color: #ffffff;
+    font-weight: 700;
+    padding: 0.75rem 1.15rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-fit__guide {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 1px solid rgba(151, 99, 16, 0.24);
+    border-radius: 6px;
+    background: #ffffff;
+    color: #5e3d13;
     font-weight: 700;
     padding: 0.75rem 1.15rem;
     text-decoration: none;
@@ -398,6 +519,10 @@
     }
 
     .gc-deity-fit__whatsapp {
+      width: 100%;
+    }
+
+    .gc-deity-fit__guide {
       width: 100%;
     }
   }

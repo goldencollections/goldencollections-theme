@@ -28,12 +28,169 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .gc-ornament-size-help-link {
+    align-items: center;
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.22);
+    border-radius: 999px;
+    color: #8f1f18;
+    display: inline-flex;
+    font-size: 1.18rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0 0 0.5rem;
+    min-height: 3.8rem;
+    padding: 0.55rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .gc-ornament-size-help-link:hover {
+    border-color: rgba(143, 31, 24, 0.45);
+    color: #7f1f19;
+  }
+
+  .gc-deity-product-section {
+    background: #fff8ea;
+    border-top: 1px solid rgba(151, 99, 16, 0.12);
+  }
+
+  .gc-deity-product-section .facets-wrapper,
+  .gc-deity-product-section .collection {
+    color: #21180d;
+  }
+
+  .gc-deity-product-section .product-grid {
+    row-gap: 2rem;
+  }
+
+  .gc-deity-product-section .card-wrapper {
+    height: 100%;
+  }
+
+  .gc-deity-product-section .card {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .gc-deity-product-section .card__content {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .gc-deity-product-section .card__heading {
+    color: #21180d;
+    font-size: 1.28rem;
+    line-height: 1.25;
+  }
+
+  .gc-deity-product-section .price {
+    color: #4e2d12;
+    font-weight: 700;
+  }
+
+  .gc-varalakshmi-planning-help {
+    align-items: center;
+    background: #1a0e05;
+    border-left: 4px solid #c9972a;
+    border-radius: 8px;
+    color: #f5ede0;
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding: 1.15rem;
+  }
+
+  .gc-varalakshmi-planning-help span {
+    color: #c9972a;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .gc-varalakshmi-planning-help strong {
+    color: #f5ede0;
+    display: block;
+    font-family: var(--font-heading-family);
+    font-size: clamp(1.7rem, 2.3vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  .gc-varalakshmi-planning-help p {
+    color: rgba(245, 237, 224, 0.82);
+    font-size: 1.35rem;
+    line-height: 1.55;
+    margin: 0.45rem 0 0;
+  }
+
+  .gc-varalakshmi-planning-help a {
+    background: #8b1c1c;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 800;
+    justify-self: start;
+    padding: 0.78rem 1rem;
+    text-decoration: none;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+
+    .gc-varalakshmi-planning-help {
+      grid-template-columns: minmax(0, 1fr) auto;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 980px;
+      padding: 1.25rem 1.4rem;
+    }
   }
+
+  @media screen and (max-width: 749px) {
+    .facets-container--with-size-help {
+      align-items: center;
+      column-gap: 1rem;
+      grid-template-columns: auto minmax(7rem, 1fr) auto;
+      grid-template-rows: auto;
+    }
+
+    .facets-container--with-size-help .mobile-facets__wrapper {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .facets-container--with-size-help .product-count {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      margin: 0;
+      min-width: 0;
+      text-align: right;
+    }
+
+    .facets-container--with-size-help .product-count__text {
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    .facets-container--with-size-help .gc-ornament-size-help-link {
+      grid-column: 3;
+      grid-row: 1;
+      margin: 0;
+      min-height: 3.4rem;
+      padding-inline: 1rem;
+    }
+  }
+
 {%- endstyle -%}
 
 {%- assign current_node = collection.metafields.custom.category_node_ref.value -%}
@@ -46,18 +203,28 @@
   {%- assign has_node_children = true -%}
 {%- endif -%}
 
+{%- assign effective_filter_type = section.settings.filter_type -%}
+
 {%- assign direct_subcollections = collection.metafields.custom.subcollections.value -%}
 {%- assign has_direct_subcollections = false -%}
 {%- if direct_subcollections != blank and direct_subcollections.size > 0 -%}
   {%- assign has_direct_subcollections = true -%}
 {%- endif -%}
+{%- assign current_template_suffix = template.suffix | default: collection.template_suffix | default: '' -%}
+{%- assign collection_handle_lc = collection.handle | downcase -%}
+{%- assign collection_role = collection.metafields.custom.collection_role.value | default: collection.metafields.custom.collection_role | downcase | strip -%}
+{%- assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples' -%}
 {%- assign is_deity_collection = false -%}
-{%- if collection.template_suffix contains 'deity' or collection.template_suffix == 'varalakshmi' -%}
+{%- if current_template_suffix contains 'deity' or current_template_suffix == 'varalakshmi' -%}
   {%- assign is_deity_collection = true -%}
+{%- endif -%}
+{%- assign is_dance_product_collection = false -%}
+{%- if current_template_suffix contains 'dance-product' or collection_role contains 'dance_product' -%}
+  {%- assign is_dance_product_collection = true -%}
 {%- endif -%}
 {%- assign collection_menu_handle = collection.metafields.custom.parent_menu_handles.value | default: section.settings.subcollection_menu -%}
 {%- assign collection_menu_handle = collection_menu_handle | strip | split: ',' | first | strip -%}
-{%- if is_deity_collection -%}
+{%- if is_deity_collection and section.settings.show_subcollections_for_deity_templates != true -%}
   {%- assign collection_menu_handle = blank -%}
 {%- endif -%}
 {%- assign subcollection_menu = linklists[collection_menu_handle] -%}
@@ -65,9 +232,25 @@
 {%- if subcollection_menu != blank and subcollection_menu.links.size > 0 -%}
   {%- assign has_menu_children = true -%}
 {%- endif -%}
-{%- if has_direct_subcollections or has_node_children or has_menu_children -%}
+{%- assign show_top_subcollection_nav = false -%}
+{%- assign allow_product_grid_subcollection_nav = section.settings.show_subcollection_nav -%}
+{%- if is_dance_product_collection -%}
+  {%- assign allow_product_grid_subcollection_nav = false -%}
+{%- endif -%}
+{%- if allow_product_grid_subcollection_nav -%}
+  {%- if is_deity_collection == false or section.settings.show_subcollections_for_deity_templates == true -%}
+    {%- if has_direct_subcollections or has_node_children or has_menu_children -%}
+      {%- assign show_top_subcollection_nav = true -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- elsif is_deity_collection and section.settings.show_subcollections_for_deity_templates == true -%}
+  {%- if has_direct_subcollections or has_node_children or has_menu_children -%}
+    {%- assign show_top_subcollection_nav = true -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if show_top_subcollection_nav -%}
   <div class="subcollection-nav-wrapper page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <h2 class="subcollection-nav-title visually-hidden">Related collections</h2>
+    <h2 class="subcollection-nav-title{% unless section.settings.show_subcollections_for_deity_templates %} visually-hidden{% endunless %}">Related collections</h2>
     <ul class="subcollection-nav list-unstyled" role="list">
       {%- if has_direct_subcollections -%}
         {%- for nav_collection in direct_subcollections -%}
@@ -151,10 +334,10 @@
     </ul>
   </div>
 {%- endif -%}
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if is_deity_collection and section.settings.show_subcollections_for_deity_templates != true %} gc-deity-product-section{% endif %}">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+    {%- if section.settings.enable_sorting and effective_filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">
           <div class="facet-filters sorting caption">
@@ -212,13 +395,13 @@
       </facet-filters-form>
     {%- endif -%}
 
-    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+    <div class="{% if effective_filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
         <aside
           aria-labelledby="verticalTitle"
-          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if effective_filter_type != 'vertical' %} page-width{% endif %}"
           id="main-collection-filters"
           data-id="{{ section.id }}"
         >
@@ -226,8 +409,9 @@
             results: collection,
             enable_filtering: section.settings.enable_filtering,
             enable_sorting: section.settings.enable_sorting,
-            filter_type: section.settings.filter_type,
-            paginate: paginate
+            filter_type: effective_filter_type,
+            paginate: paginate,
+            show_size_help: section.settings.show_size_help_link
           %}
         </aside>
 
@@ -291,7 +475,7 @@
           </div>
         {%- else -%}
           <div
-            class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            class="collection{% if effective_filter_type != 'vertical' %} page-width{% endif %}"
           >
             <div class="loading-overlay gradient"></div>
             <ul
@@ -339,6 +523,18 @@
           </div>
         {%- endif -%}
       </div>
+      {%- if collection_handle_lc == 'varalakshmi-deity-jewellery' -%}
+        <div class="page-width">
+          <div class="gc-varalakshmi-planning-help">
+            <div>
+              <span>Varalakshmi planning help</span>
+              <strong>Compare previous alankaram examples before choosing jewellery.</strong>
+              <p>Use real Varalakshmi and Varamahalakshmi examples to check crown scale, face visibility, haram placement, saree drape and altar space.</p>
+            </div>
+            <a href="{{ varalakshmi_examples_url }}">View examples</a>
+          </div>
+        </div>
+      {%- endif -%}
     </div>
   {%- endpaginate -%}
 {% if section.settings.image_shape == 'arch' %}
@@ -346,8 +542,8 @@
   {%- endif -%}
 </div>
 
-{% comment %} CO-FOUNDER SEO UPDATE: Safe ItemList Schema {% endcomment %}
-{%- if collection.template_suffix == 'deity' -%}
+{% comment %} CO-FOUNDER SEO UPDATE: Safe collection schema {% endcomment %}
+{%- if is_deity_collection -%}
   {% render 'deity-collection-schema' %}
 {%- else -%}
   {% render 'collection-itemlist' %}
@@ -403,6 +599,24 @@
       "type": "link_list",
       "id": "subcollection_menu",
       "label": "Subcollection navigation menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subcollection_nav",
+      "default": true,
+      "label": "Show subcollection navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_size_help_link",
+      "default": false,
+      "label": "Show size help link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subcollections_for_deity_templates",
+      "default": false,
+      "label": "Show subcollections on deity templates"
     },
     {
       "type": "header",
@@ -571,4 +785,3 @@
   ]
 }
 {% endschema %}
-

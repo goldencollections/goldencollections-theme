@@ -99,6 +99,45 @@
         </div>
       {%- endform -%}
     </product-form>
+
+    {%- if product.selected_or_first_available_variant.available == false -%}
+      <div class="gc-restock-help" aria-label="Back in stock help">
+        <p class="gc-restock-help__title">Want this when it is back?</p>
+        <p class="gc-restock-help__text">
+          Send a restock request with your email or message us on WhatsApp. Include the product code and size so we can check availability faster.
+        </p>
+        {%- form 'contact', class: 'gc-restock-help__form' -%}
+          <input type="hidden" name="contact[tags]" value="restock-request">
+          <input type="hidden" name="contact[Product]" value="{{ product.title | escape }}">
+          <input type="hidden" name="contact[Product URL]" value="{{ shop.url }}{{ product.url }}">
+          <input type="hidden" name="contact[Variant]" value="{{ product.selected_or_first_available_variant.title | escape }}">
+          <div class="field">
+            <input
+              id="RestockEmail-{{ section_id }}"
+              class="field__input"
+              autocomplete="email"
+              type="email"
+              name="contact[email]"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              placeholder="Email"
+              required
+            >
+            <label class="field__label" for="RestockEmail-{{ section_id }}">Email</label>
+          </div>
+          <button type="submit" class="button button--secondary gc-restock-help__submit">
+            Notify me
+          </button>
+        {%- endform -%}
+        <a
+          class="gc-restock-help__whatsapp"
+          href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, please notify me when this product is back in stock: ' | append: product.title | append: ' - ' | append: shop.url | append: product.url | url_encode }}"
+          target="_blank"
+          rel="noopener"
+        >
+          Ask on WhatsApp
+        </a>
+      </div>
+    {%- endif -%}
   {%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">
@@ -149,3 +188,72 @@
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
+
+<style>
+  .gc-restock-help {
+    background: #fff8ea;
+    border: 1px solid rgba(151, 99, 16, 0.22);
+    border-radius: 8px;
+    color: #21180d;
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  .gc-restock-help__title {
+    color: #8f1f18;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .gc-restock-help__text {
+    color: #4f463c;
+    font-size: 1.24rem;
+    line-height: 1.42;
+    margin: 0;
+  }
+
+  .gc-restock-help__form {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gc-restock-help__submit {
+    min-height: 4.4rem;
+    width: 100%;
+  }
+
+  .gc-restock-help__whatsapp {
+    align-items: center;
+    border: 1px solid rgba(143, 31, 24, 0.26);
+    border-radius: 999px;
+    color: #8f1f18;
+    display: inline-flex;
+    font-size: 1.24rem;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 4rem;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-restock-help__whatsapp:hover {
+    border-color: rgba(143, 31, 24, 0.5);
+    color: #7f1f19;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-restock-help__form {
+      align-items: start;
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .gc-restock-help__submit {
+      min-width: 12rem;
+      width: auto;
+    }
+  }
+</style>

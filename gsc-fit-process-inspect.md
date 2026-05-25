@@ -1,0 +1,226 @@
+- generic [active] [ref=e1] [box=0,0,1048,714]:
+  - generic [ref=e2] [box=0,0,1048,714]:
+    - banner [ref=e4] [box=0,0,1048,64]:
+      - generic [ref=e5] [box=0,0,1048,64]:
+        - generic [ref=e6] [box=8,8,359,48]:
+          - button "Main menu" [ref=e1920] [cursor=pointer] [box=12,8,48,48]:
+            - img [ref=e8] [box=24,20,24,24]
+          - link "Google Search Console" [ref=e1921] [cursor=pointer] [box=64,14,278,40]:
+            - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+            - img [ref=e13] [box=64,14,278,40]
+        - generic [ref=e14] [box=367,8,574,48]:
+          - search [ref=e16] [box=377,8,390,48]:
+            - generic [ref=e22] [box=434,9,283,46]:
+              - textbox [disabled] [ref=e23] [box=434,9,283,46]: Inspect any URL in "goldencollections.com"
+              - combobox "Inspect any URL in goldencollections.com" [ref=e1922] [box=434,9,283,46]
+            - button "Search" [ref=e1923] [cursor=pointer] [box=378,9,56,46]:
+              - img [ref=e26] [box=386,12,40,40]
+          - generic [ref=e29] [box=797,8,144,48]:
+            - generic [ref=e31] [box=797,8,96,48]:
+              - button "Help" [ref=e1924] [cursor=pointer] [box=797,8,48,48]:
+                - generic [ref=e36] [box=809,20,24,24]: 
+              - button "User settings" [ref=e1925] [cursor=pointer] [box=845,8,48,48]:
+                - img [ref=e41] [box=857,20,24,24]
+            - 'button "Unread messages: 92" [ref=e1926] [cursor=pointer] [box=893,8,48,48]':
+              - generic [ref=e47] [box=905,20,24,24]:
+                - generic [ref=e48] [box=905,20,24,24]: 
+                - generic [ref=e1928] [box=911,15,21,16]: "92"
+        - generic [ref=e52] [box=946,8,90,48]:
+          - button "Google apps" [ref=e1929] [cursor=pointer] [box=946,12,40,40]:
+            - img [ref=e57] [box=954,20,24,24]
+          - 'button "Google Account: Golden Collections Indian Jewelry online Store (goldencollections9@gmail.com)" [ref=e1930] [cursor=pointer] [box=994,12,40,40]':
+            - img [ref=e64] [box=998,16,32,32]
+    - dialog "navigational drawer" [ref=e1931] [box=0,64,280,650]:
+      - navigation "Primary" [ref=e1932] [box=0,64,280,650]:
+        - button "Search property" [ref=e1935] [cursor=pointer] [box=8,78,256,40]:
+          - img [ref=e1937] [box=25,86,24,24]
+          - combobox "goldencollections.com" [ref=e1944] [box=60,86,167,24]
+          - generic [ref=e1945] [box=227,86,24,24]: 
+        - generic [ref=e86] [box=0,128,280,586]:
+          - generic [ref=e87] [box=0,128,272,1105]:
+            - generic [ref=e88] [box=0,128,264,175]:
+              - link "Overview" [ref=e1946] [cursor=pointer] [box=8,136,256,40]:
+                - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e92] [box=26,146,20,20]: home
+                - generic [ref=e94] [box=60,147,64,18]: Overview
+              - link "Insights" [ref=e1947] [cursor=pointer] [box=8,176,256,40]:
+                - /url: ./search-console/performance/insights?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e99] [box=26,186,20,20]: lightbulb_2
+                - generic [ref=e101] [box=60,187,54,18]: Insights
+              - link "Performance" [ref=e1948] [cursor=pointer] [box=8,216,256,40]:
+                - /url: ./search-console/performance/search-analytics?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e106] [box=26,226,20,20]: trending_up
+                - generic [ref=e108] [box=60,227,88,18]: Performance
+              - button "URL inspection" [ref=e1949] [cursor=pointer] [box=8,256,256,40]:
+                - generic [ref=e113] [box=26,266,20,20]: search
+                - generic [ref=e115] [box=60,267,103,18]: URL inspection
+            - generic [ref=e119] [box=0,311,264,200]:
+              - button "Indexing report section" [expanded] [ref=e1950] [cursor=pointer] [box=0,311,264,40]:
+                - generic [ref=e121] [box=4,311,260,40]:
+                  - generic [ref=e124] [box=48,322,58,18]: Indexing
+                  - img [ref=e128] [box=24,321,20,20]
+              - generic [ref=e133] [box=0,351,264,160]:
+                - link "Pages" [ref=e1951] [cursor=pointer] [box=8,351,256,40]:
+                  - /url: ./search-console/index?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e137] [box=26,361,20,20]: file_copy
+                  - generic [ref=e139] [box=60,362,41,18]: Pages
+                - link "Videos" [ref=e1952] [cursor=pointer] [box=8,391,256,40]:
+                  - /url: ./search-console/video-index?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e144] [box=26,401,20,20]: video_library
+                  - generic [ref=e146] [box=60,402,46,18]: Videos
+                - link "Sitemaps" [ref=e1953] [cursor=pointer] [box=8,431,256,40]:
+                  - /url: ./search-console/sitemaps?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e151] [box=26,441,20,20]: account_tree
+                  - generic [ref=e153] [box=60,442,63,18]: Sitemaps
+                - link "Removals" [ref=e1954] [cursor=pointer] [box=8,471,256,40]:
+                  - /url: ./search-console/removals?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e158] [box=26,481,20,20]: visibility_off
+                  - generic [ref=e160] [box=60,482,65,18]: Removals
+            - generic [ref=e164] [box=0,526,264,120]:
+              - button "Experience report section" [expanded] [ref=e1955] [cursor=pointer] [box=0,526,264,40]:
+                - generic [ref=e166] [box=4,526,260,40]:
+                  - generic [ref=e169] [box=48,537,76,18]: Experience
+                  - img [ref=e173] [box=24,536,20,20]
+              - generic [ref=e178] [box=0,566,264,80]:
+                - link "Core Web Vitals" [ref=e1956] [cursor=pointer] [box=8,566,256,40]:
+                  - /url: ./search-console/core-web-vitals?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e182] [box=26,576,20,20]: speed
+                  - generic [ref=e184] [box=60,577,106,18]: Core Web Vitals
+                - link "HTTPS" [ref=e1957] [cursor=pointer] [box=8,606,256,40]:
+                  - /url: ./search-console/https?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e189] [box=26,616,20,20]: lock
+                  - generic [ref=e191] [box=60,617,46,18]: HTTPS
+            - generic [ref=e195] [box=0,661,264,160]:
+              - button "Shopping report section" [expanded] [ref=e1958] [cursor=pointer] [box=0,661,264,40]:
+                - generic [ref=e197] [box=4,661,260,40]:
+                  - generic [ref=e200] [box=48,672,65,18]: Shopping
+                  - img [ref=e204] [box=24,671,20,20]
+              - generic [ref=e209] [box=0,701,264,120]:
+                - link "Product snippets" [ref=e1959] [cursor=pointer] [box=8,701,256,40]:
+                  - /url: ./search-console/r/product?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e213] [box=26,711,20,20]: layers
+                  - generic [ref=e215] [box=60,712,117,18]: Product snippets
+                - link "Merchant listings" [ref=e1960] [cursor=pointer] [box=8,741,256,40]:
+                  - /url: ./search-console/r/merchant-listings?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e220] [box=26,751,20,20]: layers
+                  - generic [ref=e222] [box=60,752,117,18]: Merchant listings
+                - link "Merchant opportunities" [ref=e1961] [cursor=pointer] [box=8,781,256,40]:
+                  - /url: ./search-console/merchant-opportunities?resource_id=sc-domain:goldencollections.com
+                  - generic [ref=e227] [box=26,791,20,20]: shoppingmode
+                  - generic [ref=e229] [box=60,792,161,18]: Merchant opportunities
+            - generic [ref=e233] [box=0,836,264,200]:
+              - button "Enhancements report section" [expanded] [ref=e1962] [cursor=pointer] [box=0,836,264,40]:
+                - generic [ref=e235] [box=4,836,260,40]:
+                  - generic [ref=e238] [box=48,847,101,18]: Enhancements
+                  - img [ref=e242] [box=24,846,20,20]
+              - generic [ref=e247] [box=0,876,264,160]:
+                - link "Breadcrumbs" [ref=e1963] [cursor=pointer] [box=8,876,256,40]:
+                  - /url: ./search-console/r/breadcrumbs?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e251] [box=26,886,20,20]: layers
+                  - generic [ref=e253] [box=60,887,91,18]: Breadcrumbs
+                - link "FAQ" [ref=e1964] [cursor=pointer] [box=8,916,256,40]:
+                  - /url: ./search-console/r/faq?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e258] [box=26,926,20,20]: layers
+                  - generic [ref=e260] [box=60,927,28,18]: FAQ
+                - link "Profile page" [ref=e1965] [cursor=pointer] [box=8,956,256,40]:
+                  - /url: ./search-console/r/profile-page?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e265] [box=26,966,20,20]: layers
+                  - generic [ref=e267] [box=60,967,82,18]: Profile page
+                - link "Unparsable structured data" [ref=e1966] [cursor=pointer] [box=8,996,256,40]:
+                  - /url: ./search-console/r/unknown-type?resource_id=sc-domain%3Agoldencollections.com
+                  - generic [ref=e272] [box=26,1006,20,20]: layers
+                  - generic [ref=e274] [box=60,1007,188,18]: Unparsable structured data
+            - button "Security & Manual Actions report section" [ref=e1967] [cursor=pointer] [box=0,1051,264,40]:
+              - generic [ref=e280] [box=4,1051,260,40]:
+                - generic [ref=e283] [box=48,1062,179,18]: Security & Manual Actions
+                - img [ref=e287] [box=24,1061,20,20]
+            - generic [ref=e289] [box=0,1098,264,135]:
+              - link "Links report" [ref=e1968] [cursor=pointer] [box=8,1106,256,40]:
+                - /url: ./search-console/links?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e293] [box=26,1116,20,20]: link_2
+                - generic [ref=e295] [box=60,1117,36,18]: Links
+              - link "Achievements" [ref=e1969] [cursor=pointer] [box=8,1146,256,40]:
+                - /url: ./search-console/achievements?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e300] [box=26,1156,20,20]: trophy
+                - generic [ref=e302] [box=60,1157,96,18]: Achievements
+              - link "Settings" [ref=e1970] [cursor=pointer] [box=8,1186,256,40]:
+                - /url: ./search-console/settings?resource_id=sc-domain%3Agoldencollections.com
+                - generic [ref=e307] [box=26,1196,20,20]: settings
+                - generic [ref=e309] [box=60,1197,56,18]: Settings
+          - generic [ref=e311] [box=0,1233,272,143]:
+            - generic [ref=e313] [box=0,1233,264,95]:
+              - button "Submit feedback" [ref=e1971] [cursor=pointer] [box=8,1241,256,40]:
+                - generic [ref=e317] [box=26,1251,20,20]: feedback
+                - generic [ref=e319] [box=60,1252,115,18]: Submit feedback
+              - button "About Search Console" [ref=e1972] [cursor=pointer] [box=8,1281,256,40]:
+                - generic [ref=e324] [box=26,1291,20,20]: info
+                - generic [ref=e326] [box=60,1292,151,18]: About Search Console
+            - generic [ref=e330] [box=24,1342,224,20]:
+              - link "Privacy" [ref=e1973] [cursor=pointer] [box=24,1344,45,17]:
+                - /url: https://myaccount.google.com/privacypolicy?hl=en
+              - link "Terms" [ref=e1974] [cursor=pointer] [box=89,1344,39,17]:
+                - /url: https://myaccount.google.com/termsofservice?hl=en
+    - generic [ref=e1976] [box=280,64,768,650]:
+      - generic [ref=e1982] [cursor=pointer] [box=382,84,642,24]:
+        - generic [ref=e1984] [box=382,84,602,24]: https://www.goldencollections.com/pages/how-golden-collections-checks-deity-jewellery-fit
+        - button "Button that controls the shown version of the inspected URL (full or shortened)." [ref=e1985] [box=984,84,40,24]:
+          - generic [ref=e1988] [box=1000,84,24,24]: 
+      - generic [ref=e1989] [box=280,129,768,585]:
+        - generic [ref=e1991] [box=378,129,655,64]:
+          - navigation "Breadcrumbs" [ref=e1993] [box=378,129,514,64]:
+            - heading "URL Inspection" [level=1] [ref=e1996] [box=382,150,139,25]
+          - button "Test live URL" [ref=e2001] [cursor=pointer] [box=892,143,116,36]:
+            - generic [ref=e2004] [box=900,151,100,20]: Test live URL
+        - main [ref=e2006] [box=378,217,631,974]:
+          - generic [ref=e2007] [box=378,217,631,974]:
+            - generic [ref=e2009] [box=378,217,631,178]:
+              - generic [ref=e2010] [box=378,217,631,114]:
+                - generic [ref=e2011] [box=398,235,40,72]: info
+                - generic [ref=e2012] [box=462,235,527,72]:
+                  - generic [ref=e2013] [box=462,235,527,28]: URL is not on Google
+                  - generic [ref=e2014] [box=462,267,527,40]:
+                    - text: This page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed.
+                    - link "Learn more" [ref=e2016] [cursor=pointer] [box=809,288,76,18]:
+                      - /url: https://support.google.com/webmasters/answer/9012289#url_not_on_google
+              - generic [ref=e2018] [box=378,331,631,64]:
+                - button "View crawled page" [disabled] [ref=e2022] [box=454,345,163,36]:
+                  - generic [ref=e2027] [box=462,353,147,20]: View crawled page
+                - generic [ref=e2028] [box=732,345,261,36]:
+                  - generic [ref=e2029] [box=732,345,102,36]: Page changed?
+                  - button "Request indexingRequest again" [ref=e2032] [cursor=pointer] [box=842,345,151,36]:
+                    - generic [ref=e2038] [box=850,353,135,20]: Request indexing
+            - generic [ref=e2043] [box=378,419,631,644]:
+              - 'button "Page indexing Page is not indexed: URL is unknown to Google" [expanded] [ref=e2044] [cursor=pointer] [box=378,419,631,84]':
+                - generic [ref=e2045] [box=378,419,631,84]:
+                  - generic [ref=e2047] [box=378,419,567,84]:
+                    - generic [ref=e2049] [box=402,439,24,44]: info
+                    - generic [ref=e2050] [box=442,419,503,84]
+                  - generic [ref=e2055] [box=961,439,24,24]: 
+              - generic [ref=e2059] [box=378,504,631,559]:
+                - generic [ref=e2060] [box=378,504,631,506]:
+                  - generic [ref=e2061] [box=442,512,543,152]:
+                    - generic [ref=e2062] [box=442,512,543,48]: Discovery
+                    - generic [ref=e2063] [box=442,560,543,32]
+                    - generic [ref=e2067] [box=442,592,543,32]
+                    - generic [ref=e2072] [box=442,624,470,32]: URL might be known from other sources that are currently not reported
+                  - generic [ref=e2073] [box=442,664,543,216]:
+                    - generic [ref=e2074] [box=442,664,543,48]: Crawl
+                    - generic [ref=e2075] [box=442,712,543,32]
+                    - generic [ref=e2079] [box=442,744,543,32]
+                    - generic [ref=e2083] [box=442,776,543,32]
+                    - generic [ref=e2087] [box=442,808,543,32]
+                    - generic [ref=e2091] [box=442,840,543,32]
+                  - generic [ref=e2097] [box=442,880,543,122]:
+                    - generic [ref=e2098] [box=442,880,543,48]: Indexing
+                    - generic [ref=e2099] [box=442,928,543,32]
+                    - generic [ref=e2103] [box=442,960,543,34]
+                - link "Link to more extensive documentation" [ref=e2116] [cursor=pointer] [box=434,1026,107,20]:
+                  - /url: https://support.google.com/webmasters/answer/9012289#url_unknown
+                  - generic [ref=e2121] [box=442,1026,91,20]: Learn More
+            - generic [ref=e2122] [box=378,1086,631,24]: Enhancements & Experience
+            - generic [ref=e2126] [box=378,1134,616,48]: Only indexed URLs can have enhancements
+  - generic [ref=e901] [box=0,-1000,94,1]: URL Inspection
+  - iframe [ref=e990] [box=978,640,256,60]:
+    - generic [ref=f3e6] [box=86,20,154,20]:
+      - text: protected by
+      - strong [ref=f3e7] [box=161,22,71,15]: reCAPTCHA

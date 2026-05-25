@@ -1,21 +1,93 @@
-{%- if product.template_suffix == 'deity' -%}
+{%- if product.template_suffix contains 'deity' -%}
   {%- liquid
-    assign primary_deity_ref = product.metafields.custom.primary_deity.value
-    assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity | default: 'General deity'
-    assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class | default: 'General/Common'
-    assign ornament_ref = product.metafields.custom.ornament_type.value
+    assign primary_deity_ref = product.metafields.custom.primary_deity_ref.value | default: product.metafields.custom.primary_deity.value
+    assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity
+    assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class
+    assign ornament_ref = product.metafields.custom.ornament_type_ref.value | default: product.metafields.custom.ornament_type.value
     assign ornament_type = ornament_ref.name.value | default: ornament_ref.name | default: product.metafields.custom.ornament_type.value | default: product.metafields.custom.ornament_type | default: product.type
     assign placement = product.metafields.custom.placement.value | default: product.metafields.custom.placement
+    assign range_type = product.metafields.custom.range_type.value | default: product.metafields.custom.range_type
     assign confidence = product.metafields.custom.size_confidence.value | default: product.metafields.custom.size_confidence
     assign idol_min = product.metafields.custom.idol_height_min_in.value | default: product.metafields.custom.idol_height_min_in
     assign idol_max = product.metafields.custom.idol_height_max_in.value | default: product.metafields.custom.idol_height_max_in
     assign ornament_width = product.metafields.custom.ornament_width_in.value | default: product.metafields.custom.ornament_width_in
     assign ornament_height = product.metafields.custom.ornament_height_in.value | default: product.metafields.custom.ornament_height_in
     assign ornament_depth = product.metafields.custom.ornament_depth_in.value | default: product.metafields.custom.ornament_depth_in
+    assign fit_notes = product.metafields.custom.fit_notes.value | default: product.metafields.custom.fit_notes
     assign material = product.metafields.custom.material.value | default: product.metafields.custom.material
     assign quality_checks = product.metafields.custom.quality_checks.value | default: product.metafields.custom.quality_checks | default: 'Stone quality, gold plating, finishing, joints and packing are checked before shipping.'
     assign regional_names_display = product.metafields.custom.regional_names_display.value | default: product.metafields.custom.regional_names_display
+    assign regional_names_list = product.metafields.custom.regional_names.value
+    assign component_count = product.metafields.custom.component_count.value | default: product.metafields.custom.component_count
+    assign set_items_included = product.metafields.custom.set_items_included.value
+    assign ornament_label = ornament_type | default: product.type | default: 'deity ornament'
+    assign ornament_label_lc = ornament_label | downcase
+    assign is_decor_product = false
+    assign product_context = product.title | append: ' ' | append: product.type | append: ' ' | append: ornament_type
+    assign product_context_lc = product_context | downcase
+    assign is_face_product = false
+    if product_context_lc contains 'face' or ornament_label_lc contains 'face'
+      assign is_face_product = true
+    endif
+    assign is_hands_product = false
+    if product_context_lc contains 'hastham' or product_context_lc contains 'hastam' or product_context_lc contains 'padam' or product_context_lc contains 'patham' or product_context_lc contains 'lotus hands' or product_context_lc contains 'balaji hastham' or product_context_lc contains 'deity hands' or product_context_lc contains 'hands and legs' or ornament_label_lc contains 'hands'
+      assign is_hands_product = true
+    endif
+    assign is_garland_product = false
+    if product_context_lc contains 'vagamalai' or product_context_lc contains 'thomala' or product_context_lc contains 'bhujalu'
+      assign is_garland_product = true
+    endif
+    if product_context_lc contains 'banana' or product_context_lc contains 'coconut' or product_context_lc contains 'decor'
+      assign is_decor_product = true
+    endif
+    if is_face_product or is_hands_product or is_garland_product
+      assign is_decor_product = false
+    endif
+    assign is_idol_product = false
+    assign range_type_lc = range_type | downcase
+    if product_context_lc contains 'varalakshmi' or product_context_lc contains 'varamahalakshmi' or product_context_lc contains 'ammavaru' or product_context_lc contains 'amman doll' or product_context_lc contains 'lakshmi idol' or range_type_lc contains 'varalakshmi'
+      if product_context_lc contains 'idol' or product_context_lc contains 'doll' or product_context_lc contains 'bommai' or product_context_lc contains 'vigraham'
+        assign is_idol_product = true
+      endif
+    endif
+    assign is_performance_product = false
+    if product_context_lc contains 'drama crown' or product_context_lc contains 'dance crown' or product_context_lc contains 'bharatanatyam' or product_context_lc contains 'kuchipudi' or range_type_lc contains 'dance'
+      assign is_performance_product = true
+    endif
+    assign schema_category = 'Deity jewellery and Hindu idol alankaram accessory'
+    assign schema_type_property_name = 'Ornament type'
+    if is_performance_product
+      assign schema_category = 'Bharatanatyam and Kuchipudi drama crown costume accessory'
+      assign schema_type_property_name = 'Performance accessory type'
+    elsif is_face_product
+      assign schema_category = 'Deity face for pooja and alankaram'
+      assign schema_type_property_name = 'Face type'
+    elsif is_hands_product
+      assign schema_category = 'Deity hands and legs for pooja and alankaram'
+      assign schema_type_property_name = 'Hastham and Padam type'
+    elsif is_garland_product
+      assign schema_category = 'Deity shoulder garland for pooja and alankaram'
+      assign schema_type_property_name = 'Vagamalai and Thomala type'
+    elsif is_idol_product
+      assign schema_category = 'Varalakshmi Vratham idol or doll for pooja'
+      assign schema_type_property_name = 'Pooja idol type'
+    elsif is_decor_product
+      assign schema_category = product.type | default: 'Religious pooja decor'
+      assign schema_type_property_name = 'Product type'
+    endif
   -%}
+
+  {%- capture regional_names_schema -%}
+    {%- if regional_names_display != blank -%}
+      {{ regional_names_display }}
+    {%- elsif regional_names_list != blank -%}
+      {%- for name in regional_names_list -%}
+        {{ name }}{%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    {%- else -%}
+      {{ product.title }}
+    {%- endif -%}
+  {%- endcapture -%}
 
   {%- capture idol_range -%}
     {%- if idol_min != blank and idol_max != blank -%}
@@ -38,11 +110,141 @@
   {%- endcapture -%}
 
   {%- capture deity_schema_description -%}
-    {{ product.title }} from Golden Collections is deity jewellery for {{ primary_deity }}. It is classified as {{ compatibility }}{% if placement != blank %} with placement for {{ placement }}{% endif %}. Customers should use the measured product images and fit notes before ordering because idol posture, head width and draping can affect fit.
+    {%- if is_performance_product -%}
+      {{ product.title }} from Golden Collections is a drama and dance crown for human performers{% if material != blank %}. Material: {{ material }}{% endif %}{% if placement != blank %}. Placement: {{ placement }}{% endif %}. It is used for Bharatanatyam, Kuchipudi, mythological plays and deity or royal stage roles. Customers should compare the crown height, width, depth, hairstyle and fastening before ordering.
+    {%- elsif is_face_product -%}
+      {{ product.title }} from Golden Collections is a deity face setup for pooja, kalasam, idol body or festive alankaram{% if primary_deity != blank %} for {{ primary_deity }}{% endif %}{% if material != blank %}. Material: {{ material }}{% endif %}{% if measured_size != blank %}. Size: {{ measured_size | strip }}{% endif %}. Customers should compare face height, front width, crown space and placement area before ordering.
+    {%- elsif is_hands_product -%}
+      {{ product.title }} from Golden Collections is a Hastham and Padam, deity hands or deity legs product for pooja, idol body or festive alankaram{% if primary_deity != blank %} for {{ primary_deity }}{% endif %}{% if material != blank %}. Material: {{ material }}{% endif %}{% if measured_size != blank %}. Size: {{ measured_size | strip }}{% endif %}. Customers should compare hand or leg height, front width, idol body placement, dress width and jewellery clearance before ordering.
+    {%- elsif is_garland_product -%}
+      {{ product.title }} from Golden Collections is a Vagamalai, Thomala or Bhujalu shoulder garland pair for pooja, idol body and festive alankaram{% if primary_deity != blank %} for {{ primary_deity }}{% endif %}{% if material != blank %}. Material: {{ material }}{% endif %}{% if measured_size != blank %}. Size: {{ measured_size | strip }}{% endif %}. Customers should compare vertical drop, idol height, shoulder width, dress volume and jewellery clearance before ordering.
+    {%- elsif is_idol_product -%}
+      {{ product.title }} from Golden Collections is a Varalakshmi, Varamahalakshmi or Lakshmi Amman idol/doll for pooja and festive alankaram{% if material != blank %}. Material: {{ material }}{% endif %}{% if measured_size != blank %}. Size: {{ measured_size | strip }}{% endif %}. Customers should compare the finished idol height with their mandapam, kalasam area, altar shelf and display space before ordering.
+    {%- elsif is_decor_product -%}
+      {{ product.title }} from Golden Collections is pooja decor{% if compatibility != blank %} classified as {{ compatibility }}{% endif %}{% if placement != blank %} for {{ placement }}{% endif %}{% if material != blank %}. Material: {{ material }}{% endif %}. Customers should review the product photos, selected size and placement space before ordering.
+    {%- else -%}
+      {{ product.title }} from Golden Collections is deity jewellery and Hindu idol alankaram accessory{% if primary_deity != blank %} for {{ primary_deity }}{% endif %}{% if compatibility != blank %}. It is classified as {{ compatibility }}{% endif %}{% if placement != blank %} with placement for {{ placement }}{% endif %}. Customers should use the measured product images and fit notes before ordering because idol posture, head width and draping can affect fit.
+    {%- endif -%}
   {%- endcapture -%}
 
   {%- capture deity_made_for_answer -%}
-    This product is marked for {{ primary_deity }} and classified as {{ compatibility }}.
+    {%- if primary_deity != blank and compatibility != blank -%}
+      This product is marked for {{ primary_deity }} and classified as {{ compatibility }}.
+    {%- elsif primary_deity != blank -%}
+      This product is marked for {{ primary_deity }}.
+    {%- elsif compatibility != blank -%}
+      This product is classified as {{ compatibility }}.
+    {%- else -%}
+      Check the product details and measured images before selecting it for an idol.
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- capture deity_fit_answer -%}
+    {%- if is_performance_product and fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_performance_product and measured_size != blank -%}
+      Compare the crown with the performer using these measurements: {{ measured_size | strip }}. Check hairstyle, bun size, pins, costume headgear and movement comfort before ordering.
+    {%- elsif is_performance_product -%}
+      Compare the product photos and selected size with the performer's head placement, hairstyle, hair bun and stage movement needs before ordering.
+    {%- elsif is_face_product and fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_face_product and measured_size != blank -%}
+      Compare the face setup with your kalasam, idol body, backdrop and crown space using these measurements: {{ measured_size | strip }}. Height, Length or L means face height; W means front width, not thickness.
+    {%- elsif is_face_product -%}
+      Compare the product photos and selected size with your kalasam, idol body, face area, crown space, earrings and nearby jewellery before ordering.
+    {%- elsif is_hands_product and fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_hands_product and measured_size != blank -%}
+      Compare the hastham, padam or deity hands with your idol body and dress placement using these measurements: {{ measured_size | strip }}. Height, Length or L means vertical hand/leg height or length; W means front width, not thickness.
+    {%- elsif is_hands_product -%}
+      Compare the product photos and selected size with your idol body, hand direction, leg placement, saree or dress width, jewellery clearance and backdrop before ordering.
+    {%- elsif is_garland_product and fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_garland_product and measured_size != blank -%}
+      Compare the Vagamalai, Thomala or Bhujalu pair with your idol using these measurements: {{ measured_size | strip }}. Height means the vertical drop or length when the pair is placed on the idol.
+    {%- elsif is_garland_product -%}
+      Compare the product photos with your idol height, shoulder width, chest area, dress volume, jewellery and garland placement before ordering.
+    {%- elsif is_idol_product and fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_idol_product and measured_size != blank -%}
+      Compare the finished idol or doll size with your pooja mandapam, kalasam area, altar shelf and display depth. The Height value includes crown, hair and decoration where shown.
+    {%- elsif is_idol_product -%}
+      Compare the product photos and selected height with your pooja mandapam, kalasam area, altar shelf and display depth before ordering.
+    {%- elsif is_decor_product and placement != blank -%}
+      Place it {{ placement | downcase }} as part of your pooja or festive decor setup.
+    {%- elsif fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif measured_size != blank -%}
+      Compare your idol with the product measurements: {{ measured_size | strip }}. Also check the product photos and placement before ordering.
+    {%- else -%}
+      Use the product photos with measuring tape, then compare the ornament width, height and placement with your idol.
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- capture included_answer -%}
+    {%- if set_items_included != blank -%}
+      {{ set_items_included | join: ', ' }}{%- if component_count != blank -%}. This product is marked as {{ component_count }} piece{%- unless component_count == 1 or component_count == '1' -%}s{%- endunless -%}.{%- endif -%}
+    {%- elsif component_count != blank and component_count != 0 and component_count != '0' -%}
+      This product includes {{ component_count }} {{ ornament_label_lc }}{%- unless component_count == 1 or component_count == '1' -%} pieces{%- endunless -%}.
+    {%- else -%}
+      Check the product photos and selected variant for the included pieces.
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- capture size_check_answer -%}
+    {%- if fit_notes != blank -%}
+      {{ fit_notes }}
+    {%- elsif is_performance_product -%}
+      Check crown height, front width, depth, head circumference or tying method if shown. Also check hair bun size, head movement, costume balance and whether the crown is for a god, goddess, king, queen or mythological stage role.
+    {%- elsif is_face_product -%}
+      Measure vertical face/setup height, front width, kalasam or idol body placement, forehead and crown space, earring clearance and the backdrop area. In size labels, Height, Length or L means face height; W means front width, not thickness.
+    {%- elsif is_hands_product -%}
+      Measure idol body height, shoulder or arm placement, leg placement, saree or dress width, jewellery clearance and the backdrop area. In size labels, Height, Length or L means vertical hand/leg height or length; W means front width, not thickness.
+    {%- elsif is_garland_product -%}
+      Measure idol height, shoulder width, chest area, dress volume, jewellery clearance and the vertical drop you want. Height means the vertical drop or length when the Vagamalai, Thomala or Bhujalu pair is placed on the idol.
+    {%- elsif is_idol_product -%}
+      Measure your pooja mandapam, kalasam area, altar shelf height, base space and display depth. The Height variant is the finished idol or doll height including crown, hair and decoration where shown.
+    {%- elsif idol_min != blank and idol_max != blank -%}
+      Start with an idol in the {{ idol_min }}-{{ idol_max }} inch range, then confirm the exact product measurement and placement from the photos.
+    {%- elsif idol_min != blank -%}
+      Start with idols around {{ idol_min }} inches or taller, then confirm the exact product measurement and placement from the photos.
+    {%- elsif idol_max != blank -%}
+      Start with idols up to {{ idol_max }} inches, then confirm the exact product measurement and placement from the photos.
+    {%- elsif ornament_type contains 'Crown' or ornament_type contains 'Mukut' or ornament_type contains 'Kireedam' -%}
+      For crowns, check idol height, head or face width, available crown height and circumference if it is a full-round crown.
+    {%- elsif ornament_type contains 'Earring' or ornament_type contains 'Karn' -%}
+      For earrings, check earring height against the idol face and ear area, then compare the photos with your idol.
+    {%- elsif ornament_type contains 'Vaddanam' or ornament_type contains 'Waist' or placement contains 'Waist' -%}
+      For waist ornaments, measure the idol waist or dress width where the belt will sit.
+    {%- elsif ornament_type contains 'Haram' or ornament_type contains 'Necklace' or placement contains 'Neck' -%}
+      For necklaces and harams, check idol height, neck or chest width and the drop length you want.
+    {%- else -%}
+      Start with idol height, then compare the measured ornament size with the exact place where it will sit.
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- capture material_answer -%}
+    {%- if material != blank -%}
+      This product is made with {{ material }}. Review the product photos for finish, color and scale before ordering.
+    {%- else -%}
+      Review the product photos and description for material and finish before ordering.
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- capture performance_use_answer -%}
+    This crown is for human performers in Bharatanatyam, Kuchipudi, dance drama, mythological plays and deity or royal stage roles. Match the role, costume, hairstyle and measured size before ordering.
+  {%- endcapture -%}
+  {%- capture idol_use_answer -%}
+    This idol or doll is for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Friday pooja, Navaratri golu and festive Amman alankaram setups.
+  {%- endcapture -%}
+  {%- capture face_use_answer -%}
+    Use the title and primary deity guidance for the exact deity. Varalakshmi, Lakshmi, Ammavaru and Amman faces are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Friday pooja and festive alankaram. Vishnu, Balaji, Shiva, Durga or Kali faces should be matched to that deity setup.
+  {%- endcapture -%}
+  {%- capture hands_use_answer -%}
+    Hastham and Padam, lotus hands and deity hands are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Amman alankaram and festive idol decoration. Folded Balaji Hastham styles should be matched especially with Balaji, Vishnu, Venkateswara or Perumal setups.
+  {%- endcapture -%}
+  {%- capture garland_use_answer -%}
+    Vagamalai, Thomala and Bhujalu pairs are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Amman alankaram and god or goddess idol decoration when the shoulder placement and drop fit.
   {%- endcapture -%}
 
   <script type="application/ld+json">
@@ -57,34 +259,47 @@
         "description": {{ deity_schema_description | strip | json }},
         "about": { "@id": "{{ shop.url }}{{ product.url }}#product" },
         "mainEntity": { "@id": "{{ shop.url }}{{ product.url }}#product" },
-        "isPartOf": { "@id": "https://goldencollections.com/#website" }
+        "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
       },
       {
         "@type": "Product",
         "@id": "{{ shop.url }}{{ product.url }}#product",
-        "category": "Deity jewellery and Hindu idol alankaram accessory",
-        "alternateName": {{ regional_names_display | default: product.title | json }},
+        "category": {{ schema_category | strip | json }},
+        "alternateName": {{ regional_names_schema | strip | json }},
+        {%- if primary_deity != blank and is_performance_product == false and is_idol_product == false and is_face_product == false and is_hands_product == false and is_garland_product == false -%}
         "isAccessoryOrSparePartFor": {
           "@type": "Product",
           "name": {{ primary_deity | append: ' idol or doll' | json }}
         },
+        {%- endif -%}
         "additionalProperty": [
           {
             "@type": "PropertyValue",
-            "name": "Primary deity",
-            "value": {{ primary_deity | strip | json }}
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "Deity compatibility",
-            "value": {{ compatibility | strip | json }}
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "Ornament type",
+            "name": {{ schema_type_property_name | json }},
             "value": {{ ornament_type | strip | json }}
           }
-          {%- if idol_range != blank -%}
+          {%- if primary_deity != blank and is_performance_product == false -%}
+          ,{
+            "@type": "PropertyValue",
+            "name": "Primary deity",
+            "value": {{ primary_deity | strip | json }}
+          }
+          {%- endif -%}
+          {%- if is_performance_product -%}
+          ,{
+            "@type": "PropertyValue",
+            "name": "Audience",
+            "value": "Adult unisex performers"
+          }
+          {%- endif -%}
+          {%- if compatibility != blank -%}
+          ,{
+            "@type": "PropertyValue",
+            "name": {% if is_performance_product %}"Performance use"{% elsif is_face_product or is_hands_product or is_garland_product %}"Pooja and deity use"{% elsif is_idol_product %}"Pooja use"{% else %}"Deity compatibility"{% endif %},
+            "value": {{ compatibility | strip | json }}
+          }
+          {%- endif -%}
+          {%- if idol_range != blank and is_performance_product == false and is_idol_product == false -%}
           ,{
             "@type": "PropertyValue",
             "name": "Generally suitable for idol size",
@@ -126,31 +341,324 @@
             "value": {{ material | strip | json }}
           }
           {%- endif -%}
+          {%- if component_count != blank -%}
+          ,{
+            "@type": "PropertyValue",
+            "name": "Component count",
+            "value": {{ component_count | strip | json }}
+          }
+          {%- endif -%}
+          {%- if set_items_included != blank -%}
+          ,{
+            "@type": "PropertyValue",
+            "name": "Set items included",
+            "value": {{ set_items_included | join: ', ' | json }}
+          }
+          {%- endif -%}
           ,{
             "@type": "PropertyValue",
             "name": "Quality checks",
             "value": {{ quality_checks | strip | json }}
           }
-        ],
-        "offers": {
-          "@type": "Offer",
-          "@id": "{{ shop.url }}{{ product.url }}#offer",
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "merchantReturnLink": "{{ shop.url }}/policies/refund-policy"
-          }
-        }
+        ]
       },
       {
         "@type": "FAQPage",
         "@id": "{{ shop.url }}{{ product.url }}#deity-fit-faq",
         "mainEntity": [
+          {%- if is_performance_product -%}
           {
             "@type": "Question",
-            "name": "How do I check whether this deity jewellery fits my idol?",
+            "name": "How do I check whether this drama crown fits the performer?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use the generally suitable idol size, actual ornament measurement, placement and fit notes. Idol posture, head width, crown shape and draping can affect fit."
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which performance is this crown suitable for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ performance_use_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I measure before ordering a dance crown?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Golden Collections help check stage crown size before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Customers can share performer age group, head measurement, hairstyle or bun style, role and performance photos on WhatsApp, and Golden Collections can help check likely fit before ordering."
+            }
+          }
+          {%- elsif is_face_product -%}
+          {
+            "@type": "Question",
+            "name": "How do I check whether this deity face fits my setup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which pooja or deity setup is this face suitable for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ face_use_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I measure before ordering a deity face?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Golden Collections help check deity face size before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Customers can share kalasam or idol body size, face placement area, crown space, preferred deity style and setup photos on WhatsApp, and Golden Collections can help check likely fit before ordering."
+            }
+          }
+          {%- elsif is_hands_product -%}
+          {
+            "@type": "Question",
+            "name": "How do I check whether this Hastham and Padam fits my idol or doll?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which pooja or deity setup is this suitable for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ hands_use_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I measure before ordering Hastham and Padam?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Golden Collections help check Hastham and Padam size before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Customers can share idol or doll height, body width, hand or leg placement area, dress style and setup photos on WhatsApp, and Golden Collections can help check likely fit before ordering."
+            }
+          }
+          {%- elsif is_garland_product -%}
+          {
+            "@type": "Question",
+            "name": "How do I check whether this Vagamalai or Thomala fits my idol?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which pooja or deity setup is this suitable for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ garland_use_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I measure before ordering Vagamalai or Thomala?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Golden Collections help check Vagamalai size before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Customers can share idol height, shoulder width, dress volume, selected color and setup photos on WhatsApp, and Golden Collections can help check likely Vagamalai or Thomala fit before ordering."
+            }
+          }
+          {%- elsif is_idol_product -%}
+          {
+            "@type": "Question",
+            "name": "How do I check whether this Varalakshmi idol fits my pooja setup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which pooja is this idol suitable for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ idol_use_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I measure before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Golden Collections help check Varalakshmi idol size before ordering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Customers can share pooja space, mandapam size, preferred color, selected height and setup photos on WhatsApp, and Golden Collections can help check likely fit before ordering."
+            }
+          }
+          {%- elsif is_decor_product -%}
+          {
+            "@type": "Question",
+            "name": "Where can I use this pooja decor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What size or space should I check?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
+            }
+          }
+          {%- else -%}
+          {
+            "@type": "Question",
+            "name": "How do I check whether this fits my idol?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ deity_fit_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ included_answer | strip | json }}
             }
           },
           {
@@ -166,7 +674,15 @@
             "name": "What should I check before ordering deity jewellery?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Check that the generally suitable idol size is close to your idol height, actual ornament measurement fits the area where it will sit, and placement and deity match your decoration plan."
+              "text": {{ size_check_answer | strip | json }}
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What material is this made from?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ material_answer | strip | json }}
             }
           },
           {
@@ -176,15 +692,8 @@
               "@type": "Answer",
               "text": "Yes. Customers can share idol photos and measurements on WhatsApp, and Golden Collections can help check likely fit before ordering."
             }
-          },
-          {
-            "@type": "Question",
-            "name": "What quality checks are done before shipping?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": {{ quality_checks | strip | json }}
-            }
           }
+          {%- endif -%}
         ]
       }
     ]

@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "title": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "collection_circles": {
+      "type": "collection-subcollection-circles",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "",
+        "subcollection_menu": "",
+        "max_items": 12,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "dance_hub": {
+      "type": "dance-collection-hub",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "mode": "black_kemp",
+        "intro": "Shop black kemp jewellery collections for Bharatanatyam and Kuchipudi costume matching, including sets, necklaces, long harams, mattal, earrings, headset, vaddanam and accessories.",
+        "collections_eyebrow": "Shop black kemp",
+        "collections_heading": "Choose a black kemp collection",
+        "max_collections": 12,
+        "guide_eyebrow": "Performance styling help",
+        "guide_heading": "Use black kemp when the costume needs stronger contrast",
+        "guide_body": "Black kemp jewellery is a separate dance styling path from real kemp and regular gold-plated Bharatanatyam/Kuchipudi jewellery. Choose it when the costume, blouse, stage lighting or school preference calls for black-stone contrast, then keep the necklace, haram, mattal, headset, earrings and vaddanam visually consistent.",
+        "faq_eyebrow": "Helpful answers",
+        "faq_heading": "Black kemp jewellery buying questions"
+      }
+    }
+  },
+  "order": [
+    "title",
+    "collection_circles",
+    "dance_hub"
+  ]
+}

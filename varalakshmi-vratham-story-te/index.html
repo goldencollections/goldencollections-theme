@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="te">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #120905;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #120905;
+        color: #fff3d6;
+        font-family: "Noto Sans Telugu", "Trebuchet MS", Arial, sans-serif;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: #120905;
+      }
+
+      .scene-1 {
+        opacity: 1;
+      }
+
+      .bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center;
+      }
+
+      .contain-bg {
+        object-fit: contain;
+        padding: 86px 56px;
+        background: #120905;
+      }
+
+      .veil {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 24%, rgba(243, 162, 58, 0.16), rgba(18, 9, 5, 0) 38%),
+          linear-gradient(180deg, rgba(18, 9, 5, 0.05) 0%, rgba(18, 9, 5, 0.5) 52%, rgba(18, 9, 5, 0.96) 100%);
+      }
+
+      .gold-line {
+        width: 116px;
+        height: 5px;
+        border-radius: 999px;
+        background: #d6ae4c;
+        box-shadow: 0 0 24px rgba(214, 174, 76, 0.45);
+      }
+
+      .content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        padding: 112px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 24px;
+      }
+
+      .content.top {
+        justify-content: flex-start;
+        padding-top: 136px;
+      }
+
+      .eyebrow {
+        align-self: flex-start;
+        padding: 12px 24px;
+        border-radius: 999px;
+        border: 1px solid rgba(214, 174, 76, 0.7);
+        background: rgba(91, 23, 32, 0.82);
+        color: #fff3d6;
+        font-size: 26px;
+        line-height: 1.15;
+        font-weight: 800;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        max-width: 920px;
+        color: #fff3d6;
+        font-family: "Noto Sans Telugu", Georgia, serif;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-shadow: 0 10px 36px rgba(0, 0, 0, 0.66);
+      }
+
+      h1 {
+        font-size: 82px;
+        line-height: 1.1;
+      }
+
+      h2 {
+        font-size: 68px;
+        line-height: 1.12;
+      }
+
+      .copy {
+        margin: 0;
+        max-width: 880px;
+        color: #f8f2e5;
+        font-size: 34px;
+        line-height: 1.38;
+        font-weight: 600;
+        text-shadow: 0 5px 18px rgba(0, 0, 0, 0.68);
+      }
+
+      .hero-title {
+        padding: 26px 30px 30px;
+        border-left: 7px solid #d6ae4c;
+        background: linear-gradient(90deg, rgba(91, 23, 32, 0.88), rgba(42, 22, 12, 0.58));
+        border-radius: 0 24px 24px 0;
+      }
+
+      .two-line {
+        display: block;
+      }
+
+      .panel {
+        width: 100%;
+        border-radius: 34px;
+        border: 1.5px solid rgba(214, 174, 76, 0.48);
+        background: rgba(42, 22, 12, 0.76);
+        padding: 30px;
+        box-shadow: 0 26px 60px rgba(0, 0, 0, 0.38);
+      }
+
+      .mini-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .chip {
+        padding: 13px 18px;
+        border-radius: 999px;
+        background: rgba(255, 243, 214, 0.12);
+        border: 1px solid rgba(214, 174, 76, 0.44);
+        color: #fff3d6;
+        font-size: 28px;
+        line-height: 1.18;
+        font-weight: 800;
+      }
+
+      .image-frame {
+        position: absolute;
+        left: 58px;
+        right: 58px;
+        top: 94px;
+        height: 950px;
+        border-radius: 36px;
+        overflow: hidden;
+        border: 1.5px solid rgba(214, 174, 76, 0.5);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.48);
+        background: #201009;
+      }
+
+      .image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-frame.contain img {
+        object-fit: contain;
+      }
+
+      .lower {
+        justify-content: flex-end;
+        padding-top: 1080px;
+      }
+
+      .cta {
+        font-size: 36px;
+        font-weight: 900;
+        color: #d6ae4c;
+      }
+
+      .transition-wipe {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        transform: scaleX(0);
+        transform-origin: left center;
+        background: linear-gradient(90deg, rgba(91, 23, 32, 0), rgba(214, 174, 76, 0.96), rgba(255, 243, 214, 0.92), rgba(91, 23, 32, 0));
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="50"
+      data-width="1080"
+      data-height="1920"
+    >
+      <audio id="narration" data-start="0" data-duration="50" data-track-index="1" src="assets/story-narration-te.mp3" data-volume="1"></audio>
+
+      <section id="scene-1" class="scene scene-1">
+        <img class="bg" id="s1-bg" src="assets/gc-varalakshmi-alankaram-hero-2026.png" alt="వరలక్ష్మీ వ్రతం అలంకారం" data-layout-allow-overflow />
+        <div class="veil"></div>
+        <div class="content">
+          <div class="gold-line" id="s1-line"></div>
+          <div class="hero-title" id="s1-title-wrap">
+            <div class="eyebrow" id="s1-eyebrow">వరలక్ష్మీ వ్రతం 2026</div>
+            <h1 id="s1-title"><span class="two-line">పూజా రోజు</span><span class="two-line">అలంకారం సంపూర్ణంగా కనిపించాలి</span></h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-2" class="scene">
+        <img class="bg" id="s2-bg" src="assets/gc-varalakshmi-face-crown-2026.png" alt="వరలక్ష్మీ ముఖం కిరీటం" data-layout-allow-overflow />
+        <div class="veil"></div>
+        <div class="content top">
+          <div class="eyebrow" id="s2-eyebrow">మొదటి నిర్ణయం</div>
+          <h2 id="s2-title">అమ్మవారి రూపం ఏది?</h2>
+          <div class="panel" id="s2-panel">
+            <div class="mini-list">
+              <span class="chip">పూర్తి విగ్రహం</span>
+              <span class="chip">అమ్మవారి ముఖం</span>
+              <span class="chip">కలశం</span>
+              <span class="chip">మండపం</span>
+            </div>
+          </div>
+          <p class="copy" id="s2-copy">రూపం నిర్ణయిస్తే ఆభరణాల సైజు, హారం పొడవు, డెకర్ అన్నీ సులభంగా ప్లాన్ అవుతాయి.</p>
+        </div>
+      </section>
+
+      <section id="scene-3" class="scene">
+        <div class="image-frame contain" id="s3-frame">
+          <img src="assets/gc-varalakshmi-alankaram-components-2026.png" alt="వరలక్ష్మీ అలంకార ఆభరణాలు" />
+        </div>
+        <div class="content lower">
+          <div class="eyebrow" id="s3-eyebrow">ఆభరణాలు</div>
+          <h2 id="s3-title">ముందుగా కనిపించే భాగాలు సిద్ధం చేసుకోండి</h2>
+          <p class="copy" id="s3-copy">కిరీటం, హారం, హస్తం, పాదం, వడ్డాణం, తోమాల లేదా వాగమాల.</p>
+        </div>
+      </section>
+
+      <section id="scene-4" class="scene">
+        <div class="image-frame contain" id="s4-frame">
+          <img src="assets/gc-varalakshmi-pooja-decor-2026.png" alt="వరలక్ష్మీ పూజ డెకర్ వస్తువులు" />
+        </div>
+        <div class="content lower">
+          <div class="eyebrow" id="s4-eyebrow">డెకర్</div>
+          <h2 id="s4-title">మీ పూజా స్థలానికి సరిపోయేలా ఎంచుకోండి</h2>
+          <p class="copy" id="s4-copy">అరటి చెట్లు, కమలాసనం, కొబ్బరి స్టాండ్, ఆర్చ్ వంటివి స్థలం మరియు సంప్రదాయాన్ని బట్టి మారుతాయి.</p>
+        </div>
+      </section>
+
+      <section id="scene-5" class="scene">
+        <img class="bg" id="s5-bg" src="assets/gc-varalakshmi-final-guide-2026.png" alt="వరలక్ష్మీ అలంకారం Golden Collections" data-layout-allow-overflow />
+        <div class="veil"></div>
+        <div class="content">
+          <div class="eyebrow" id="s5-eyebrow">చివరి సూచన</div>
+          <h2 id="s5-title">సైజింగ్‌ను చివరి వారానికి వదిలేయకండి</h2>
+          <p class="copy" id="s5-copy">ప్రశాంతంగా పూజ చేయాలంటే మ్యాచింగ్ పీసులు ముందుగానే సిద్ధం చేసుకోండి.</p>
+          <p class="cta" id="s5-cta">పూర్తి గైడ్: goldencollections.com</p>
+        </div>
+      </section>
+
+      <div id="wipe" class="transition-wipe" data-layout-ignore></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      function addFrom(target, vars, at) {
+        if (document.querySelectorAll(target).length > 0) {
+          tl.from(target, vars, at);
+        }
+      }
+
+      function enter(selector, at) {
+        addFrom(`${selector} .gold-line`, { scaleX: 0, opacity: 0, duration: 0.48, ease: "power2.out" }, at + 0.14);
+        addFrom(`${selector} .eyebrow`, { y: 26, opacity: 0, duration: 0.52, ease: "power3.out" }, at + 0.18);
+        addFrom(`${selector} h1, ${selector} h2`, { y: 48, opacity: 0, duration: 0.68, ease: "expo.out" }, at + 0.36);
+        addFrom(`${selector} .copy, ${selector} .cta`, { y: 30, opacity: 0, duration: 0.56, ease: "sine.out" }, at + 0.72);
+        addFrom(`${selector} .panel`, { y: 26, opacity: 0, duration: 0.54, ease: "power2.out" }, at + 0.66);
+        addFrom(`${selector} .chip`, { y: 16, opacity: 0, duration: 0.34, stagger: 0.08, ease: "back.out(1.5)" }, at + 0.86);
+        addFrom(`${selector} .image-frame`, { scale: 0.965, opacity: 0, duration: 0.7, ease: "power2.out" }, at + 0.18);
+      }
+
+      function wipe(fromScene, toScene, at) {
+        tl.to("#wipe", { scaleX: 1, duration: 0.42, ease: "sine.inOut", overwrite: "auto" }, at);
+        tl.set(fromScene, { opacity: 0 }, at + 0.43);
+        tl.set(toScene, { opacity: 1 }, at + 0.43);
+        tl.set("#wipe", { transformOrigin: "right center" }, at + 0.43);
+        tl.to("#wipe", { scaleX: 0, duration: 0.42, ease: "sine.inOut", overwrite: "auto" }, at + 0.44);
+        tl.set("#wipe", { transformOrigin: "left center" }, at + 0.9);
+      }
+
+      tl.from("#s1-bg", { scale: 1.07, duration: 8, ease: "none" }, 0);
+      enter("#scene-1", 0);
+      wipe("#scene-1", "#scene-2", 7.5);
+
+      tl.from("#s2-bg", { scale: 1.06, x: -22, duration: 8, ease: "none" }, 8);
+      enter("#scene-2", 8);
+      wipe("#scene-2", "#scene-3", 15.4);
+
+      enter("#scene-3", 15.9);
+      wipe("#scene-3", "#scene-4", 23.2);
+
+      enter("#scene-4", 23.7);
+      wipe("#scene-4", "#scene-5", 31.0);
+
+      tl.from("#s5-bg", { scale: 1.08, x: 18, duration: 18.2, ease: "none" }, 31.5);
+      enter("#scene-5", 31.5);
+      tl.to("#scene-5 .content", { opacity: 0, y: -18, duration: 0.8, ease: "power2.in" }, 49.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

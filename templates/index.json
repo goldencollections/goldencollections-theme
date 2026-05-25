@@ -53,6 +53,7 @@
       "name": "Custom Category Section",
       "settings": {
         "title": "Shop by Category",
+        "intro_text": "<p>Choose Golden Collections by shopping path: Bharatanatyam and Kuchipudi dance jewellery, deity jewellery for Hindu idol alankaram, real kemp jewellery, black kemp jewellery, and Varalakshmi pooja jewellery.</p>",
         "custom_padding": 0
       }
     },
@@ -70,7 +71,7 @@
         "subheading_font_size": 20,
         "subheading_font_size_mobile": 16,
         "button_label": "Shop Now",
-        "button_link": "",
+        "button_link": "shopify://collections/bharatanatyam-jewellery",
         "section_height": 400,
         "section_height_mobile": 300,
         "overlay_color": "#000000",
@@ -553,10 +554,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/three-generations-craftmanship.png",
-            "title": "Founded in 2012",
-            "text": "<p>Founded by Anil Tunk in Secunderabad, Golden Collections serves classical dancers, temples, devotees, and South Indian diaspora families looking for reliable traditional jewellery and alankaram accessories.</p>",
-            "link_label": "",
-            "link": ""
+            "title": "Established in 2012",
+            "text": "<p>Established by Anil Tunk in Secunderabad, Golden Collections serves classical dancers, temples, devotees, and South Indian diaspora families, while carrying forward a family jewellery tradition rooted in 1961.</p>",
+            "link_label": "Read the Knowledge Hub",
+            "link": "/pages/golden-collections-knowledge-hub"
           }
         },
         "column_EeDzkG": {
@@ -592,6 +593,22 @@
         "padding_bottom": 36
       }
     },
+    "gc_proof_stories_hub": {
+      "type": "gc-proof-stories-hub",
+      "settings": {
+        "layout_variant": "home",
+        "blog": "jewellery-guides",
+        "tag_filter": "temple alankaram proof",
+        "eyebrow": "Real alankaram proof",
+        "heading": "Alankaram proof stories",
+        "subheading": "<p>Real deity jewellery examples shared with permission, showing measurement support, fit planning, festival preparation and final alankaram outcomes.</p>",
+        "post_limit": 3,
+        "show_view_all": true,
+        "view_all_label": "View all proof stories",
+        "view_all_link": "/pages/temple-alankaram-proof",
+        "color_scheme": "scheme-1"
+      }
+    },
     "multicolumn_EqMbxP": {
       "type": "multicolumn",
       "blocks": {
@@ -599,7 +616,7 @@
           "type": "column",
           "settings": {
             "title": "Secure Payments",
-            "text": "<p>Shop with confidence using trusted gateways like Razorpay, PhonePay, Paypal.</p>",
+            "text": "<p>Shop with confidence through the secure payment options shown at checkout.</p>",
             "link_label": "",
             "link": ""
           }
@@ -625,8 +642,8 @@
         "column_ETEnRB": {
           "type": "column",
           "settings": {
-            "title": "Ethical Sourcing",
-            "text": "<p>Proudly using responsibly sourced materials and craftsmanship.</p>",
+            "title": "Quality Checked",
+            "text": "<p>Every order is checked for finish, packing, and dispatch readiness before it leaves Golden Collections.</p>",
             "link_label": "",
             "link": ""
           }
@@ -782,7 +799,7 @@
         "paragraph_bka8Ac": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Download the exclusive 7-page guide used by South India’s top classical dancers and temple authorities. <br/></p>"
+            "text": "<p>Get the 7-page guide for planning temple jewellery, Bharatanatyam jewellery, and alankaram purchases with more confidence.<br/></p>"
           }
         },
         "email_form_LY3UgA": {
@@ -814,6 +831,7 @@
     "collection_list_qffeRk",
     "collection_list_PBC7Tc",
     "multicolumn_Jwe8qB",
+    "gc_proof_stories_hub",
     "multicolumn_EqMbxP",
     "featured_blog_eUaGkb",
     "rich_text_rVG9pX",

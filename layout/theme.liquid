@@ -21,18 +21,35 @@
     {%- endunless -%}
 
     {%- liquid
-      assign normalized_page_title = page_title | downcase | replace: ' ', ''
+      assign gc_page_title = page_title
+      assign gc_page_description = page_description
+
+      if request.page_type == 'page' and page.handle == 'about-us'
+        assign gc_page_title = 'About Golden Collections | Anil Tunk, Secunderabad'
+        assign gc_page_description = 'Golden Collections is rooted in a family jewellery tradition since 1961 and was established by Anil Tunk in 2012 in Secunderabad/Hyderabad, specialising in Bharatanatyam, Kuchipudi, deity jewellery and kemp temple jewellery.'
+      elsif request.page_type == 'page' and page.handle == 'golden-collections-knowledge-hub'
+        assign gc_page_title = 'Golden Collections Knowledge Hub | Anil Tunk, Deity and Dance Jewellery'
+        assign gc_page_description = 'Central Golden Collections authority hub for Anil Tunk, deity jewellery sizing, alankaram guides, Bharatanatyam jewellery, Kuchipudi jewellery, real kemp jewellery and temple jewellery terms.'
+      elsif request.page_type == 'page' and page.handle == 'jewelry-glossary'
+        assign gc_page_title = 'Golden Collections Glossary | Temple, Deity and Dance Jewellery Terms'
+        assign gc_page_description = 'Glossary of temple jewellery, Bharatanatyam jewellery, Kuchipudi jewellery and deity alankaram terms by Golden Collections, established by Anil Tunk in 2012 and rooted in a family jewellery tradition since 1961.'
+      elsif request.page_type == 'page' and page.handle == 'anil-tunk'
+        assign gc_page_title = 'Anil Tunk | Founder of Golden Collections'
+        assign gc_page_description = 'Meet Anil Tunk, founder of Golden Collections, a Hyderabad/Secunderabad specialist in deity jewellery, Hindu idol alankaram, Bharatanatyam jewellery and kemp temple jewellery.'
+      endif
+
+      assign normalized_page_title = gc_page_title | downcase | replace: ' ', ''
       assign normalized_shop_name = shop.name | downcase | replace: ' ', ''
     -%}
     <title>
-      {{ page_title }}
+      {{ gc_page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless normalized_page_title contains normalized_shop_name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if gc_page_description %}
+      <meta name="description" content="{{ gc_page_description | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
@@ -373,17 +390,18 @@
 
     {%- comment -%}
       =====================================================
-      GOLDEN COLLECTIONS – LocalBusiness Schema (UPDATED)
-      Old-brand references removed. Social links updated.
+      Golden Collections global business and WebSite schema.
+      Page-specific Product, CollectionPage, BreadcrumbList, FAQPage,
+      and ItemList schema stays in the relevant template or section.
       =====================================================
     {%- endcomment -%}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://goldencollections.com/#organization",
+      "@type": ["JewelryStore", "LocalBusiness", "Organization"],
+      "@id": "https://www.goldencollections.com/#organization",
       "name": "Golden Collections",
-      "url": "https://goldencollections.com",
+      "url": "https://www.goldencollections.com/",
       "logo": {
         "@type": "ImageObject",
         "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/golden-collections-logo-1200-x-1200-without-background.png?v=1764310151"
@@ -397,8 +415,9 @@
         "@type": "Person",
         "name": "Anil Tunk"
       },
+      "foundingDate": "2012",
       "telephone": "+917337294499",
-      "priceRange": "₹₹ – ₹₹₹",
+      "priceRange": "INR",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Plot no: 9, Krishnapuri Colony, Lakshmi Nagar, West Marredpally",
@@ -412,12 +431,20 @@
         "latitude": 17.4541835,
         "longitude": 78.5048272
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "11:00",
-        "closes": "20:00"
-      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "11:00",
+          "closes": "20:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday"],
+          "opens": "13:00",
+          "closes": "20:00"
+        }
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
@@ -430,7 +457,7 @@
       "sameAs": [
         "https://www.facebook.com/bharatanatyamdancejewellery/",
         "https://www.facebook.com/deityjewelry/",
-        "https://www.facebook.com/goldencolletions/",
+        "https://www.facebook.com/goldencollections/",
         "https://www.instagram.com/bharatanatyamjewellery",
         "https://www.instagram.com/deity_jewellery",
         "https://www.instagram.com/goldencollections_gbs",
@@ -438,8 +465,24 @@
         "https://www.youtube.com/@Goldencollections",
         "https://www.youtube.com/@BharatanatyamDanceJewellery",
         "https://www.trustpilot.com/review/goldencollections.com",
-        "https://in.linkedin.com/in/golden-collections-35764388"
+        "https://x.com/GCJewellery",
+        "https://www.linkedin.com/in/anil-tunk-35764388/"
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.goldencollections.com/#website",
+      "url": "https://www.goldencollections.com/",
+      "name": "Golden Collections",
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.goldencollections.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
     

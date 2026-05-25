@@ -1,0 +1,792 @@
+{%- liquid
+  assign knowledge_url = pages['golden-collections-knowledge-hub'].url | default: '/pages/golden-collections-knowledge-hub'
+  assign about_url = pages['about-us'].url | default: '/pages/about-us'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign glossary_url = pages['jewelry-glossary'].url | default: '/pages/jewelry-glossary'
+  assign deity_hub_url = pages['deity-jewellery-alankaram-guide'].url | default: '/pages/deity-jewellery-alankaram-guide'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign regional_url = pages['deity-jewellery-regional-names'].url | default: '/pages/deity-jewellery-regional-names'
+  assign haram_url = pages['short-haram-vs-long-haram-for-god-idols'].url | default: '/pages/short-haram-vs-long-haram-for-god-idols'
+  assign varalakshmi_url = pages['varalakshmi-alankaram-guide'].url | default: '/pages/varalakshmi-alankaram-guide'
+  assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples'
+  assign lakshmi_url = pages['lakshmi-varalakshmi-deity-jewellery-guide'].url | default: '/pages/lakshmi-varalakshmi-deity-jewellery-guide'
+  assign balaji_url = pages['balaji-vishnu-perumal-deity-jewellery-guide'].url | default: '/pages/balaji-vishnu-perumal-deity-jewellery-guide'
+  assign ganesha_url = pages['ganesha-deity-crown-ornament-guide'].url | default: '/pages/ganesha-deity-crown-ornament-guide'
+  assign krishna_url = pages['krishna-deity-jewellery-guide'].url | default: '/pages/krishna-deity-jewellery-guide'
+  assign amman_url = pages['amman-devi-alankaram-jewellery-guide'].url | default: '/pages/amman-devi-alankaram-jewellery-guide'
+  assign process_url = pages['how-golden-collections-checks-deity-jewellery-fit'].url | default: '/pages/how-golden-collections-checks-deity-jewellery-fit'
+  assign proof_url = pages['temple-alankaram-proof'].url | default: '/pages/temple-alankaram-proof'
+  assign hanuman_proof_url = '/blogs/jewellery-guides/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026'
+  assign arangetram_checklist_url = pages['bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist'].url | default: '/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist'
+  assign crown_collection = collections['deity-crowns-1']
+  assign deity_collection = collections['deity-god-jewellery']
+  assign dance_collection = collections['bharatanatyam-jewellery']
+  assign real_kemp_collection = collections['real-kemp-jewellery']
+  assign crown_collection_url = crown_collection.url | default: '/collections/deity-crowns-1'
+  assign deity_collection_url = deity_collection.url | default: '/collections/deity-god-jewellery'
+  assign dance_collection_url = dance_collection.url | default: '/collections/bharatanatyam-jewellery'
+  assign real_kemp_collection_url = real_kemp_collection.url | default: '/collections/real-kemp-jewellery'
+  assign anil_image_url = 'https://cdn.shopify.com/s/files/1/0764/9224/3242/files/anil-tunk-owner-golden-collections.png?v=1764585106'
+-%}
+
+<section class="gc-knowledge color-{{ section.settings.color_scheme }}">
+  <div class="gc-knowledge__hero">
+    <div class="page-width gc-knowledge__hero-grid">
+      <div class="gc-knowledge__hero-copy">
+        <nav class="gc-knowledge__breadcrumb" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span>/</span>
+          <span>Knowledge Hub</span>
+        </nav>
+        <p class="gc-knowledge__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="gc-knowledge__intro">{{ section.settings.subheading }}</p>
+        <div class="gc-knowledge__actions">
+          <a href="{{ deity_hub_url }}">Start deity jewellery guides</a>
+          <a href="{{ anil_url }}" class="gc-knowledge__secondary">Meet Anil Tunk</a>
+        </div>
+      </div>
+      <div class="gc-knowledge__hero-media">
+        <img
+          src="{{ anil_image_url }}"
+          alt="Anil Tunk of Golden Collections in the Secunderabad jewellery store"
+          loading="eager"
+          width="900"
+          height="1200"
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="gc-knowledge__proof-wrap">
+    <div class="page-width gc-knowledge__proof" aria-label="Golden Collections entity facts">
+      <article>
+        <strong>Started in 2012</strong>
+        <span>Golden Collections is led by founder Anil Tunk from Secunderabad/Hyderabad.</span>
+      </article>
+      <article>
+        <strong>Family jewellery tradition</strong>
+        <span>Rooted in a family jewellery tradition since 1961, with the store entity anchored to 2012.</span>
+      </article>
+      <article>
+        <strong>Specialist catalogue</strong>
+        <span>Bharatanatyam, Kuchipudi, real kemp, deity jewellery and Hindu idol alankaram.</span>
+      </article>
+      <article>
+        <strong>Fit-first guidance</strong>
+        <span>Guides focus on size, placement, regional names, deity compatibility and buying decisions.</span>
+      </article>
+    </div>
+  </div>
+
+  <div class="gc-knowledge__body">
+    <div class="page-width">
+      <section class="gc-knowledge__answer" aria-labelledby="gc-knowledge-answer">
+        <p class="gc-knowledge__eyebrow">Direct answer</p>
+        <h2 id="gc-knowledge-answer">What is the Golden Collections Knowledge Hub?</h2>
+        <p>The Golden Collections Knowledge Hub is the central source for Golden Collections entity facts, Anil Tunk author context, deity jewellery fit guidance, Bharatanatyam and Kuchipudi jewellery guidance, real kemp buying education, regional jewellery vocabulary and customer-facing shopping guides.</p>
+      </section>
+
+      <section class="gc-knowledge__grid-section" aria-labelledby="gc-knowledge-paths">
+        <div class="gc-knowledge__section-head">
+          <p class="gc-knowledge__eyebrow">Authority paths</p>
+          <h2 id="gc-knowledge-paths">Start with the knowledge area that matches your decision</h2>
+        </div>
+        <div class="gc-knowledge__path-grid">
+          <a href="{{ deity_hub_url }}">
+            <span>01</span>
+            <strong>Deity Jewellery and Alankaram Guides</strong>
+            <p>Choose crowns, harams, vaddanam, thomala and accessories by idol size, deity group and placement.</p>
+          </a>
+          <a href="{{ glossary_url }}">
+            <span>02</span>
+            <strong>Temple, Deity and Dance Jewellery Glossary</strong>
+            <p>Understand names such as mukut, kireedam, vaddanam, oddiyanam, thomala, namam and salangai.</p>
+          </a>
+          <a href="/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram">
+            <span>03</span>
+            <strong>Real Kemp Jewellery for Arangetram</strong>
+            <p>Plan a complete real kemp Bharatanatyam set by components, fit, budget and ordering timeline.</p>
+          </a>
+          <a href="{{ arangetram_checklist_url }}">
+            <span>04</span>
+            <strong>Arangetram and Rangapravesam Jewellery Checklist</strong>
+            <p>Check teacher requirements, set components, fit, range choice and timing before ordering for Bharatanatyam or Kuchipudi.</p>
+          </a>
+          <a href="{{ anil_url }}">
+            <span>05</span>
+            <strong>Anil Tunk Author Profile</strong>
+            <p>Meet the public guide behind Golden Collections' deity jewellery and dance jewellery guidance.</p>
+          </a>
+          <a href="{{ proof_url }}">
+            <span>06</span>
+            <strong>Real Alankaram Proof Stories</strong>
+            <p>See real deity jewellery and alankaram examples shared with permission, including the Hanuman Jayanti alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri.</p>
+          </a>
+          <a href="{{ varalakshmi_examples_url }}">
+            <span>07</span>
+            <strong>Varalakshmi Alankaram Examples</strong>
+            <p>Study previous Varalakshmi and Varamahalakshmi examples with practical notes on crown scale, haram placement, face visibility and altar setup.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="gc-knowledge__matrix" aria-labelledby="gc-knowledge-matrix">
+        <div class="gc-knowledge__section-head">
+          <p class="gc-knowledge__eyebrow">Question map</p>
+          <h2 id="gc-knowledge-matrix">Fast answers for common buying confusion</h2>
+        </div>
+        <div class="gc-knowledge__matrix-grid">
+          <article>
+            <strong>Which deity crown size should I buy?</strong>
+            <p>Measure head or face width, crown height, depth and circumference or arc where relevant.</p>
+            <a href="{{ crown_url }}">Read crown size guide</a>
+          </article>
+          <article>
+            <strong>How do I measure my idol?</strong>
+            <p>Record idol height, face width, crown space, chest width, waist placement and altar depth.</p>
+            <a href="{{ measure_url }}">Open measurement guide</a>
+          </article>
+          <article>
+            <strong>Is it mukut, kireedam or kirita?</strong>
+            <p>Regional names can overlap. Use the name to search, then verify deity, size and placement.</p>
+            <a href="{{ regional_url }}">Compare regional names</a>
+          </article>
+          <article>
+            <strong>Short haram or long haram?</strong>
+            <p>Choose by neck, upper chest, lower chest and desired drop over the idol body or dress.</p>
+            <a href="{{ haram_url }}">Read necklace placement guide</a>
+          </article>
+          <article>
+            <strong>What is required for Varalakshmi alankaram?</strong>
+            <p>Start with setup type, then choose face/idol, crown, hastham, padam, haram, vaddanam and decor.</p>
+            <a href="{{ varalakshmi_url }}">Open Varalakshmi guide</a>
+          </article>
+          <article>
+            <strong>Who reviews these guides?</strong>
+            <p>Guidance is connected to Golden Collections and Anil Tunk's practical customer-facing fit process.</p>
+            <a href="{{ anil_url }}">View author context</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="gc-knowledge__compatibility" aria-labelledby="gc-knowledge-compatibility">
+        <div class="gc-knowledge__section-head">
+          <p class="gc-knowledge__eyebrow">Deity compatibility</p>
+          <h2 id="gc-knowledge-compatibility">Guides by deity form and ornament fit</h2>
+        </div>
+        <div class="gc-knowledge__compat-grid">
+          <a href="{{ lakshmi_url }}">
+            <strong>Lakshmi, Varalakshmi and Amman</strong>
+            <p>Face, crown, hastham, padam, haram, vaddanam and setup-specific fit.</p>
+          </a>
+          <a href="{{ balaji_url }}">
+            <strong>Balaji, Vishnu and Perumal</strong>
+            <p>Namam, thiruman, shanku chakra, tall crown and haram placement checks.</p>
+          </a>
+          <a href="{{ ganesha_url }}">
+            <strong>Ganesha and Ganapati</strong>
+            <p>Broad head, ears, trunk direction, crown depth and seated idol clearance.</p>
+          </a>
+          <a href="{{ krishna_url }}">
+            <strong>Krishna and Radha Krishna</strong>
+            <p>Peacock feather, flute position, head angle, crown style and necklace drop.</p>
+          </a>
+          <a href="{{ amman_url }}">
+            <strong>Amman and Devi</strong>
+            <p>Goddess crown, face ornament, nose ring, saree drape, haram and waist fit.</p>
+          </a>
+          <a href="{{ process_url }}">
+            <strong>Golden Collections fit process</strong>
+            <p>Photos, measurements and placement checks used before giving fit guidance.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="gc-knowledge__collections" aria-labelledby="gc-knowledge-shop">
+        <div class="gc-knowledge__section-head">
+          <p class="gc-knowledge__eyebrow">Shop with context</p>
+          <h2 id="gc-knowledge-shop">Knowledge pages connected to buying pages</h2>
+        </div>
+        <div class="gc-knowledge__collection-grid">
+          <a href="{{ deity_collection_url }}">
+            {%- if deity_collection.image != blank -%}
+              {{ deity_collection.image | image_url: width: 520 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 100vw', widths: '320, 520, 760', alt: 'Deity jewellery collections at Golden Collections' }}
+            {%- endif -%}
+            <strong>Deity and God Jewellery</strong>
+          </a>
+          <a href="{{ crown_collection_url }}">
+            {%- if crown_collection.image != blank -%}
+              {{ crown_collection.image | image_url: width: 520 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 100vw', widths: '320, 520, 760', alt: 'Deity crowns, mukut and kireedam at Golden Collections' }}
+            {%- endif -%}
+            <strong>Deity Crowns, Mukut and Kireedam</strong>
+          </a>
+          <a href="{{ dance_collection_url }}">
+            {%- if dance_collection.image != blank -%}
+              {{ dance_collection.image | image_url: width: 520 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 100vw', widths: '320, 520, 760', alt: 'Bharatanatyam jewellery at Golden Collections' }}
+            {%- endif -%}
+            <strong>Bharatanatyam Jewellery</strong>
+          </a>
+          <a href="{{ real_kemp_collection_url }}">
+            {%- if real_kemp_collection.image != blank -%}
+              {{ real_kemp_collection.image | image_url: width: 520 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 100vw', widths: '320, 520, 760', alt: 'Real kemp jewellery at Golden Collections' }}
+            {%- else -%}
+              <img
+                src="https://cdn.shopify.com/s/files/1/0764/9224/3242/files/gc-bks001-real-kemp-bharatanatyam-dance-set.jpg?v=1778668215"
+                alt="Real kemp Bharatanatyam jewellery set from Golden Collections"
+                loading="lazy"
+                width="760"
+                height="570"
+              >
+            {%- endif -%}
+            <strong>Real Kemp Jewellery</strong>
+          </a>
+        </div>
+      </section>
+
+      <section class="gc-knowledge__entity" aria-labelledby="gc-knowledge-entity">
+        <div>
+          <p class="gc-knowledge__eyebrow">Entity consistency</p>
+          <h2 id="gc-knowledge-entity">Facts this hub keeps consistent</h2>
+        </div>
+        <ul>
+          <li>Golden Collections started in 2012 and is led by founder Anil Tunk.</li>
+          <li>The business is based in Secunderabad/Hyderabad, Telangana, India.</li>
+          <li>Golden Collections is rooted in a family jewellery tradition since 1961, while the store entity remains anchored to 2012.</li>
+          <li>Customer support uses support@goldencollections.com and +91 7337294499.</li>
+          <li>The catalogue spans deity jewellery, Bharatanatyam jewellery, Kuchipudi jewellery, real kemp jewellery and kemp temple jewellery.</li>
+        </ul>
+      </section>
+
+      <section class="gc-knowledge__cta" aria-labelledby="gc-knowledge-cta">
+        <p class="gc-knowledge__eyebrow">Next useful step</p>
+        <h2 id="gc-knowledge-cta">Use the hub before choosing jewellery</h2>
+        <p>For deity jewellery, start with measurement and compatibility. For dance jewellery, start with set completeness and fit. For real kemp, start with components, budget and stage-use requirements.</p>
+        <div class="gc-knowledge__actions gc-knowledge__actions--light">
+          <a href="{{ measure_url }}">Measure your idol</a>
+          <a href="{{ glossary_url }}" class="gc-knowledge__secondary">Open glossary</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ knowledge_url }}#webpage",
+      "url": "{{ shop.url }}{{ knowledge_url }}",
+      "name": "Golden Collections Knowledge Hub",
+      "description": "Central Golden Collections authority hub for entity facts, Anil Tunk author context, deity jewellery, Bharatanatyam jewellery, Kuchipudi jewellery, real kemp jewellery and temple jewellery terms.",
+      "about": [
+        "Golden Collections",
+        "Anil Tunk",
+        "Deity jewellery",
+        "Hindu idol alankaram",
+        "Bharatanatyam jewellery",
+        "Kuchipudi jewellery",
+        "Real kemp jewellery",
+        "Temple jewellery glossary"
+      ],
+      "author": { "@id": "{{ shop.url }}{{ anil_url }}#person" },
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" },
+      "hasPart": [
+        { "@type": "WebPage", "name": "About Golden Collections", "url": "{{ shop.url }}{{ about_url }}" },
+        { "@type": "WebPage", "name": "Anil Tunk of Golden Collections", "url": "{{ shop.url }}{{ anil_url }}" },
+        { "@type": "WebPage", "name": "Golden Collections Glossary", "url": "{{ shop.url }}{{ glossary_url }}" },
+        { "@type": "WebPage", "name": "Deity Jewellery and Alankaram Guides", "url": "{{ shop.url }}{{ deity_hub_url }}" },
+        { "@type": "WebPage", "name": "How to Measure Your Idol for Deity Jewellery", "url": "{{ shop.url }}{{ measure_url }}" },
+        { "@type": "WebPage", "name": "Deity Crown, Mukut and Kireedam Size Guide", "url": "{{ shop.url }}{{ crown_url }}" },
+        { "@type": "WebPage", "name": "Lakshmi and Varalakshmi Deity Jewellery Compatibility Guide", "url": "{{ shop.url }}{{ lakshmi_url }}" },
+        { "@type": "WebPage", "name": "Balaji, Vishnu and Perumal Deity Jewellery Compatibility Guide", "url": "{{ shop.url }}{{ balaji_url }}" },
+        { "@type": "WebPage", "name": "How Golden Collections Checks Deity Jewellery Fit", "url": "{{ shop.url }}{{ process_url }}" },
+        { "@type": "WebPage", "name": "Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist", "url": "{{ shop.url }}{{ arangetram_checklist_url }}" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "{{ shop.url }}{{ knowledge_url }}#authority-list",
+      "name": "Golden Collections authority resources",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Anil Tunk author profile", "url": "{{ shop.url }}{{ anil_url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Golden Collections glossary", "url": "{{ shop.url }}{{ glossary_url }}" },
+        { "@type": "ListItem", "position": 3, "name": "Deity jewellery guides", "url": "{{ shop.url }}{{ deity_hub_url }}" },
+        { "@type": "ListItem", "position": 4, "name": "Idol measurement guide", "url": "{{ shop.url }}{{ measure_url }}" },
+        { "@type": "ListItem", "position": 5, "name": "Deity crown size guide", "url": "{{ shop.url }}{{ crown_url }}" },
+        { "@type": "ListItem", "position": 6, "name": "Lakshmi and Varalakshmi compatibility guide", "url": "{{ shop.url }}{{ lakshmi_url }}" },
+        { "@type": "ListItem", "position": 7, "name": "Balaji and Vishnu compatibility guide", "url": "{{ shop.url }}{{ balaji_url }}" },
+        { "@type": "ListItem", "position": 8, "name": "Golden Collections deity jewellery fit process", "url": "{{ shop.url }}{{ process_url }}" },
+        { "@type": "ListItem", "position": 9, "name": "Arangetram and rangapravesam jewellery checklist", "url": "{{ shop.url }}{{ arangetram_checklist_url }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}{{ knowledge_url }}#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Golden Collections Knowledge Hub?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Golden Collections Knowledge Hub is the central source for Golden Collections entity facts, Anil Tunk author context, deity jewellery fit guidance, Bharatanatyam and Kuchipudi jewellery guidance, real kemp buying education, regional jewellery vocabulary and customer-facing shopping guides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who leads Golden Collections?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Golden Collections started in 2012 and is led by founder Anil Tunk from Secunderabad/Hyderabad, Telangana, India."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ shop.url }}{{ knowledge_url }}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ shop.url }}{{ routes.root_url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Golden Collections Knowledge Hub", "item": "{{ shop.url }}{{ knowledge_url }}" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-knowledge {
+    background: #fdf6ec;
+    color: #1f170d;
+  }
+
+  .gc-knowledge,
+  .gc-knowledge * {
+    box-sizing: border-box;
+  }
+
+  .gc-knowledge__hero {
+    background: #1a0e05;
+  }
+
+  .gc-knowledge__hero-grid {
+    display: grid;
+    gap: 1.6rem;
+    min-height: min(720px, calc(100svh - 92px));
+  }
+
+  .gc-knowledge__hero-copy {
+    align-content: center;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 0 0;
+  }
+
+  .gc-knowledge__breadcrumb {
+    color: rgba(245, 237, 224, 0.72);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.05rem;
+    gap: 0.5rem;
+  }
+
+  .gc-knowledge__breadcrumb a {
+    color: #f5ede0;
+    text-decoration: none;
+  }
+
+  .gc-knowledge__eyebrow {
+    color: #c9972a;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .gc-knowledge h1,
+  .gc-knowledge h2,
+  .gc-knowledge strong {
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-knowledge h1 {
+    color: #f5ede0;
+    font-size: clamp(3.4rem, 7vw, 7rem);
+    line-height: 0.98;
+    margin: 0;
+    max-width: 880px;
+  }
+
+  .gc-knowledge h2 {
+    color: #1f170d;
+    font-size: clamp(2.4rem, 3vw, 3.6rem);
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .gc-knowledge p,
+  .gc-knowledge li,
+  .gc-knowledge span {
+    color: #4e4438;
+    font-size: 1.18rem;
+    line-height: 1.5;
+  }
+
+  .gc-knowledge__intro {
+    font-size: 1.35rem;
+    margin: 0;
+    max-width: 820px;
+  }
+
+  .gc-knowledge .gc-knowledge__intro {
+    color: #f5ede0;
+  }
+
+  .gc-knowledge__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.4rem;
+  }
+
+  .gc-knowledge__actions a {
+    align-items: center;
+    background: #8b1c1c;
+    border: 1px solid #8b1c1c;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.08rem;
+    font-weight: 800;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-knowledge__actions .gc-knowledge__secondary {
+    background: transparent;
+    border-color: rgba(201, 151, 42, 0.6);
+    color: #f5ede0;
+  }
+
+  .gc-knowledge__actions--light .gc-knowledge__secondary {
+    color: #1f170d;
+  }
+
+  .gc-knowledge__hero-media {
+    min-height: 420px;
+  }
+
+  .gc-knowledge__hero-media img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+  }
+
+  .gc-knowledge__proof-wrap {
+    background: #241508;
+  }
+
+  .gc-knowledge__proof {
+    display: grid;
+    gap: 0;
+  }
+
+  .gc-knowledge__proof article {
+    border-left: 3px solid #c9972a;
+    padding: 1.1rem 1rem;
+  }
+
+  .gc-knowledge__proof strong {
+    color: #f5ede0;
+    display: block;
+    font-size: 1.35rem;
+    line-height: 1.15;
+  }
+
+  .gc-knowledge__proof span {
+    color: rgba(245, 237, 224, 0.78);
+    display: block;
+    font-size: 1.05rem;
+    margin-top: 0.35rem;
+  }
+
+  .gc-knowledge__body {
+    padding: 2.4rem 0 4rem;
+  }
+
+  .gc-knowledge__answer,
+  .gc-knowledge__entity,
+  .gc-knowledge__cta {
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.18);
+    border-left: 4px solid #8b1c1c;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(26, 14, 4, 0.06);
+    padding: 1.2rem;
+  }
+
+  .gc-knowledge__answer p:last-child,
+  .gc-knowledge__cta p {
+    margin-bottom: 0;
+  }
+
+  .gc-knowledge__grid-section,
+  .gc-knowledge__matrix,
+  .gc-knowledge__compatibility,
+  .gc-knowledge__collections,
+  .gc-knowledge__entity,
+  .gc-knowledge__cta {
+    margin-top: 2.4rem;
+  }
+
+  .gc-knowledge__section-head {
+    max-width: 780px;
+  }
+
+  .gc-knowledge__path-grid,
+  .gc-knowledge__matrix-grid,
+  .gc-knowledge__compat-grid,
+  .gc-knowledge__collection-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .gc-knowledge__path-grid a,
+  .gc-knowledge__matrix-grid article,
+  .gc-knowledge__compat-grid a,
+  .gc-knowledge__collection-grid a {
+    background: #fdf0d8;
+    border: 1px solid rgba(201, 151, 42, 0.22);
+    border-radius: 8px;
+    border-top: 3px solid #c9972a;
+    box-shadow: 0 2px 8px rgba(26, 14, 4, 0.08);
+    color: #1f170d;
+    display: grid;
+    gap: 0.45rem;
+    overflow: hidden;
+    padding: 1rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .gc-knowledge__path-grid a:hover,
+  .gc-knowledge__compat-grid a:hover,
+  .gc-knowledge__collection-grid a:hover {
+    box-shadow: 0 8px 18px rgba(26, 14, 4, 0.14);
+    transform: translateY(-3px);
+  }
+
+  .gc-knowledge__path-grid span {
+    color: #8b1c1c;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .gc-knowledge__path-grid strong,
+  .gc-knowledge__matrix-grid strong,
+  .gc-knowledge__compat-grid strong,
+  .gc-knowledge__collection-grid strong {
+    color: #1f170d;
+    font-size: 1.45rem;
+    line-height: 1.15;
+  }
+
+  .gc-knowledge__path-grid p,
+  .gc-knowledge__compat-grid p,
+  .gc-knowledge__matrix-grid p {
+    margin: 0;
+  }
+
+  .gc-knowledge__matrix-grid article a {
+    color: #8b1c1c;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .gc-knowledge__collection-grid a {
+    padding: 0;
+  }
+
+  .gc-knowledge__collection-grid img {
+    aspect-ratio: 4 / 3;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .gc-knowledge__collection-grid strong {
+    padding: 0 1rem 1rem;
+  }
+
+  .gc-knowledge__entity {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gc-knowledge__entity ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .gc-knowledge__entity li::marker {
+    color: #c9972a;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .gc-knowledge__hero-copy > *,
+    .gc-knowledge__hero-media,
+    .gc-knowledge__proof article {
+      animation: gc-knowledge-fade-up 0.6s ease-out both;
+    }
+
+    .gc-knowledge__hero-copy > :nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .gc-knowledge__hero-copy > :nth-child(3) {
+      animation-delay: 0.16s;
+    }
+
+    .gc-knowledge__hero-copy > :nth-child(4) {
+      animation-delay: 0.24s;
+    }
+
+    .gc-knowledge__hero-copy > :nth-child(5) {
+      animation-delay: 0.32s;
+    }
+
+    .gc-knowledge__proof article:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .gc-knowledge__proof article:nth-child(3) {
+      animation-delay: 0.16s;
+    }
+
+    .gc-knowledge__proof article:nth-child(4) {
+      animation-delay: 0.24s;
+    }
+  }
+
+  @keyframes gc-knowledge-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-knowledge__hero-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+    }
+
+    .gc-knowledge__hero-copy {
+      padding: 3rem 0;
+    }
+
+    .gc-knowledge__hero-media {
+      min-height: min(720px, calc(100svh - 92px));
+    }
+
+    .gc-knowledge__proof {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gc-knowledge__path-grid,
+    .gc-knowledge__collection-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gc-knowledge__compat-grid,
+    .gc-knowledge__matrix-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-knowledge__answer,
+    .gc-knowledge__entity,
+    .gc-knowledge__cta {
+      padding: 1.6rem;
+    }
+
+    .gc-knowledge__entity {
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-knowledge__hero-grid {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .gc-knowledge__hero-copy {
+      padding: 0 0 2rem;
+    }
+
+    .gc-knowledge__hero-media {
+      margin-inline: calc(50% - 50vw);
+      min-height: 360px;
+    }
+
+    .gc-knowledge__actions a {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC Knowledge Hub",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Golden Collections knowledge hub"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Golden Collections Knowledge Hub"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A central authority page for Golden Collections facts, Anil Tunk, deity jewellery sizing, regional temple jewellery vocabulary, Bharatanatyam and Kuchipudi jewellery, and real kemp buying guidance."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC Knowledge Hub"
+    }
+  ]
+}
+{% endschema %}

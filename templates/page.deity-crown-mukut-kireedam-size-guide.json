@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "gc-deity-crown-guide",
+      "settings": {
+        "heading": "Deity Crown, Mukut and Kireedam Size Guide",
+        "subheading": "Choose Hindu god and goddess idol crowns by crown style, idol height, head or face width, crown height, circumference, depth and placement.",
+        "whatsapp_number": "917337294499"
+      }
+    },
+    "anil_half_crown_video": {
+      "type": "gc-anil-fit-video",
+      "settings": {
+        "eyebrow": "Half crown example",
+        "heading": "See how half crown width is checked",
+        "intro": "For open-back and half crown styles, face width and crown width are often more useful than idol height alone. This example shows how Anil compares the crown with the deity face before treating it as a likely fit.",
+        "video_url": "https://cdn.shopify.com/videos/c/vp/87bb7603df0a457693cff0543dec3526/87bb7603df0a457693cff0543dec3526.SD-480p-1.0Mbps-84557672.mp4",
+        "poster_url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/preview_images/87bb7603df0a457693cff0543dec3526.thumbnail.0000000000.jpg?v=1779288324",
+        "video_alt": "Anil Tunk of Golden Collections demonstrating how to measure a deity face and compare half crown size for better crown fit, face visibility and alankaram placement.",
+        "caption": "Half crown fit example showing deity face width, crown width and visible face details.",
+        "schema_name": "Half Crown Width Check For Deity Crown Fit",
+        "upload_date": "2026-05-20",
+        "check_1": "Measure the deity face or crown area.",
+        "check_2": "Compare crown width before choosing size.",
+        "check_3": "Keep eyes, tilak and face details visible.",
+        "check_4": "Use photos and measurements when fit is unclear.",
+        "whatsapp_text": "Hello Golden Collections, I watched Anil explain half crown measurement and need help choosing deity crown size.",
+        "whatsapp_number": "917337294499"
+      }
+    },
+    "anil_full_crown_video": {
+      "type": "gc-anil-fit-video",
+      "settings": {
+        "eyebrow": "Full crown example",
+        "heading": "See how full crown fit is checked",
+        "intro": "For full crown and kireedam styles, idol height alone is not enough. This example shows Anil checking head width, hair or bun shape, crown opening, depth, height and final face visibility before treating a crown as a likely fit.",
+        "video_url": "https://cdn.shopify.com/videos/c/vp/843da248524b4a018ea6e2565590d188/843da248524b4a018ea6e2565590d188.SD-480p-0.9Mbps-84624555.mp4",
+        "poster_url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/preview_images/843da248524b4a018ea6e2565590d188.thumbnail.0000000000.jpg?v=1779361157",
+        "video_alt": "Anil Tunk of Golden Collections demonstrating full crown fit for a deity idol by measuring idol head width, crown opening, crown height and placement before choosing a deity crown.",
+        "caption": "Full crown fit example showing head width, crown opening, depth, height and face visibility checks.",
+        "schema_name": "Full Crown Fit Check For Deity Crown And Kireedam Size",
+        "upload_date": "2026-05-21",
+        "check_1": "Measure the idol head width, not only total idol height.",
+        "check_2": "Check hair or bun shape before choosing a full crown.",
+        "check_3": "Compare crown opening, depth and height.",
+        "check_4": "Place the crown and confirm face visibility.",
+        "whatsapp_text": "Hello Golden Collections, I watched Anil explain full crown measurement and need help choosing deity crown size.",
+        "whatsapp_number": "917337294499"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "anil_half_crown_video",
+    "anil_full_crown_video"
+  ]
+}

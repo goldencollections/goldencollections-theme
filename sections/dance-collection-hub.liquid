@@ -1,0 +1,756 @@
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign display_title = collection.metafields.custom.display_title.value | default: collection.metafields.custom.display_title | default: collection.title
+  assign intro = collection.metafields.custom.collection_intro.value | default: collection.metafields.custom.collection_intro | default: collection.description | default: section.settings.intro
+  assign mode = section.settings.mode
+  assign collection_handle_lc = collection.handle | downcase
+  assign child_collections = collection.metafields.custom.subcollections.value
+  assign related_collections = collection.metafields.custom.related_collection_refs.value
+  assign has_children = false
+  assign has_related = false
+  assign whatsapp_fit_text = 'Hello Golden Collections, I need Anil help choosing Bharatanatyam jewellery for ' | append: collection.title
+  assign whatsapp_fit_encoded = whatsapp_fit_text | url_encode
+  assign whatsapp_fit_url = 'https://wa.me/917337294499?text=' | append: whatsapp_fit_encoded
+
+  if mode == 'auto'
+    if collection_handle_lc contains 'black-kemp'
+      assign mode = 'black_kemp'
+    elsif collection_handle_lc contains 'kemp'
+      assign mode = 'real_kemp'
+    else
+      assign mode = 'bharatanatyam'
+    endif
+  endif
+
+  if child_collections != blank and child_collections.size > 0
+    assign has_children = true
+  endif
+
+  if related_collections != blank and related_collections.size > 0
+    assign has_related = true
+  endif
+
+  assign list_collections = child_collections
+  if has_children == false and has_related
+    assign list_collections = related_collections
+  endif
+
+  assign guide_heading = section.settings.guide_heading
+  assign guide_body = section.settings.guide_body
+  assign faq_heading = section.settings.faq_heading
+
+  case mode
+    when 'real_kemp'
+      assign guide_heading = guide_heading | default: 'Premium kemp for arangetram and serious stage use'
+      assign guide_body = guide_body | default: 'Real kemp jewellery is the premium South Indian temple and dance jewellery range. It is usually chosen for arangetram ceremonies, senior dancers, bridal classical styling and long-term performance use because the finish, base material and stone work are higher than regular Bharatanatyam/Kuchipudi jewellery.'
+      assign faq_heading = faq_heading | default: 'Real kemp buying questions'
+    when 'black_kemp'
+      assign guide_heading = guide_heading | default: 'Black kemp styling for classical dance costumes'
+      assign guide_body = guide_body | default: 'Black kemp jewellery is chosen when the dancer wants a stronger contrast with costume colors while keeping the Bharatanatyam and Kuchipudi temple jewellery look. Build the set by matching necklace, long haram, mattal, earrings, headset and vaddanam finishes.'
+      assign faq_heading = faq_heading | default: 'Black kemp buying questions'
+    else
+      assign guide_heading = guide_heading | default: 'Dance jewellery paths for performance and arangetram'
+      assign guide_body = guide_body | default: 'Start with the collection family: full dance sets for a complete stage look, short necklaces for upper chest placement, long harams for costume proportion, and accessories such as headset, nethi chutti, mattal, jada, rakodi and salangai for the final performance setup.'
+      assign faq_heading = faq_heading | default: 'Bharatanatyam jewellery buying questions'
+  endcase
+-%}
+
+<section class="gc-dance-hub color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if list_collections != blank and list_collections.size > 0 -%}
+      <div class="gc-dance-hub__collections" aria-labelledby="gc-dance-hub-collections-heading">
+        <div class="gc-dance-hub__head">
+          <span>{{ section.settings.collections_eyebrow }}</span>
+          <h2 id="gc-dance-hub-collections-heading">{{ section.settings.collections_heading }}</h2>
+        </div>
+
+        <ul
+          class="gc-dance-hub__grid collection-list contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--3-col-desktop grid--2-col-tablet-down"
+          role="list"
+        >
+          {%- for child_collection in list_collections limit: section.settings.max_collections -%}
+            {%- if child_collection != blank -%}
+              <li class="gc-dance-hub__collection-item collection-list__item grid__item">
+                {% render 'card-collection',
+                  card_collection: child_collection,
+                  media_aspect_ratio: 'square',
+                  columns: 3,
+                  placeholder_image: 'collection-apparel-1'
+                %}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="gc-dance-hub__seo" aria-label="Dance performance buying help">
+      <div class="gc-dance-hub__seo-copy">
+        <span>{{ section.settings.guide_eyebrow }}</span>
+        <h2>{{ guide_heading }}</h2>
+        <p>{{ guide_body }}</p>
+      </div>
+      <ol class="gc-dance-hub__path" aria-label="Performance shopping path">
+        {%- case mode -%}
+          {%- when 'real_kemp' -%}
+            <li>
+              <strong>Choose the occasion</strong>
+              <span>Arangetram, senior performance, bridal classical styling or long-term stage use.</span>
+            </li>
+            <li>
+              <strong>Match the visible set</strong>
+              <span>Keep necklace, haram, earrings, mattal, headset and vaddanam finish consistent.</span>
+            </li>
+            <li>
+              <strong>Confirm premium care</strong>
+              <span>Store dry, avoid perfume and water, and pack pieces separately after performance.</span>
+            </li>
+          {%- when 'black_kemp' -%}
+            <li>
+              <strong>Start with costume contrast</strong>
+              <span>Check black kemp against costume body color, border and stage lighting.</span>
+            </li>
+            <li>
+              <strong>Build one finish story</strong>
+              <span>Match the darker kemp look across necklace, long haram, ear chains and waist belt.</span>
+            </li>
+            <li>
+              <strong>Check dancer scale</strong>
+              <span>Compare drop length, headset fit and waist belt size before buying components.</span>
+            </li>
+          {%- else -%}
+            <li>
+              <strong>Begin with the set</strong>
+              <span>For arangetram, start with complete dance sets, then add missing hair or role pieces.</span>
+            </li>
+            <li>
+              <strong>Balance necklace layers</strong>
+              <span>Use short necklace for upper chest placement and long haram for costume proportion.</span>
+            </li>
+            <li>
+              <strong>Finish the stage look</strong>
+              <span>Add headset, nethi chutti, mattal, jada, rakodi, flowers and salangai as required.</span>
+            </li>
+        {%- endcase -%}
+      </ol>
+      <div class="gc-dance-hub__signals" aria-label="Collection buying signals">
+        {%- case mode -%}
+          {%- when 'real_kemp' -%}
+            <span>Premium kemp range</span>
+            <span>Arangetram ceremonies</span>
+            <span>Kemp or Kempu stones</span>
+            <span>Quality checked before packing</span>
+          {%- when 'black_kemp' -%}
+            <span>Black kemp styling</span>
+            <span>Costume matching</span>
+            <span>Dance sets and components</span>
+            <span>Worldwide shipping</span>
+          {%- else -%}
+            <span>Regular and premium paths</span>
+            <span>Kids and adult dancers</span>
+            <span>Arangetram and stage use</span>
+            <span>Bulk orders for institutes</span>
+        {%- endcase -%}
+      </div>
+
+      <article class="gc-dance-hub__proof-card" aria-label="Dance community proof">
+        <div>
+          <span>Dance community proof</span>
+          <h3>Golden Collections supported Aakara at Pearl '26</h3>
+          <p>Our Bharatanatyam and Kuchipudi jewellery presence was shown during Aakara programming at BITS Pilani Hyderabad Campus, with gift items provided for Aakara winners.</p>
+        </div>
+        <a href="/blogs/jewellery-guides/golden-collections-sponsors-aakara-pearl-26-bits-pilani-hyderabad">Read the Aakara proof story</a>
+      </article>
+
+      <div class="gc-dance-hub__fit-help" aria-label="Bharatanatyam jewellery fit help">
+        <div>
+          <span>Fit and set planning</span>
+          <h3>Ask Anil before choosing the final set</h3>
+          <p>Share dancer age group, costume photos, performance date and the pieces already owned. Golden Collections can help compare scale, finish, stone color and missing components before ordering.</p>
+        </div>
+        <div class="gc-dance-hub__fit-actions">
+          <a href="{{ whatsapp_fit_url }}" target="_blank" rel="noopener">Ask Anil on WhatsApp</a>
+          <a href="/blogs/jewellery-guides/real-kemp-jewellery-guide">Real kemp guide</a>
+          <a href="/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram">Arangetram guide</a>
+          <a href="/pages/anil-tunk">About Anil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gc-dance-hub__faq" aria-label="Collection FAQ">
+      <div class="gc-dance-hub__head">
+        <span>{{ section.settings.faq_eyebrow }}</span>
+        <h2>{{ faq_heading }}</h2>
+      </div>
+
+      <div class="gc-dance-hub__faq-list">
+        {%- case mode -%}
+          {%- when 'real_kemp' -%}
+            <details>
+              <summary>Why is real kemp jewellery costly?</summary>
+              <p>Real kemp is a premium range compared with regular Bharatanatyam/Kuchipudi jewellery. It usually uses brass or copper bases, 24 carat high gold plating where confirmed, handcrafted temple motifs and Kemp or Kempu stones.</p>
+            </details>
+            <details>
+              <summary>Is real kemp jewellery bought for arangetram?</summary>
+              <p>Yes. Many customers choose real kemp for arangetram ceremonies, senior dance performances, bridal classical styling and long-term stage use because it has a richer premium temple jewellery look.</p>
+            </details>
+            <details>
+              <summary>What is the difference between real kemp and regular Bharatanatyam/Kuchipudi jewellery?</summary>
+              <p>Regular Bharatanatyam and Kuchipudi jewellery is usually alloy metal and more budget-friendly. Real kemp is the premium range with higher material and finish expectations.</p>
+            </details>
+            <details>
+              <summary>How should real kemp jewellery be cared for?</summary>
+              <p>Store it dry, keep it away from perfume, water and sweat after use, and wipe gently with a soft cloth before packing. Use separate storage so stones and plating do not rub against other ornaments.</p>
+            </details>
+            <details>
+              <summary>Should I buy a full real kemp set or separate pieces?</summary>
+              <p>For arangetram and major stage programs, a full matching set usually gives the cleanest look. Separate pieces work when the finish, stone color and size match your existing ornaments.</p>
+            </details>
+            <details>
+              <summary>Can Golden Collections help match real kemp pieces?</summary>
+              <p>Yes. Share costume photos, existing jewellery photos, dancer age group and performance timeline before ordering so the visible pieces can be matched more carefully.</p>
+            </details>
+          {%- when 'black_kemp' -%}
+            <details>
+              <summary>What is black kemp jewellery?</summary>
+              <p>Black kemp jewellery is a classical dance jewellery style with a darker kemp look, chosen for costume contrast while keeping the Bharatanatyam and Kuchipudi temple jewellery language.</p>
+            </details>
+            <details>
+              <summary>Is black kemp suitable for Bharatanatyam and Kuchipudi?</summary>
+              <p>Yes. Black kemp sets and components can be used for Bharatanatyam and Kuchipudi when the costume color, dancer size and ornament placement match the performance look.</p>
+            </details>
+            <details>
+              <summary>Can I mix black kemp with regular Bharatanatyam/Kuchipudi jewellery?</summary>
+              <p>It is best to keep the visible set finish consistent, especially necklace, haram, earrings, mattal, headset and vaddanam. Mixing can work only when the colors and metal finish look intentional together.</p>
+            </details>
+            <details>
+              <summary>What should I check before ordering black kemp?</summary>
+              <p>Check whether you need a full set or only matching components, then compare necklace drop, waist belt length, headset fit, mattal length and costume colors before ordering.</p>
+            </details>
+            <details>
+              <summary>Is black kemp better as a full set?</summary>
+              <p>A full set is easier when the performance needs one consistent dark kemp finish. Components are useful when you are replacing or completing an existing black kemp look.</p>
+            </details>
+            <details>
+              <summary>Does black kemp work for arangetram?</summary>
+              <p>It can work when the teacher and costume direction call for the darker contrast. For arangetram, confirm the preferred jewellery color and complete component list before buying.</p>
+            </details>
+          {%- else -%}
+            <details>
+              <summary>What jewellery is included in a Bharatanatyam set?</summary>
+              <p>A regular set usually includes long haram, short necklace, oddiyanam or vaddanam, vanki or bajuband, headset, nath, rakodi, bangles, earrings or jhumki, and mattal or matil. Some dancers also add jada, flowers, buns and ghungroo or salangai.</p>
+            </details>
+            <details>
+              <summary>How do I choose Bharatanatyam jewellery for arangetram?</summary>
+              <p>Start with a complete dance jewellery set, then confirm whether the costume needs matching jada accessories, rakodi, sun and moon, flowers, ghungroo or role-specific pieces such as a drama crown.</p>
+            </details>
+            <details>
+              <summary>What is the difference between short necklace and long haram?</summary>
+              <p>A short necklace sits near the neck or upper chest. A long haram falls lower across the costume and helps balance the full stage look.</p>
+            </details>
+            <details>
+              <summary>Do you support dance institute bulk orders?</summary>
+              <p>Yes. Golden Collections supports bulk orders for dance institutes. Share the required quantity, dancer age group, costume direction and timeline before ordering.</p>
+            </details>
+            <details>
+              <summary>Can I buy Bharatanatyam jewellery one piece at a time?</summary>
+              <p>Yes. Many dancers build from a complete set, then replace or add short necklace, long haram, mattal, headset, jada, rakodi, flowers or ghungroo as needed.</p>
+            </details>
+            <details>
+              <summary>How do I match jewellery with costume color?</summary>
+              <p>Match the metal finish and stone color across the visible pieces first. Then check necklace drop, waist belt placement, hair styling and stage lighting with the costume.</p>
+            </details>
+        {%- endcase -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "{{ shop.url }}{{ collection.url }}#webpage",
+        "url": "{{ shop.url }}{{ collection.url }}",
+        "name": {{ display_title | json }},
+        "description": {{ intro | strip_html | strip | default: guide_body | json }},
+        "about": [
+          { "@type": "Thing", "name": "Bharatanatyam jewellery" },
+          { "@type": "Thing", "name": "Kuchipudi jewellery" },
+          { "@type": "Thing", "name": "Classical dance jewellery" }
+          {%- if mode == 'real_kemp' -%}
+            ,{ "@type": "Thing", "name": "Real kemp jewellery" },
+            { "@type": "Thing", "name": "Kemp stones" },
+            { "@type": "Thing", "name": "Arangetram jewellery" }
+          {%- elsif mode == 'black_kemp' -%}
+            ,{ "@type": "Thing", "name": "Black kemp jewellery" },
+            { "@type": "Thing", "name": "Dance costume accessories" }
+          {%- else -%}
+            ,{ "@type": "Thing", "name": "Temple jewellery" },
+            { "@type": "Thing", "name": "Arangetram jewellery" }
+          {%- endif -%}
+        ],
+        {%- if list_collections != blank and list_collections.size > 0 -%}
+        "mainEntity": { "@id": "{{ shop.url }}{{ collection.url }}#collection-list" },
+        {%- endif -%}
+        "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "{{ shop.url }}{{ collection.url }}#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ shop.url }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ collection.title | json }},
+            "item": "{{ shop.url }}{{ collection.url }}"
+          }
+        ]
+      }
+      {%- if list_collections != blank and list_collections.size > 0 -%},
+      {
+        "@type": "ItemList",
+        "@id": "{{ shop.url }}{{ collection.url }}#collection-list",
+        "name": {{ collection.title | append: ' collections' | json }},
+        "itemListElement": [
+          {%- for child_collection in list_collections limit: section.settings.max_collections -%}
+            {%- assign child_title = child_collection.metafields.custom.display_title.value | default: child_collection.metafields.custom.display_title | default: child_collection.title -%}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.index }},
+              "url": "{{ shop.url }}{{ child_collection.url }}",
+              "name": {{ child_title | json }}
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }
+      {%- endif -%}
+    ]
+  }
+</script>
+
+<style>
+  .gc-dance-hub {
+    background: #fff8ea;
+    color: #21180d;
+    padding: 1.4rem 0 3.2rem;
+  }
+
+  .gc-dance-hub__collections,
+  .gc-dance-hub__seo,
+  .gc-dance-hub__faq {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding-top: 1.5rem;
+  }
+
+  .gc-dance-hub__seo,
+  .gc-dance-hub__faq {
+    margin-top: 2rem;
+  }
+
+  .gc-dance-hub__head {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .gc-dance-hub__head span,
+  .gc-dance-hub__seo-copy span {
+    color: #986918;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .gc-dance-hub h2 {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .gc-dance-hub__grid {
+    row-gap: 2.4rem;
+  }
+
+  .gc-dance-hub__faq-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .gc-dance-hub__collection-item .card__heading {
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .gc-dance-hub__collection-item .card__media .media {
+    background: #fffdf8;
+  }
+
+  .gc-dance-hub__faq summary {
+    color: #21180d;
+    font-size: 1.34rem;
+    line-height: 1.22;
+  }
+
+  .gc-dance-hub__seo-copy p,
+  .gc-dance-hub__faq p {
+    color: #5f5548;
+    font-size: 1.16rem;
+    line-height: 1.42;
+    margin: 0;
+  }
+
+  .gc-dance-hub__seo {
+    background:
+      linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(255, 248, 234, 0.86));
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 18px 42px rgba(70, 42, 12, 0.07);
+    display: grid;
+    gap: 1.2rem;
+    padding: 1.4rem;
+  }
+
+  .gc-dance-hub__seo-copy {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .gc-dance-hub__path {
+    counter-reset: dance-path;
+    display: grid;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-dance-hub__path li {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.14);
+    border-radius: 8px;
+    display: grid;
+    gap: 0.25rem;
+    min-height: 84px;
+    padding: 1rem 1rem 1rem 4rem;
+    position: relative;
+  }
+
+  .gc-dance-hub__path li::before {
+    align-items: center;
+    background: #8a6118;
+    border-radius: 50%;
+    color: #fffdf8;
+    content: counter(dance-path);
+    counter-increment: dance-path;
+    display: inline-flex;
+    font-size: 1.15rem;
+    font-weight: 700;
+    height: 2.35rem;
+    justify-content: center;
+    left: 1rem;
+    line-height: 1;
+    position: absolute;
+    top: 1.05rem;
+    width: 2.35rem;
+  }
+
+  .gc-dance-hub__path strong {
+    color: #21180d;
+    font-size: 1.22rem;
+    line-height: 1.2;
+  }
+
+  .gc-dance-hub__path span {
+    color: #5f5548;
+    font-size: 1.08rem;
+    line-height: 1.35;
+  }
+
+  .gc-dance-hub__signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .gc-dance-hub__signals span {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 999px;
+    color: #5e3d13;
+    font-size: 1.12rem;
+    line-height: 1.2;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .gc-dance-hub__signals span:nth-child(2n) {
+    border-color: rgba(143, 31, 24, 0.22);
+    color: #7f1f19;
+  }
+
+  .gc-dance-hub__proof-card {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    grid-column: 1 / -1;
+    padding: 1.15rem;
+  }
+
+  .gc-dance-hub__proof-card span {
+    color: #8a6118;
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-dance-hub__proof-card h3 {
+    color: #21180d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 1.8rem;
+    line-height: 1.14;
+    margin: 0 0 0.5rem;
+  }
+
+  .gc-dance-hub__proof-card p {
+    color: #5f5548;
+    font-size: 1.12rem;
+    line-height: 1.42;
+    margin: 0;
+  }
+
+  .gc-dance-hub__proof-card a {
+    align-items: center;
+    background: #7f1f19;
+    border-radius: 6px;
+    color: #fffdf8;
+    display: inline-flex;
+    font-size: 1.12rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-dance-hub__fit-help {
+    background: #241508;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    grid-column: 1 / -1;
+    padding: 1.2rem;
+  }
+
+  .gc-dance-hub__fit-help span {
+    color: #d2a849;
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-dance-hub__fit-help h3 {
+    color: #fff6e8;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 2.1rem;
+    line-height: 1.12;
+    margin: 0 0 0.55rem;
+  }
+
+  .gc-dance-hub__fit-help p {
+    color: rgba(255, 246, 232, 0.82);
+    font-size: 1.22rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .gc-dance-hub__fit-actions {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .gc-dance-hub__fit-actions a {
+    align-items: center;
+    background: rgba(255, 250, 240, 0.08);
+    border: 1px solid rgba(201, 151, 42, 0.28);
+    border-radius: 6px;
+    color: #fff6e8;
+    display: flex;
+    font-size: 1.16rem;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.7rem 0.9rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .gc-dance-hub__faq details {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .gc-dance-hub__faq summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .gc-dance-hub__faq p {
+    margin-top: 0.7rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-dance-hub {
+      padding: 2rem 0 4rem;
+    }
+
+    .gc-dance-hub h2 {
+      font-size: 3rem;
+    }
+
+    .gc-dance-hub__grid {
+      row-gap: 3rem;
+    }
+
+    .gc-dance-hub__seo {
+      align-items: start;
+      grid-template-columns: minmax(280px, 0.82fr) minmax(260px, 0.72fr);
+      padding: 1.8rem;
+    }
+
+    .gc-dance-hub__signals {
+      grid-column: 1 / -1;
+    }
+
+    .gc-dance-hub__fit-help {
+      align-items: center;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    }
+
+    .gc-dance-hub__proof-card {
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .gc-dance-hub__fit-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-dance-hub__faq-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (min-width: 1100px) {
+    .gc-dance-hub__seo {
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.62fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dance collection hub",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "Content mode",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Auto from handle" },
+        { "value": "bharatanatyam", "label": "Bharatanatyam" },
+        { "value": "real_kemp", "label": "Real kemp" },
+        { "value": "black_kemp", "label": "Black kemp" }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro fallback"
+    },
+    {
+      "type": "text",
+      "id": "collections_eyebrow",
+      "label": "Collections eyebrow",
+      "default": "Shop collections"
+    },
+    {
+      "type": "text",
+      "id": "collections_heading",
+      "label": "Collections heading",
+      "default": "Choose a collection"
+    },
+    {
+      "type": "range",
+      "id": "max_collections",
+      "min": 3,
+      "max": 24,
+      "step": 1,
+      "label": "Maximum collections",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "guide_eyebrow",
+      "label": "Guide eyebrow",
+      "default": "Performance help"
+    },
+    {
+      "type": "text",
+      "id": "guide_heading",
+      "label": "Guide heading"
+    },
+    {
+      "type": "textarea",
+      "id": "guide_body",
+      "label": "Guide body"
+    },
+    {
+      "type": "text",
+      "id": "faq_eyebrow",
+      "label": "FAQ eyebrow",
+      "default": "Helpful answers"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dance collection hub"
+    }
+  ]
+}
+{% endschema %}

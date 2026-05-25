@@ -1,0 +1,340 @@
+{%- liquid
+  assign hub_url = pages['deity-jewellery-alankaram-guide'].url | default: '/pages/deity-jewellery-alankaram-guide'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign regional_url = pages['deity-jewellery-regional-names'].url | default: '/pages/deity-jewellery-regional-names'
+  assign haram_url = pages['short-haram-vs-long-haram-for-god-idols'].url | default: '/pages/short-haram-vs-long-haram-for-god-idols'
+  assign varalakshmi_url = pages['varalakshmi-alankaram-guide'].url | default: '/pages/varalakshmi-alankaram-guide'
+  assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples'
+  assign page_handle = page.handle
+-%}
+
+<section class="gc-simple-guide color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <nav class="gc-simple-guide__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ hub_url }}">Deity jewellery guides</a>
+      <span>/</span>
+      <span>{{ page.title }}</span>
+    </nav>
+
+    <header class="gc-simple-guide__hero">
+      <div>
+        <p class="gc-simple-guide__eyebrow">
+          {%- case page_handle -%}
+            {%- when 'deity-jewellery-regional-names' -%}Glossary guide
+            {%- when 'short-haram-vs-long-haram-for-god-idols' -%}Necklace fit guide
+            {%- when 'varalakshmi-alankaram-guide' -%}Varalakshmi shopping guide
+            {%- else -%}Golden Collections guide
+          {%- endcase -%}
+        </p>
+        <h1>{{ page.title }}</h1>
+      </div>
+      <div class="gc-simple-guide__hero-actions">
+        <a href="{{ measure_url }}">Measure your idol</a>
+        <a href="{{ anil_url }}" class="gc-simple-guide__secondary">About Anil Tunk</a>
+      </div>
+    </header>
+
+    {%- case page_handle -%}
+      {%- when 'deity-jewellery-regional-names' -%}
+        <section class="gc-simple-guide__answer">
+          <strong>Quick answer</strong>
+          <p>Many deity jewellery terms overlap across English, Telugu, Tamil, Kannada, Hindi and Sanskrit-derived usage. Use the name to understand the ornament, but choose the product by deity, placement, size and photos.</p>
+        </section>
+        <div class="gc-simple-guide__table-wrap">
+          <table>
+            <thead>
+              <tr><th>Ornament</th><th>Names customers may use</th><th>Fit note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Crown</td><td>Mukut, kireedam, kirita, crown</td><td>Check head or face width, crown height, depth and deity style.</td></tr>
+              <tr><td>Waist belt</td><td>Vaddanam, oddiyanam, kamarband, kati sutra</td><td>Measure dressed waist placement or full wrap circumference.</td></tr>
+              <tr><td>Neck ornament</td><td>Short necklace, haram, haar, mala, malai</td><td>Choose by neck/chest placement and desired drop.</td></tr>
+              <tr><td>Forehead mark</td><td>Namam, thiruman, tilak, bottu</td><td>Use deity-specific symbols carefully, especially Vishnu/Balaji contexts.</td></tr>
+              <tr><td>Garland</td><td>Thomala, mala, malai, garland</td><td>Measure length, width and altar/body clearance.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="gc-simple-guide__cards">
+          <a href="{{ crown_url }}"><strong>Crown size guide</strong><span>Use after confirming mukut, kireedam or kirita intent.</span></a>
+          <a href="{{ haram_url }}"><strong>Necklace placement guide</strong><span>Compare short haram, long haram and chest necklace.</span></a>
+          <a href="{{ measure_url }}"><strong>Measurement checklist</strong><span>Record the idol measurements before ordering.</span></a>
+        </div>
+
+      {%- when 'short-haram-vs-long-haram-for-god-idols' -%}
+        <section class="gc-simple-guide__answer">
+          <strong>Quick answer</strong>
+          <p>Choose deity necklaces by placement first. A short necklace sits near the neck or upper chest, a long haram falls lower, and a chest necklace needs the most careful deity/body-shape check.</p>
+        </section>
+        <div class="gc-simple-guide__table-wrap">
+          <table>
+            <thead>
+              <tr><th>Style</th><th>Best for</th><th>Measure before buying</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Short necklace</td><td>Close neck or upper chest alankaram.</td><td>Neck width and upper chest width.</td></tr>
+              <tr><td>Long haram</td><td>Full vertical line over body, dress or saree drape.</td><td>Neck to desired end point and body clearance.</td></tr>
+              <tr><td>Chest necklace</td><td>Placement-specific chest ornament styles.</td><td>Chest width, deity shape, drape volume and product width.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="gc-simple-guide__cards">
+          <a href="/collections/deity-necklace"><strong>Shop deity necklaces</strong><span>Browse deity necklace and haram styles.</span></a>
+          <a href="{{ measure_url }}"><strong>Measure your idol</strong><span>Record neck, chest and drop measurements.</span></a>
+          <a href="{{ hub_url }}"><strong>All deity guides</strong><span>Return to the authority hub.</span></a>
+        </div>
+
+      {%- when 'varalakshmi-alankaram-guide' -%}
+        <section class="gc-simple-guide__answer">
+          <strong>Quick answer</strong>
+          <p>Plan Varalakshmi alankaram by setup type first: idol or doll, Amman mugham, kalasam setup or altar decor. Then choose required jewellery before optional decor so the setup looks complete without overbuying.</p>
+        </section>
+        <div class="gc-simple-guide__table-wrap">
+          <table>
+            <thead>
+              <tr><th>Item group</th><th>Usually required</th><th>Optional / setup-dependent</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Face or idol</td><td>Idol, doll, mugham or kalasam face.</td><td>Extra backdrop, arch or lotus base.</td></tr>
+              <tr><td>Jewellery</td><td>Crown, short necklace, haram, vaddanam where size fits.</td><td>Extra layered harams, earrings, nose ring, arm accessories.</td></tr>
+              <tr><td>Hands and feet</td><td>Hastham/padam only when the setup uses them.</td><td>Extra decorative hands, feet or side accessories.</td></tr>
+              <tr><td>Decor</td><td>Flowers or thomala according to family tradition.</td><td>Banana tree decor, arch, coconut stand and kalasam decor.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="gc-simple-guide__cards">
+          <a href="/collections/varalakshmi-deity-jewellery"><strong>Shop Varalakshmi jewellery</strong><span>Start with jewellery and setup items.</span></a>
+          <a href="{{ varalakshmi_examples_url }}"><strong>View Varalakshmi examples</strong><span>Compare previous alankaram examples and fit notes.</span></a>
+          <a href="{{ crown_url }}"><strong>Choose the crown size</strong><span>Check mukut or kireedam fit before ordering.</span></a>
+          <a href="{{ measure_url }}"><strong>Measure the idol or setup</strong><span>Record face, crown, chest, waist and altar space.</span></a>
+        </div>
+
+      {%- else -%}
+        <section class="gc-simple-guide__rte rte">
+          {{ page.content }}
+        </section>
+    {%- endcase -%}
+
+    <section class="gc-simple-guide__rte rte">
+      {{ page.content }}
+    </section>
+
+    <footer class="gc-simple-guide__trust">
+      <p>Reviewed as part of the Golden Collections deity jewellery authority hub. For author context, see <a href="{{ anil_url }}">Anil Tunk</a>.</p>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .gc-simple-guide {
+    background: #fdf6ec;
+    color: #1f170d;
+    padding: 1.3rem 0 4rem;
+  }
+
+  .gc-simple-guide,
+  .gc-simple-guide * {
+    box-sizing: border-box;
+  }
+
+  .gc-simple-guide__breadcrumb {
+    color: #6f6254;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.08rem;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .gc-simple-guide__breadcrumb a,
+  .gc-simple-guide a {
+    color: inherit;
+  }
+
+  .gc-simple-guide__hero {
+    align-items: end;
+    background: #1a0e05;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    padding: 1.4rem;
+  }
+
+  .gc-simple-guide__eyebrow {
+    color: #c9972a;
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 0 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-simple-guide h1,
+  .gc-simple-guide h2,
+  .gc-simple-guide strong {
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-simple-guide h1 {
+    color: #f5ede0;
+    font-size: 3.7rem;
+    line-height: 1;
+    margin: 0;
+    max-width: 960px;
+  }
+
+  .gc-simple-guide p,
+  .gc-simple-guide li,
+  .gc-simple-guide td,
+  .gc-simple-guide th,
+  .gc-simple-guide span {
+    color: #4e4438;
+    font-size: 1.18rem;
+    line-height: 1.45;
+  }
+
+  .gc-simple-guide__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .gc-simple-guide__hero-actions a {
+    background: #8b1c1c;
+    border: 1px solid #8b1c1c;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-simple-guide__hero-actions .gc-simple-guide__secondary {
+    background: transparent;
+    border-color: rgba(201, 151, 42, 0.55);
+    color: #f5ede0;
+  }
+
+  .gc-simple-guide__answer,
+  .gc-simple-guide__trust,
+  .gc-simple-guide__rte {
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.18);
+    border-left: 4px solid #8b1c1c;
+    border-radius: 8px;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  .gc-simple-guide__answer strong {
+    color: #1f170d;
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .gc-simple-guide__table-wrap {
+    margin-top: 1rem;
+    overflow-x: auto;
+  }
+
+  .gc-simple-guide table {
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.2);
+    border-collapse: collapse;
+    min-width: 720px;
+    width: 100%;
+  }
+
+  .gc-simple-guide th,
+  .gc-simple-guide td {
+    border-bottom: 1px solid rgba(201, 151, 42, 0.18);
+    padding: 0.9rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .gc-simple-guide th {
+    background: #fdf0d8;
+    color: #1f170d;
+    font-weight: 800;
+  }
+
+  .gc-simple-guide__cards {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  .gc-simple-guide__cards a {
+    background: #fdf0d8;
+    border: 1px solid rgba(201, 151, 42, 0.22);
+    border-radius: 8px;
+    border-top: 3px solid #c9972a;
+    box-shadow: 0 2px 8px rgba(26, 14, 4, 0.08);
+    display: grid;
+    gap: 0.4rem;
+    padding: 1rem;
+    text-decoration: none;
+  }
+
+  .gc-simple-guide__cards strong {
+    color: #1f170d;
+    font-size: 1.45rem;
+    line-height: 1.15;
+  }
+
+  .gc-simple-guide__rte {
+    border-left-color: #c9972a;
+  }
+
+  .gc-simple-guide__trust a {
+    color: #8b1c1c;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-simple-guide {
+      padding: 1.8rem 0 5rem;
+    }
+
+    .gc-simple-guide__hero {
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding: 2rem;
+    }
+
+    .gc-simple-guide h1 {
+      font-size: 5.4rem;
+    }
+
+    .gc-simple-guide__cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC authority simple guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC authority simple guide"
+    }
+  ]
+}
+{% endschema %}

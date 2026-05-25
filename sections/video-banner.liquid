@@ -434,9 +434,24 @@
     // --- Video Switching Logic ---
     const videoElement = document.getElementById('hero-video-{{ section.id }}');
     const videoSources = [
-      {% if section.settings.video_url_1 != blank %}{ src: '{{ section.settings.video_url_1 }}', poster: '{{ section.settings.poster_image_1 | image_url: width: 1800 }}' }{% endif %},
-      {% if section.settings.video_url_2 != blank %}{% unless forloop.first %},{% endunless %}{ src: '{{ section.settings.video_url_2 }}', poster: '{{ section.settings.poster_image_2 | image_url: width: 1800 }}' }{% endif %},
-      {% if section.settings.video_url_3 != blank %}{% unless forloop.first %},{% endunless %}{ src: '{{ section.settings.video_url_3 }}', poster: '{{ section.settings.poster_image_3 | image_url: width: 1800 }}' }{% endif %}
+      {% if section.settings.video_url_1 != blank %}
+        {
+          src: {{ section.settings.video_url_1 | json }},
+          poster: {% if section.settings.poster_image_1 != blank %}{{ section.settings.poster_image_1 | image_url: width: 1800 | json }}{% else %}''{% endif %}
+        },
+      {% endif %}
+      {% if section.settings.video_url_2 != blank %}
+        {
+          src: {{ section.settings.video_url_2 | json }},
+          poster: {% if section.settings.poster_image_2 != blank %}{{ section.settings.poster_image_2 | image_url: width: 1800 | json }}{% else %}''{% endif %}
+        },
+      {% endif %}
+      {% if section.settings.video_url_3 != blank %}
+        {
+          src: {{ section.settings.video_url_3 | json }},
+          poster: {% if section.settings.poster_image_3 != blank %}{{ section.settings.poster_image_3 | image_url: width: 1800 | json }}{% else %}''{% endif %}
+        },
+      {% endif %}
     ].filter(video => video && video.src);
 
     let currentVideoIndex = 0;

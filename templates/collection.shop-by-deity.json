@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "shop_by_deity_root": {
+      "type": "shop-by-deity-root",
+      "blocks": {
+        "varalakshmi": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "varalakshmi-lakshmi-amman-deity-jewellery",
+            "title": "Varalakshmi",
+            "url": "/collections/varalakshmi-lakshmi-amman-deity-jewellery"
+          }
+        },
+        "lakshmi_amman": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "lakshmi-amman-deity-jewellery",
+            "title": "Lakshmi / Amman",
+            "url": "/collections/lakshmi-amman-deity-jewellery"
+          }
+        },
+        "balaji": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "balaji-venkateswara-deity-jewellery",
+            "title": "Balaji",
+            "url": "/collections/balaji-venkateswara-deity-jewellery"
+          }
+        },
+        "krishna": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "krishna-deity-jewellery",
+            "title": "Krishna",
+            "url": "/collections/krishna-deity-jewellery"
+          }
+        },
+        "ganesh": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "ganesh-deity-jewellery",
+            "title": "Ganesh",
+            "url": "/collections/ganesh-deity-jewellery"
+          }
+        },
+        "hanuman": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "hanuman-anjaneya-deity-jewellery",
+            "title": "Hanuman / Anjaneya",
+            "url": "/collections/hanuman-anjaneya-deity-jewellery"
+          }
+        },
+        "shiva": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "shiva-deity-jewellery",
+            "title": "Shiva",
+            "url": "/collections/shiva-deity-jewellery"
+          }
+        },
+        "durga": {
+          "type": "deity_collection",
+          "settings": {
+            "collection": "durga-deity-jewellery",
+            "title": "Durga",
+            "url": "/collections/durga-deity-jewellery"
+          }
+        }
+      },
+      "block_order": [
+        "varalakshmi",
+        "lakshmi_amman",
+        "balaji",
+        "krishna",
+        "ganesh",
+        "hanuman",
+        "shiva",
+        "durga"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Shop by Deity",
+        "intro": "Choose your deity, then find the right ornament and size.",
+        "max_deities": 12,
+        "show_featured_cards": true,
+        "featured_heading": "Popular deity collections",
+        "faq_heading": "Shop by Deity FAQ"
+      }
+    }
+  },
+  "order": [
+    "shop_by_deity_root"
+  ]
+}

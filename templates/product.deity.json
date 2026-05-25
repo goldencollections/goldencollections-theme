@@ -28,7 +28,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "dropdown",
             "swatch_shape": "circle"
           }
         },
@@ -55,12 +55,6 @@
             "heading_3": "WhatsApp Size Help"
           }
         },
-        "deity_fit": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'deity-fit-panel' %}"
-          }
-        },
         "rating": {
           "type": "rating",
           "settings": {}
@@ -85,10 +79,9 @@
         "quantity_selector",
         "buy_buttons",
         "icon_with_text",
-        "deity_fit",
+        "description",
         "rating",
-        "share",
-        "description"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -112,7 +105,7 @@
         "short_haram": {
           "type": "link",
           "settings": {
-            "title": "Short Haram",
+            "title": "Short Necklace",
             "collection": "deity-short-harams"
           }
         },
@@ -148,6 +141,12 @@
         "cross_sell_heading": "Pair this piece with matching deity ornaments"
       }
     },
+    "deity_faq": {
+      "type": "deity-product-lite-faq",
+      "settings": {
+        "heading": "Size and fit questions"
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -170,6 +169,7 @@
   "order": [
     "main",
     "deity_story",
+    "deity_faq",
     "related-products"
   ]
 }

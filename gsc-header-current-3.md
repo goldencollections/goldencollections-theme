@@ -1,0 +1,26 @@
+- banner [ref=e4] [box=0,0,1048,64]:
+  - generic [ref=e5] [box=0,0,1048,64]:
+    - generic [ref=e6] [box=8,8,359,48]:
+      - button "Main menu" [ref=e1782] [cursor=pointer] [box=12,8,48,48]:
+        - img [ref=e8] [box=24,20,24,24]
+      - link "Google Search Console" [ref=e1783] [cursor=pointer] [box=64,14,278,40]:
+        - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+        - img [ref=e13] [box=64,14,278,40]
+    - generic [ref=e14] [box=367,8,574,48]:
+      - search [ref=e16] [box=377,8,390,48]:
+        - generic [ref=e22] [box=434,9,283,46]:
+          - textbox [disabled] [ref=e23] [box=434,9,283,46]: Inspect any URL in "goldencollections.com"
+          - combobox "Inspect any URL in goldencollections.com" [ref=e1784] [box=434,9,283,46]
+        - button "Search" [ref=e1785] [cursor=pointer] [box=378,9,56,46]:
+          - img [ref=e26] [box=386,12,40,40]
+      - generic [ref=e29] [box=797,8,144,48]:
+        - generic [ref=e31] [box=797,8,96,48]:
+          - button "Help" [ref=e1786] [cursor=pointer] [box=797,8,48,48]
+          - button "User settings" [ref=e1787] [cursor=pointer] [box=845,8,48,48]
+        - 'button "Unread messages: 92" [ref=e1788] [cursor=pointer] [box=893,8,48,48]':
+          - generic [ref=e47] [box=905,20,24,24]
+    - generic [ref=e52] [box=946,8,90,48]:
+      - button "Google apps" [ref=e1789] [cursor=pointer] [box=946,12,40,40]:
+        - img [ref=e57] [box=954,20,24,24]
+      - 'button "Google Account: Golden Collections Indian Jewelry online Store (goldencollections9@gmail.com)" [ref=e1790] [cursor=pointer] [box=994,12,40,40]':
+        - img [ref=e64] [box=998,16,32,32]

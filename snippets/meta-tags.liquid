@@ -3,6 +3,35 @@
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_image_override = blank
+  assign og_image_width = blank
+  assign og_image_height = blank
+
+  if request.page_type == 'page' and page.handle == 'about-us'
+    assign og_title = 'About Golden Collections | Anil Tunk, Secunderabad'
+    assign og_description = 'Golden Collections is rooted in a family jewellery tradition since 1961 and was established by Anil Tunk in 2012 in Secunderabad/Hyderabad, specialising in Bharatanatyam, Kuchipudi, deity jewellery and kemp temple jewellery.'
+  elsif request.page_type == 'page' and page.handle == 'temple-alankaram-proof'
+    assign og_title = 'Temple Alankaram Proof Stories | Golden Collections'
+    assign og_description = 'Real deity jewellery and temple alankaram proof stories from Golden Collections, shared with permission and focused on fit, measurement and final alankaram.'
+    assign og_image_override = 'https://cdn.shopify.com/s/files/1/0764/9224/3242/articles/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-2026.jpg?v=1778924234'
+  elsif request.page_type == 'page' and page.handle == 'varalakshmi-alankaram-examples'
+    assign og_title = 'Varalakshmi Alankaram Examples | Jewellery Fit Notes'
+    assign og_description = 'Previous Golden Collections Varalakshmi and Varamahalakshmi alankaram examples with jewellery fit notes for crown scale, face visibility, haram placement and altar setup.'
+    assign og_image_override = 'https://img.youtube.com/vi/uYTUVqBA1BU/maxresdefault.jpg'
+  elsif request.page_type == 'page' and page.handle == 'bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist'
+    assign og_image_override = 'https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-dance-set-hero_d1c569b6-ee4b-4887-9d16-9a2b1fe7cb11.jpg?v=1779628366'
+    assign og_image_width = 2400
+    assign og_image_height = 1800
+  elsif request.page_type == 'page' and page.handle == 'golden-collections-knowledge-hub'
+    assign og_title = 'Golden Collections Knowledge Hub | Anil Tunk, Deity and Dance Jewellery'
+    assign og_description = 'Central Golden Collections authority hub for Anil Tunk, deity jewellery sizing, alankaram guides, Bharatanatyam jewellery, Kuchipudi jewellery, real kemp jewellery and temple jewellery terms.'
+  elsif request.page_type == 'page' and page.handle == 'jewelry-glossary'
+    assign og_title = 'Golden Collections Glossary | Temple, Deity and Dance Jewellery Terms'
+    assign og_description = 'Glossary of temple jewellery, Bharatanatyam jewellery, Kuchipudi jewellery and deity alankaram terms by Golden Collections, established by Anil Tunk in 2012 and rooted in a family jewellery tradition since 1961.'
+  elsif request.page_type == 'page' and page.handle == 'anil-tunk'
+    assign og_title = 'Anil Tunk | Founder of Golden Collections'
+    assign og_description = 'Meet Anil Tunk, founder of Golden Collections, a Hyderabad/Secunderabad specialist in deity jewellery, Hindu idol alankaram, Bharatanatyam jewellery and kemp temple jewellery.'
+  endif
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -10,6 +39,10 @@
     assign og_type = 'article'
   elsif request.page_type == 'password'
     assign og_url = request.origin
+  endif
+
+  if request.page_type == 'page' and og_image_override == blank and page.metafields.custom.og_image_url != blank
+    assign og_image_override = page.metafields.custom.og_image_url.value
   endif
 %}
 
@@ -19,7 +52,12 @@
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- if page_image -%}
+{%- if og_image_override != blank -%}
+  <meta property="og:image" content="{{ og_image_override }}">
+  <meta property="og:image:secure_url" content="{{ og_image_override }}">
+  <meta property="og:image:width" content="{{ og_image_width | default: 1200 }}">
+  <meta property="og:image:height" content="{{ og_image_height | default: 1600 }}">
+{%- elsif page_image -%}
   <meta property="og:image" content="https:{{ page_image | image_url }}">
   <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
   <meta property="og:image:width" content="{{ page_image.width }}">
@@ -37,6 +75,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
-{%- if page_image -%}
+{%- if og_image_override != blank -%}
+  <meta name="twitter:image" content="{{ og_image_override }}">
+{%- elsif page_image -%}
   <meta name="twitter:image" content="https:{{ page_image | image_url }}">
 {%- endif -%}

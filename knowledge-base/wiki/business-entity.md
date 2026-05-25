@@ -10,11 +10,16 @@ Owner-confirmed facts:
 
 - Brand: Golden Collections / GoldenCollections.
 - Website: https://www.goldencollections.com/
+- X/Twitter: `@GCJewellery` / `https://x.com/GCJewellery`.
 - Founder and public leader: Anil Tunk.
+- Anil Tunk LinkedIn: https://www.linkedin.com/in/anil-tunk-35764388/
 - GoldenCollections started in 2012.
+- Family heritage context: Golden Collections may say it is rooted in a family jewellery tradition since 1961, but public copy and schema must not state that Golden Collections itself was founded in 1961. Primary entity facts remain Anil Tunk and 2012.
 - Location: Secunderabad/Hyderabad, Telangana, India.
 - Address: Plot no: 9, Krishnapuri Colony, Lakshmi Nagar, West Marredpally, Secunderabad, Telangana 500026.
 - Contact: `support@goldencollections.com`, `+91 7337294499`.
+- Store/support hours: Monday-Saturday 11:00 AM IST to 8:30 PM IST; Sunday 1:00 PM IST to 8:00 PM IST.
+- Shopify Admin note: `shop.contactEmail` is the customer-facing support source and is set to `support@goldencollections.com`. As of 2026-05-16, Shopify Admin API still reports `shop.email` as `goldencollections9@gmail.com`; treat this as a non-public account/admin email unless it is changed manually in Shopify Admin. Do not use it in public copy, schema, AI files, customer support copy, or automation outputs.
 
 ## Primary Offers
 
@@ -23,6 +28,10 @@ Owner-confirmed facts:
 The store sells jewellery for Bharatanatyam and Kuchipudi dance use cases, including full dance sets, short necklaces, long harams, headsets, nethi chutti/maang tikka, mattal/matil/mattel ear chains, earrings/jhumka, vanki/baju band, oddiyanam/waist belts, nath, rakodi, jada accessories, sun and moon ornaments, ghungroo/salangai, and kids dance jewellery.
 
 Regular Bharatanatyam and Kuchipudi full sets usually sell in the range of INR 2,700 to INR 10,000. Golden Collections positions this as a quality-focused regular range with better finishing and longer-use durability than cheaper similar designs in the market.
+
+Public copy for regular Bharatanatyam/Kuchipudi jewellery should say `gold plated`. Do not publish a plating thickness range for regular Bharatanatyam/Kuchipudi jewellery unless it is separately confirmed.
+
+Kids Bharatanatyam/Kuchipudi jewellery means girls around 5-9 years. Adult or standard size means 10 years and above. Kids and adult/standard dance sets use the same component types, but kids sets are scaled down and adult/standard sets are scaled up. For 10 years and above, treat the product as standard size unless a specific product has confirmed measurements or variants.
 
 ### Real Kemp Jewellery
 
@@ -82,4 +91,5 @@ Deity jewellery is made through partner artisans. Materials vary by product: man
 - Varalakshmi is the strongest season, mainly May through August.
 - Deity jewellery has the highest margin.
 - Bharatanatyam jewellery has the most stock and fastest movement, across both regular and premium ranges.
-- If one category needs extra promotion, prioritize Bharatanatyam.
+- Current owner-stated sprint priority on 2026-05-24: real kemp first, Varalakshmi second.
+- If one broad category needs extra promotion outside the current sprint, prioritize Bharatanatyam because it has the most stock and fastest movement.

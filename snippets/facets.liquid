@@ -7,6 +7,7 @@
   - enable_sorting: {Boolean} Show sorting when true
   - filter_type: {String} Type of filter
   - paginate: {Object}
+  - show_size_help: {Boolean} Show ornament size help control
 
   Usage:
   {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate %}
@@ -26,9 +27,29 @@
     assign terms = results.terms | escape
     assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
   endif
+
+  assign hide_exact_size_filter = false
+  assign hide_height_filter = false
+  assign results_handle = results.handle | default: ''
+  assign results_title_lc = results.title | downcase
+  if results_handle contains 'deity-short-harams' or results_handle contains 'deity-long-harams' or results_title_lc contains 'short necklace' or results_title_lc contains 'long haram' or results_title_lc contains 'long necklace'
+    assign hide_exact_size_filter = true
+  endif
+  if results_handle contains 'deity-earrings' or results_title_lc contains 'earring'
+    assign hide_exact_size_filter = true
+    assign hide_height_filter = true
+  endif
+  if results_handle contains 'deity-eyes-for-god-idols-statues' or results_handle contains 'waist-belt-vaddanam-jewellery-for-hindu-gods-goddess-1' or results_handle contains 'god-goddess-arch' or results_handle contains 'deity-god-pustal-tadu-thali-kasulaperu' or results_handle contains 'god-deity-pendants' or results_handle contains 'buy-stone-nathu-bullaku-nose-rings-for-goddess-amman-jewelry' or results_handle contains 'buy-god-mustache-jewellery-deity-mustache-accessories-for-idols' or results_handle contains 'god-goddess-weapons' or results_handle contains 'buy-deity-taira-idol-sacred-taira-statues-for-pooja-and-worship' or results_handle contains 'deity-bindi-tilak-thiruman' or results_handle contains 'stone-shankh-chakra-gold-plated-shanku-chakra-for-vishnu-and-perumal'
+    assign hide_exact_size_filter = true
+    assign hide_height_filter = true
+  endif
+  if results_handle contains 'sacred-sanctum-decor' or results_handle contains 'banana-tree-banana-bunches-for-pooja-varamahalakshmi-vratham' or results_handle contains 'lotus-asana-deity-peedam-kamal-aasan' or results_handle contains 'coconut-stand'
+    assign hide_exact_size_filter = true
+    assign hide_height_filter = true
+  endif
 -%}
 
-<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if show_size_help %} facets-container--with-size-help{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form
@@ -73,6 +94,11 @@
                   </facet-remove>
                 </div>
                 {%- for filter in results.filters -%}
+                  {%- if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms' -%}
+                    {%- continue -%}
+                  {%- elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length' -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   {%- for value in filter.active_values -%}
                     <facet-remove>
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -111,6 +137,12 @@
             {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
             {%- for filter in results.filters -%}
               {% liquid
+                if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms'
+                  continue
+                elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length'
+                  continue
+                endif
+
                 assign total_active_values = total_active_values | plus: filter.active_values.size
                 assign presentation = filter.presentation | default: default_presentation
 
@@ -339,6 +371,11 @@
           {%- if filter_type == 'horizontal' -%}
             <div class="active-facets active-facets-desktop">
               {%- for filter in results.filters -%}
+                {%- if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms' -%}
+                  {%- continue -%}
+                {%- elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length' -%}
+                  {%- continue -%}
+                {%- endif -%}
                 {%- for value in filter.active_values -%}
                   <facet-remove>
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -510,6 +547,12 @@
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
                   {% liquid
+                    if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms'
+                      continue
+                    elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length'
+                      continue
+                    endif
+
                     assign presentation = filter.presentation | default: default_presentation
                     if presentation == 'image'
                       assign visual_layout_class = 'facets-layout facets-layout-grid facets-layout-grid--' | append: presentation
@@ -782,8 +825,19 @@
     </details>
   </menu-drawer>
 
+  {%- if show_size_help -%}
+    <a class="gc-ornament-size-help-link" href="/pages/how-to-measure-idol-for-deity-jewellery">
+      Size help
+    </a>
+  {%- endif -%}
+
   <div class="active-facets active-facets-mobile medium-hide large-up-hide">
     {%- for filter in results.filters -%}
+      {%- if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms' -%}
+        {%- continue -%}
+      {%- elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length' -%}
+        {%- continue -%}
+      {%- endif -%}
       {%- for value in filter.active_values -%}
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
@@ -893,6 +947,11 @@
       <form id="FacetFiltersPillsForm" class="facets__form">
         <div class="active-facets active-facets-desktop">
           {%- for filter in results.filters -%}
+            {%- if hide_exact_size_filter and filter.label contains 'Size in Inches' or hide_exact_size_filter and filter.label contains 'Size in cms' -%}
+              {%- continue -%}
+            {%- elsif hide_height_filter and filter.label == 'Height' or hide_height_filter and filter.label == 'Width' or hide_height_filter and filter.label == 'Length' -%}
+              {%- continue -%}
+            {%- endif -%}
             {%- for value in filter.active_values -%}
               <facet-remove>
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">

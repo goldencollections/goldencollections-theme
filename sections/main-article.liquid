@@ -25,8 +25,7 @@
         "name": {{ article.title | json }},
         "url": "{{ shop.url }}{{ article.url }}",
         "isPartOf": {
-          "@type": "WebSite",
-          "@id": "{{ shop.url }}"
+          "@id": "https://www.goldencollections.com/#website"
         },
         "breadcrumb": {
           "@id": "{{ shop.url }}{{ article.url }}#breadcrumb"
@@ -76,14 +75,9 @@
           "url": "https:{{ article.image | image_url: width: 1200 }}"
         },
         {% endif %}
-        "author": {
-          "@type": "Organization",
-          "name": "{{ shop.name }}",
-          "url": "{{ shop.url }}"
-        },
+        "author": { "@id": "https://www.goldencollections.com/#organization" },
         "publisher": {
-          "@type": "Organization",
-          "@id": "{{ shop.url }}#organization"
+          "@id": "https://www.goldencollections.com/#organization"
         },
         "mainEntityOfPage": {
           "@id": "{{ shop.url }}{{ article.url }}"
@@ -93,6 +87,29 @@
   }
   </script>
 {% endif %}
+
+{%- if article.url contains 'hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": "{{ shop.url }}{{ article.url }}#hanuman-jayanti-video",
+    "name": "Hanuman Jayanti 2026 Alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri",
+    "description": "Video of the Hanuman Jayanti 2026 alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri, showing Golden Collections deity jewellery used with permission.",
+    "thumbnailUrl": [
+      "https:{{ article.image | image_url: width: 1200 }}"
+    ],
+    "uploadDate": "2026-05-16",
+    "contentUrl": "https://cdn.shopify.com/videos/c/vp/741e2b3c5086440bb24d64e642a3088e/741e2b3c5086440bb24d64e642a3088e.SD-480p-0.9Mbps-84249396.mp4",
+    "publisher": {
+      "@id": "https://www.goldencollections.com/#organization"
+    },
+    "isPartOf": {
+      "@id": "{{ shop.url }}{{ article.url }}#article"
+    }
+  }
+  </script>
+{%- endif -%}
 
 
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
@@ -180,7 +197,13 @@
           class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {{ block.shopify_attributes }}
         >
-          {% render 'auto-link-glossary', content: article.content %}
+          {%- assign article_body_content = article.content -%}
+          {%- if article.url contains 'real-kemp-jewellery-guide' -%}
+            {%- capture real_kemp_old_weight_text -%}Real kemp pieces are also noticeably heavier than regular alloy-metal dance jewellery because of the brass and copper base. For young dancers or long performance days, that weight is worth considering along with the stage look.{%- endcapture -%}
+            {%- capture real_kemp_new_weight_text -%}In Anil Tunk's hands-on experience, real kemp pieces of similar size often feel noticeably heavier and more substantial than regular alloy-metal dance jewellery because of the brass and copper base. For young dancers or long performance days, that weight is worth considering along with the stage look.{%- endcapture -%}
+            {%- assign article_body_content = article_body_content | replace: real_kemp_old_weight_text, real_kemp_new_weight_text -%}
+          {%- endif -%}
+          {% render 'auto-link-glossary', content: article_body_content %}
         </div>
 
       {%- when 'share' -%}

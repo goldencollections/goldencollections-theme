@@ -1,0 +1,673 @@
+{%- liquid
+  assign anil_page_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign knowledge_url = pages['golden-collections-knowledge-hub'].url | default: '/pages/golden-collections-knowledge-hub'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign regional_url = pages['deity-jewellery-regional-names'].url | default: '/pages/deity-jewellery-regional-names'
+  assign proof_url = pages['temple-alankaram-proof'].url | default: '/pages/temple-alankaram-proof'
+  assign hanuman_proof_url = '/blogs/jewellery-guides/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026'
+  assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples'
+  assign anil_linkedin_url = 'https://www.linkedin.com/in/anil-tunk-35764388/'
+  assign anil_image = section.settings.profile_image
+  assign fallback_anil_image_url = 'https://cdn.shopify.com/s/files/1/0764/9224/3242/files/anil-tunk-owner-golden-collections.png?v=1764585106'
+-%}
+
+<section class="gc-author-profile color-{{ section.settings.color_scheme }}">
+  <div class="gc-author-profile__hero">
+    <div class="gc-author-profile__hero-inner page-width">
+      <div class="gc-author-profile__copy">
+        <nav class="gc-author-profile__breadcrumb" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span>/</span>
+          <span>Anil Tunk</span>
+        </nav>
+        <div class="gc-author-profile__headline">
+          <p class="gc-author-profile__eyebrow">{{ section.settings.eyebrow }}</p>
+          <h1>{{ section.settings.heading }}</h1>
+          <p class="gc-author-profile__intro">{{ section.settings.intro }}</p>
+        </div>
+        <div class="gc-author-profile__actions">
+          <a href="{{ knowledge_url }}">Open knowledge hub</a>
+          <a href="{{ measure_url }}" class="gc-author-profile__actions-secondary">Measure your idol</a>
+          <a href="{{ anil_linkedin_url }}" class="gc-author-profile__actions-tertiary" target="_blank" rel="noopener">View Anil on LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="gc-author-profile__portrait">
+        {%- if anil_image != blank -%}
+          {{
+            anil_image
+            | image_url: width: 720
+            | image_tag:
+              loading: 'eager',
+              alt: 'Anil Tunk of Golden Collections',
+              widths: '320, 480, 720',
+              sizes: '(min-width: 990px) 360px, 80vw'
+          }}
+        {%- else -%}
+          <img
+            src="{{ fallback_anil_image_url }}"
+            alt="Anil Tunk owner of Golden Collections"
+            loading="eager"
+            width="720"
+            height="900"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="gc-author-profile__proof-wrap">
+    <div class="gc-author-profile__proof page-width" aria-label="Golden Collections authority signals">
+      <article>
+        <strong>Founded in 2012</strong>
+        <span>Golden Collections has served deity jewellery, Bharatanatyam jewellery, Kuchipudi jewellery and kemp temple jewellery buyers for more than a decade.</span>
+      </article>
+      <article>
+        <strong>Hyderabad / Secunderabad specialist</strong>
+        <span>Anil leads Golden Collections from West Marredpally, Secunderabad, Telangana, India.</span>
+      </article>
+      <article>
+        <strong>Fit-first deity jewellery guidance</strong>
+        <span>The public guides focus on idol size, placement, regional names, ornament type and practical alankaram decisions.</span>
+      </article>
+    </div>
+  </div>
+
+  <div class="gc-author-profile__content-wrap">
+    <div class="gc-author-profile__content page-width">
+      <section class="gc-author-profile__about">
+        <p class="gc-author-profile__label">About Anil</p>
+        <h2>Practical guidance for deity jewellery and alankaram buyers</h2>
+        <div class="gc-author-profile__voice">
+          <p>Anil Tunk is the founder and public leader of Golden Collections, an India-based specialist store for Hindu deity jewellery, idol alankaram accessories, Bharatanatyam jewellery, Kuchipudi jewellery and real kemp temple jewellery.</p>
+          <p>His guidance on Golden Collections is written for families, devotees, temple buyers and dancers who need to choose the right ornament by use case, size, placement and tradition. The focus is practical: what to measure, which regional names mean the same ornament, which items are deity-specific, and when a product should be treated as general or setup-dependent.</p>
+        </div>
+      </section>
+
+      <section class="gc-author-profile__specialist">
+        <p class="gc-author-profile__label">Specialist Areas</p>
+        <h2>Topics Anil reviews for Golden Collections</h2>
+        <ul class="gc-author-profile__topic-list">
+          <li>Deity crowns, mukut, kireedam and kirita size selection.</li>
+          <li>Short haram, long haram, chest necklace and vaddanam fit for god and goddess idols.</li>
+          <li>Varalakshmi, Lakshmi, Amman and Ammavaru alankaram planning.</li>
+          <li>Balaji, Vishnu, Perumal, Krishna, Ganesha, Shiva, Durga, Murugan, Ayyappa and Hanuman jewellery compatibility.</li>
+          <li>Regional ornament names across English, Telugu, Tamil, Kannada, Hindi and Sanskrit-derived search language.</li>
+          <li>Real kemp, Bharatanatyam and Kuchipudi jewellery buying guidance.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="gc-author-profile__guides page-width" aria-labelledby="gc-author-guides-heading">
+    <div class="gc-author-profile__section-head">
+      <p class="gc-author-profile__label">Guides By Golden Collections</p>
+      <h2 id="gc-author-guides-heading"><span aria-hidden="true">✦</span> Start with these deity jewellery guides</h2>
+    </div>
+    <div class="gc-author-profile__guide-grid">
+      <a href="{{ knowledge_url }}">
+        <strong>Golden Collections Knowledge Hub</strong>
+        <span>Start with the central source for entity facts, author context, deity guides, glossary and real kemp guidance.</span>
+      </a>
+      <a href="{{ measure_url }}">
+        <strong>How to Measure Your Idol for Deity Jewellery</strong>
+        <span>Measure idol height, crown placement, face width, chest, waist and altar space before choosing ornaments.</span>
+      </a>
+      <a href="{{ crown_url }}">
+        <strong>Deity Crown, Mukut and Kireedam Size Guide</strong>
+        <span>Choose open-back, half-round and full-round crowns using the right size checks.</span>
+      </a>
+      <a href="{{ regional_url }}">
+        <strong>Regional Names of Deity Jewellery</strong>
+        <span>Understand names such as mukut, kireedam, vaddanam, oddiyanam, thomala, namam and haram.</span>
+      </a>
+      <a href="{{ hanuman_proof_url }}">
+        <strong>Real Temple Alankaram Proof</strong>
+        <span>Golden Collections deity jewellery was used for Hanuman Jayanti alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri, coordinated with Ayyagaru Ram Sharma. Shared with permission as a real alankaram example.</span>
+      </a>
+      <a href="{{ varalakshmi_examples_url }}">
+        <strong>Varalakshmi Alankaram Examples</strong>
+        <span>See previous Varalakshmi and Varamahalakshmi examples with fit notes on crown scale, face visibility, haram placement and altar setup.</span>
+      </a>
+      <a href="/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram">
+        <strong>Real Kemp Jewellery for Arangetram</strong>
+        <span>Choose a complete real kemp Bharatanatyam set for arangetram — components, price range, fit guidance and diaspora ordering.</span>
+      </a>
+    </div>
+  </section>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ shop.url }}{{ anil_page_url }}#profilepage",
+      "url": "{{ shop.url }}{{ anil_page_url }}",
+      "name": "Anil Tunk - Golden Collections",
+      "about": { "@id": "{{ shop.url }}{{ anil_page_url }}#person" },
+      "mainEntity": { "@id": "{{ shop.url }}{{ anil_page_url }}#person" },
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ shop.url }}{{ anil_page_url }}#person",
+      "name": "Anil Tunk",
+      "url": "{{ shop.url }}{{ anil_page_url }}",
+      "sameAs": [{{ anil_linkedin_url | json }}],
+      "jobTitle": "Founder, Golden Collections",
+      "worksFor": { "@id": "https://www.goldencollections.com/#organization" },
+      "affiliation": { "@id": "https://www.goldencollections.com/#organization" },
+      "knowsAbout": [
+        "Deity jewellery",
+        "Hindu idol alankaram",
+        "Bharatanatyam jewellery",
+        "Kuchipudi jewellery",
+        "Kemp temple jewellery",
+        "Varalakshmi alankaram",
+        "Deity crown sizing"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Secunderabad",
+        "addressRegion": "Telangana",
+        "addressCountry": "IN"
+      }
+      ,
+      "image": {%- if anil_image != blank -%}{{ anil_image | image_url: width: 720 | prepend: 'https:' | json }}{%- else -%}{{ fallback_anil_image_url | json }}{%- endif -%}
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-author-profile {
+    background: #fdf6ec;
+    color: #1f170d;
+    overflow: hidden;
+  }
+
+  .gc-author-profile,
+  .gc-author-profile * {
+    box-sizing: border-box;
+  }
+
+  .gc-author-profile__hero {
+    background: #1a0e05;
+    color: #f5ede0;
+  }
+
+  .gc-author-profile__hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .gc-author-profile__copy {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    order: 2;
+    padding: 2rem 0 2.25rem;
+  }
+
+  .gc-author-profile__breadcrumb {
+    color: rgba(245, 237, 224, 0.72);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.05rem;
+    gap: 0.45rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .gc-author-profile__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-author-profile__headline {
+    margin-bottom: 0;
+  }
+
+  .gc-author-profile__eyebrow,
+  .gc-author-profile__label {
+    color: #c9972a;
+    font-size: 1.08rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .gc-author-profile h1,
+  .gc-author-profile h2,
+  .gc-author-profile h3,
+  .gc-author-profile strong {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-author-profile h1 {
+    color: #f5ede0;
+    font-size: 4rem;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 920px;
+  }
+
+  .gc-author-profile__intro {
+    color: rgba(245, 237, 224, 0.88);
+    font-size: 1.48rem;
+    line-height: 1.55;
+    margin: 1.15rem 0 0;
+    max-width: 820px;
+  }
+
+  .gc-author-profile__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.35rem;
+    padding-top: 0;
+  }
+
+  .gc-author-profile__actions a {
+    align-items: center;
+    background: #8b1c1c;
+    border: 1px solid #8b1c1c;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.18rem;
+    font-weight: 700;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-author-profile__actions .gc-author-profile__actions-secondary {
+    background: transparent;
+    border-color: rgba(201, 151, 42, 0.55);
+    color: #f5ede0;
+  }
+
+  .gc-author-profile__actions .gc-author-profile__actions-tertiary {
+    background: rgba(245, 237, 224, 0.08);
+    border-color: rgba(245, 237, 224, 0.28);
+    color: #f5ede0;
+  }
+
+  .gc-author-profile__portrait {
+    min-height: 360px;
+    order: 1;
+  }
+
+  .gc-author-profile__portrait img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+  }
+
+  .gc-author-profile__proof,
+  .gc-author-profile__content,
+  .gc-author-profile__guide-grid {
+    display: grid;
+  }
+
+  .gc-author-profile__proof-wrap {
+    background: #241508;
+  }
+
+  .gc-author-profile__proof {
+    gap: 0;
+  }
+
+  .gc-author-profile__proof article {
+    background: #241508;
+    border-left: 3px solid #c9972a;
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.2rem 1rem;
+  }
+
+  .gc-author-profile__proof article + article {
+    border-top: 1px solid rgba(245, 237, 224, 0.08);
+  }
+
+  .gc-author-profile__proof strong {
+    color: #f5ede0;
+    font-size: 1.5rem;
+    line-height: 1.16;
+  }
+
+  .gc-author-profile__content p,
+  .gc-author-profile__content li,
+  .gc-author-profile__content span,
+  .gc-author-profile__guides p,
+  .gc-author-profile__guides li,
+  .gc-author-profile__guides span {
+    color: #4e4438;
+    font-size: 1.18rem;
+    line-height: 1.45;
+  }
+
+  .gc-author-profile__proof span {
+    color: rgba(245, 237, 224, 0.82);
+  }
+
+  .gc-author-profile__hero .gc-author-profile__breadcrumb,
+  .gc-author-profile__hero .gc-author-profile__breadcrumb span,
+  .gc-author-profile__hero .gc-author-profile__breadcrumb a {
+    color: rgba(245, 237, 224, 0.72);
+  }
+
+  .gc-author-profile__hero .gc-author-profile__eyebrow {
+    color: #c9972a;
+  }
+
+  .gc-author-profile__hero .gc-author-profile__intro {
+    color: rgba(245, 237, 224, 0.9);
+    font-size: 1.48rem;
+  }
+
+  .gc-author-profile__content-wrap {
+    background: #fdf6ec;
+    border-top: 1px solid rgba(201, 151, 42, 0.2);
+  }
+
+  .gc-author-profile__content {
+    gap: 2rem;
+    padding-bottom: 2.2rem;
+    padding-top: 2.2rem;
+  }
+
+  .gc-author-profile h2 {
+    font-size: 2.4rem;
+    line-height: 1.12;
+    margin: 0 0 0.75rem;
+  }
+
+  .gc-author-profile__voice {
+    border-left: 4px solid #8b1c1c;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .gc-author-profile__voice::before {
+    color: rgba(201, 151, 42, 0.22);
+    content: "“";
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 6rem;
+    left: 0.5rem;
+    line-height: 1;
+    position: absolute;
+    top: -1rem;
+  }
+
+  .gc-author-profile__voice p {
+    position: relative;
+  }
+
+  .gc-author-profile__topic-list {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .gc-author-profile__topic-list li {
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .gc-author-profile__topic-list li::before {
+    color: #c9972a;
+    content: "•";
+    font-size: 1.35rem;
+    font-weight: 800;
+    left: 0;
+    line-height: 1;
+    position: absolute;
+    top: 0.2rem;
+  }
+
+  .gc-author-profile__topic-list li + li {
+    margin-top: 0.45rem;
+  }
+
+  .gc-author-profile__guides {
+    padding-bottom: 3rem;
+    padding-top: 2.4rem;
+  }
+
+  .gc-author-profile__section-head {
+    max-width: 780px;
+  }
+
+  .gc-author-profile__section-head h2 span {
+    color: #c9972a;
+    display: inline-block;
+    margin-right: 0.35rem;
+  }
+
+  .gc-author-profile__guide-grid {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .gc-author-profile__guide-grid a {
+    background: #fdf0d8;
+    border: 1px solid rgba(201, 151, 42, 0.22);
+    border-radius: 8px;
+    border-top: 3px solid #c9972a;
+    box-shadow: 0 2px 8px rgba(26, 14, 4, 0.08);
+    color: #1f170d;
+    display: grid;
+    gap: 0.45rem;
+    min-height: 100%;
+    padding: 1.1rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .gc-author-profile__guide-grid a:hover {
+    box-shadow: 0 8px 18px rgba(26, 14, 4, 0.14);
+    transform: translateY(-3px);
+  }
+
+  .gc-author-profile__guide-grid strong {
+    color: #1f170d;
+    font-size: 1.55rem;
+    line-height: 1.15;
+  }
+
+  .gc-author-profile__guide-grid span {
+    color: #6f6254;
+  }
+
+  .gc-author-profile__eyebrow {
+    animation: gc-author-fade-up 0.6s ease-out both;
+  }
+
+  .gc-author-profile h1 {
+    animation: gc-author-fade-up 0.6s ease-out 0.1s both;
+  }
+
+  .gc-author-profile__intro {
+    animation: gc-author-fade-up 0.6s ease-out 0.2s both;
+  }
+
+  .gc-author-profile__actions {
+    animation: gc-author-fade-up 0.6s ease-out 0.3s both;
+  }
+
+  .gc-author-profile__portrait {
+    animation: gc-author-fade-up 0.6s ease-out 0.15s both;
+  }
+
+  .gc-author-profile__proof article {
+    animation: gc-author-fade-up 0.6s ease-out both;
+  }
+
+  .gc-author-profile__proof article:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .gc-author-profile__proof article:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .gc-author-profile__guide-grid a {
+    animation: gc-author-fade-up 0.5s ease-out both;
+  }
+
+  .gc-author-profile__guide-grid a:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .gc-author-profile__guide-grid a:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .gc-author-profile__guide-grid a:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+
+  @keyframes gc-author-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gc-author-profile *,
+    .gc-author-profile *::before,
+    .gc-author-profile *::after {
+      animation: none !important;
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-author-profile__hero-inner {
+      align-items: stretch;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 42%);
+      height: 500px;
+      min-height: 0;
+    }
+
+    .gc-author-profile__copy {
+      justify-content: flex-start;
+      min-height: 0;
+      order: 1;
+      padding-bottom: 2rem;
+      padding-right: 3rem;
+      padding-top: 2.2rem;
+    }
+
+    .gc-author-profile__portrait {
+      height: 500px;
+      min-height: 0;
+      order: 2;
+    }
+
+    .gc-author-profile h1 {
+      font-size: 5.8rem;
+      max-width: 760px;
+    }
+
+    .gc-author-profile__proof {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-author-profile__proof article {
+      padding: 1.35rem 1.2rem;
+    }
+
+    .gc-author-profile__proof article + article {
+      border-top: 0;
+    }
+
+    .gc-author-profile__guide-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-author-profile__content {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      padding-bottom: 3rem;
+      padding-top: 3rem;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .gc-author-profile h1 {
+      font-size: 6.3rem;
+    }
+
+    .gc-author-profile__hero-inner,
+    .gc-author-profile__copy,
+    .gc-author-profile__portrait {
+      height: 520px;
+      min-height: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC Anil authority profile",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "profile_image",
+      "label": "Anil profile image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Founder and deity jewellery guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Anil Tunk of Golden Collections"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Anil Tunk is the founder and public leader of Golden Collections, helping customers choose deity jewellery, Hindu idol alankaram accessories, Bharatanatyam jewellery, Kuchipudi jewellery and kemp temple jewellery from Secunderabad/Hyderabad since 2012."
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC Anil authority profile"
+    }
+  ]
+}
+{% endschema %}

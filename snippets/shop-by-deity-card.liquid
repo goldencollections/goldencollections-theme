@@ -1,0 +1,28 @@
+{%- liquid
+  assign card_collection = nav_collection
+  assign card_title = title_override | default: card_collection.metafields.custom.display_title.value | default: card_collection.metafields.custom.display_title | default: card_collection.title
+  assign card_url = url_override | default: card_collection.url
+  assign card_image = image_override | default: card_collection.featured_image | default: card_collection.products.first.featured_media.preview_image
+  assign card_products_count = card_collection.products_count | default: 0
+  assign card_count = card_products_count | append: ' products'
+-%}
+
+{%- if card_title != blank and card_url != blank -%}
+  <a class="gc-shop-by-deity-card" href="{{ card_url }}">
+    <span class="gc-shop-by-deity-card__media">
+      {%- if card_image != blank -%}
+        {{ card_image | image_url: width: 520 | image_tag: loading: 'lazy', widths: '220, 360, 520', sizes: '(min-width: 750px) 25vw, 50vw', alt: card_title }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </span>
+    <span class="gc-shop-by-deity-card__body">
+      <strong>{{ card_title }}</strong>
+      {%- if card_collection != blank and card_products_count > 0 -%}
+        <span>{{ card_count }}</span>
+      {%- else -%}
+        <span>View collection</span>
+      {%- endif -%}
+    </span>
+  </a>
+{%- endif -%}

@@ -5,8 +5,24 @@
 {% endcomment %}
 
 {% liquid
-  assign faq_metafield = product.metafields.custom.product_faqs
-  assign faqs = faq_metafield.value
+  assign skip_dance_product_faq = false
+  if product.type contains 'Bharatanatyam'
+    assign skip_dance_product_faq = true
+  endif
+  if product.type == 'Drama Crowns'
+    assign skip_dance_product_faq = true
+  endif
+  if product.title contains 'Bharatanatyam'
+    assign skip_dance_product_faq = true
+  endif
+  if product.title contains 'Kuchipudi'
+    assign skip_dance_product_faq = true
+  endif
+
+  unless skip_dance_product_faq
+    assign faq_metafield = product.metafields.custom.product_faqs
+    assign faqs = faq_metafield.value
+  endunless
 
   if faqs and faqs.size > 0
     assign section_id = 'faq-accordion-' | append: product.id

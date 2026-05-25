@@ -1,0 +1,215 @@
+{%- liquid
+  assign display_title = collection.metafields.custom.display_title.value | default: collection.metafields.custom.display_title | default: collection.title
+  assign collection_intro = collection.metafields.custom.collection_intro.value | default: collection.metafields.custom.collection_intro | default: collection.description
+  assign shopping_path = collection.metafields.custom.shopping_path_label.value | default: collection.metafields.custom.shopping_path_label | default: display_title
+  assign faq_family = collection.metafields.custom.faq_family.value | default: collection.metafields.custom.faq_family | downcase | strip
+  assign collection_handle_lc = collection.handle | downcase
+  assign collection_title_lc = collection.title | downcase
+
+  if collection_handle_lc contains 'necklace-long-and-short' or collection_title_lc contains 'necklaces'
+    assign faq_family = 'dance_necklace'
+  elsif faq_family == blank or faq_family == 'dance_accessory'
+    if collection_handle_lc contains 'short-necklace' or collection_title_lc contains 'short necklace'
+      assign faq_family = 'dance_short_necklace'
+    elsif collection_handle_lc contains 'long-haram' or collection_handle_lc contains 'long-necklace' or collection_title_lc contains 'long haram' or collection_title_lc contains 'long necklace'
+      assign faq_family = 'dance_long_haram'
+    elsif collection_handle_lc contains 'set' or collection_title_lc contains 'set'
+      assign faq_family = 'dance_set'
+    elsif collection_handle_lc contains 'black-kemp' or collection_title_lc contains 'black kemp'
+      assign faq_family = 'black_kemp'
+    elsif collection_handle_lc contains 'kemp' or collection_title_lc contains 'kemp'
+      assign faq_family = 'real_kemp'
+    elsif collection_handle_lc contains 'ghungroo' or collection_title_lc contains 'ghungroo' or collection_title_lc contains 'salangai'
+      assign faq_family = 'dance_ghungroo'
+    elsif collection_handle_lc contains 'bangle' or collection_title_lc contains 'bangle'
+      assign faq_family = 'dance_bangles'
+    elsif collection_handle_lc contains 'headset' or collection_handle_lc contains 'maang-tikka' or collection_handle_lc contains 'sun-moon' or collection_title_lc contains 'nethi chutti' or collection_title_lc contains 'sun and moon'
+      assign faq_family = 'dance_head'
+    elsif collection_handle_lc contains 'earring' or collection_handle_lc contains 'mattal' or collection_title_lc contains 'earring' or collection_title_lc contains 'mattal'
+      assign faq_family = 'dance_ear'
+    elsif collection_handle_lc contains 'waist' or collection_title_lc contains 'waist' or collection_title_lc contains 'vaddanam'
+      assign faq_family = 'dance_waist'
+    elsif collection_handle_lc contains 'vanki' or collection_title_lc contains 'vanki' or collection_title_lc contains 'bajuband'
+      assign faq_family = 'dance_arm'
+    elsif collection_handle_lc contains 'hair' or collection_handle_lc contains 'flower' or collection_handle_lc contains 'jada' or collection_handle_lc contains 'rakodi'
+      assign faq_family = 'dance_hair'
+    elsif collection_handle_lc contains 'makeup' or collection_title_lc contains 'makeup'
+      assign faq_family = 'dance_makeup'
+    elsif collection_handle_lc contains 'practice-saree' or collection_title_lc contains 'practice saree'
+      assign faq_family = 'dance_practice'
+    elsif collection_handle_lc contains 'nattuvangam' or collection_title_lc contains 'nattuvangam' or collection_title_lc contains 'dance plate'
+      assign faq_family = 'dance_instrument'
+    elsif collection_handle_lc contains 'crown' or collection_title_lc contains 'crown'
+      assign faq_family = 'dance_crown'
+    elsif collection_handle_lc contains 'nose-pin' or collection_title_lc contains 'nose pin'
+      assign faq_family = 'dance_nose'
+    else
+      assign faq_family = 'dance_accessory'
+    endif
+  endif
+
+  capture collection_description
+    if collection_intro != blank
+      echo collection_intro | strip_html | strip
+    else
+      echo display_title | append: ' at Golden Collections includes Bharatanatyam and Kuchipudi dance jewellery selected by performance use, costume placement, finish and stage styling.'
+    endif
+  endcapture
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "{{ shop.url }}{{ collection.url }}#webpage",
+      "url": "{{ shop.url }}{{ collection.url }}",
+      "name": {{ display_title | json }},
+      "description": {{ collection_description | strip | json }},
+      "about": [
+        { "@type": "Thing", "name": "Bharatanatyam jewellery" },
+        { "@type": "Thing", "name": "Kuchipudi jewellery" },
+        { "@type": "Thing", "name": "Classical dance jewellery" },
+        { "@type": "Thing", "name": "Arangetram jewellery" }
+        {%- case faq_family -%}
+          {%- when 'dance_necklace' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam short necklace" },
+            { "@type": "Thing", "name": "Bharatanatyam long haram" },
+            { "@type": "Thing", "name": "Dance necklace layering" }
+          {%- when 'dance_short_necklace' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam short necklace" },
+            { "@type": "Thing", "name": "Addigai" },
+            { "@type": "Thing", "name": "Padakkam necklace" }
+          {%- when 'dance_long_haram' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam long haram" },
+            { "@type": "Thing", "name": "Temple jewellery haram" }
+          {%- when 'real_kemp' -%}
+            ,{ "@type": "Thing", "name": "Real kemp jewellery" },
+            { "@type": "Thing", "name": "Kemp stones" }
+          {%- when 'black_kemp' -%}
+            ,{ "@type": "Thing", "name": "Black kemp jewellery" },
+            { "@type": "Thing", "name": "Black kemp dance set" }
+          {%- when 'dance_set' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam dance set" },
+            { "@type": "Thing", "name": "Arangetram jewellery set" }
+          {%- when 'dance_accessory_root' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam accessories" },
+            { "@type": "Thing", "name": "Dance costume accessories" }
+          {%- when 'dance_hair' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam hair accessories" },
+            { "@type": "Thing", "name": "Jada" },
+            { "@type": "Thing", "name": "Rakodi" }
+          {%- when 'dance_head' -%}
+            ,{ "@type": "Thing", "name": "Nethi chutti" },
+            { "@type": "Thing", "name": "Bharatanatyam headset" },
+            { "@type": "Thing", "name": "Surya Chandra ornaments" }
+          {%- when 'dance_ear' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam earrings" },
+            { "@type": "Thing", "name": "Mattal ear chains" },
+            { "@type": "Thing", "name": "Jhumki" }
+          {%- when 'dance_waist' -%}
+            ,{ "@type": "Thing", "name": "Vaddanam" },
+            { "@type": "Thing", "name": "Oddiyanam" },
+            { "@type": "Thing", "name": "Bharatanatyam waist belt" }
+          {%- when 'dance_arm' -%}
+            ,{ "@type": "Thing", "name": "Vanki" },
+            { "@type": "Thing", "name": "Bajuband" }
+          {%- when 'dance_ghungroo' -%}
+            ,{ "@type": "Thing", "name": "Ghungroo" },
+            { "@type": "Thing", "name": "Salangai" }
+          {%- when 'dance_bangles' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam bangles" }
+          {%- when 'dance_makeup' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam makeup" },
+            { "@type": "Thing", "name": "Dance hair essentials" }
+          {%- when 'dance_practice' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam practice saree" }
+          {%- when 'dance_instrument' -%}
+            ,{ "@type": "Thing", "name": "Nattuvangam" },
+            { "@type": "Thing", "name": "Dance plate" }
+          {%- when 'dance_crown' -%}
+            ,{ "@type": "Thing", "name": "Dance crown" },
+            { "@type": "Thing", "name": "Bharatanatyam drama crown" }
+          {%- when 'dance_nose' -%}
+            ,{ "@type": "Thing", "name": "Bharatanatyam nose pin" }
+        {%- endcase -%}
+      ],
+      "mainEntity": { "@id": "{{ shop.url }}{{ collection.url }}#itemlist" },
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ shop.url }}{{ collection.url }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ shop.url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bharatanatyam Jewellery",
+          "item": "{{ shop.url }}{{ collections['bharatanatyam-jewellery'].url | default: routes.collections_url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ display_title | json }},
+          "item": "{{ shop.url }}{{ collection.url }}"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "{{ shop.url }}{{ collection.url }}#itemlist",
+      "name": {{ display_title | append: ' products' | json }},
+      "description": {{ collection_description | strip | json }},
+      "numberOfItems": {{ collection.products_count }},
+      "itemListElement": [
+        {%- for product in collection.products limit: 30 -%}
+          {%- liquid
+            assign product_category = product.type | default: shopping_path | default: collection.title
+            assign product_range_type = product.metafields.custom.range_type.value | default: product.metafields.custom.range_type
+            assign product_placement = product.metafields.custom.placement.value | default: product.metafields.custom.placement
+          -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": "{{ shop.url }}{{ product.url }}",
+            "item": {
+              "@type": "Product",
+              "@id": "{{ shop.url }}{{ product.url }}#product",
+              "name": {{ product.title | json }},
+              "url": "{{ shop.url }}{{ product.url }}",
+              {%- if product.featured_media != blank -%}
+              "image": "{{ product.featured_media | image_url: width: 900 | prepend: 'https:' }}",
+              {%- endif -%}
+              "category": {{ product_category | strip | json }},
+              "additionalProperty": [
+                { "@type": "PropertyValue", "name": "Performance use", "value": "Bharatanatyam and Kuchipudi dance jewellery" },
+                { "@type": "PropertyValue", "name": "Shopping path", "value": {{ shopping_path | strip | json }} }
+                {%- if product_range_type != blank -%}
+                  ,{ "@type": "PropertyValue", "name": "Range type", "value": {{ product_range_type | strip | json }} }
+                {%- endif -%}
+                {%- if product_placement != blank -%}
+                  ,{ "@type": "PropertyValue", "name": "Placement", "value": {{ product_placement | strip | json }} }
+                {%- endif -%}
+              ],
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "{{ cart.currency.iso_code }}",
+                "price": "{{ product.price | money_without_currency | replace: ',', '' }}",
+                "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+                "url": "{{ shop.url }}{{ product.url }}"
+              }
+            }
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  ]
+}
+</script>

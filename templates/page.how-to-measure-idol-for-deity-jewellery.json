@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "gc-idol-measurement-guide",
+      "settings": {
+        "eyebrow": "Deity jewellery size guide",
+        "heading": "How to Measure Your Idol for Deity Jewellery",
+        "subheading": "Use this Golden Collections checklist before choosing deity crowns, mukut, kireedam, harams, vaddanam, earrings, tilak, namam, hastham, padam, arch or other Hindu idol alankaram accessories.",
+        "whatsapp_number": "917337294499"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

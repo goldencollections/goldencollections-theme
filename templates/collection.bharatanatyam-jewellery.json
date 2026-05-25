@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "title": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "collection_circles": {
+      "type": "collection-subcollection-circles",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "",
+        "subcollection_menu": "",
+        "max_items": 12,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "dance_hub": {
+      "type": "dance-collection-hub",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "mode": "bharatanatyam",
+        "intro": "Shop Bharatanatyam and Kuchipudi jewellery by collection family, including dance sets, short necklaces, long harams, headset, nethi chutti, mattal, earrings, hair accessories, real kemp and black kemp.",
+        "collections_eyebrow": "Shop collections",
+        "collections_heading": "Choose a Bharatanatyam jewellery collection",
+        "max_collections": 12,
+        "guide_eyebrow": "Performance help",
+        "guide_heading": "",
+        "guide_body": "",
+        "faq_eyebrow": "Helpful answers",
+        "faq_heading": ""
+      }
+    }
+  },
+  "order": [
+    "title",
+    "collection_circles",
+    "dance_hub"
+  ]
+}

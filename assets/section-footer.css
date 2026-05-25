@@ -286,6 +286,30 @@
   }
 }
 
+.footer__payment {
+  max-width: 52rem;
+}
+
+.footer__payment-note {
+  margin: 0.75rem 0 0;
+  max-width: min(100%, 52rem);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.75);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__payment {
+    width: 52rem;
+  }
+
+  .footer__payment-note {
+    text-align: right;
+  }
+}
+
 .footer__content-bottom-wrapper--center {
   justify-content: center;
 }

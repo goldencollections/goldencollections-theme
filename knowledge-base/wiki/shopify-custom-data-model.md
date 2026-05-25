@@ -1,78 +1,50 @@
 # Shopify Custom Data Model
 
-Backlinks: [[deity-compatibility-model.md]], [[content-roadmap.md]], [[business-entity.md]]
+Backlinks: [[deity-compatibility-model.md]], [[content-roadmap.md]], [[business-entity.md]], [[collection-optimization-playbook.md]]
 
 ## Purpose
 
 Use Shopify custom data to make Golden Collections product pages, collection pages, filters, and GEO answers consistent.
 
-The model should separate:
+Separate:
 
-- Product-specific facts: stored as product metafields.
-- Reusable entities: stored as metaobjects and referenced by products.
+- Product facts: product metafields.
+- Collection facts: collection metafields.
+- Reusable entities: metaobjects referenced by products and collections.
 
 ## Metaobjects
 
 ### Deity Group
 
-Fields:
+Core fields: `name`, `slug`, `status`, `aliases`, `regional_names`, `parent_group`, `specific_symbols`, `seo_intro`, `collection_intro`, `compatibility_notes`.
 
-- `name`
-- `aliases`
-- `regional_names`
-- `parent_group`
-- `specific_symbols`
-- `seo_intro`
+Navigation fields: `parent_group_ref`, `default_ornament_types`, `shop_by_deity_collection`, `featured_collections`, `sort_priority`.
 
-Examples:
-
-- Varalakshmi / Lakshmi / Amman
-- Vishnu / Balaji / Venkateswara / Perumal
-- Krishna / Radha Krishna
-- Ganesha / Ganapati / Vinayaka
-- Shiva / Mahadev
-- Durga / Devi / Amman / Parvati
-- Murugan / Subramanya / Kartikeya / Skanda
-- Ayyappa / Ayyappan
-- Hanuman / Anjaneya / Maruti
+Examples: Varalakshmi/Lakshmi/Amman, Balaji/Vishnu/Perumal, Krishna/Radha Krishna, Ganesha, Shiva, Durga/Devi/Amman/Parvati, Murugan, Ayyappa, Hanuman.
 
 ### Ornament Type
 
-Fields:
+Core fields: `name`, `slug`, `status`, `aliases`, `placement`, `fit_measurement_needed`, `seo_definition`, `fit_notes`.
 
-- `name`
-- `aliases`
-- `placement`
-- `fit_measurement_needed`
-- `seo_definition`
+Navigation fields: `sizing_standard`, `deity_first_label`, `collection_handle_suffix`, `sort_priority`.
 
-Examples:
-
-- Crown / Mukut / Kireedam
-- Short Haram / Short Necklace
-- Long Haram
-- Vaddanam / Oddiyanam / Waist Belt
-- Earrings
-- Nose Ring / Nath / Bullaku
-- Hands / Legs / Hastham / Padam
-- Tilak / Namam / Thiruman
-- Shanku Chakra
+Examples: Crown/Mukut/Kireedam, Short Necklace, Long Haram, Vaddanam, Earrings, Nose Ring, Hands/Legs, Tilak/Namam, Shanku Chakra, Pooja Decor/Banana Tree Decor.
 
 ### Size Profile
 
-Fields:
+Fields: `label`, `slug`, `status`, `idol_height_min_in`, `idol_height_max_in`, `idol_width_min_in`, `idol_width_max_in`, `fit_notes`, `confidence`, `sort_priority`.
 
-- `label`
-- `idol_height_min_in`
-- `idol_height_max_in`
-- `fit_notes`
-- `confidence`
+Use this for reusable idol-size bands.
 
-Use this for deity products where idol size is critical.
+### Deity Crown Size Standard
+
+Fields: `label`, `slug`, `status`, `deity_groups`, `ornament_type`, idol height range, head width range, crown inner width range, crown height range, crown depth range, crown arc length range, `crown_style`, `measuring_points`, `fit_caveats`, `confidence`, `sort_priority`.
+
+Use this when crown fit needs more precision than generic ornament dimensions.
 
 ## Product Metafields
 
-Recommended product fields:
+Keep text fields for current theme compatibility:
 
 - `primary_deity`
 - `compatible_deities`
@@ -85,6 +57,7 @@ Recommended product fields:
 - `ornament_depth_in`
 - `placement`
 - `regional_names`
+- `not_for_deities`
 - `size_confidence`
 - `fit_notes`
 - `quality_checks`
@@ -93,30 +66,71 @@ Recommended product fields:
 - `component_count`
 - `range_type`
 
-## Deity-First Navigation Use Case
+Use reference fields for canonical model work:
 
-The custom data model should support future deity-based collections.
+- `primary_deity_ref`
+- `compatible_deity_refs`
+- `not_for_deity_refs`
+- `ornament_type_ref`
+- `size_profile_ref`
+- `crown_size_standard_ref`
 
-Customer path:
+Crown-specific product fields:
+
+- `idol_head_width_min_in`
+- `idol_head_width_max_in`
+- `crown_style`
+- `crown_inner_width_in`
+- `crown_outer_width_in`
+- `crown_inner_circumference_in`
+- `crown_arc_length_in`
+
+## Collection Metafields
+
+Use collection metafields to support deity-first browsing without changing existing Liquid templates yet:
+
+- `primary_deity_ref`
+- `deity_group_refs`
+- `ornament_type_ref`
+- `ornament_type_refs`
+- `size_profile_ref`
+- `crown_size_standard_ref`
+- `collection_role`
+- `deity_first_enabled`
+- `shopping_path_label`
+- `display_title`
+- `parent_menu_handles`
+- `category_node_ref`
+- `collection_intro`
+- `size_fit_intro`
+- `faq_family`
+- `regional_keyword_cluster`
+- `subcollections`
+- `parent_deity_collection`
+- `related_collection_refs`
+- `sort_priority`
+
+Collection roles: `shop_by_deity_root`, `deity_landing`, `deity_ornament`, `ornament_first`, `festival`, `accessory`, `pooja_decor`.
+
+Use `Pooja Decor` as `range_type` for ritual decor such as banana trees, banana bunches, coconut tree decor, kalasam decor, altar decor, doorway decor and mandapam setup pieces. Do not force these products into jewellery when a pooja-decor taxonomy is more accurate.
+
+## Deity-First Navigation
+
+Future path:
 
 - Shop by Deity
 - Amman
-- Amman Crowns / Mukut
+- Amman Crowns
 - Amman Necklaces
 - Amman Earrings
-- Amman Vaddanam / Waist Belt
+- Amman Vaddanam
 - Amman Accessories
 
-Products should be able to appear in both:
-
-- Ornament-first collections, such as all deity crowns.
-- Deity-first collections, such as Amman crowns.
-
-This requires products to reference both deity groups and ornament types.
+Products can appear in both ornament-first collections, such as all deity crowns, and deity-first collections, such as Amman crowns. Use deity references, ornament references, compatibility class, and fit fields to decide inclusion.
 
 ## Public Labels
 
-Use customer-friendly public labels:
+Use customer-friendly labels:
 
 - `Made for`
 - `Also suitable for`

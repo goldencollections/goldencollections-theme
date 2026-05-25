@@ -1,0 +1,1097 @@
+{%- liquid
+  assign display_title = collection.metafields.custom.display_title.value | default: collection.metafields.custom.display_title | default: collection.title
+  assign intro = collection.metafields.custom.collection_intro.value | default: collection.metafields.custom.collection_intro | default: collection.description
+  assign fit_intro = collection.metafields.custom.size_fit_intro.value | default: collection.metafields.custom.size_fit_intro
+  assign shopping_path = collection.metafields.custom.shopping_path_label.value | default: collection.metafields.custom.shopping_path_label | default: display_title
+  assign faq_family = collection.metafields.custom.faq_family.value | default: collection.metafields.custom.faq_family | downcase | strip
+  assign related_collections = collection.metafields.custom.related_collection_refs.value
+  assign collection_handle_lc = collection.handle | downcase
+  assign collection_title_lc = collection.title | downcase
+  assign is_real_kemp = false
+  assign is_black_kemp = false
+  assign is_necklace_family = false
+  assign is_short_necklace = false
+  assign is_long_haram = false
+
+  if collection_handle_lc contains 'black-kemp' or collection_title_lc contains 'black kemp'
+    assign is_black_kemp = true
+  elsif collection_handle_lc contains 'kemp' or collection_title_lc contains 'kemp'
+    assign is_real_kemp = true
+  endif
+
+  if collection_handle_lc contains 'necklace-long-and-short' or collection_title_lc contains 'necklaces'
+    assign is_necklace_family = true
+  endif
+
+  if collection_handle_lc contains 'short-necklace' or collection_title_lc contains 'short necklace'
+    assign is_short_necklace = true
+  endif
+
+  if collection_handle_lc contains 'long-haram' or collection_handle_lc contains 'long-necklace' or collection_title_lc contains 'long haram' or collection_title_lc contains 'long necklace'
+    assign is_long_haram = true
+  endif
+
+  if is_necklace_family
+    assign faq_family = 'dance_necklace'
+  elsif faq_family == blank or faq_family == 'dance_accessory'
+    if is_short_necklace
+      assign faq_family = 'dance_short_necklace'
+    elsif is_long_haram
+      assign faq_family = 'dance_long_haram'
+    elsif collection_handle_lc contains 'set' or collection_title_lc contains 'set'
+      assign faq_family = 'dance_set'
+    elsif is_real_kemp
+      assign faq_family = 'real_kemp'
+    elsif is_black_kemp
+      assign faq_family = 'black_kemp'
+    elsif collection_handle_lc contains 'ghungroo' or collection_title_lc contains 'ghungroo' or collection_title_lc contains 'salangai'
+      assign faq_family = 'dance_ghungroo'
+    elsif collection_handle_lc contains 'bangle' or collection_title_lc contains 'bangle'
+      assign faq_family = 'dance_bangles'
+    elsif collection_handle_lc contains 'headset' or collection_handle_lc contains 'maang-tikka' or collection_handle_lc contains 'sun-moon' or collection_title_lc contains 'nethi chutti' or collection_title_lc contains 'sun and moon'
+      assign faq_family = 'dance_head'
+    elsif collection_handle_lc contains 'earring' or collection_handle_lc contains 'mattal' or collection_title_lc contains 'earring' or collection_title_lc contains 'mattal'
+      assign faq_family = 'dance_ear'
+    elsif collection_handle_lc contains 'waist' or collection_title_lc contains 'waist' or collection_title_lc contains 'vaddanam'
+      assign faq_family = 'dance_waist'
+    elsif collection_handle_lc contains 'vanki' or collection_title_lc contains 'vanki' or collection_title_lc contains 'bajuband'
+      assign faq_family = 'dance_arm'
+    elsif collection_handle_lc contains 'hair' or collection_handle_lc contains 'flower' or collection_handle_lc contains 'jada' or collection_handle_lc contains 'rakodi'
+      assign faq_family = 'dance_hair'
+    elsif collection_handle_lc contains 'makeup' or collection_title_lc contains 'makeup'
+      assign faq_family = 'dance_makeup'
+    elsif collection_handle_lc contains 'practice-saree' or collection_title_lc contains 'practice saree'
+      assign faq_family = 'dance_practice'
+    elsif collection_handle_lc contains 'nattuvangam' or collection_title_lc contains 'nattuvangam' or collection_title_lc contains 'dance plate'
+      assign faq_family = 'dance_instrument'
+    elsif collection_handle_lc contains 'crown' or collection_title_lc contains 'crown'
+      assign faq_family = 'dance_crown'
+    elsif collection_handle_lc contains 'nose-pin' or collection_title_lc contains 'nose pin'
+      assign faq_family = 'dance_nose'
+    else
+      assign faq_family = 'dance_accessory'
+    endif
+  endif
+-%}
+
+<section class="gc-dance-footer color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="gc-dance-footer__summary" aria-label="Collection buying guide">
+      <div class="gc-dance-footer__summary-copy">
+        <span>{{ section.settings.help_eyebrow }}</span>
+        <h2>
+          {%- case faq_family -%}
+            {%- when 'dance_necklace' -%}
+              Choose Bharatanatyam necklaces by stage placement
+            {%- when 'dance_short_necklace' -%}
+              Choose the right short necklace for the costume neckline
+            {%- when 'dance_long_haram' -%}
+              Choose a long haram that balances the full costume
+            {%- when 'dance_set' -%}
+              Build a complete stage-ready dance set
+            {%- when 'real_kemp' -%}
+              Choose real kemp for premium stage use
+            {%- when 'black_kemp' -%}
+              Match black kemp with costume contrast
+            {%- when 'dance_accessory_root' -%}
+              Complete the stage look with the right accessory
+            {%- when 'dance_hair' -%}
+              Build the hairstyle around jada, bun and flowers
+            {%- when 'dance_head' -%}
+              Check forehead and head placement before ordering
+            {%- when 'dance_ear' -%}
+              Match earrings and mattal for comfort and stage finish
+            {%- when 'dance_waist' -%}
+              Choose a waist belt that holds the costume line
+            {%- when 'dance_arm' -%}
+              Choose vanki by upper-arm comfort and costume sleeve
+            {%- when 'dance_ghungroo' -%}
+              Choose ghungroo or salangai by level, sound and comfort
+            {%- when 'dance_bangles' -%}
+              Choose bangles by wrist comfort and finish
+            {%- when 'dance_makeup' -%}
+              Prepare makeup and hair essentials early
+            {%- when 'dance_practice' -%}
+              Choose practice sarees for movement and repeat use
+            {%- when 'dance_instrument' -%}
+              Choose nattuvangam and plates by teacher use
+            {%- when 'dance_crown' -%}
+              Match crowns to the role and hairstyle
+            {%- when 'dance_nose' -%}
+              Choose nose pin by side, scale and comfort
+            {%- else -%}
+              Match the accessory to dancer, costume and performance use
+          {%- endcase -%}
+        </h2>
+        {%- if intro != blank -%}
+          <p>{{ intro | strip_html }}</p>
+        {%- else -%}
+          <p>Use this collection to narrow the right ornament type, placement and finish before comparing individual product photos and measurements.</p>
+        {%- endif -%}
+      </div>
+
+      <div class="gc-dance-footer__decision">
+        <span>Best next step</span>
+        <strong>{{ shopping_path }}</strong>
+        <p>
+          {%- case faq_family -%}
+            {%- when 'dance_necklace' -%}
+              Decide whether the dancer needs upper-chest placement, lower costume balance, or both layers together.
+            {%- when 'dance_short_necklace' -%}
+              Compare neckline, necklace width and how much space remains above the long haram.
+            {%- when 'dance_long_haram' -%}
+              Check how low the haram should fall and whether the pendant scale suits the dancer.
+            {%- when 'dance_set' -%}
+              Confirm the teacher's required component list before buying the full set.
+            {%- when 'real_kemp' -%}
+              Match the premium finish across every visible piece before mixing components.
+            {%- when 'black_kemp' -%}
+              Check the black kemp finish against costume color and stage lighting.
+            {%- when 'dance_accessory_root' -%}
+              Start with the missing placement: head, ear, waist, hair, arm, ankle or role-specific accessory.
+            {%- when 'dance_hair' -%}
+              Confirm bun size, braid length, flower coverage and whether jada or rakodi is required.
+            {%- when 'dance_head' -%}
+              Check center parting, forehead size, bun position and how the piece sits with the headset.
+            {%- when 'dance_ear' -%}
+              Compare earring weight, mattal length and comfort before long programs.
+            {%- when 'dance_waist' -%}
+              Measure over the costume and check adjustability before choosing vaddanam or oddiyanam.
+            {%- when 'dance_arm' -%}
+              Check upper-arm comfort, sleeve placement and whether the piece can stay secure while dancing.
+            {%- when 'dance_ghungroo' -%}
+              Choose by teacher requirement, dancer level, ankle comfort, bell count and regional naming such as ghungroo, salangai, chilanka, chilanga or gejje.
+            {%- when 'dance_bangles' -%}
+              Match wrist size, costume color and the finish of the main jewellery set.
+            {%- when 'dance_makeup' -%}
+              Use the teacher's list and performance timeline before buying essentials.
+            {%- when 'dance_practice' -%}
+              Choose for movement, comfort and repeat class use before stage styling.
+            {%- when 'dance_instrument' -%}
+              Match the item to the teacher's handling, sound and ceremony use.
+            {%- when 'dance_crown' -%}
+              Check role, crown height, hair support and comfort before ordering.
+            {%- when 'dance_nose' -%}
+              Confirm side, size and comfort, especially for younger dancers.
+            {%- else -%}
+              Compare placement, size, comfort and how it matches the existing jewellery.
+          {%- endcase -%}
+        </p>
+      </div>
+    </div>
+
+    <div class="gc-dance-footer__guide-grid">
+      <article class="gc-dance-footer__panel">
+        <span>Fit checkpoints</span>
+        <h3>Check before adding to cart</h3>
+        <ul>
+          {%- case faq_family -%}
+            {%- when 'dance_necklace' -%}
+              <li>Use short necklace for neckline or upper-chest placement.</li>
+              <li>Use long haram for lower costume balance and stage proportion.</li>
+              <li>Keep metal finish and stone color consistent when layering both.</li>
+              <li>Compare drop length with dancer height, blouse neckline and costume pleats.</li>
+            {%- when 'dance_short_necklace' -%}
+              <li>Check necklace width against the upper chest area.</li>
+              <li>Leave visual space if the dancer will also wear a long haram.</li>
+              <li>Match earrings, mattal and long haram finish.</li>
+              <li>Use product photos to judge scale, not only the collection title.</li>
+            {%- when 'dance_long_haram' -%}
+              <li>Check pendant drop against costume pleats and dancer height.</li>
+              <li>Match the long haram finish with short necklace and earrings.</li>
+              <li>Choose a lower fall for fuller arangetram or senior-stage looks.</li>
+              <li>Avoid overcrowding if the short necklace is already broad.</li>
+            {%- when 'dance_set' -%}
+              <li>Check whether jada, rakodi, flowers and salangai are included or separate.</li>
+              <li>Compare waist belt, necklace and headset fit with dancer age group.</li>
+              <li>Match the set with costume color and teacher requirements.</li>
+              <li>For arangetram, confirm the complete component list early.</li>
+            {%- when 'real_kemp' -%}
+              <li>Use real kemp for premium arangetram and long-term performance use.</li>
+              <li>Match finish, stone color and scale before mixing pieces.</li>
+              <li>Store dry and separate pieces after use to protect finish.</li>
+              <li>Ask for help if matching with an existing kemp set.</li>
+            {%- when 'black_kemp' -%}
+              <li>Check costume body color, border and stage lighting.</li>
+              <li>Keep black kemp finish consistent across visible components.</li>
+              <li>Compare necklace drop, headset fit and waist belt size.</li>
+              <li>Use a full set when you need a clean single-finish look.</li>
+            {%- when 'dance_accessory_root' -%}
+              <li>Identify the exact missing placement before shopping.</li>
+              <li>Match finish and stone color with the main set.</li>
+              <li>Check comfort for head, ear, waist and arm pieces.</li>
+              <li>Confirm teacher requirements for arangetram and group programs.</li>
+            {%- when 'dance_hair' -%}
+              <li>Choose by hairstyle: bun, braid, jada or half-hair setup.</li>
+              <li>Match rakodi, flowers and jada finish with the main jewellery.</li>
+              <li>Check dancer height and braid length before selecting jada.</li>
+              <li>Confirm whether the item is for practice, program or arangetram.</li>
+            {%- when 'dance_head' -%}
+              <li>Check forehead size, center parting and bun placement.</li>
+              <li>Match nethi chutti, sun, moon and headset finish.</li>
+              <li>Use product photos to judge scale on younger dancers.</li>
+              <li>Confirm the piece can be pinned securely for movement.</li>
+            {%- when 'dance_ear' -%}
+              <li>Check earring weight and whether mattal support is needed.</li>
+              <li>Match jhumki, mattal and necklace finish.</li>
+              <li>Compare mattal length with hairstyle and ear position.</li>
+              <li>Check comfort, earring support and teacher requirements for children or long programs.</li>
+            {%- when 'dance_waist' -%}
+              <li>Measure over the costume, not only the body waist.</li>
+              <li>Check adjustability and closure comfort.</li>
+              <li>Match vaddanam or oddiyanam finish with necklace and bangles.</li>
+              <li>Confirm it stays secure over pleats during movement.</li>
+            {%- when 'dance_arm' -%}
+              <li>Check upper-arm measurement and adjustability.</li>
+              <li>Confirm sleeve placement does not push the vanki down.</li>
+              <li>Match finish with waist belt, bangles and necklaces.</li>
+              <li>Choose comfort first for younger dancers.</li>
+            {%- when 'dance_ghungroo' -%}
+              <li>Confirm bell count and style with the dance teacher.</li>
+              <li>Check ankle comfort and tie security.</li>
+              <li>Choose practice or stage use based on dancer level.</li>
+              <li>Use ghungroo, salangai, chilanka, chilanga or gejje naming when comparing teacher lists and product titles.</li>
+            {%- when 'dance_bangles' -%}
+              <li>Measure wrist size and comfort before choosing.</li>
+              <li>Match color and finish with the dance set.</li>
+              <li>Use wrist measurement, comfort and teacher requirements for children and long programs.</li>
+              <li>Check that bangles do not restrict hand movement.</li>
+            {%- when 'dance_makeup' -%}
+              <li>Follow the teacher's product list first.</li>
+              <li>Check skin comfort, shade and performance timing.</li>
+              <li>Pack hair pins and essentials before travel or stage day.</li>
+              <li>Test makeup and hair setup before the final performance.</li>
+            {%- when 'dance_practice' -%}
+              <li>Choose fabric and drape for repeated movement.</li>
+              <li>Check dancer height and teacher preference.</li>
+              <li>Keep practice comfort separate from full costume styling.</li>
+              <li>Confirm whether it is for class, rehearsal or simple program use.</li>
+            {%- when 'dance_instrument' -%}
+              <li>Confirm item type with the teacher or nattuvanar.</li>
+              <li>Check handling comfort and ceremony use.</li>
+              <li>Choose by sound expectation and practice/stage need.</li>
+              <li>Order early for school programs or arangetram planning.</li>
+            {%- when 'dance_crown' -%}
+              <li>Match crown height with the role and dancer size.</li>
+              <li>Check hair support and pinning points.</li>
+              <li>Coordinate finish with headset, rakodi and flowers.</li>
+              <li>Prioritize comfort for long stage productions.</li>
+            {%- when 'dance_nose' -%}
+              <li>Confirm left, right or clip style before ordering.</li>
+              <li>Choose scale that suits the dancer's face.</li>
+              <li>Match finish with earrings and necklace pieces.</li>
+              <li>Check comfort before using it for a full program.</li>
+            {%- else -%}
+              <li>Check dancer age group, comfort and performance role.</li>
+              <li>Match metal finish, stone color and costume direction.</li>
+              <li>Check product photos and measurements before ordering.</li>
+              <li>For head, ear and waist pieces, confirm exact placement.</li>
+          {%- endcase -%}
+        </ul>
+      </article>
+
+      <article class="gc-dance-footer__panel gc-dance-footer__panel--accent">
+        <span>Performance use</span>
+        <h3>When this collection helps</h3>
+        <p>
+          {%- case faq_family -%}
+            {%- when 'dance_necklace' -%}
+              This page is for dancers choosing between short necklace and long haram layers, especially for arangetram, stage programs and costume matching.
+            {%- when 'dance_short_necklace' -%}
+              Short necklaces are useful when the dancer needs a defined upper-chest layer without overpowering the long haram or costume border.
+            {%- when 'dance_long_haram' -%}
+              Long harams help the costume read complete from stage distance and are important for full Bharatanatyam and Kuchipudi styling.
+            {%- when 'dance_set' -%}
+              Dance sets are the easiest starting point for arangetram and school programs where the dancer needs coordinated ornaments.
+            {%- when 'real_kemp' -%}
+              Real kemp is usually chosen for premium stage looks, arangetram ceremonies, senior performances and bridal classical styling.
+            {%- when 'black_kemp' -%}
+              Black kemp works when the costume direction needs stronger contrast while keeping the South Indian temple jewellery language.
+            {%- when 'dance_accessory_root' -%}
+              Accessories help complete the final Bharatanatyam or Kuchipudi stage look after the main set, costume and hairstyle are decided.
+            {%- when 'dance_hair' -%}
+              Hair pieces are useful for arangetram, jada styling, bun finishing, flowers and classical braid presentation.
+            {%- when 'dance_head' -%}
+              Head and forehead ornaments frame the face and should be checked with hairstyle, nethi chutti, sun, moon and headset placement.
+            {%- when 'dance_ear' -%}
+              Earrings and mattal complete the side profile and should stay comfortable through rehearsal, arangetram and stage programs.
+            {%- when 'dance_waist' -%}
+              Waist belts help define costume pleats and stage silhouette for Bharatanatyam and Kuchipudi performances.
+            {%- when 'dance_arm' -%}
+              Vanki and bajuband pieces complete the arm line and should be secure without restricting movement.
+            {%- when 'dance_ghungroo' -%}
+              Ghungroo or salangai are chosen by teacher preference, dancer level and the sound needed for practice or performance.
+            {%- when 'dance_bangles' -%}
+              Bangles finish the hand line and should match the main jewellery without interrupting mudra clarity.
+            {%- when 'dance_makeup' -%}
+              Makeup and hair essentials help prepare the dancer before costume jewellery goes on.
+            {%- when 'dance_practice' -%}
+              Practice sarees support regular class and rehearsal movement before the full costume stage day.
+            {%- when 'dance_instrument' -%}
+              Nattuvangam and dance plates support teachers, ceremonies, class use and performance preparation.
+            {%- when 'dance_crown' -%}
+              Crowns support role-based dance, drama, deity-inspired characters and special stage productions.
+            {%- when 'dance_nose' -%}
+              Nose pins add a traditional finishing detail and should be chosen by comfort, side and scale.
+            {%- else -%}
+              This collection helps complete the final stage look after the main set, necklace and costume direction are decided.
+          {%- endcase -%}
+        </p>
+        {%- if fit_intro != blank -%}
+          <p>{{ fit_intro | strip_html }}</p>
+        {%- endif -%}
+      </article>
+    </div>
+
+    {%- if faq_family == 'dance_necklace' or faq_family == 'dance_short_necklace' or faq_family == 'dance_long_haram' -%}
+      <div class="gc-dance-footer__compare" aria-label="Short necklace and long haram comparison">
+        <div>
+          <span>Quick comparison</span>
+          <h3>Short necklace vs long haram</h3>
+        </div>
+        <div class="gc-dance-footer__compare-grid">
+          <div>
+            <strong>Short necklace</strong>
+            <p>Sits near the neck or upper chest. Best for framing the face, blouse neckline and earrings.</p>
+          </div>
+          <div>
+            <strong>Long haram</strong>
+            <p>Falls lower across the costume. Best for balancing pleats, pendant scale and full stage proportion.</p>
+          </div>
+          <div>
+            <strong>Wear together when</strong>
+            <p>The costume needs a complete layered look for arangetram, senior performance or formal stage presentation.</p>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="gc-dance-footer__faq" aria-label="Collection FAQ">
+      <div class="gc-dance-footer__section-head">
+        <span>{{ section.settings.faq_eyebrow }}</span>
+        <h2>{{ section.settings.faq_heading }}</h2>
+      </div>
+      <div class="gc-dance-footer__faq-list">
+        {%- case faq_family -%}
+          {%- when 'dance_necklace' -%}
+            <details open>
+              <summary>Should I buy a short necklace or long haram first?</summary>
+              <p>For a complete Bharatanatyam stage look, most dancers use both. If buying one piece first, choose based on what is missing from the costume: upper-chest framing needs a short necklace, while lower costume balance needs a long haram.</p>
+            </details>
+            <details>
+              <summary>Can short necklace and long haram be mixed from different sets?</summary>
+              <p>Yes, but only when the metal finish, stone color, pendant style and scale look coordinated. For arangetram, matching pieces usually look cleaner.</p>
+            </details>
+            <details>
+              <summary>How do I judge necklace size online?</summary>
+              <p>Compare the product photos, drop, width and pendant scale with the dancer height, blouse neckline and costume pleats. If unsure, share costume photos before ordering.</p>
+            </details>
+            <details>
+              <summary>Are these necklaces suitable for Kuchipudi too?</summary>
+              <p>Many Bharatanatyam necklace styles are also used for Kuchipudi when the costume, teacher preference and performance styling match.</p>
+            </details>
+          {%- when 'dance_short_necklace' -%}
+            <details open>
+              <summary>Where does a short necklace sit?</summary>
+              <p>A short necklace sits near the neck or upper chest. It is different from a long haram, which falls lower across the costume.</p>
+            </details>
+            <details>
+              <summary>How do I choose short necklace size?</summary>
+              <p>Compare the necklace width and drop with the dancer's upper chest and costume neckline. If pairing with a long haram, check that both pieces have enough visual space.</p>
+            </details>
+            <details>
+              <summary>What should it match with?</summary>
+              <p>Match the short necklace with earrings, mattal, long haram, waist belt and costume border so the visible set looks intentional.</p>
+            </details>
+            <details>
+              <summary>Is a short necklace enough for arangetram?</summary>
+              <p>Usually no. Arangetram looks commonly need both a short necklace and long haram, plus other teacher-required components.</p>
+            </details>
+          {%- when 'dance_long_haram' -%}
+            <details open>
+              <summary>How do I choose long haram size?</summary>
+              <p>Check how low the haram should fall on the costume and whether it balances dancer height, pleats, pendant size and short necklace.</p>
+            </details>
+            <details>
+              <summary>Can a long haram be used without a full set?</summary>
+              <p>Yes, but the finish, stone color and pendant style should match the existing earrings, short necklace and waist belt as closely as possible.</p>
+            </details>
+            <details>
+              <summary>Is long haram important for stage visibility?</summary>
+              <p>Yes. A long haram adds lower visual weight and helps the costume read complete from stage distance.</p>
+            </details>
+            <details>
+              <summary>Can long haram be used for Kuchipudi?</summary>
+              <p>Often yes, if the costume style and teacher preference support the same temple jewellery look.</p>
+            </details>
+          {%- when 'dance_set' -%}
+            <details open>
+              <summary>What should I check before buying a dance set?</summary>
+              <p>Check the included items, dancer age group, necklace fit, waist belt fit, headset, mattal, earrings and whether jada, rakodi, flowers or salangai are separate.</p>
+            </details>
+            <details>
+              <summary>Is this suitable for arangetram?</summary>
+              <p>Many complete sets are chosen for arangetram. Confirm the required components with the dance teacher and match the set with costume color and dancer size.</p>
+            </details>
+            <details>
+              <summary>Can I add missing components later?</summary>
+              <p>Yes. Many dancers add jada, rakodi, flowers, ghungroo, extra earrings or role-specific accessories after choosing the main set.</p>
+            </details>
+            <details>
+              <summary>Do dance institutes order in bulk?</summary>
+              <p>Yes. Share quantity, dancer age group, costume direction and timeline before ordering for institute programs.</p>
+            </details>
+          {%- when 'real_kemp' -%}
+            <details open>
+              <summary>Why do dancers choose real kemp?</summary>
+              <p>Real kemp is a premium temple jewellery range often chosen for arangetram, senior performers, bridal classical styling and long-term stage use.</p>
+            </details>
+            <details>
+              <summary>Can I mix real kemp with regular Bharatanatyam/Kuchipudi jewellery?</summary>
+              <p>Mixing is possible only when the finish, stone colors and scale look coordinated. For major performances, a matching set usually looks cleaner.</p>
+            </details>
+            <details>
+              <summary>Why is real kemp more expensive?</summary>
+              <p>Real kemp is a premium range because the finish, base material and stone work expectations are higher than regular Bharatanatyam/Kuchipudi jewellery.</p>
+            </details>
+            <details>
+              <summary>How should real kemp be stored?</summary>
+              <p>Keep it dry, away from perfume, water and sweat, and store pieces separately so stones and finish do not rub.</p>
+            </details>
+          {%- when 'black_kemp' -%}
+            <details open>
+              <summary>Which costumes suit black kemp?</summary>
+              <p>Black kemp is chosen for stronger contrast and should be checked against costume colors, borders and stage lighting.</p>
+            </details>
+            <details>
+              <summary>Should black kemp pieces be bought as a set?</summary>
+              <p>A set is easier when you need a consistent finish. If buying components, match necklace, long haram, earrings, mattal, headset and vaddanam carefully.</p>
+            </details>
+            <details>
+              <summary>Can black kemp work for arangetram?</summary>
+              <p>It can work when the teacher and costume direction call for a darker contrast. Confirm the preferred jewellery color before buying.</p>
+            </details>
+            <details>
+              <summary>Can black kemp be mixed with regular jewellery?</summary>
+              <p>Mixing is best avoided unless the color and finish look intentional together from stage distance.</p>
+            </details>
+          {%- when 'dance_accessory_root' -%}
+            <details open>
+              <summary>Which accessory should I choose first?</summary>
+              <p>Start with the missing placement: head, ear, waist, hair, arm, ankle or role-specific accessory. Then match finish and stone color with the main set.</p>
+            </details>
+            <details>
+              <summary>Are accessories different for Bharatanatyam and Kuchipudi?</summary>
+              <p>Many accessories overlap, but teacher preference, costume style and role direction decide the final list. Confirm requirements before arangetram or group programs.</p>
+            </details>
+            <details>
+              <summary>Should accessories match the necklace set?</summary>
+              <p>Yes. The visible finish, stone color and scale should look coordinated with the short necklace, long haram, earrings and waist belt.</p>
+            </details>
+            <details>
+              <summary>Can I buy missing pieces later?</summary>
+              <p>Yes, but matching later is easier when you know the existing finish, stone color, size and product photos.</p>
+            </details>
+          {%- when 'dance_hair' -%}
+            <details open>
+              <summary>How do I choose hair accessories?</summary>
+              <p>Choose by hairstyle first: bun, braid, jada, rakodi, flowers or half-hair setup. Then match the finish and costume color.</p>
+            </details>
+            <details>
+              <summary>Is jada required for arangetram?</summary>
+              <p>Many arangetram looks use jada or braid decoration, but the teacher's costume plan should decide whether it is required.</p>
+            </details>
+            <details>
+              <summary>How do I match rakodi and flowers?</summary>
+              <p>Check bun size, flower coverage, jada length and whether the rakodi finish matches the headset and main jewellery.</p>
+            </details>
+            <details>
+              <summary>Can kids use the same hair accessories?</summary>
+              <p>For children, confirm hairstyle, teacher requirements, comfort and secure pinning before ordering. Use product photos and measurements to judge scale.</p>
+            </details>
+          {%- when 'dance_head' -%}
+            <details open>
+              <summary>What head placement should I check?</summary>
+              <p>Check forehead size, center parting, bun position and how the nethi chutti, headset, sun and moon sit together.</p>
+            </details>
+            <details>
+              <summary>Do sun and moon pieces need to match?</summary>
+              <p>Yes. Surya and chandra pieces should match the headset, rakodi and necklace finish so the head styling looks complete.</p>
+            </details>
+            <details>
+              <summary>Can head ornaments be used for Kuchipudi?</summary>
+              <p>Often yes, when the costume and teacher preference use the same South Indian temple jewellery styling.</p>
+            </details>
+            <details>
+              <summary>What if the dancer is young?</summary>
+              <p>Use product photos and measurements to judge scale, and check whether the pieces can be pinned securely without discomfort.</p>
+            </details>
+          {%- when 'dance_ear' -%}
+            <details open>
+              <summary>When is mattal useful?</summary>
+              <p>Mattal or ear chains help support the earring look and complete the side profile, especially with heavier jhumki styles.</p>
+            </details>
+            <details>
+              <summary>How do I choose earring size?</summary>
+              <p>Compare earring weight, drop and scale with dancer age, ear comfort, necklace size and performance duration.</p>
+            </details>
+            <details>
+              <summary>Should earrings match the necklace?</summary>
+              <p>Yes. Match finish, stone color and style with the short necklace, long haram and mattal.</p>
+            </details>
+            <details>
+              <summary>How should children choose earrings?</summary>
+              <p>Use product photos, earring support, comfort, teacher requirements and program length before ordering.</p>
+            </details>
+          {%- when 'dance_waist' -%}
+            <details open>
+              <summary>How do I choose waist belt size?</summary>
+              <p>Measure over the costume, check adjustability and confirm the belt sits securely over the pleats without restricting movement.</p>
+            </details>
+            <details>
+              <summary>Is it called vaddanam or oddiyanam?</summary>
+              <p>Both terms are used for waist ornaments. Use the product measurements and photos to choose the right stage fit.</p>
+            </details>
+            <details>
+              <summary>Should the waist belt match necklaces?</summary>
+              <p>Yes. Match the finish and stone color with the short necklace, long haram, earrings and bangles.</p>
+            </details>
+            <details>
+              <summary>Is a waist belt required for arangetram?</summary>
+              <p>Many complete stage looks use one, but teacher and costume requirements should decide the final list.</p>
+            </details>
+          {%- when 'dance_arm' -%}
+            <details open>
+              <summary>How should vanki fit?</summary>
+              <p>It should sit securely on the upper arm without sliding, pinching or clashing with the costume sleeve.</p>
+            </details>
+            <details>
+              <summary>Should vanki match bangles and waist belt?</summary>
+              <p>Yes. Match finish and stone color so the arm, waist and necklace pieces look coordinated.</p>
+            </details>
+            <details>
+              <summary>Can children wear vanki?</summary>
+              <p>Yes, if the size is comfortable and secure. Avoid heavy pieces for young dancers.</p>
+            </details>
+            <details>
+              <summary>Is vanki always required?</summary>
+              <p>Not always. Use the teacher's performance list and costume plan before adding arm ornaments.</p>
+            </details>
+          {%- when 'dance_ghungroo' -%}
+            <details open>
+              <summary>How do I choose ghungroo or salangai?</summary>
+              <p>Choose by teacher requirement, dancer level, ankle comfort and bell count needed for practice or performance. Customers may also search for chilanka, chilanga or gejje.</p>
+            </details>
+            <details>
+              <summary>Are salangai needed for arangetram?</summary>
+              <p>Usually yes, but the bell count and style should be confirmed with the teacher.</p>
+            </details>
+            <details>
+              <summary>Should new salangai be tested before stage day?</summary>
+              <p>Yes. Test comfort, tying and sound before a major performance.</p>
+            </details>
+            <details>
+              <summary>How should children choose ghungroo?</summary>
+              <p>Use the teacher-approved bell count, ankle comfort, fastening style and product photos before ordering. Avoid assuming a separate size rule unless the product page confirms it.</p>
+            </details>
+          {%- when 'dance_bangles' -%}
+            <details open>
+              <summary>How do I choose bangle size?</summary>
+              <p>Use wrist measurement and comfort first, then match color and finish with the main jewellery set.</p>
+            </details>
+            <details>
+              <summary>Should bangles match costume colors?</summary>
+              <p>They should coordinate with costume color, border, necklace finish and other visible ornaments.</p>
+            </details>
+            <details>
+              <summary>Can bangles affect dance movement?</summary>
+              <p>They should not restrict hand movement or distract from mudras. Choose comfortable size and weight.</p>
+            </details>
+            <details>
+              <summary>How should children choose bangles?</summary>
+              <p>Use wrist measurement, comfort, teacher requirements and costume matching first. Confirm the bangles do not interrupt hand movement.</p>
+            </details>
+          {%- when 'dance_makeup' -%}
+            <details open>
+              <summary>What should I buy first?</summary>
+              <p>Follow the teacher's makeup and hair list first, then add pins, bindis or backup essentials based on the performance timeline.</p>
+            </details>
+            <details>
+              <summary>Should makeup be tested before stage day?</summary>
+              <p>Yes. Test shade, comfort and hair hold before arangetram or an important program.</p>
+            </details>
+            <details>
+              <summary>Can kids use the same essentials?</summary>
+              <p>Use teacher-approved products and keep comfort, sensitivity and performance timing in mind.</p>
+            </details>
+            <details>
+              <summary>How should essentials be planned for travel?</summary>
+              <p>Pack pins, bindis, makeup and hair support early so missing items do not delay costume dressing.</p>
+            </details>
+          {%- when 'dance_practice' -%}
+            <details open>
+              <summary>How is a practice saree different from costume wear?</summary>
+              <p>A practice saree is chosen for movement, comfort and repeated class use, not full stage ornament styling.</p>
+            </details>
+            <details>
+              <summary>How do I choose the size?</summary>
+              <p>Check dancer height, drape comfort and teacher preference before ordering.</p>
+            </details>
+            <details>
+              <summary>Can practice sarees be used for simple programs?</summary>
+              <p>Sometimes, if the teacher approves and the event does not require a full stage costume.</p>
+            </details>
+            <details>
+              <summary>Should jewellery be chosen with practice sarees?</summary>
+              <p>Practice wear is usually separate from full jewellery planning, but simple accessories may be used for informal programs.</p>
+            </details>
+          {%- when 'dance_instrument' -%}
+            <details open>
+              <summary>Who usually buys nattuvangam items?</summary>
+              <p>Teachers, nattuvanars, dance schools and performers may use nattuvangam items for class, stage or ceremony needs.</p>
+            </details>
+            <details>
+              <summary>What should I confirm before ordering?</summary>
+              <p>Confirm the item type, handling comfort, sound expectation and whether it is for practice, stage or ceremony.</p>
+            </details>
+            <details>
+              <summary>Are dance plates and thattu the same use?</summary>
+              <p>Use depends on the teacher's requirement. Check the exact item name and purpose before ordering.</p>
+            </details>
+            <details>
+              <summary>Should institutes order early?</summary>
+              <p>Yes. Order early for group programs, arangetram planning or school performance timelines.</p>
+            </details>
+          {%- when 'dance_crown' -%}
+            <details open>
+              <summary>How do I choose a dance crown?</summary>
+              <p>Choose by role, head size, crown height, hairstyle support and comfort for the length of the performance.</p>
+            </details>
+            <details>
+              <summary>Are crowns for every Bharatanatyam item?</summary>
+              <p>No. Crowns are usually role-based or used for drama, deity-inspired characters and special stage productions.</p>
+            </details>
+            <details>
+              <summary>Should the crown match the jewellery?</summary>
+              <p>Yes. Match finish with headset, rakodi, flowers and the main visible jewellery.</p>
+            </details>
+            <details>
+              <summary>Can children wear crowns?</summary>
+              <p>Yes, if the piece is light, secure and suitable for the role.</p>
+            </details>
+          {%- when 'dance_nose' -%}
+            <details open>
+              <summary>How do I choose a nose pin?</summary>
+              <p>Confirm side, clip or piercing style, size, comfort and how it matches earrings and necklace finish.</p>
+            </details>
+            <details>
+              <summary>Is a nose pin required for every performance?</summary>
+              <p>No. It is a traditional finishing detail and should follow teacher preference and costume direction.</p>
+            </details>
+            <details>
+              <summary>Can young dancers wear nose pins?</summary>
+              <p>Only if the style is comfortable, secure and approved for the costume direction. Confirm clip or piercing style before ordering.</p>
+            </details>
+            <details>
+              <summary>Should it match earrings?</summary>
+              <p>Yes. Match finish and scale with earrings, mattal and necklace pieces.</p>
+            </details>
+          {%- else -%}
+            <details open>
+              <summary>What should I check before ordering?</summary>
+              <p>Check dancer age group, costume color, hairstyle, placement, size details, product photos and whether the piece matches existing ornaments.</p>
+            </details>
+            <details>
+              <summary>Can Golden Collections help before buying?</summary>
+              <p>Yes. Share dancer age group, costume direction, existing jewellery photos and performance timeline on WhatsApp for help choosing the right piece.</p>
+            </details>
+            <details>
+              <summary>Should accessories match the main set?</summary>
+              <p>Yes. The visible finish, stone color and size should match the main necklace set as closely as possible.</p>
+            </details>
+            <details>
+              <summary>What if I am buying for a school program?</summary>
+              <p>Choose comfortable, secure pieces and confirm the teacher's requirement list before ordering.</p>
+            </details>
+        {%- endcase -%}
+      </div>
+    </div>
+
+    {%- if faq_family == 'dance_set' -%}
+      <div class="gc-dance-footer__set-links" aria-label="Complete the Bharatanatyam set">
+        <span>Complete the set</span>
+        <h2>Shop the supporting Bharatanatyam pieces</h2>
+        <div class="gc-dance-footer__related-links">
+          <a href="{{ routes.collections_url }}/bharatanatyam-jewellery">Bharatanatyam jewellery hub</a>
+          <a href="{{ routes.collections_url }}/bharatanatyam-short-necklaces">Short necklaces</a>
+          <a href="{{ routes.collections_url }}/bharatanatyam-long-necklace">Long harams</a>
+          <a href="{{ routes.collections_url }}/bharatanatyam-headset-jewelry">Headset and nethi chutti</a>
+          <a href="{{ routes.collections_url }}/bharatanatyam-hair-accessories">Hair accessories</a>
+          <a href="{{ routes.collections_url }}/bharatanatyam-ghungroo">Ghungroo and salangai</a>
+          <a href="{{ routes.collections_url }}/kemp-bharatanatyam-jewellery-dance-sets">Real kemp dance sets</a>
+          <a href="/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram">Arangetram guide</a>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if related_collections != blank and related_collections.size > 0 -%}
+      <div class="gc-dance-footer__related" aria-label="Related dance collections">
+        <span>Continue shopping</span>
+        <div class="gc-dance-footer__related-links">
+          {%- for related_collection in related_collections limit: 5 -%}
+            {%- if related_collection != blank -%}
+              {%- assign related_title = related_collection.metafields.custom.display_title.value | default: related_collection.metafields.custom.display_title | default: related_collection.title -%}
+              <a href="{{ related_collection.url }}">{{ related_title }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% render 'dance-collection-schema-v2' %}
+
+<style>
+  .gc-dance-footer {
+    background: #fff8ea;
+    color: #21180d;
+    padding: 2.6rem 0 4.2rem;
+  }
+
+  .gc-dance-footer .page-width {
+    display: grid;
+    gap: 1.6rem;
+    max-width: 1320px;
+  }
+
+  .gc-dance-footer__summary,
+  .gc-dance-footer__guide-grid,
+  .gc-dance-footer__compare,
+  .gc-dance-footer__faq,
+  .gc-dance-footer__set-links,
+  .gc-dance-footer__related {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding-top: 1.45rem;
+  }
+
+  .gc-dance-footer__summary {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gc-dance-footer__summary-copy,
+  .gc-dance-footer__decision,
+  .gc-dance-footer__panel,
+  .gc-dance-footer__compare,
+  .gc-dance-footer__faq details {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(91, 55, 12, 0.04);
+  }
+
+  .gc-dance-footer__summary-copy {
+    padding: 1.45rem;
+  }
+
+  .gc-dance-footer__summary-copy span,
+  .gc-dance-footer__decision span,
+  .gc-dance-footer__panel span,
+  .gc-dance-footer__compare span,
+  .gc-dance-footer__section-head span,
+  .gc-dance-footer__set-links > span,
+  .gc-dance-footer__related > span {
+    color: #986918;
+    display: block;
+    font-size: 1.04rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-dance-footer h2,
+  .gc-dance-footer h3 {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .gc-dance-footer h2 {
+    font-size: 2.3rem;
+  }
+
+  .gc-dance-footer h3 {
+    font-size: 1.82rem;
+  }
+
+  .gc-dance-footer p,
+  .gc-dance-footer li {
+    color: #5f5548;
+    font-size: 1.12rem;
+    line-height: 1.45;
+  }
+
+  .gc-dance-footer p {
+    margin: 0.75rem 0 0;
+  }
+
+  .gc-dance-footer__decision {
+    align-self: stretch;
+    border-color: rgba(143, 31, 24, 0.2);
+    padding: 1.25rem;
+  }
+
+  .gc-dance-footer__decision strong {
+    color: #7f1f19;
+    display: block;
+    font-size: 1.32rem;
+    line-height: 1.2;
+  }
+
+  .gc-dance-footer__guide-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .gc-dance-footer__panel {
+    padding: 1.3rem;
+  }
+
+  .gc-dance-footer__panel--accent {
+    background: linear-gradient(135deg, #fffdf8, #fff6e3);
+  }
+
+  .gc-dance-footer__panel ul {
+    display: grid;
+    gap: 0.48rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .gc-dance-footer__panel li {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .gc-dance-footer__panel li::before {
+    background: #986918;
+    border-radius: 50%;
+    content: "";
+    height: 0.5rem;
+    left: 0.25rem;
+    position: absolute;
+    top: 0.62rem;
+    width: 0.5rem;
+  }
+
+  .gc-dance-footer__compare {
+    display: grid;
+    gap: 1.15rem;
+    padding: 1.35rem;
+  }
+
+  .gc-dance-footer__compare-grid {
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .gc-dance-footer__compare-grid div {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding: 0.95rem 0;
+  }
+
+  .gc-dance-footer__compare strong {
+    color: #21180d;
+    display: block;
+    font-size: 1.18rem;
+  }
+
+  .gc-dance-footer__section-head {
+    margin-bottom: 1rem;
+  }
+
+  .gc-dance-footer__faq-list {
+    display: grid;
+    align-items: start;
+    gap: 0.7rem;
+  }
+
+  .gc-dance-footer__faq details {
+    padding: 0.95rem 1rem;
+  }
+
+  .gc-dance-footer__faq summary {
+    align-items: center;
+    color: #21180d;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.16rem;
+    font-weight: 700;
+    gap: 0.75rem;
+    justify-content: space-between;
+    line-height: 1.24;
+    list-style: none;
+  }
+
+  .gc-dance-footer__faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .gc-dance-footer__faq summary::after {
+    color: #986918;
+    content: "+";
+    flex: 0 0 auto;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .gc-dance-footer__faq details[open] summary::after {
+    content: "-";
+  }
+
+  .gc-dance-footer__related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .gc-dance-footer__set-links h2 {
+    margin-bottom: 1rem;
+  }
+
+  .gc-dance-footer__related a {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 999px;
+    color: #5e3d13;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    padding: 0.62rem 0.85rem;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-dance-footer {
+      padding: 3rem 0 4.8rem;
+    }
+
+    .gc-dance-footer__summary {
+      align-items: stretch;
+      grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.65fr);
+    }
+
+    .gc-dance-footer__guide-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-dance-footer__compare {
+      align-items: stretch;
+      grid-template-columns: minmax(240px, 0.34fr) minmax(0, 1fr);
+    }
+
+    .gc-dance-footer__compare-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-dance-footer__compare-grid div {
+      border-left: 1px solid rgba(151, 99, 16, 0.16);
+      border-top: 0;
+      padding: 0.15rem 1.05rem;
+    }
+
+    .gc-dance-footer__compare-grid div:first-child {
+      border-left: 0;
+    }
+
+    .gc-dance-footer__faq-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-dance-footer {
+      padding: 2rem 0 3.2rem;
+    }
+
+    .gc-dance-footer .page-width {
+      gap: 1.1rem;
+    }
+
+    .gc-dance-footer h2 {
+      font-size: 2rem;
+    }
+
+    .gc-dance-footer h3 {
+      font-size: 1.55rem;
+    }
+
+    .gc-dance-footer__summary-copy,
+    .gc-dance-footer__decision,
+    .gc-dance-footer__panel,
+    .gc-dance-footer__compare,
+    .gc-dance-footer__faq details {
+      padding: 1rem;
+    }
+
+    .gc-dance-footer__related-links {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .gc-dance-footer__related a {
+      border-radius: 8px;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dance footer organized",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "help_eyebrow",
+      "label": "Help eyebrow",
+      "default": "Performance buying guide"
+    },
+    {
+      "type": "text",
+      "id": "help_heading",
+      "label": "Help heading",
+      "default": "Choose by performance use"
+    },
+    {
+      "type": "text",
+      "id": "faq_eyebrow",
+      "label": "FAQ eyebrow",
+      "default": "Helpful answers"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Questions dancers ask before ordering"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dance footer organized"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,377 @@
+{%- liquid
+  assign primary_deity_ref = product.metafields.custom.primary_deity_ref.value | default: product.metafields.custom.primary_deity.value
+  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity
+  assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class
+  assign ornament_ref = product.metafields.custom.ornament_type_ref.value | default: product.metafields.custom.ornament_type.value
+  assign ornament_type = ornament_ref.name.value | default: ornament_ref.name | default: product.metafields.custom.ornament_type.value | default: product.metafields.custom.ornament_type | default: product.type
+  assign placement = product.metafields.custom.placement.value | default: product.metafields.custom.placement
+  assign range_type = product.metafields.custom.range_type.value | default: product.metafields.custom.range_type
+  assign fit_notes = product.metafields.custom.fit_notes.value | default: product.metafields.custom.fit_notes
+  assign material = product.metafields.custom.material.value | default: product.metafields.custom.material
+  assign component_count = product.metafields.custom.component_count.value | default: product.metafields.custom.component_count
+  assign set_items_included = product.metafields.custom.set_items_included.value
+  assign ornament_width = product.metafields.custom.ornament_width_in.value | default: product.metafields.custom.ornament_width_in
+  assign ornament_height = product.metafields.custom.ornament_height_in.value | default: product.metafields.custom.ornament_height_in
+  assign ornament_depth = product.metafields.custom.ornament_depth_in.value | default: product.metafields.custom.ornament_depth_in
+  assign idol_min = product.metafields.custom.idol_height_min_in.value | default: product.metafields.custom.idol_height_min_in
+  assign idol_max = product.metafields.custom.idol_height_max_in.value | default: product.metafields.custom.idol_height_max_in
+  assign ornament_label = ornament_type | default: product.type | default: 'deity ornament'
+  assign ornament_label_lc = ornament_label | downcase
+  assign is_decor_product = false
+  assign product_context = product.title | append: ' ' | append: product.type | append: ' ' | append: ornament_type
+  assign product_context_lc = product_context | downcase
+  assign is_face_product = false
+  if product_context_lc contains 'face' or ornament_label_lc contains 'face'
+    assign is_face_product = true
+  endif
+  assign is_hands_product = false
+  if product_context_lc contains 'hastham' or product_context_lc contains 'hastam' or product_context_lc contains 'padam' or product_context_lc contains 'patham' or product_context_lc contains 'lotus hands' or product_context_lc contains 'balaji hastham' or product_context_lc contains 'deity hands' or product_context_lc contains 'hands and legs' or ornament_label_lc contains 'hands'
+    assign is_hands_product = true
+  endif
+  assign is_garland_product = false
+  if product_context_lc contains 'vagamalai' or product_context_lc contains 'thomala' or product_context_lc contains 'bhujalu'
+    assign is_garland_product = true
+  endif
+  if product_context_lc contains 'banana' or product_context_lc contains 'coconut' or product_context_lc contains 'decor'
+    assign is_decor_product = true
+  endif
+  if is_face_product or is_hands_product or is_garland_product
+    assign is_decor_product = false
+  endif
+  assign is_idol_product = false
+  assign range_type_lc = range_type | downcase
+  if product_context_lc contains 'varalakshmi' or product_context_lc contains 'varamahalakshmi' or product_context_lc contains 'ammavaru' or product_context_lc contains 'amman doll' or product_context_lc contains 'lakshmi idol' or range_type_lc contains 'varalakshmi'
+    if product_context_lc contains 'idol' or product_context_lc contains 'doll' or product_context_lc contains 'bommai' or product_context_lc contains 'vigraham'
+      assign is_idol_product = true
+    endif
+  endif
+  assign is_performance_product = false
+  if product_context_lc contains 'drama crown' or product_context_lc contains 'dance crown' or product_context_lc contains 'bharatanatyam' or product_context_lc contains 'kuchipudi' or range_type_lc contains 'dance'
+    assign is_performance_product = true
+  endif
+  assign has_performance_measurement = false
+  if is_performance_product and ornament_width != blank or is_performance_product and ornament_height != blank or is_performance_product and ornament_depth != blank
+    assign has_performance_measurement = true
+  endif
+-%}
+
+<section class="gc-deity-lite-faq">
+  <div class="page-width">
+    <div class="gc-deity-lite-faq__head">
+      <p>{% if is_performance_product %}Performance crown help{% elsif is_face_product %}Deity face help{% elsif is_hands_product %}Hastham and Padam help{% elsif is_garland_product %}Vagamalai and Thomala help{% elsif is_idol_product %}Varalakshmi idol help{% elsif is_decor_product %}Pooja decor help{% else %}Deity jewellery help{% endif %}</p>
+      <h2>{% if is_performance_product %}Stage fit and use questions{% elsif is_face_product %}Face size, setup and included items{% elsif is_hands_product %}Hands, legs and placement help{% elsif is_garland_product %}Garland drop, shoulders and included pair{% elsif is_idol_product %}Pooja setup, size and included items{% elsif is_decor_product %}Use, size and placement questions{% else %}{{ section.settings.heading }}{% endif %}</h2>
+    </div>
+
+    <div class="gc-deity-lite-faq__grid">
+      <details open>
+        <summary>{% if is_performance_product %}How do I check whether this fits the performer?{% elsif is_face_product %}How do I check whether this face fits my setup?{% elsif is_hands_product %}How do I check whether this fits my idol or doll?{% elsif is_garland_product %}How do I check whether this fits my idol?{% elsif is_idol_product %}How do I check whether this fits my pooja setup?{% elsif is_decor_product %}Where can I use this decor?{% else %}How do I check whether this fits my idol?{% endif %}</summary>
+        <div>
+          {%- if is_performance_product and fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif has_performance_measurement -%}
+            Compare the crown with the dancer or actor's head placement:
+            {%- if ornament_height != blank -%} height {{ ornament_height }} in{%- endif -%}
+            {%- if ornament_width != blank -%}{% if ornament_height != blank %}, {% endif %}front width {{ ornament_width }} in{%- endif -%}
+            {%- if ornament_depth != blank -%}{% if ornament_height != blank or ornament_width != blank %}, {% endif %}depth {{ ornament_depth }} in{%- endif -%}.
+            Check the hair bun, pins, costume headgear and movement comfort before ordering.
+          {%- elsif is_performance_product -%}
+            Compare the product photos and selected size with the performer's head placement, hairstyle, hair bun and stage movement needs before ordering.
+          {%- elsif is_face_product and fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif is_face_product and ornament_height != blank or is_face_product and ornament_width != blank -%}
+            Compare the face setup with your kalasam, idol body, backdrop and crown space:
+            {%- if ornament_height != blank -%} face height {{ ornament_height }} in{%- endif -%}
+            {%- if ornament_width != blank -%}{% if ornament_height != blank %}, {% endif %}front width {{ ornament_width }} in{%- endif -%}.
+            Height or L means the vertical face/setup height, and W means the front width, not thickness.
+          {%- elsif is_face_product -%}
+            Compare the product photos and selected size with your kalasam, idol body, face area, crown space, earrings and nearby jewellery before ordering.
+          {%- elsif is_hands_product and fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif is_hands_product and ornament_height != blank or is_hands_product and ornament_width != blank -%}
+            Compare the hastham, padam or deity hands with your idol body and dress placement:
+            {%- if ornament_height != blank -%} height or length {{ ornament_height }} in{%- endif -%}
+            {%- if ornament_width != blank -%}{% if ornament_height != blank %}, {% endif %}front width {{ ornament_width }} in{%- endif -%}.
+            Height, Length or L means vertical hand/leg height or length, and W means front width, not thickness.
+          {%- elsif is_hands_product -%}
+            Compare the product photos and selected size with your idol body, hand direction, leg placement, saree or dress width, jewellery clearance and backdrop before ordering.
+          {%- elsif is_garland_product and fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif is_garland_product and ornament_height != blank -%}
+            Compare the {{ ornament_height }} in vertical drop or length with your idol height, shoulder width, chest area, dress volume and nearby jewellery before ordering.
+          {%- elsif is_garland_product -%}
+            Compare the product photos with your idol height, shoulder width, chest area, dress volume, jewellery and garland placement before ordering.
+          {%- elsif is_idol_product and fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif is_idol_product and ornament_height != blank -%}
+            The selected height is the finished idol or doll height, including crown, hair and decoration where shown. Compare the height with your mandapam, kalasam area, altar shelf and display space before ordering.
+          {%- elsif is_idol_product -%}
+            Compare the product photos and selected height with your mandapam, kalasam area, altar shelf and display space before ordering.
+          {%- elsif is_decor_product and placement != blank -%}
+            Place it {{ placement | downcase }} as part of your pooja or festive decor setup.
+          {%- elsif fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif ornament_width != blank or ornament_height != blank or ornament_depth != blank -%}
+            Compare your idol with the product measurements shown here:
+            {%- if ornament_height != blank -%} height {{ ornament_height }} in{%- endif -%}
+            {%- if ornament_width != blank -%}{% if ornament_height != blank %}, {% endif %}width {{ ornament_width }} in{%- endif -%}
+            {%- if ornament_depth != blank -%}{% if ornament_height != blank or ornament_width != blank %}, {% endif %}depth {{ ornament_depth }} in{%- endif -%}.
+            Also check the product photos and placement before ordering.
+          {%- else -%}
+            Use the product photos with measuring tape, then compare the ornament width, height and placement with your idol.
+          {%- endif -%}
+        </div>
+      </details>
+
+      <details>
+        <summary>What is included?</summary>
+        <div>
+          {%- if set_items_included != blank -%}
+            {%- for item in set_items_included -%}
+              {{ item }}{%- unless forloop.last -%}, {% endunless -%}
+            {%- endfor -%}
+            {%- if component_count != blank -%}
+              . This product is marked as {{ component_count }} piece{% unless component_count == 1 or component_count == '1' %}s{% endunless %}.
+            {%- endif -%}
+          {%- elsif component_count != blank and component_count != 0 and component_count != '0' -%}
+            This product includes {{ component_count }} {{ ornament_label_lc }}{% unless component_count == 1 or component_count == '1' %} pieces{% endunless %}.
+          {%- else -%}
+            Check the product photos and selected variant for the included pieces.
+          {%- endif -%}
+        </div>
+      </details>
+
+      {%- if is_performance_product -%}
+        <details>
+          <summary>Which performance is this crown suitable for?</summary>
+          <div>
+            This crown is for human performers in Bharatanatyam, Kuchipudi, dance drama, mythological plays and deity or royal stage roles. Match the role, costume, hairstyle and measured size before ordering.
+          </div>
+        </details>
+      {%- elsif is_face_product -%}
+        <details>
+          <summary>Which pooja is this face suitable for?</summary>
+          <div>
+            Use the title and primary deity guidance for the exact deity. Varalakshmi, Lakshmi, Ammavaru and Amman faces are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Friday pooja and festive alankaram. Vishnu, Balaji, Shiva, Durga or Kali faces should be matched to that deity setup.
+          </div>
+        </details>
+      {%- elsif is_hands_product -%}
+        <details>
+          <summary>Which pooja or deity setup is this suitable for?</summary>
+          <div>
+            Hastham and Padam, lotus hands and deity hands are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Amman alankaram and festive idol decoration. Folded Balaji Hastham styles should be matched especially with Balaji, Vishnu, Venkateswara or Perumal setups.
+          </div>
+        </details>
+      {%- elsif is_garland_product -%}
+        <details>
+          <summary>Which pooja or deity setup is this suitable for?</summary>
+          <div>
+            Vagamalai, Thomala and Bhujalu pairs are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Amman alankaram and god or goddess idol decoration when the shoulder placement and drop fit.
+          </div>
+        </details>
+      {%- elsif is_idol_product -%}
+        <details>
+          <summary>Which pooja is this idol suitable for?</summary>
+          <div>
+            This idol or doll is for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Friday pooja, Navaratri golu and festive Amman alankaram setups.
+          </div>
+        </details>
+      {%- elsif is_decor_product == false -%}
+        <details>
+          <summary>Which deity is this product suitable for?</summary>
+          <div>
+            {%- if primary_deity != blank and compatibility != blank -%}
+              This product is marked for {{ primary_deity }} and classified as {{ compatibility }}.
+            {%- elsif primary_deity != blank -%}
+              This product is marked for {{ primary_deity }}.
+            {%- elsif compatibility != blank -%}
+              This product is classified as {{ compatibility }}.
+            {%- else -%}
+              Check the title, product images and placement. General deity ornaments can work for multiple idols when the measured size is suitable.
+            {%- endif -%}
+          </div>
+        </details>
+      {%- endif -%}
+
+      <details>
+        <summary>{% if is_performance_product %}What should I measure before ordering?{% elsif is_face_product %}What should I measure before ordering?{% elsif is_hands_product %}What should I measure before ordering?{% elsif is_idol_product %}What should I measure before ordering?{% elsif is_decor_product %}What size or space should I check?{% else %}What should I measure before ordering?{% endif %}</summary>
+        <div>
+          {%- if fit_notes != blank -%}
+            {{ fit_notes }}
+          {%- elsif is_performance_product -%}
+            Check crown height, front width, depth, head circumference or tying method if shown. Also check hair bun size, head movement, costume balance and whether the crown is for a god, goddess, king, queen or mythological stage role.
+          {%- elsif is_face_product -%}
+            Measure vertical face/setup height, front width, kalasam or idol body placement, forehead and crown space, earring clearance and the backdrop area. In size labels, Height, Length or L means face height; W means front width, not thickness.
+          {%- elsif is_hands_product -%}
+            Measure idol body height, shoulder or arm placement, leg placement, saree or dress width, jewellery clearance and the backdrop area. In size labels, Height, Length or L means vertical hand/leg height or length; W means front width, not thickness.
+          {%- elsif is_garland_product -%}
+            Measure idol height, shoulder width, chest area, dress volume, jewellery clearance and the vertical drop you want. Height means the vertical drop or length when the Vagamalai, Thomala or Bhujalu pair is placed on the idol.
+          {%- elsif is_idol_product -%}
+            Measure your pooja mandapam, kalasam area, altar shelf height, base space and display depth. The Height variant is the finished idol or doll height including crown, hair and decoration where shown.
+          {%- elsif idol_min != blank and idol_max != blank -%}
+            Start with an idol in the {{ idol_min }}-{{ idol_max }} inch range, then confirm the exact product measurement and placement from the photos.
+          {%- elsif idol_min != blank -%}
+            Start with idols around {{ idol_min }} inches or taller, then confirm the exact product measurement and placement from the photos.
+          {%- elsif idol_max != blank -%}
+            Start with idols up to {{ idol_max }} inches, then confirm the exact product measurement and placement from the photos.
+          {%- elsif ornament_type contains 'Crown' or ornament_type contains 'Mukut' or ornament_type contains 'Kireedam' -%}
+            For crowns, check idol height, head or face width, available crown height and circumference if it is a full-round crown.
+          {%- elsif ornament_type contains 'Earring' or ornament_type contains 'Karn' -%}
+            For earrings, check earring height against the idol face and ear area, then compare the photos with your idol.
+          {%- elsif ornament_type contains 'Vaddanam' or ornament_type contains 'Waist' or placement contains 'Waist' -%}
+            For waist ornaments, measure the idol waist or dress width where the belt will sit.
+          {%- elsif ornament_type contains 'Haram' or ornament_type contains 'Necklace' or placement contains 'Neck' -%}
+            For necklaces and harams, check idol height, neck or chest width and the drop length you want.
+          {%- elsif compatibility != blank -%}
+            Start with idol height, then compare the measured ornament size with the exact place where it will sit.
+          {%- else -%}
+            Start with idol height, then compare the measured ornament size with the exact place where it will sit.
+          {%- endif -%}
+        </div>
+      </details>
+
+      <details>
+        <summary>What material is this made from?</summary>
+        <div>
+          {%- if material != blank -%}
+            This product is made with {{ material }}. Review the product photos for finish, color and scale before ordering.
+          {%- else -%}
+            Review the product photos and description for material and finish before ordering.
+          {%- endif -%}
+        </div>
+      </details>
+
+      {%- if is_performance_product -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Share the performer age group, head measurement, hairstyle or bun style, role and performance photos on WhatsApp so Golden Collections can help check the likely fit.
+          </div>
+        </details>
+      {%- elsif is_face_product -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Share your kalasam or idol body size, face placement area, crown space, preferred deity style and setup photos on WhatsApp so Golden Collections can help check likely fit before ordering.
+          </div>
+        </details>
+      {%- elsif is_hands_product -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Share your idol or doll height, body width, hand or leg placement area, dress style and setup photos on WhatsApp so Golden Collections can help check likely fit before ordering.
+          </div>
+        </details>
+      {%- elsif is_garland_product -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Share your idol height, shoulder width, dress volume, selected color and setup photos on WhatsApp so Golden Collections can help check likely Vagamalai or Thomala fit before ordering.
+          </div>
+        </details>
+      {%- elsif is_idol_product -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Share your pooja space, mandapam size, preferred color, selected height and setup photos on WhatsApp so Golden Collections can help check likely fit before ordering.
+          </div>
+        </details>
+      {%- elsif is_decor_product == false -%}
+        <details>
+          <summary>Can I get help before buying?</summary>
+          <div>
+            Yes. Use the size guide, or share your idol photo and measurements on WhatsApp so Golden Collections can help check the likely fit before ordering.
+          </div>
+        </details>
+      {%- endif -%}
+
+      {%- if is_decor_product -%}
+        <details>
+          <summary>Is this reusable?</summary>
+          <div>
+            Yes. This is intended as reusable pooja decor for Varalakshmi Vratham, Lakshmi Pooja, temple displays and festive mandapam setups, especially when fresh banana or coconut decor is not convenient.
+          </div>
+        </details>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gc-deity-lite-faq {
+    background: #fffaf0;
+    border-top: 1px solid rgba(151, 99, 16, 0.14);
+    padding: 3rem 0;
+  }
+
+  .gc-deity-lite-faq__head {
+    margin: 0 auto 1.4rem;
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .gc-deity-lite-faq__head p {
+    color: #986918;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-lite-faq__head h2 {
+    color: #21180d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: clamp(2.4rem, 3vw, 3.4rem);
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .gc-deity-lite-faq__grid {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 auto;
+    max-width: 920px;
+  }
+
+  .gc-deity-lite-faq details {
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .gc-deity-lite-faq summary {
+    color: #21180d;
+    cursor: pointer;
+    font-size: 1.55rem;
+    font-weight: 700;
+  }
+
+  .gc-deity-lite-faq details div {
+    color: #4f463c;
+    font-size: 1.42rem;
+    line-height: 1.5;
+    padding-top: 0.85rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Deity product FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Size and fit questions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Deity product FAQ"
+    }
+  ]
+}
+{% endschema %}

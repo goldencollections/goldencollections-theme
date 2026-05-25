@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golden Collections Pinterest App Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --bg: #fbf7ef;
+        --surface: #ffffff;
+        --text: #241f1c;
+        --muted: #6f6257;
+        --border: #e5d8c7;
+        --gold: #b8872f;
+        --ruby: #c9223d;
+        --success: #157347;
+        --soft: #f4eadb;
+        --ink: #2a2320;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        margin: 0;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, Helvetica, Arial, sans-serif;
+      }
+
+      #master {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(184, 135, 47, 0.08) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(184, 135, 47, 0.06) 1px, transparent 1px),
+          var(--bg);
+        background-size: 96px 96px;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 68px 86px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .topbar {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid rgba(229, 216, 199, 0.85);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-weight: 780;
+        font-size: 34px;
+      }
+
+      .mark {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: var(--ruby);
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 26px;
+      }
+
+      .step {
+        font-size: 22px;
+        color: var(--muted);
+      }
+
+      .headline {
+        font-size: 72px;
+        line-height: 0.98;
+        letter-spacing: 0;
+        max-width: 1280px;
+        margin: 70px 0 0;
+      }
+
+      .subhead {
+        font-size: 32px;
+        line-height: 1.3;
+        color: var(--muted);
+        max-width: 1220px;
+      }
+
+      .row {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 0.92fr 1.3fr;
+        gap: 44px;
+        min-height: 0;
+      }
+
+      .panel {
+        background: rgba(255, 255, 255, 0.96);
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 22px 70px rgba(36, 31, 28, 0.1);
+        overflow: hidden;
+      }
+
+      .panel.pad {
+        padding: 32px;
+      }
+
+      .panel-title {
+        font-size: 31px;
+        font-weight: 760;
+        margin-bottom: 18px;
+      }
+
+      .panel-copy {
+        color: var(--muted);
+        font-size: 24px;
+        line-height: 1.36;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: 640px;
+      }
+
+      .sidebar {
+        padding: 34px 28px;
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .side-title {
+        font-size: 24px;
+        font-weight: 760;
+        margin-bottom: 34px;
+      }
+
+      .nav-item {
+        padding: 16px 18px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        font-size: 21px;
+        color: #e8ded3;
+      }
+
+      .nav-item.active {
+        background: var(--ruby);
+        color: #fff;
+      }
+
+      .main {
+        padding: 34px 40px;
+        background: var(--surface);
+      }
+
+      .status-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        background: var(--soft);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 21px;
+        gap: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 210px;
+        height: 58px;
+        padding: 0 24px;
+        border-radius: 6px;
+        border: 0;
+        background: var(--ruby);
+        color: #fff;
+        font-size: 21px;
+        font-weight: 760;
+        white-space: nowrap;
+      }
+
+      .button.gold {
+        background: var(--gold);
+      }
+
+      .urlbar {
+        height: 58px;
+        display: flex;
+        align-items: center;
+        padding: 0 22px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: #fff;
+        color: #50443e;
+        font-family: "Cascadia Mono", Consolas, monospace;
+        font-size: 18px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .oauth-card {
+        margin-top: 30px;
+        border: 2px solid #ded2c2;
+        border-radius: 8px;
+        padding: 28px;
+        background: #fff;
+      }
+
+      .oauth-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 28px;
+        font-weight: 760;
+        margin-bottom: 22px;
+      }
+
+      .scope-list,
+      .payload {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .chip,
+      .field {
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: #fff;
+      }
+
+      .chip {
+        padding: 13px 16px;
+        color: #453a34;
+        background: #fbf7ef;
+        font-size: 20px;
+      }
+
+      .field {
+        padding: 18px;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 17px;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin-bottom: 8px;
+      }
+
+      .value {
+        font-size: 22px;
+        line-height: 1.28;
+      }
+
+      .success {
+        color: var(--success);
+        font-weight: 760;
+      }
+
+      .warning {
+        color: #8b1d34;
+        font-weight: 760;
+      }
+
+      .boards,
+      .source-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .board,
+      .approval-row,
+      .source {
+        padding: 20px 22px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 22px;
+        background: #fff;
+      }
+
+      .board,
+      .approval-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .board.selected,
+      .approval-row.selected {
+        border-color: var(--gold);
+        background: #fff8e9;
+        box-shadow: inset 5px 0 0 var(--gold);
+      }
+
+      .source {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .thumb {
+        width: 84px;
+        height: 84px;
+        border-radius: 6px;
+        background:
+          radial-gradient(circle at 65% 36%, rgba(201, 34, 61, 0.8), transparent 22%),
+          linear-gradient(135deg, #35231b, #b8872f 55%, #f7d59b);
+      }
+
+      .source h3 {
+        margin: 0 0 8px;
+        font-size: 25px;
+      }
+
+      .source p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .pin-preview {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 28px;
+        margin-top: 24px;
+      }
+
+      .pin-image {
+        min-height: 500px;
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.38)),
+          radial-gradient(circle at 52% 22%, #f6d9a2, transparent 22%),
+          linear-gradient(135deg, #30231f, #8b1d34 48%, #c39142);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pin-image:after {
+        content: "Real Kemp Jewellery Guide";
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 26px;
+        color: #fff;
+        font-size: 32px;
+        font-weight: 820;
+        line-height: 1.08;
+      }
+
+      .note {
+        margin-top: 24px;
+        padding: 20px 22px;
+        border-left: 6px solid var(--gold);
+        background: #fff8e9;
+        font-size: 22px;
+        line-height: 1.34;
+        color: #4d4038;
+      }
+
+      .code {
+        font-family: "Cascadia Mono", Consolas, monospace;
+        color: #3c332e;
+      }
+
+      .final-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .final-card {
+        padding: 28px;
+        background: #fff;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .final-card strong {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+
+      .final-card span {
+        display: block;
+        color: var(--muted);
+        font-size: 21px;
+        line-height: 1.34;
+      }
+
+      .footer-line {
+        height: 10px;
+        background: linear-gradient(90deg, var(--ruby), var(--gold));
+        border-radius: 999px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="master"
+      data-composition-id="master"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="78"
+      data-track-index="0"
+    >
+      <section id="scene-1" class="scene clip" data-start="0" data-duration="6" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Golden Collections Content Publisher</div>
+          <div class="step">Pinterest Standard Access Review</div>
+        </div>
+        <h1 class="headline">Revised Pinterest OAuth and publishing integration demo</h1>
+        <p class="subhead">
+          App ID 1570604. Internal Golden Collections tool for owner-approved organic Pins from approved Shopify content.
+        </p>
+        <div class="footer-line"></div>
+      </section>
+
+      <section id="scene-2" class="scene clip" data-start="6" data-duration="10" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Social Command Center</div>
+          <div class="step">1. Start Pinterest connection</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Owner-controlled connection</div>
+            <p class="panel-copy">
+              A Golden Collections team member starts from the Social Command Center and clicks Connect Pinterest. No posting happens at this stage.
+            </p>
+            <div class="note">The same board also shows approval status, content packages, and publish gates.</div>
+          </div>
+          <div class="panel dashboard">
+            <aside class="sidebar">
+              <div class="side-title">Channels</div>
+              <div class="nav-item active">Pinterest</div>
+              <div class="nav-item">Instagram</div>
+              <div class="nav-item">Facebook</div>
+              <div class="nav-item">YouTube</div>
+            </aside>
+            <main class="main">
+              <div class="status-strip">
+                <span>Pinterest status: Needs login</span>
+                <span class="button">Connect Pinterest</span>
+              </div>
+              <div class="payload">
+                <div class="field">
+                  <div class="label">Workflow</div>
+                  <div class="value">OAuth first, owner approval second, API publishing last</div>
+                </div>
+                <div class="field">
+                  <div class="label">Access</div>
+                  <div class="value">GoldenCollectionsJewelry account</div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-3" class="scene clip" data-start="16" data-duration="10" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">P</div> Pinterest OAuth</div>
+          <div class="step">2. Authorize app on Pinterest</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Full OAuth redirect</div>
+            <p class="panel-copy">
+              The browser redirects to Pinterest OAuth. The user reviews the app name, account, and requested permissions before approval.
+            </p>
+            <div class="urlbar">pinterest.com/oauth - app 1570604 - registered callback</div>
+          </div>
+          <div class="panel pad">
+            <div class="oauth-card">
+              <div class="oauth-head">
+                <span>Authorize Golden Collections Content Publisher</span>
+                <span class="button">Allow</span>
+              </div>
+              <div class="scope-list">
+                <div class="chip">boards:read</div>
+                <div class="chip">boards:write</div>
+                <div class="chip">pins:read</div>
+                <div class="chip">pins:write</div>
+                <div class="chip">user_accounts:read</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-4" class="scene clip" data-start="26" data-duration="10" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> OAuth Callback</div>
+          <div class="step">3. Return to app callback</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Authorization code received</div>
+            <p class="panel-copy">
+              Pinterest redirects back to the configured callback. The app exchanges the code server-side and stores the token securely for this workflow.
+            </p>
+            <div class="note">The demo hides the OAuth code, access token, and app secret.</div>
+          </div>
+          <div class="panel pad">
+            <div class="urlbar">http://localhost:3000/pinterest/callback?code=hidden&amp;state=verified</div>
+            <div class="payload">
+              <div class="field">
+                <div class="label">Token exchange</div>
+                <div class="value success">Completed server-side</div>
+              </div>
+              <div class="field">
+                <div class="label">Stored data</div>
+                <div class="value">Access token, expiry, account metadata</div>
+              </div>
+              <div class="field">
+                <div class="label">Privacy policy</div>
+                <div class="value success">Pinterest API section added</div>
+              </div>
+              <div class="field">
+                <div class="label">Connection</div>
+                <div class="value success">Ready to load boards</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-5" class="scene clip" data-start="36" data-duration="10" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Pinterest API Read</div>
+          <div class="step">4. Load account and boards</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Pinterest integration is visible</div>
+            <p class="panel-copy">
+              After OAuth, the app calls Pinterest APIs to confirm the account and list boards for the owner to choose from.
+            </p>
+            <div class="note code">GET /v5/user_account and GET /v5/boards</div>
+          </div>
+          <div class="panel pad">
+            <div class="status-strip">
+              <span>Account</span>
+              <span class="success">GoldenCollectionsJewelry</span>
+            </div>
+            <div class="boards">
+              <div class="board"><span>Golden Collections Blog</span><span>Loaded</span></div>
+              <div class="board selected"><span>Bharatanatyam Dance Jewellery</span><span>Selected</span></div>
+              <div class="board"><span>Kemp Jewellery Guides</span><span>Loaded</span></div>
+              <div class="board"><span>Temple Jewellery Ideas</span><span>Loaded</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-6" class="scene clip" data-start="46" data-duration="11" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Pin Preparation</div>
+          <div class="step">5. Prepare approved content</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Source content</div>
+            <div class="source-list">
+              <div class="source">
+                <div class="thumb"></div>
+                <div>
+                  <h3>Real Kemp Jewellery Guide</h3>
+                  <p>Published Shopify article with approved image and destination URL.</p>
+                </div>
+              </div>
+              <div class="source">
+                <div class="thumb"></div>
+                <div>
+                  <h3>Owner review package</h3>
+                  <p>Caption, title, board, image, and link are reviewed before publishing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel pad">
+            <div class="pin-preview">
+              <div class="pin-image"></div>
+              <div>
+                <div class="field">
+                  <div class="label">Pin title</div>
+                  <div class="value">Real Kemp Jewellery Guide</div>
+                </div>
+                <div class="field">
+                  <div class="label">Description</div>
+                  <div class="value">Learn what real kemp jewellery means and what buyers should check before choosing a set.</div>
+                </div>
+                <div class="field">
+                  <div class="label">Destination link</div>
+                  <div class="value code">goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-guide</div>
+                </div>
+                <div class="field">
+                  <div class="label">Image</div>
+                  <div class="value">Approved Shopify article image</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-7" class="scene clip" data-start="57" data-duration="9" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Owner Approval Gate</div>
+          <div class="step">6. Owner chooses what publishes</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">No automatic public posting</div>
+            <p class="panel-copy">
+              The system prepares variants, but the owner must approve exact board, image, title, description, and destination link before posting.
+            </p>
+          </div>
+          <div class="panel pad">
+            <div class="approval-row selected"><span>Board</span><span>Bharatanatyam Dance Jewellery</span></div>
+            <div class="approval-row selected"><span>Image</span><span>Approved Shopify image</span></div>
+            <div class="approval-row selected"><span>Caption and title</span><span>Approved</span></div>
+            <div class="approval-row selected"><span>Destination URL</span><span>Approved</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-8" class="scene clip" data-start="66" data-duration="8" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Pinterest API Publish</div>
+          <div class="step">7. Submit after approval</div>
+        </div>
+        <div class="row">
+          <div class="panel pad">
+            <div class="panel-title">Final API request</div>
+            <p class="panel-copy">
+              After owner approval and Standard access, the same package is submitted to Pinterest as an organic image Pin.
+            </p>
+            <div class="note warning">Current Trial was revoked during review, so this video does not claim a live production Pin was created.</div>
+          </div>
+          <div class="panel pad">
+            <div class="status-strip">
+              <span class="code">POST /v5/pins</span>
+              <span class="button gold">Publish approved Pin</span>
+            </div>
+            <div class="payload">
+              <div class="field">
+                <div class="label">board_id</div>
+                <div class="value">Selected Pinterest board</div>
+              </div>
+              <div class="field">
+                <div class="label">media_source</div>
+                <div class="value">image_url</div>
+              </div>
+              <div class="field">
+                <div class="label">link</div>
+                <div class="value">Shopify article URL</div>
+              </div>
+              <div class="field">
+                <div class="label">publish type</div>
+                <div class="value">Organic Pin</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-9" class="scene clip" data-start="74" data-duration="4" data-track-index="1">
+        <div class="topbar">
+          <div class="brand"><div class="mark">GC</div> Ready for Re-review</div>
+          <div class="step">Privacy policy updated</div>
+        </div>
+        <h1 class="headline">OAuth, Pinterest API reads, owner approval, and Pin creation flow are shown end to end</h1>
+        <div class="final-grid">
+          <div class="final-card"><strong>OAuth</strong><span>Consent and callback are visible.</span></div>
+          <div class="final-card"><strong>Boards</strong><span>Pinterest board data is loaded after login.</span></div>
+          <div class="final-card"><strong>Approval</strong><span>The owner controls the final publish action.</span></div>
+          <div class="final-card"><strong>Privacy</strong><span>Policy now covers Pinterest-derived data.</span></div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const scenes = gsap.utils.toArray(".scene");
+
+      scenes.forEach((scene, index) => {
+        const start = Number(scene.dataset.start);
+        const duration = Number(scene.dataset.duration);
+        tl.from(scene, { opacity: 0, y: 34, duration: 0.45, ease: "power2.out" }, start);
+        tl.from(scene.querySelectorAll(".topbar, .headline, .subhead, .panel, .final-card"), {
+          opacity: 0,
+          y: 24,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+        }, start + 0.12);
+        if (index < scenes.length - 1) {
+          tl.to(scene, { opacity: 0, y: -26, duration: 0.38, ease: "power2.in" }, start + duration - 0.42);
+        }
+      });
+
+      tl.from(".button", { scale: 0.92, duration: 0.28, stagger: 0.12, ease: "power2.out" }, 7.5);
+      tl.from(".chip", { opacity: 0, y: 12, duration: 0.28, stagger: 0.05, ease: "power2.out" }, 19.0);
+      tl.from("#scene-4 .field", { opacity: 0, y: 16, duration: 0.28, stagger: 0.08, ease: "power2.out" }, 29.6);
+      tl.from(".board", { opacity: 0, x: 32, duration: 0.35, stagger: 0.09, ease: "power2.out" }, 39.0);
+      tl.from(".source", { opacity: 0, x: -24, duration: 0.35, stagger: 0.14, ease: "power2.out" }, 49.0);
+      tl.from(".pin-preview", { opacity: 0, scale: 0.98, duration: 0.42, ease: "power2.out" }, 50.8);
+      tl.from(".approval-row", { opacity: 0, x: 26, duration: 0.32, stagger: 0.08, ease: "power2.out" }, 60.0);
+      tl.from("#scene-8 .payload .field", { opacity: 0, y: 16, duration: 0.28, stagger: 0.08, ease: "power2.out" }, 68.5);
+
+      window.__timelines["master"] = tl;
+    </script>
+  </body>
+</html>

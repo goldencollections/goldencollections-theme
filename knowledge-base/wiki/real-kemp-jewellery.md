@@ -22,6 +22,14 @@ Regular Bharatanatyam/Kuchipudi full sets usually sell from INR 2,700 to INR 10,
 
 Real kemp jewellery is the higher-priced traditional premium range, with brass/copper base, 24 carat high gold plating, Kemp/Kempu stones, and more detailed handcrafted temple work.
 
+Owner confirmation on 2026-05-16: compared with a similar-size regular alloy-metal dance jewellery piece, a real kemp piece does feel noticeably heavier in hand. Public copy should phrase this as a practical hands-on comparison, not an absolute rule for every individual item.
+
+Permanent terminology decision: call the regular range `regular Bharatanatyam/Kuchipudi jewellery`, `regular Bharatanatyam jewellery`, `regular Kuchipudi jewellery`, or `regular dance jewellery`. Do not describe Golden Collections' own regular range as `imitation kemp`.
+
+Black kemp may be mentioned as a related separate range with a link to `/collections/kemp-black-jewellery`, but it should not be blended into every real kemp buying decision.
+
+Heritage/history decision for the real kemp pillar: keep the conservative approach. Do not add broad sourced history or unsourced heritage claims unless owner provides approved wording and sources.
+
 ## Materials
 
 - Real kemp: brass with 24 carat high gold plating and copper.

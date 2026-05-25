@@ -1,0 +1,788 @@
+{%- liquid
+  assign guide_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign hub_url = pages['deity-jewellery-alankaram-guide'].url | default: '/pages/deity-jewellery-alankaram-guide'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crowns_collection = collections['deity-crowns-1']
+  assign crowns_url = crowns_collection.url | default: '/collections/deity-crowns-1'
+  assign gold_crowns_url = collections['deity-crowns'].url | default: crowns_url
+  assign stone_crowns_url = collections['deity-stone-crowns'].url | default: crowns_url
+  assign hair_crown_url = collections['deity-hair-crown'].url | default: crowns_url
+  assign proof_url = pages['temple-alankaram-proof'].url | default: '/pages/temple-alankaram-proof'
+  assign hanuman_proof_url = '/blogs/jewellery-guides/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026'
+  assign whatsapp_number = section.settings.whatsapp_number | default: '917337294499'
+  assign whatsapp_text = 'Hello Golden Collections, I need help choosing deity crown size for my idol.' | url_encode
+-%}
+
+<section class="gc-crown-guide color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <nav class="gc-crown-guide__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ hub_url }}">Deity jewellery guides</a>
+      <span>/</span>
+      <span>Crown size guide</span>
+    </nav>
+
+    <header class="gc-crown-guide__hero">
+      <div class="gc-crown-guide__hero-copy">
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.subheading }}</p>
+        <div class="gc-crown-guide__hero-actions">
+          <a href="{{ crowns_url }}">Shop deity crowns</a>
+          <a href="{{ measure_url }}" class="gc-crown-guide__secondary">Measure your idol</a>
+        </div>
+      </div>
+
+      <div class="gc-crown-guide__showcase" aria-label="Deity crown examples">
+        {%- if crowns_collection.products_count > 0 -%}
+          {%- for product in crowns_collection.products limit: 3 -%}
+            {%- liquid
+              assign product_image_alt = product.featured_image.alt | default: product.title
+            -%}
+            <a class="gc-crown-guide__product" href="{{ product.url }}">
+              {%- if product.featured_image != blank -%}
+                {{ product.featured_image | image_url: width: 560 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 180px, 32vw', widths: '220, 360, 560', alt: product_image_alt }}
+              {%- endif -%}
+              <span>{{ product.title }}</span>
+            </a>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="gc-crown-guide__product gc-crown-guide__product--empty">
+            <span>Deity crown fit examples</span>
+          </div>
+        {%- endif -%}
+        <div class="gc-crown-guide__showcase-note">
+          <strong>Fit formula</strong>
+          <span>Style + head width + height + depth</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="gc-crown-guide__answer" aria-labelledby="gc-crown-answer">
+      <div>
+        <h2 id="gc-crown-answer">How do I choose the right deity crown size?</h2>
+        <p>Choose the crown style first, then compare idol height, head or face width, crown height, depth and circumference or arc where relevant. A mukut or kireedam should sit naturally on the idol's head and match the visual scale of the alankaram.</p>
+      </div>
+      <ul>
+        <li>Do not choose only by design.</li>
+        <li>Do not use idol height as the only size check.</li>
+        <li>Ask before ordering when posture, trunk, hair or altar space changes fit.</li>
+      </ul>
+    </section>
+
+    <section class="gc-crown-guide__answer" aria-labelledby="gc-crown-proof">
+      <div>
+        <h2 id="gc-crown-proof">Real crown-fit lesson</h2>
+        <p>In the Hanuman Jayanti alankaram proof story, crown height and face visibility are part of the final fit check. Use the example as a reminder to compare head width, crown height, backdrop clearance and deity posture before choosing a mukut or kireedam.</p>
+      </div>
+      <ul>
+        <li><a href="{{ hanuman_proof_url }}">See the Hanuman proof story</a></li>
+        <li><a href="{{ measure_url }}">Measure your idol before ordering</a></li>
+        <li><a href="{{ proof_url }}">View proof hub</a></li>
+      </ul>
+    </section>
+
+    <div class="gc-crown-guide__quick" aria-label="Crown sizing steps">
+      <article>
+        <span>01</span>
+        <strong>Choose style</strong>
+        <p>Open-back, full-round, tall mukut, hair crown or tilted goddess crown.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <strong>Measure placement</strong>
+        <p>Head or face width, crown height clearance, depth and circumference when needed.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <strong>Compare photos</strong>
+        <p>Use measuring-tape product photos and send idol photos when fit is unclear.</p>
+      </article>
+    </div>
+
+    <nav class="gc-crown-guide__nav" aria-label="Crown guide sections">
+      <a href="#gc-crown-styles">Styles</a>
+      <a href="#gc-crown-measurements">Measurements</a>
+      <a href="#gc-crown-deities">Deity notes</a>
+      <a href="#gc-crown-shop">Shop paths</a>
+      <a href="#gc-crown-faq">FAQ</a>
+    </nav>
+
+    <section id="gc-crown-styles" class="gc-crown-guide__section">
+      <div class="gc-crown-guide__section-head">
+        <span>Style first</span>
+        <h2>Different crowns need different measurements</h2>
+      </div>
+      <div class="gc-crown-guide__style-grid">
+        <article>
+          <h3>Open-back / half crown</h3>
+          <p>Measure head or face width where the crown will sit. Then check height and side placement.</p>
+          <strong>Best checks: width, height, depth</strong>
+        </article>
+        <article>
+          <h3>Full-round crown</h3>
+          <p>Measure the circumference around the idol head. Front width alone is not enough.</p>
+          <strong>Best checks: circumference, height, depth</strong>
+        </article>
+        <article>
+          <h3>Tall mukut / kireedam</h3>
+          <p>Check idol height, altar clearance and whether the crown overpowers the face.</p>
+          <strong>Best checks: idol height, crown height</strong>
+        </article>
+        <article>
+          <h3>Hair crown / koppu style</h3>
+          <p>Check hair, bun, back placement and side clearance before using it like a forehead crown.</p>
+          <strong>Best checks: arc, depth, back clearance</strong>
+        </article>
+      </div>
+    </section>
+
+    <section id="gc-crown-measurements" class="gc-crown-guide__section gc-crown-guide__split">
+      <div class="gc-crown-guide__section-head">
+        <span>Measurement checklist</span>
+        <h2>Write these numbers before comparing products</h2>
+        <p>A clear measurement set is what turns a beautiful crown into a crown that is likely to fit.</p>
+      </div>
+      <div class="gc-crown-guide__measure-list">
+        <article>
+          <strong>Idol height</strong>
+          <p>Use it for visual scale, especially for tall mukut and kireedam styles.</p>
+        </article>
+        <article>
+          <strong>Head or face width</strong>
+          <p>The key check for most open-back crowns.</p>
+        </article>
+        <article>
+          <strong>Crown height space</strong>
+          <p>Check mandapam, backdrop and altar clearance.</p>
+        </article>
+        <article>
+          <strong>Depth</strong>
+          <p>Important for hair, trunk, ornaments and raised head shapes.</p>
+        </article>
+        <article>
+          <strong>Circumference or arc</strong>
+          <p>Use circumference for full-round crowns and arc for curved styles.</p>
+        </article>
+        <article>
+          <strong>Photos with tape</strong>
+          <p>Send front and side photos with measuring tape visible.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gc-crown-deities" class="gc-crown-guide__section">
+      <div class="gc-crown-guide__section-head">
+        <span>Deity fit notes</span>
+        <h2>Check the idol shape, not only the ornament name</h2>
+      </div>
+      <div class="gc-crown-guide__deity-grid">
+        <article>
+          <h3>Lakshmi / Varalakshmi / Amman</h3>
+          <p>Check face width, hairstyle, saree drape, hastham/padam clearance and whether the crown should sit upright, tilted or back with the hair.</p>
+        </article>
+        <article>
+          <h3>Balaji / Vishnu / Perumal</h3>
+          <p>Check crown height with namam or thiruman, shanku chakra, shoulder ornaments and long haram placement.</p>
+        </article>
+        <article>
+          <h3>Krishna / Radha Krishna</h3>
+          <p>Check peacock feather, flute position, head angle and whether the crown is Krishna-specific or general by size.</p>
+        </article>
+        <article>
+          <h3>Ganesha / Ganapati</h3>
+          <p>Measure head width carefully and check trunk direction, ears and seated posture.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gc-crown-shop" class="gc-crown-guide__section">
+      <div class="gc-crown-guide__section-head">
+        <span>Shop by fit need</span>
+        <h2>Move from guide to the right collection</h2>
+      </div>
+      <div class="gc-crown-guide__shop-grid">
+        <a href="{{ crowns_url }}">
+          <strong>All Deity Crowns</strong>
+          <span>Mukut, kireedam and general god/goddess idol crown browsing.</span>
+        </a>
+        <a href="{{ gold_crowns_url }}">
+          <strong>Gold Plated Crowns</strong>
+          <span>For buyers who want gold-plated deity crown styles.</span>
+        </a>
+        <a href="{{ stone_crowns_url }}">
+          <strong>Stone Crowns</strong>
+          <span>For stone-work designs where color and deity styling matter.</span>
+        </a>
+        <a href="{{ hair_crown_url }}">
+          <strong>Hair Crown Styles</strong>
+          <span>For crowns that sit with hair, bun or goddess-style back placement.</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="gc-crown-faq" class="gc-crown-guide__section gc-crown-guide__faq" aria-labelledby="gc-crown-faq-heading">
+      <div class="gc-crown-guide__section-head">
+        <span>Buyer questions</span>
+        <h2 id="gc-crown-faq-heading">Deity crown, mukut and kireedam FAQ</h2>
+      </div>
+      <details>
+        <summary>Is mukut the same as kireedam?</summary>
+        <p>Mukut, kireedam, kirita and crown are often used for similar deity head ornaments, but regional usage and crown style can differ. Always check the product photo and measurements.</p>
+      </details>
+      <details>
+        <summary>Can one deity crown fit different gods and goddesses?</summary>
+        <p>Some general crowns can fit different idols when the head width, crown height, depth, posture and style match. Deity-specific symbols or shapes should not be treated as universal.</p>
+      </details>
+      <details>
+        <summary>What is the most important crown measurement?</summary>
+        <p>For open-back crowns, head or face width is usually the most important. For full-round crowns, circumference matters. Crown height and depth should also be checked for visual scale and clearance.</p>
+      </details>
+      <details>
+        <summary>Can Golden Collections help check crown size?</summary>
+        <p>Yes. Share idol height, face or head width, front and side photos, and one photo with a measuring tape visible. Golden Collections can help check likely fit before ordering.</p>
+      </details>
+    </section>
+
+    <section class="gc-crown-guide__reviewed">
+      <div>
+        <h2>Fit-first crown guidance from Golden Collections</h2>
+        <p>Golden Collections is led by Anil Tunk from Secunderabad/Hyderabad and has served deity jewellery and Hindu idol alankaram buyers since 2012. This guide is built for practical crown sizing decisions, not generic decoration advice.</p>
+      </div>
+      <div class="gc-crown-guide__reviewed-actions">
+        <a href="{{ anil_url }}">About Anil Tunk</a>
+        <a href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_text }}" target="_blank" rel="noopener" class="gc-crown-guide__secondary">Ask crown size help</a>
+      </div>
+    </section>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ guide_url }}#webpage",
+      "url": "{{ shop.url }}{{ guide_url }}",
+      "name": "Deity Crown, Mukut and Kireedam Size Guide",
+      "description": "Golden Collections guide to choosing deity crowns, mukut and kireedam by idol height, head width, crown style, circumference, depth and placement.",
+      "about": ["Deity crown sizing", "Mukut", "Kireedam", "Kirita", "Hindu idol alankaram"],
+      "author": { "@id": "{{ shop.url }}{{ anil_url }}#person" },
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "{{ shop.url }}{{ guide_url }}#howto",
+      "name": "How to choose the right deity crown size",
+      "step": [
+        { "@type": "HowToStep", "name": "Identify crown style", "text": "Decide whether the crown is open-back, full-round, tall mukut, hair crown or a special tilted style." },
+        { "@type": "HowToStep", "name": "Measure idol head or face width", "text": "Measure side to side where the crown will sit." },
+        { "@type": "HowToStep", "name": "Check height and depth", "text": "Compare crown height and depth with head shape, altar clearance and visual scale." },
+        { "@type": "HowToStep", "name": "Use circumference when needed", "text": "For full-round crowns, measure around the idol head where the crown sits." },
+        { "@type": "HowToStep", "name": "Compare product photos", "text": "Use product measurement photos and ask for fit help when posture, hairstyle, trunk direction or draping affects fit." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}{{ guide_url }}#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is mukut the same as kireedam?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mukut, kireedam, kirita and crown are often used for similar deity head ornaments, but regional usage and crown style can differ. Always check the product photo and measurements." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can one deity crown fit different gods and goddesses?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Some general crowns can fit different idols when the head width, crown height, depth, posture and style match. Deity-specific symbols or shapes should not be treated as universal." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most important crown measurement?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For open-back crowns, head or face width is usually the most important. For full-round crowns, circumference matters. Crown height and depth should also be checked for visual scale and clearance." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-crown-guide {
+    background:
+      linear-gradient(180deg, #ffffff 0%, #fff8ec 42%, #ffffff 100%);
+    color: #181512;
+    padding: 1.4rem 0 4.5rem;
+  }
+
+  .gc-crown-guide__breadcrumb {
+    align-items: center;
+    color: #6b6258;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.18rem;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .gc-crown-guide__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-crown-guide__hero {
+    align-items: stretch;
+    display: grid;
+    gap: 1.1rem;
+    min-height: 390px;
+    padding: 0.8rem 0 1.2rem;
+  }
+
+  .gc-crown-guide__hero-copy {
+    align-self: start;
+    padding-top: 0.7rem;
+  }
+
+  .gc-crown-guide h1,
+  .gc-crown-guide h2,
+  .gc-crown-guide h3,
+  .gc-crown-guide strong {
+    color: #181512;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-crown-guide h1 {
+    font-size: 3.35rem;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 980px;
+  }
+
+  .gc-crown-guide h2 {
+    font-size: 2.75rem;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .gc-crown-guide h3 {
+    font-size: 1.75rem;
+    line-height: 1.12;
+    margin: 0;
+  }
+
+  .gc-crown-guide p,
+  .gc-crown-guide li,
+  .gc-crown-guide span,
+  .gc-crown-guide summary {
+    color: #51483f;
+    font-size: 1.22rem;
+    line-height: 1.45;
+  }
+
+  .gc-crown-guide__hero-copy > p {
+    color: #39322b;
+    font-size: 1.3rem;
+    line-height: 1.36;
+    margin: 0.85rem 0 0;
+    max-width: 760px;
+  }
+
+  .gc-crown-guide__hero-actions,
+  .gc-crown-guide__reviewed-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gc-crown-guide__hero-actions a,
+  .gc-crown-guide__reviewed-actions a {
+    align-items: center;
+    background: #7d1519;
+    border: 1px solid #7d1519;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.14rem;
+    font-weight: 800;
+    min-height: 46px;
+    padding: 0.78rem 1.05rem;
+    text-decoration: none;
+  }
+
+  .gc-crown-guide__hero-actions .gc-crown-guide__secondary,
+  .gc-crown-guide__reviewed-actions .gc-crown-guide__secondary {
+    background: #ffffff;
+    border-color: rgba(125, 21, 25, 0.28);
+    color: #7d1519;
+  }
+
+  .gc-crown-guide__showcase {
+    align-content: stretch;
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-height: 310px;
+    position: relative;
+  }
+
+  .gc-crown-guide__product {
+    background: #24180b;
+    border: 1px solid rgba(24, 21, 18, 0.09);
+    border-radius: 8px;
+    box-shadow: 0 18px 45px rgba(36, 22, 8, 0.08);
+    color: inherit;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    height: 350px;
+    min-height: 285px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .gc-crown-guide__product img {
+    aspect-ratio: 4 / 5;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .gc-crown-guide__product span {
+    background: #24180b;
+    color: #fff8ea;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+    padding: 0.65rem 0.75rem 0.75rem;
+  }
+
+  .gc-crown-guide__product--empty {
+    align-items: end;
+    background: #174c43;
+    color: #ffffff;
+    padding: 1rem;
+  }
+
+  .gc-crown-guide__showcase-note {
+    background: #174c43;
+    border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(23, 76, 67, 0.24);
+    color: #ffffff;
+    display: grid;
+    gap: 0.2rem;
+    grid-column: 1 / -1;
+    padding: 0.85rem 1rem;
+    position: static;
+    width: auto;
+  }
+
+  .gc-crown-guide__showcase-note strong,
+  .gc-crown-guide__showcase-note span {
+    color: #ffffff;
+  }
+
+  .gc-crown-guide__answer,
+  .gc-crown-guide__quick,
+  .gc-crown-guide__section,
+  .gc-crown-guide__reviewed {
+    border-top: 1px solid rgba(24, 21, 18, 0.12);
+  }
+
+  .gc-crown-guide__answer {
+    display: grid;
+    gap: 1.2rem;
+    padding: 2rem 0;
+  }
+
+  .gc-crown-guide__answer p {
+    font-size: 1.35rem;
+    margin-bottom: 0;
+  }
+
+  .gc-crown-guide__answer ul {
+    background: #174c43;
+    border-radius: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 1.1rem;
+  }
+
+  .gc-crown-guide__answer li {
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0.55rem 0;
+  }
+
+  .gc-crown-guide__quick {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.3rem 0;
+  }
+
+  .gc-crown-guide__quick article,
+  .gc-crown-guide__style-grid article,
+  .gc-crown-guide__measure-list article,
+  .gc-crown-guide__deity-grid article,
+  .gc-crown-guide__shop-grid a,
+  .gc-crown-guide__faq details {
+    background: #ffffff;
+    border: 1px solid rgba(24, 21, 18, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 12px 34px rgba(42, 30, 18, 0.05);
+  }
+
+  .gc-crown-guide__quick article {
+    padding: 1rem;
+  }
+
+  .gc-crown-guide__quick article > span {
+    color: #b27712;
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+  }
+
+  .gc-crown-guide__quick strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .gc-crown-guide__quick p {
+    margin: 0.45rem 0 0;
+  }
+
+  .gc-crown-guide__nav {
+    display: flex;
+    gap: 0.55rem;
+    margin: 0 -1.5rem;
+    overflow-x: auto;
+    padding: 0.8rem 1.5rem 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .gc-crown-guide__nav a {
+    background: #ffffff;
+    border: 1px solid rgba(125, 21, 25, 0.16);
+    border-radius: 999px;
+    color: #7d1519;
+    flex: 0 0 auto;
+    font-size: 1.05rem;
+    font-weight: 800;
+    padding: 0.58rem 0.85rem;
+    text-decoration: none;
+  }
+
+  .gc-crown-guide__section {
+    padding: 2.4rem 0;
+  }
+
+  .gc-crown-guide__section-head {
+    margin-bottom: 1.1rem;
+    max-width: 760px;
+  }
+
+  .gc-crown-guide__section-head > span {
+    color: #7d1519;
+    display: block;
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-crown-guide__section-head p {
+    margin-bottom: 0;
+  }
+
+  .gc-crown-guide__style-grid,
+  .gc-crown-guide__measure-list,
+  .gc-crown-guide__deity-grid,
+  .gc-crown-guide__shop-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .gc-crown-guide__style-grid article,
+  .gc-crown-guide__measure-list article,
+  .gc-crown-guide__deity-grid article,
+  .gc-crown-guide__shop-grid a {
+    color: inherit;
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+    text-decoration: none;
+  }
+
+  .gc-crown-guide__style-grid article {
+    border-top: 4px solid #b27712;
+  }
+
+  .gc-crown-guide__style-grid strong,
+  .gc-crown-guide__measure-list strong,
+  .gc-crown-guide__shop-grid strong {
+    font-size: 1.45rem;
+    line-height: 1.12;
+  }
+
+  .gc-crown-guide__measure-list article:nth-child(2n) {
+    border-top: 4px solid #174c43;
+  }
+
+  .gc-crown-guide__measure-list article:nth-child(2n + 1) {
+    border-top: 4px solid #7d1519;
+  }
+
+  .gc-crown-guide__faq details {
+    padding: 1rem;
+  }
+
+  .gc-crown-guide__faq details + details {
+    margin-top: 0.7rem;
+  }
+
+  .gc-crown-guide__faq summary {
+    color: #181512;
+    cursor: pointer;
+    font-weight: 850;
+  }
+
+  .gc-crown-guide__reviewed {
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 0 0;
+  }
+
+  .gc-crown-guide__reviewed p {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-crown-guide__hero {
+      min-height: 0;
+    }
+
+    .gc-crown-guide__showcase {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      min-height: 0;
+    }
+
+    .gc-crown-guide__product {
+      height: 250px;
+      min-height: 220px;
+    }
+
+    .gc-crown-guide__product:nth-child(3) {
+      display: none;
+    }
+
+    .gc-crown-guide__showcase-note {
+      padding: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-crown-guide {
+      padding: 1.8rem 0 5.5rem;
+    }
+
+    .gc-crown-guide__hero {
+      grid-template-columns: minmax(0, 0.95fr) minmax(410px, 0.68fr);
+    }
+
+    .gc-crown-guide h1 {
+      font-size: 4.85rem;
+    }
+
+    .gc-crown-guide h2 {
+      font-size: 3.35rem;
+    }
+
+    .gc-crown-guide__hero-copy > p {
+      font-size: 1.48rem;
+    }
+
+    .gc-crown-guide__answer {
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
+    }
+
+    .gc-crown-guide__quick,
+    .gc-crown-guide__deity-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-crown-guide__style-grid,
+    .gc-crown-guide__shop-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gc-crown-guide__split {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: minmax(240px, 0.4fr) minmax(0, 1fr);
+    }
+
+    .gc-crown-guide__measure-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-crown-guide__reviewed {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .gc-crown-guide__nav {
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC deity crown guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Deity Crown, Mukut and Kireedam Size Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Choose Hindu god and goddess idol crowns by crown style, idol height, head or face width, crown height, circumference, depth and placement."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number with country code",
+      "default": "917337294499"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC deity crown guide"
+    }
+  ]
+}
+{% endschema %}

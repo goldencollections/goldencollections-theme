@@ -1,0 +1,536 @@
+{%- liquid
+  assign whatsapp_number = section.settings.whatsapp_number | default: '917337294499'
+  assign whatsapp_text = 'Hello Golden Collections, I need help measuring my deity idol for jewellery size.' | url_encode
+-%}
+
+<section class="gc-size-guide color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <nav class="gc-size-guide__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <span>Size Guide</span>
+    </nav>
+
+    <header class="gc-size-guide__hero">
+      <div>
+        <p class="gc-size-guide__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.subheading }}</p>
+      </div>
+      <div class="gc-size-guide__hero-actions">
+        <a class="gc-size-guide__button" href="#crowns">Measure crowns</a>
+        <a class="gc-size-guide__button gc-size-guide__button--secondary" href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_text }}" target="_blank" rel="noopener">
+          WhatsApp size help
+        </a>
+      </div>
+    </header>
+
+    <div class="gc-size-guide__quick">
+      <article>
+        <strong>1. Measure the idol first</strong>
+        <span>Idol height and placement area decide the likely ornament size.</span>
+      </article>
+      <article>
+        <strong>2. Check product photos</strong>
+        <span>Use the product measurement-tape images before ordering.</span>
+      </article>
+      <article>
+        <strong>3. Ask if unsure</strong>
+        <span>Send idol photos and measurements on WhatsApp for help.</span>
+      </article>
+    </div>
+
+    <nav class="gc-size-guide__nav" aria-label="Size guide sections">
+      <a href="#crowns">Crowns</a>
+      <a href="#necklaces">Necklaces and harams</a>
+      <a href="#vaddanam">Vaddanam</a>
+      <a href="#earrings">Earrings</a>
+      <a href="#videos">Videos</a>
+    </nav>
+
+    <section id="crowns" class="gc-size-guide__section">
+      <div class="gc-size-guide__section-head">
+        <p>Crown sizing guide</p>
+        <h2>Crowns need different measurements for open-back and full-round styles.</h2>
+      </div>
+
+      <div class="gc-size-guide__grid gc-size-guide__grid--two">
+        <article class="gc-size-guide__measure-card">
+          <div class="gc-size-guide__diagram" aria-hidden="true">
+            <svg viewBox="0 0 240 180" role="img">
+              <path d="M84 76c8-34 64-34 72 0l7 33c5 28-15 52-43 52s-48-24-43-52l7-33z" fill="#fff8ea" stroke="#8f5f11" stroke-width="4"/>
+              <path d="M72 76h96" stroke="#8f1f18" stroke-width="5" stroke-linecap="round"/>
+              <path d="M72 76l14-10M72 76l14 10M168 76l-14-10M168 76l-14 10" stroke="#8f1f18" stroke-width="4" stroke-linecap="round"/>
+              <text x="120" y="38" text-anchor="middle">Ear to ear</text>
+              <text x="120" y="166" text-anchor="middle">Open-back / half crown</text>
+            </svg>
+          </div>
+          <div>
+            <h3>Half crown or open-back crown</h3>
+            <p>Measure the head or face width from one side to the other. For many idols this means the space where the crown will sit, often ear-to-ear or side-to-side.</p>
+            <ul>
+              <li>Use: head width, inner crown width, crown height.</li>
+              <li>Best for: crowns that do not go fully around the head.</li>
+              <li>Tip: product photos usually show width and height with a tape.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="gc-size-guide__measure-card">
+          <div class="gc-size-guide__diagram" aria-hidden="true">
+            <svg viewBox="0 0 240 180" role="img">
+              <ellipse cx="120" cy="89" rx="58" ry="68" fill="#fff8ea" stroke="#8f5f11" stroke-width="4"/>
+              <path d="M120 22c42 5 74 32 74 67s-32 62-74 67c-42-5-74-32-74-67s32-62 74-67z" fill="none" stroke="#8f1f18" stroke-width="5" stroke-dasharray="10 8"/>
+              <path d="M194 89l-11-9M194 89l-11 9" stroke="#8f1f18" stroke-width="4" stroke-linecap="round"/>
+              <text x="120" y="20" text-anchor="middle">Full circumference</text>
+              <text x="120" y="166" text-anchor="middle">Full-round crown</text>
+            </svg>
+          </div>
+          <div>
+            <h3>Full-round crown</h3>
+            <p>Measure around the idol head where the crown will sit. This is the circumference. Do not use only front width for a full-round crown.</p>
+            <ul>
+              <li>Use: full circumference, crown height, idol height.</li>
+              <li>Best for: crowns that wrap around the head.</li>
+              <li>Tip: keep the tape level around the head.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="necklaces" class="gc-size-guide__section">
+      <div class="gc-size-guide__section-head">
+        <p>Necklace and haram sizing</p>
+        <h2>Decide where the ornament should sit on the idol.</h2>
+      </div>
+
+      <div class="gc-size-guide__grid">
+        <article class="gc-size-guide__simple-card">
+          <h3>Short necklace</h3>
+          <p>Measure the neck or upper chest width. Check product width and chain/drop length.</p>
+        </article>
+        <article class="gc-size-guide__simple-card">
+          <h3>Short necklace</h3>
+          <p>Measure from neck to the upper chest where the necklace should end.</p>
+        </article>
+        <article class="gc-size-guide__simple-card">
+          <h3>Long haram</h3>
+          <p>Measure from neck to the lower chest or waist area depending on the desired look.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="vaddanam" class="gc-size-guide__section">
+      <div class="gc-size-guide__section-head">
+        <p>Waist ornaments</p>
+        <h2>For vaddanam, measure the waist placement area.</h2>
+      </div>
+      <div class="gc-size-guide__grid gc-size-guide__grid--two">
+        <article class="gc-size-guide__simple-card">
+          <h3>Front vaddanam look</h3>
+          <p>Measure the front width across the idol waist where the belt should be visible.</p>
+        </article>
+        <article class="gc-size-guide__simple-card">
+          <h3>Full waist fit</h3>
+          <p>Measure the complete waist circumference if the ornament needs to wrap around.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="earrings" class="gc-size-guide__section">
+      <div class="gc-size-guide__section-head">
+        <p>Earrings and accessories</p>
+        <h2>Use the idol face size and exact placement area.</h2>
+      </div>
+      <div class="gc-size-guide__grid">
+        <article class="gc-size-guide__simple-card">
+          <h3>Earrings</h3>
+          <p>Measure the side face area and check product height so the earring does not look too large.</p>
+        </article>
+        <article class="gc-size-guide__simple-card">
+          <h3>Nose rings and face accessories</h3>
+          <p>Measure the exact face placement and compare with product measurement photos.</p>
+        </article>
+        <article class="gc-size-guide__simple-card">
+          <h3>Weapons and alankaram accessories</h3>
+          <p>Measure the hand, shoulder, or setup area where the accessory will be placed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="videos" class="gc-size-guide__section gc-size-guide__videos">
+      <div class="gc-size-guide__section-head">
+        <p>Video examples</p>
+        <h2>We can add short measuring videos here.</h2>
+      </div>
+      <div class="gc-size-guide__video-grid">
+        <article>
+          <span>Coming next</span>
+          <h3>How to measure an open-back crown</h3>
+          <p>Animated guide now, real idol video can be added later.</p>
+        </article>
+        <article>
+          <span>Coming next</span>
+          <h3>How to measure a full-round crown</h3>
+          <p>Show tape around the full head circumference.</p>
+        </article>
+        <article>
+          <span>Upload option</span>
+          <h3>Use your live videos later</h3>
+          <p>You can upload real explanation videos and we can add captions, labels, and voiceover.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="gc-size-guide__section gc-size-guide__faq">
+      <div class="gc-size-guide__section-head">
+        <p>Common questions</p>
+        <h2>Quick answers before ordering</h2>
+      </div>
+      <details>
+        <summary>What if I do not know my idol size?</summary>
+        <p>Start with idol height. If possible, take one front photo with a scale or measuring tape next to the idol.</p>
+      </details>
+      <details>
+        <summary>Do I need all crown measurements?</summary>
+        <p>No. Open-back crowns mainly need head width and crown height. Full-round crowns need circumference.</p>
+      </details>
+      <details>
+        <summary>Can Golden Collections help check size?</summary>
+        <p>Yes. Share idol photos and measurements on WhatsApp before ordering.</p>
+      </details>
+    </section>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I measure a deity idol for an open-back crown?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Measure the head or face width from one side to the other where the crown will sit, often ear-to-ear or side-to-side."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I measure a deity idol for a full-round crown?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Measure the full circumference around the idol head where the crown will sit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I am not sure about deity jewellery size?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Check product measurement photos and share idol photos with measurements on WhatsApp for size help before ordering."
+        }
+      }
+    ]
+  }
+</script>
+
+<style>
+  .gc-size-guide {
+    background: #fffaf0;
+    color: #21180d;
+    padding: 1.4rem 0 3rem;
+  }
+
+  .gc-size-guide__breadcrumb {
+    color: #6f6254;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.18rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .gc-size-guide__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-size-guide__hero {
+    display: grid;
+    gap: 1.2rem;
+    margin-bottom: 1.3rem;
+    text-align: left;
+  }
+
+  .gc-size-guide__eyebrow,
+  .gc-size-guide__section-head p,
+  .gc-size-guide__video-grid span {
+    color: #8f5f11;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .gc-size-guide h1,
+  .gc-size-guide h2,
+  .gc-size-guide h3 {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .gc-size-guide h1 {
+    font-size: 3.8rem;
+    line-height: 1.02;
+    max-width: 820px;
+  }
+
+  .gc-size-guide__hero p:not(.gc-size-guide__eyebrow) {
+    color: #4e4438;
+    font-size: 1.4rem;
+    line-height: 1.42;
+    margin: 0.85rem 0 0;
+    max-width: 820px;
+  }
+
+  .gc-size-guide__hero-actions {
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .gc-size-guide__button {
+    align-items: center;
+    background: #8f1f18;
+    border: 1px solid #8f1f18;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.24rem;
+    font-weight: 700;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-size-guide__button--secondary {
+    background: #fffdf8;
+    border-color: rgba(151, 99, 16, 0.24);
+    color: #8f1f18;
+  }
+
+  .gc-size-guide__quick,
+  .gc-size-guide__grid,
+  .gc-size-guide__video-grid {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .gc-size-guide__quick {
+    margin-bottom: 1rem;
+  }
+
+  .gc-size-guide__quick article,
+  .gc-size-guide__measure-card,
+  .gc-size-guide__simple-card,
+  .gc-size-guide__video-grid article,
+  .gc-size-guide__faq details {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .gc-size-guide__quick article {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .gc-size-guide__quick strong {
+    color: #7f1f19;
+    font-size: 1.22rem;
+  }
+
+  .gc-size-guide__quick span,
+  .gc-size-guide p,
+  .gc-size-guide li {
+    color: #4f463c;
+    font-size: 1.2rem;
+    line-height: 1.42;
+  }
+
+  .gc-size-guide__nav {
+    display: flex;
+    gap: 0.55rem;
+    margin: 0 -1.5rem 1.4rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.4rem;
+  }
+
+  .gc-size-guide__nav a {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 999px;
+    color: #5e3d13;
+    flex: 0 0 auto;
+    font-size: 1.12rem;
+    font-weight: 700;
+    padding: 0.6rem 0.85rem;
+    text-decoration: none;
+  }
+
+  .gc-size-guide__section {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding: 1.5rem 0;
+  }
+
+  .gc-size-guide__section-head {
+    margin-bottom: 1rem;
+  }
+
+  .gc-size-guide h2 {
+    font-size: 2.4rem;
+    line-height: 1.12;
+    max-width: 880px;
+  }
+
+  .gc-size-guide h3 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .gc-size-guide__measure-card {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .gc-size-guide__diagram {
+    background: #fff8ea;
+    border: 1px solid rgba(151, 99, 16, 0.14);
+    border-radius: 8px;
+    min-height: 170px;
+    padding: 0.5rem;
+  }
+
+  .gc-size-guide__diagram svg {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .gc-size-guide__diagram text {
+    fill: #5e3d13;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .gc-size-guide ul {
+    margin: 0.75rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .gc-size-guide__video-grid article {
+    border-left: 4px solid #0f5132;
+  }
+
+  .gc-size-guide__faq details + details {
+    margin-top: 0.75rem;
+  }
+
+  .gc-size-guide__faq summary {
+    color: #21180d;
+    cursor: pointer;
+    font-size: 1.32rem;
+    font-weight: 700;
+  }
+
+  .gc-size-guide__faq p {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-size-guide {
+      padding: 1.8rem 0 4rem;
+    }
+
+    .gc-size-guide__hero {
+      align-items: end;
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .gc-size-guide h1 {
+      font-size: clamp(4.4rem, 5vw, 6.2rem);
+    }
+
+    .gc-size-guide__quick,
+    .gc-size-guide__grid,
+    .gc-size-guide__video-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-size-guide__grid--two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-size-guide__measure-card {
+      grid-template-columns: minmax(190px, 0.42fr) minmax(0, 0.58fr);
+    }
+
+    .gc-size-guide__nav {
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Deity size guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Deity jewellery size guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to measure your deity idol"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Use this guide to choose crowns, harams, vaddanam, earrings and alankaram accessories with better fit confidence."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number with country code",
+      "default": "917337294499"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Deity size guide"
+    }
+  ]
+}
+{% endschema %}

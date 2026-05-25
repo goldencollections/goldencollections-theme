@@ -9,30 +9,6 @@
  */
 {
   "sections": {
-    "rich_text_dKcfbJ": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_GYCYy7": {
-          "type": "heading",
-        "settings": {
-          "heading": "{{ collection.title }}",
-          "heading_size": "h2"
-        }
-      }
-    },
-      "block_order": [
-        "heading_GYCYy7"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -63,8 +39,7 @@
     }
   },
   "order": [
-    "rich_text_dKcfbJ",
-    "product-grid",
-    "banner"
+    "banner",
+    "product-grid"
   ]
 }

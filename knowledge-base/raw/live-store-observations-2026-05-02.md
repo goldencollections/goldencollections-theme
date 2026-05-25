@@ -8,7 +8,8 @@ Source: https://www.goldencollections.com/
 - Primary categories shown on the homepage: Deity Jewellery, Bharatanatyam Jewellery, Kemp Jewellery, Kemp Black Jewellery, Varalakshmi Collections.
 - Homepage copy says the business serves temples, classical dancers, and brides across South India.
 - Homepage trust sections included some older trust claims that were later corrected by owner-confirmed facts.
-- Public contact details shown: WhatsApp/phone `+91 7337294499`, support hours Monday to Saturday, 11 AM to 8 PM.
+- Public contact details shown at the time included WhatsApp/phone `+91 7337294499` and an older support-hours value that is now superseded.
+- Stale observation note: owner corrected current store/support timings on 2026-05-20 to Monday-Saturday 11:00 AM IST to 8:30 PM IST, and Sunday 1:00 PM IST to 8:00 PM IST. Use [[../wiki/business-entity.md]] as the current source of truth.
 
 ## Main Navigation Observed
 

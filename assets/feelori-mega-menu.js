@@ -28,6 +28,7 @@
     const mobileContainer = megaMenu.querySelector('.feelori-mega-menu__mobile-container');
     const mobileOverlay = megaMenu.querySelector('.feelori-mega-menu__overlay');
     const mobileCloseButton = megaMenu.querySelector('.feelori-mega-menu__mobile-close');
+    const searchSummary = megaMenu.querySelector('.gc-feelori-search-modal-host details-modal summary');
 
     const desktopMenuItems = megaMenu.querySelectorAll(
       '.feelori-mega-menu__list > .feelori-mega-menu__item'
@@ -203,6 +204,17 @@
       else openMobileMenu();
     }
 
+    function openSearchModal() {
+      if (!searchSummary) {
+        window.location.href = '/search';
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        searchSummary.click();
+      });
+    }
+
     function handleFocusTrap(e) {
       if (!document.body.classList.contains('mobile-menu-open') || e.key !== 'Tab') return;
       if (!mobileContainer) return;
@@ -226,6 +238,17 @@
     if (mobileToggle) {
       mobileToggle.addEventListener('click', () => toggleMobileMenu());
     }
+
+    megaMenu.querySelectorAll('[data-feelori-search-trigger]').forEach((searchTrigger) => {
+      searchTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (document.body.classList.contains('mobile-menu-open')) {
+          toggleMobileMenu(true);
+        }
+        openSearchModal();
+      });
+    });
 
     if (mobileCloseButton) {
       mobileCloseButton.addEventListener('click', () => toggleMobileMenu(true));
@@ -262,6 +285,14 @@
     // ----- MOBILE ACCORDION (EVENT DELEGATION) -----
     if (mobileContainer) {
       mobileContainer.addEventListener('click', (e) => {
+        const searchTrigger = e.target.closest('[data-feelori-search-trigger]');
+        if (searchTrigger) {
+          e.preventDefault();
+          toggleMobileMenu(true);
+          openSearchModal();
+          return;
+        }
+
         const toggleButton = e.target.closest('.feelori-mega-menu__mobile-submenu-toggle');
         if (toggleButton) {
           e.preventDefault();

@@ -25,20 +25,28 @@
       </span>
     </summary>
     <div
-      class="search-modal modal__content gradient"
+      class="search-modal modal__content gradient gc-search-modal"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'general.search.search' | t }}"
     >
       <div class="modal-overlay"></div>
       <div
-        class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
+        class="search-modal__content gc-search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
         tabindex="-1"
       >
+        <div class="gc-search-modal__panel">
+          <div class="gc-search-modal__intro">
+            <p class="gc-search-modal__kicker">Product search</p>
+            <h2 class="gc-search-modal__title">What are you looking for?</h2>
+            <p class="gc-search-modal__subtitle">
+              Type a product, dance item, deity item, or regional name.
+            </p>
+          </div>
         {%- if settings.predictive_search_enabled -%}
-          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+          <predictive-search class="search-modal__form gc-search-modal__body" data-loading-text="{{ 'accessibility.loading' | t }}">
         {%- else -%}
-          <search-form class="search-modal__form">
+          <search-form class="search-modal__form gc-search-modal__body">
         {%- endif -%}
         <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
           <div class="field">
@@ -48,7 +56,7 @@
               type="search"
               name="q"
               value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.search' | t }}"
+              placeholder="Search Bharatanatyam, kemp, deity, mukut..."
               {%- if settings.predictive_search_enabled -%}
                 role="combobox"
                 aria-expanded="false"
@@ -62,7 +70,7 @@
                 spellcheck="false"
               {%- endif -%}
             >
-            <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+            <label class="field__label" for="{{ input_id }}">Search products, collections and guides</label>
             <input type="hidden" name="options[prefix]" value="last">
             <button
               type="reset"
@@ -88,6 +96,19 @@
             <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
           {%- endif -%}
         </form>
+        <div class="gc-search-modal__quick" aria-label="Popular product searches">
+          <p class="gc-search-modal__section-label">Popular searches</p>
+          <div class="gc-search-modal__chip-list">
+            <a href="/search?q=bharatanatyam+jewellery+set&options%5Bprefix%5D=last">Bharatanatyam set</a>
+            <a href="/search?q=real+kemp+jewellery&options%5Bprefix%5D=last">Real kemp</a>
+            <a href="/search?q=black+kemp&options%5Bprefix%5D=last">Black kemp</a>
+            <a href="/search?q=short+necklace&options%5Bprefix%5D=last">Short necklace</a>
+            <a href="/search?q=long+haram&options%5Bprefix%5D=last">Long haram</a>
+            <a href="/search?q=nethi+chutti&options%5Bprefix%5D=last">Nethi chutti</a>
+            <a href="/search?q=mattal&options%5Bprefix%5D=last">Mattal</a>
+            <a href="/search?q=mukut&options%5Bprefix%5D=last">Mukut</a>
+          </div>
+        </div>
         {%- if settings.predictive_search_enabled -%}
           </predictive-search>
         {%- else -%}
@@ -102,6 +123,7 @@
             {{- 'icon-close.svg' | inline_asset_content -}}
           </span>
         </button>
+        </div>
       </div>
     </div>
   </details>

@@ -130,6 +130,7 @@
               aria-labelledby="predictive-search-products"
             >
               {%- for product in predictive_search.resources.products -%}
+                {%- assign predictive_product_url = product.url | split: '?' | first -%}
                 <li
                   id="predictive-search-option-product-{{ forloop.index }}"
                   class="predictive-search__list-item"
@@ -137,7 +138,7 @@
                   aria-selected="false"
                 >
                   <a
-                    href="{{ product.url }}"
+                    href="{{ predictive_product_url }}"
                     class="predictive-search__item predictive-search__item--link-with-thumbnail link link--text"
                     tabindex="-1"
                   >

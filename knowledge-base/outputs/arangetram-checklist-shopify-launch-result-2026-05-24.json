@@ -1,0 +1,95 @@
+{
+  "createdAt": "2026-05-24T13:13:09.007Z",
+  "shop": {
+    "name": "Golden Collections",
+    "myshopifyDomain": "6f15d1.myshopify.com",
+    "primaryDomain": {
+      "host": "www.goldencollections.com",
+      "url": "https://www.goldencollections.com"
+    }
+  },
+  "publicUrl": "https://www.goldencollections.com/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist",
+  "adminUrl": "https://admin.shopify.com/store/6f15d1/content/pages/162230829354",
+  "pageAction": "created",
+  "pageId": 162230829354,
+  "pageHandle": "bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist",
+  "publishedAt": "2026-05-24T18:42:58+05:30",
+  "seo": {
+    "title": "Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist",
+    "description": "A practical Bharatanatyam arangetram and Kuchipudi rangapravesam jewellery checklist for parents, dancers and teachers, with components, fit checks, range choices and timing."
+  },
+  "uploads": [
+    {
+      "file": "arangetram-rangapravesam-real-kemp-dance-set-hero.jpg",
+      "role": "Hero / main component layout",
+      "alt": "Real kemp Bharatanatyam and Kuchipudi dance jewellery set with necklace haram vaddanam earrings headset and jada accessories",
+      "id": "gid://shopify/MediaImage/43342932541738",
+      "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-dance-set-hero_d1c569b6-ee4b-4887-9d16-9a2b1fe7cb11.jpg?v=1779628366"
+    },
+    {
+      "file": "arangetram-rangapravesam-real-kemp-full-set-layout.jpg",
+      "role": "Supporting full-set layout",
+      "alt": "Real kemp dance jewellery component layout for arangetram and rangapravesam planning",
+      "id": "gid://shopify/MediaImage/43342932738346",
+      "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-full-set-layout_b3b9fc01-8c9c-4aec-90f7-5365ce238240.jpg?v=1779628371"
+    },
+    {
+      "file": "arangetram-rangapravesam-real-kemp-detail.jpg",
+      "role": "Supporting detail image",
+      "alt": "Close view of real kemp dance jewellery necklace headset earrings and waist belt components",
+      "id": "gid://shopify/MediaImage/43342932836650",
+      "url": "https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-detail_16f08cf4-38ea-4aaa-8e89-3a6fb5da617d.jpg?v=1779628376"
+    }
+  ],
+  "internalLinks": {
+    "collections": [
+      {
+        "handle": "bharatanatyam-jewellery",
+        "resource": "smart_collections",
+        "id": 488090140970,
+        "updated": true
+      },
+      {
+        "handle": "bharatanatyam-jewellery-sets",
+        "resource": "custom_collections",
+        "id": 446310809898,
+        "updated": true
+      },
+      {
+        "handle": "kemp-jewellery",
+        "resource": "smart_collections",
+        "id": 488173076778,
+        "updated": true
+      },
+      {
+        "handle": "kemp-bharatanatyam-jewellery-dance-sets",
+        "resource": "smart_collections",
+        "id": 499080560938,
+        "updated": true
+      },
+      {
+        "handle": "kemp-black-jewellery",
+        "resource": "smart_collections",
+        "id": 498315100458,
+        "updated": true
+      },
+      {
+        "handle": "kemp-black-bharatanatyam-kuchipudi-dance-jewellery-set",
+        "resource": "smart_collections",
+        "id": 498385813802,
+        "updated": true
+      }
+    ],
+    "pages": [
+      {
+        "handle": "golden-collections-knowledge-hub",
+        "id": 161904197930,
+        "updated": true
+      }
+    ]
+  },
+  "outputFiles": {
+    "finalBodyPath": "C:\\goldencollections-theme\\blog-system\\outputs\\shopify-ready\\2026-05-20-bharatanatyam-kuchipudi-arangetram-jewellery-checklist-final-body.html",
+    "reportPath": "C:\\goldencollections-theme\\knowledge-base\\outputs\\arangetram-checklist-shopify-launch-result-2026-05-24.json"
+  }
+}

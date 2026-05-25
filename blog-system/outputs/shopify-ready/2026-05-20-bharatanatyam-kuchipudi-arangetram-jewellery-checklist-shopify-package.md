@@ -1,0 +1,413 @@
+# Shopify Package: Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist
+
+Owner approval required before publish: yes
+Owner approved: content, Shopify page direction, and first-publish real kemp images approved
+Content status: published live
+
+Live page was created on 2026-05-24 after owner approval in chat. Do not send outreach pitches until the live page receives a final human send-review:
+
+1. Confirm the live page still renders cleanly on desktop and mobile.
+2. Confirm outreach copy links to the live page.
+3. Send first-wave outreach manually, education-led, without implying endorsement or guaranteed delivery.
+
+## Destination
+
+Recommended content type: Shopify page
+Suggested page title: Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist
+Suggested handle: `bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist`
+Suggested public URL after publishing: `https://www.goldencollections.com/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist`
+
+Reason: this should be an evergreen teacher/parent guide and outreach asset, not a dated SEO article.
+
+## Titles And Metadata
+
+Page title: Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist
+SEO title: Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist
+Meta description: A practical Bharatanatyam arangetram and Kuchipudi rangapravesam jewellery checklist for parents, dancers and teachers, with components, fit checks, range choices and timing.
+Excerpt: A teacher-friendly Golden Collections checklist for planning Bharatanatyam arangetram and Kuchipudi rangapravesam jewellery, from component lists and fit checks to regular, real kemp and black kemp choices.
+Tags if published as blog: Bharatanatyam jewellery, Kuchipudi jewellery, arangetram jewellery, rangapravesam, real kemp jewellery, dance jewellery checklist
+
+## Image Assets
+
+Owner-provided source folder reviewed on 2026-05-24:
+
+`G:\My Drive\GC PICS\New kemp G N B\Dance set kemp`
+
+Recommended Shopify-ready images created from the originals:
+
+| Use | Optimized file | Source file | Alt text |
+| --- | --- | --- | --- |
+| Hero / main component layout | `blog-system/outputs/shopify-ready/arangetram-checklist-images/arangetram-rangapravesam-real-kemp-dance-set-hero.jpg` | `IMG_9688.JPG` | `Real kemp Bharatanatyam and Kuchipudi dance jewellery set with necklace haram vaddanam earrings headset and jada accessories` |
+| Supporting full-set layout | `blog-system/outputs/shopify-ready/arangetram-checklist-images/arangetram-rangapravesam-real-kemp-full-set-layout.jpg` | `IMG_9680.jpg` | `Real kemp dance jewellery component layout for arangetram and rangapravesam planning` |
+| Supporting detail image | `blog-system/outputs/shopify-ready/arangetram-checklist-images/arangetram-rangapravesam-real-kemp-detail.jpg` | `IMG_9685.JPG` | `Close view of real kemp dance jewellery necklace headset earrings and waist belt components` |
+
+Review notes:
+
+- These images are usable for the checklist because they show Golden Collections-owned product imagery, not customer or dancer photos.
+- `IMG_9688.JPG` is the strongest hero candidate.
+- Avoid using images where QR/product tags are visually prominent unless cropped before upload.
+- Regular and black kemp images can be added later, but they are not required to publish the first version of the checklist.
+
+## Body HTML
+
+```html
+<p>If your family is preparing for a Bharatanatyam arangetram or a Kuchipudi rangapravesam, start with the teacher's jewellery list before choosing products. The right set is not only about looking grand in photos. It has to match the costume, stay comfortable through rehearsal and performance, suit the dancer's age and size, and satisfy the teacher's stage requirement.</p>
+
+<p>Use this as a practical planning checklist. It is not a replacement for your guru's instruction. Different teachers, dance schools, costume styles, and family traditions can require different pieces.</p>
+
+<h2>1. Before You Shop, Collect These Details</h2>
+<ul>
+  <li>Teacher's required ornament list.</li>
+  <li>Dance form and school terminology: Bharatanatyam arangetram, Kuchipudi rangapravesam, or another program name.</li>
+  <li>Costume colors, blouse neckline, border color, and hair plan.</li>
+  <li>Dancer age, height, comfort level, and whether the dancer is a child, teen, or adult.</li>
+  <li>Performance date, city, and country.</li>
+  <li>Existing pieces already owned, with photos in natural light.</li>
+  <li>Whether the family wants a regular dance set, a premium real kemp set, black kemp styling, or only missing components.</li>
+  <li>Whether jewellery must be approved before costume photos, rehearsal, or stage trials.</li>
+</ul>
+
+<h2>2. Core Jewellery Component Checklist</h2>
+<p>Teachers may add, remove, or rename items. Check each line against the teacher's list.</p>
+<p>For a practical first check, separate the list into two groups:</p>
+<ul>
+  <li>Usually required planning group: short necklace or addigai, long haram, earrings or jhumkas, nethi chutti/headset direction, oddiyanam or vaddanam, ghungroo or salangai, and hair/jada direction.</li>
+  <li>Teacher-specific or optional group: mattal, sun and moon, rakodi, full jada or jadai, vanki or bajuband, nath, extra haram, flowers, alta or makeup items, and backup fasteners.</li>
+</ul>
+
+<h3>Neck And Chest</h3>
+<ul>
+  <li>Short necklace or addigai: the close neck or upper-chest layer.</li>
+  <li>Long haram: the longer necklace line that balances the costume.</li>
+  <li>Optional second haram or extra chain: only if the teacher or costume styling needs more layering.</li>
+</ul>
+<p>Useful links: <a href="https://www.goldencollections.com/collections/bharatanatyam-jewellery-sets">Bharatanatyam dance sets</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-short-necklaces">Bharatanatyam short necklaces</a>, and <a href="https://www.goldencollections.com/collections/bharatanatyam-long-necklace">Bharatanatyam long harams</a>.</p>
+
+<h3>Head, Forehead, And Hair</h3>
+<ul>
+  <li>Nethi chutti or maang tikka: forehead ornament.</li>
+  <li>Headset pieces, including sun and moon or surya chandra where required.</li>
+  <li>Rakodi or bun ornament.</li>
+  <li>Jada, jadai, jada kuchulu, or kunjalam for braid styling where the costume uses a braid.</li>
+  <li>Flowers, gajra, or veni if required by the hairstyle.</li>
+  <li>Hair pins, black thread, and backup fasteners.</li>
+</ul>
+<p>Useful links: <a href="https://www.goldencollections.com/collections/bharatanatyam-headset-jewelry">Bharatanatyam headset</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-maang-tikka-matil">Bharatanatyam nethi chutti</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-hair-accessories">Bharatanatyam hair accessories</a>, and <a href="https://www.goldencollections.com/collections/bharatanatyam-jada-jadai-kunjalam-sets">Bharatanatyam jada</a>.</p>
+
+<h3>Ears, Arms, Waist, And Hands</h3>
+<ul>
+  <li>Earrings or jhumkas.</li>
+  <li>Mattal, matil, or mattel ear chains if required.</li>
+  <li>Vanki or bajuband for the arm.</li>
+  <li>Bangles.</li>
+  <li>Oddiyanam or vaddanam waist belt.</li>
+  <li>Nath or nose ornament where the teacher's styling includes it.</li>
+</ul>
+<p>Useful links: <a href="https://www.goldencollections.com/collections/bharatanatyam-earrings-collection">Bharatanatyam earrings</a>, <a href="https://www.goldencollections.com/collections/mattal-matil-bharatanatyam-dance">Bharatanatyam mattal</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-waist-belts">Bharatanatyam waist belts</a>, and <a href="https://www.goldencollections.com/collections/bharatanatyam-vanki-baju-band">Bharatanatyam vanki and bajuband</a>.</p>
+
+<h3>Feet, Rhythm, Makeup, And Backups</h3>
+<ul>
+  <li>Ghungroo or salangai, chosen by teacher preference, dancer level, sound, and ankle comfort.</li>
+  <li>Alta, parani, or red hand/foot detailing if used by the teacher or makeup artist.</li>
+  <li>Stage makeup items if the family is responsible for carrying them.</li>
+  <li>Safety pins, hair pins, black thread, extra hooks, small pouch, and labelled storage bags.</li>
+</ul>
+<p>Useful links: <a href="https://www.goldencollections.com/collections/bharatanatyam-ghungroo">Bharatanatyam ghungroo and salangai</a> and <a href="https://www.goldencollections.com/collections/bharatanatyam-makeup-hair-essentials">Bharatanatyam makeup and hair essentials</a>.</p>
+
+<h2>3. Regular Dance, Real Kemp, Or Black Kemp?</h2>
+<p>There is no single correct range for every dancer. Choose by teacher requirement, stage standard, budget, dancer comfort, and whether the jewellery will be used after the event.</p>
+
+<h3>Regular Bharatanatyam/Kuchipudi Jewellery</h3>
+<p>Regular Bharatanatyam and Kuchipudi dance sets are often in the approximate INR 3,000 to INR 10,000 range depending on components, size, finish, and availability, and use alloy metal. This range can be practical for classes, school programs, group performances, early stage use, or budget-conscious arangetram planning.</p>
+<p>Start here: <a href="https://www.goldencollections.com/collections/bharatanatyam-jewellery">Bharatanatyam jewellery</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-jewellery-sets">Bharatanatyam dance sets</a>, and <a href="https://www.goldencollections.com/collections/bharatnatyam-dance-jewellery-kids-collection">Kids Bharatanatyam jewellery</a>.</p>
+
+<h3>Real Kemp Jewellery</h3>
+<p>Real kemp is Golden Collections' separate premium range. A full gold or black real kemp set usually costs INR 30,000 to INR 1,00,000, depending on components, workmanship, stone setting, and finish. At Golden Collections, real kemp uses brass with 24 carat high gold plating and copper, and real kemp Bharatanatyam pieces typically use 1 to 3 microns of high-quality gold plating.</p>
+<p>Real kemp is often considered for arangetram, senior performances, long-term classical use, bridal classical styling, or when the family wants a premium South Indian temple jewellery look. In Anil Tunk's hands-on experience, real kemp pieces of similar size often feel noticeably heavier than regular alloy-metal dance jewellery, so comfort and dancer age should be considered.</p>
+<p>Start here: <a href="https://www.goldencollections.com/collections/kemp-jewellery">Real kemp jewellery</a>, <a href="https://www.goldencollections.com/collections/kemp-bharatanatyam-jewellery-dance-sets">Real kemp dance sets</a>, <a href="https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-guide">Real kemp jewellery guide</a>, and <a href="https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram">Real kemp jewellery for arangetram guide</a>.</p>
+
+<h3>Black Kemp Jewellery</h3>
+<p>Black kemp is a separate shopping path. It can be considered when the teacher, costume colors, or stage styling call for darker contrast. Do not assume black kemp is automatically interchangeable with regular red-green dance jewellery or premium real kemp. Confirm the costume direction first.</p>
+<p>Start here: <a href="https://www.goldencollections.com/collections/kemp-black-jewellery">Black kemp jewellery</a> and <a href="https://www.goldencollections.com/collections/kemp-black-bharatanatyam-kuchipudi-dance-jewellery-set">Black kemp dance sets</a>.</p>
+
+<h2>4. Fit And Comfort Checks By Component</h2>
+<h3>Short Necklace</h3>
+<ul>
+  <li>Sits close to the neckline without hiding the costume border.</li>
+  <li>Pendant scale looks correct for the dancer's torso and stage distance.</li>
+  <li>Does not pull uncomfortably at the back of the neck.</li>
+  <li>Works with the long haram without crowding.</li>
+</ul>
+
+<h3>Long Haram</h3>
+<ul>
+  <li>Falls low enough to create the longer stage line.</li>
+  <li>Does not interfere with arm movement, mudras, or costume pleats.</li>
+  <li>Matches the short necklace in finish, stone color, and scale where possible.</li>
+</ul>
+
+<h3>Nethi Chutti, Headset, Sun And Moon</h3>
+<ul>
+  <li>Sits securely on the forehead and hairline.</li>
+  <li>Does not slip during head movement.</li>
+  <li>Works with the bun, braid, and makeup plan.</li>
+  <li>Surya chandra or sun and moon pieces are included only if the teacher expects them.</li>
+</ul>
+
+<h3>Earrings And Mattal</h3>
+<ul>
+  <li>Earrings are not too heavy for the dancer.</li>
+  <li>Mattal, matil, or mattel ear chains can be pinned securely.</li>
+  <li>The ear-chain length works with the hairstyle and headset.</li>
+  <li>Backup pins are packed.</li>
+</ul>
+
+<h3>Vaddanam Or Oddiyanam Waist Belt</h3>
+<ul>
+  <li>Sits on the costume waist without slipping.</li>
+  <li>Does not restrict araimandi, bends, turns, or costume pleat movement.</li>
+  <li>Length or adjustability suits the dancer.</li>
+  <li>The teacher approves the placement before final photos or rehearsal.</li>
+</ul>
+
+<h3>Jada, Rakodi, Flowers, And Hair Pieces</h3>
+<ul>
+  <li>Jada length suits the braid and costume.</li>
+  <li>Rakodi or bun ornament sits neatly without pulling the hair.</li>
+  <li>Flowers, gajra, or veni do not overpower the head ornaments.</li>
+  <li>Hair pins and backup thread are available.</li>
+</ul>
+
+<h3>Ghungroo Or Salangai</h3>
+<ul>
+  <li>Bell count and sound match teacher preference.</li>
+  <li>Strap or fastening feels secure.</li>
+  <li>The dancer has practiced with the pair before performance day.</li>
+  <li>Ankles are comfortable during long rehearsal blocks.</li>
+</ul>
+
+<h2>5. Timeline For Families</h2>
+<p>Use a buffer even when delivery timelines look short, because teacher approval and costume trials take time.</p>
+<ul>
+  <li>8 to 12 weeks before: confirm teacher list, costume colors, and whether the family wants regular, real kemp, or black kemp.</li>
+  <li>6 to 8 weeks before: choose the main set direction and identify missing components.</li>
+  <li>4 to 6 weeks before: order key pieces where matching matters, especially necklaces, headset, mattal, vaddanam, and jada items.</li>
+  <li>2 to 3 weeks before: do a full costume and jewellery trial, then note any missing pins, hooks, thread, or comfort fixes.</li>
+  <li>Final week: avoid changing the full set direction unless the teacher identifies a clear problem.</li>
+</ul>
+
+<h2>6. India And International Ordering Notes</h2>
+<p>Golden Collections serves active regions including India, the US, UK, Australia, Malaysia, Singapore, and European countries. India delivery is usually 2 to 4 days. International delivery usually takes 4 to 6 business days, with charges calculated at checkout. USA orders usually turn around within a week.</p>
+<p>Secure checkout is available with Razorpay and PayPal. International card payments are accepted through Razorpay where available.</p>
+<p>For arangetram or rangapravesam, do not plan only around courier time. Delivery timelines are not a performance-date guarantee, and international families should allow extra buffer for customs, local delivery, costume trials, teacher approval, makeup practice, and any missing component decisions. For delivery damage or missing-item claims, read the <a href="https://www.goldencollections.com/policies/refund-policy">Golden Collections refund policy</a> before opening the parcel.</p>
+
+<h2>7. Teacher Approval Checklist</h2>
+<ul>
+  <li>Is the set range acceptable: regular dance, real kemp, or black kemp?</li>
+  <li>Are the short necklace and long haram both required?</li>
+  <li>Are nethi chutti and headset pieces required?</li>
+  <li>Are sun and moon, rakodi, mattal ear chains, vanki, nath, flowers, or extra haram teacher-specific for this program?</li>
+  <li>Is the vaddanam or oddiyanam style and placement acceptable?</li>
+  <li>Is the jada or braid ornament length suitable?</li>
+  <li>Are ghungroo/salangai bell count and sound acceptable?</li>
+  <li>Are any pieces too heavy, too large, too small, or not secure enough?</li>
+  <li>Are there school-specific rules for children or younger teens?</li>
+  <li>Is there enough time for shipping, trial, and corrections?</li>
+</ul>
+
+<p><strong>Not sure which range suits your dancer?</strong> Send the teacher's list and costume details to Anil on <a href="https://wa.me/917337294499">WhatsApp</a> before ordering.</p>
+
+<h2>8. What Golden Collections Can Help Check</h2>
+<p>Golden Collections can help families compare the product photos, range, component list, and timing before ordering. For size-sensitive pieces, share the teacher's list, costume plan, dancer age group, and event date.</p>
+<p>Golden Collections started in 2012 and is led by Anil Tunk in Secunderabad/Hyderabad. The store specializes in Bharatanatyam jewellery, Kuchipudi jewellery, real kemp jewellery, deity jewellery, and Hindu idol alankaram. Regular, premium kemp, and deity jewellery are made through partner artisans. Quality checks include stone quality, gold plating, finishing, joints, packing, and shipping checks before dispatch.</p>
+<p>Golden Collections does not provide certificates, so the buying decision should stay focused on clear range facts, product photos, teacher approval, quality checks, and support.</p>
+
+<h2>FAQ</h2>
+<h3>What jewellery is usually checked for arangetram?</h3>
+<p>The usual planning group includes a short necklace, long haram, earrings, nethi chutti or headset direction, oddiyanam or vaddanam, ghungroo or salangai, and hair/jada direction. Teacher-specific pieces may include mattal, sun and moon, rakodi, full jada or jadai, vanki, nath, extra haram, flowers, alta, or makeup items. The final list should come from the teacher.</p>
+
+<h3>Is real kemp required for arangetram?</h3>
+<p>Not always. Some families choose real kemp for a premium temple jewellery look and long-term use. Others choose regular Bharatanatyam or Kuchipudi jewellery because it is practical, lighter in budget, and suitable when the teacher approves it.</p>
+
+<h3>Can this checklist work for Kuchipudi?</h3>
+<p>Yes, as a planning checklist, but follow the Kuchipudi teacher's component list and terminology. Some Kuchipudi schools may refer to the debut performance as rangapravesam rather than arangetram.</p>
+
+<h3>What should teachers confirm before parents order?</h3>
+<p>Teachers should confirm the required components, range expectation, costume colors, hairstyle, ghungroo or salangai preference, whether mattal or jada pieces are needed, and any school-specific rules for children, teens, or group performances.</p>
+
+<h3>How early should families order dance jewellery?</h3>
+<p>Order early enough for delivery, costume trial, teacher approval, and corrections. Even when shipping is fast, arangetram planning should leave several weeks for matching, comfort, and missing-component checks.</p>
+
+<h3>Can Golden Collections ship Bharatanatyam and Kuchipudi jewellery to the US?</h3>
+<p>Yes. The US is one of Golden Collections' active shipping regions, and USA orders usually turn around within a week, with charges calculated at checkout. This is not a performance-date guarantee. For arangetram or rangapravesam, leave extra time for customs, local delivery, trial, and teacher approval after delivery.</p>
+
+<h2>Next Step</h2>
+<p>Start with the teacher's list, then compare the <a href="https://www.goldencollections.com/collections/bharatanatyam-jewellery">Bharatanatyam jewellery</a>, <a href="https://www.goldencollections.com/collections/bharatanatyam-jewellery-sets">Bharatanatyam dance sets</a>, <a href="https://www.goldencollections.com/collections/kemp-jewellery">real kemp jewellery</a>, and <a href="https://www.goldencollections.com/collections/kemp-black-jewellery">black kemp jewellery</a> paths. For a time-sensitive event, contact Golden Collections before ordering so the component list and delivery timing can be checked together.</p>
+```
+
+## Schema JSON-LD
+
+Set `mainEntityOfPage`, `datePublished`, and `dateModified` only after the final Shopify destination is confirmed.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Bharatanatyam Arangetram and Kuchipudi Rangapravesam Jewellery Checklist",
+      "description": "A practical Bharatanatyam arangetram and Kuchipudi rangapravesam jewellery checklist for parents, dancers and teachers, with components, fit checks, range choices and timing.",
+      "author": [
+        {
+          "@type": "Organization",
+          "name": "Golden Collections",
+          "url": "https://www.goldencollections.com/"
+        }
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Golden Collections",
+        "url": "https://www.goldencollections.com/"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Bharatanatyam jewellery" },
+        { "@type": "Thing", "name": "Kuchipudi jewellery" },
+        { "@type": "Thing", "name": "Arangetram jewellery" },
+        { "@type": "Thing", "name": "Rangapravesam" },
+        { "@type": "Thing", "name": "Real kemp jewellery" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What jewellery is usually checked for arangetram?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The usual planning group includes a short necklace, long haram, earrings, nethi chutti or headset direction, oddiyanam or vaddanam, ghungroo or salangai, and hair/jada direction. Teacher-specific pieces may include mattal, sun and moon, rakodi, full jada or jadai, vanki, nath, extra haram, flowers, alta, or makeup items. The final list should come from the teacher."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is real kemp required for arangetram?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not always. Some families choose real kemp for a premium temple jewellery look and long-term use. Others choose regular Bharatanatyam or Kuchipudi jewellery because it is practical, lighter in budget, and suitable when the teacher approves it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this checklist work for Kuchipudi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as a planning checklist, but families should follow the Kuchipudi teacher's component list and terminology. Some Kuchipudi schools may refer to the debut performance as rangapravesam rather than arangetram."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should teachers confirm before parents order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Teachers should confirm the required components, range expectation, costume colors, hairstyle, ghungroo or salangai preference, whether mattal or jada pieces are needed, and any school-specific rules for children, teens, or group performances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How early should families order dance jewellery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Order early enough for delivery, costume trial, teacher approval, and corrections. Even when shipping is fast, arangetram planning should leave several weeks for matching, comfort, and missing-component checks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Golden Collections ship Bharatanatyam and Kuchipudi jewellery to the US?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The US is one of Golden Collections' active shipping regions, and USA orders usually turn around within a week, with charges calculated at checkout. This is not a performance-date guarantee. For arangetram or rangapravesam, leave extra time for customs, local delivery, trial, and teacher approval after delivery."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Internal Link Verification
+
+Checked on 2026-05-20:
+
+| Link | Status | Notes |
+| --- | ---: | --- |
+| `https://www.goldencollections.com/collections/bharatanatyam-jewellery` | 200 | Opened live |
+| `https://www.goldencollections.com/collections/bharatanatyam-jewellery-sets` | 200 | Opened live |
+| `https://www.goldencollections.com/collections/bharatnatyam-dance-jewellery-kids-collection` | 200 | Opened live |
+| `https://www.goldencollections.com/collections/kemp-jewellery` | 200 | Opened live |
+| `https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-for-arangetram` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/blogs/jewellery-guides/real-kemp-jewellery-guide` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-earrings-collection` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-ghungroo` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-hair-accessories` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-headset-jewelry` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-jada-jadai-kunjalam-sets` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-long-necklace` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-maang-tikka-matil` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-makeup-hair-essentials` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-short-necklaces` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-vanki-baju-band` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/bharatanatyam-waist-belts` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/kemp-bharatanatyam-jewellery-dance-sets` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/kemp-black-jewellery` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/collections/kemp-black-bharatanatyam-kuchipudi-dance-jewellery-set` | 200 | Live request returned 200 on 2026-05-21 |
+| `https://www.goldencollections.com/collections/mattal-matil-bharatanatyam-dance` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/pages/anil-tunk` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/pages/golden-collections-knowledge-hub` | 200 | Live request returned 200 |
+| `https://www.goldencollections.com/policies/refund-policy` | 200 | Live request returned 200 |
+
+Checklist URL checked live on 2026-05-24: `https://www.goldencollections.com/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist` returned 200 and rendered the guide, images, FAQ, schema, and body links.
+
+## Owner Review Checklist
+
+- [x] Confirm component list accuracy for Bharatanatyam.
+- [x] Confirm component list accuracy for Kuchipudi/rangapravesam wording.
+- [x] Confirm whether any pieces should be labelled optional or teacher-specific.
+- [x] Confirm kids/teens/adults guidance.
+- [x] Confirm USA outreach readiness before using the USA school pitch.
+- [x] Approve exact real kemp image files and alt text for first publish.
+- [x] Approve metadata.
+- [x] Approve final Shopify destination: Shopify page preferred.
+- [x] Approve Shopify draft creation.
+
+## Publish Attempt Notes
+
+Published live on Shopify after owner approval and live verification.
+
+
+## Uploaded Golden Shopify Image URLs
+
+| Role | URL |
+| --- | --- |
+| Hero / main component layout | `https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-dance-set-hero_d1c569b6-ee4b-4887-9d16-9a2b1fe7cb11.jpg?v=1779628366` |
+| Supporting full-set layout | `https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-full-set-layout_b3b9fc01-8c9c-4aec-90f7-5365ce238240.jpg?v=1779628371` |
+| Supporting detail image | `https://cdn.shopify.com/s/files/1/0764/9224/3242/files/arangetram-rangapravesam-real-kemp-detail_16f08cf4-38ea-4aaa-8e89-3a6fb5da617d.jpg?v=1779628376` |
+
+## Live Publish Notes
+
+2026-05-24:
+
+- Owner approved content direction, real kemp images, USA shipping wording, and publishing path in chat.
+- Verified the Admin API shop as Golden Collections before writing.
+- Uploaded the three selected real kemp dance set images to Golden Collections Shopify Files.
+- Created or updated the Shopify page and published it live.
+- Shopify page ID: `162230829354`.
+- Admin URL: `https://admin.shopify.com/store/6f15d1/content/pages/162230829354`.
+- Public URL: `https://www.goldencollections.com/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist`.
+
+2026-05-24 pre-outreach fixes:
+
+- Updated the checklist page OG/Twitter image to use the real kemp dance set hero image instead of the Golden Collections logo.
+- Added a WhatsApp CTA after the Teacher Approval Checklist.
+- Replaced the single regular dance set price point with an approximate INR 3,000 to INR 10,000 range.
+- Verified the live page still renders Article and FAQPage schema after the update.
+- Added checkout reassurance in the international ordering section: Razorpay, PayPal, and international card payments through Razorpay where available.

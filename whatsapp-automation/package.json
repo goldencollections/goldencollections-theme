@@ -1,0 +1,28 @@
+{
+  "name": "golden-whatsapp-automation",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/local-dev-server.mjs",
+    "dev:vercel": "npx vercel dev --local --yes",
+    "check": "node scripts/check-config.mjs",
+    "email:check": "node scripts/email-check-config.mjs",
+    "email:ingest": "node scripts/email-ingest-once.mjs",
+    "email:ingest:apply": "node scripts/email-ingest-once.mjs --apply",
+    "email:drafts": "node scripts/email-list-drafts.mjs",
+    "email:outreach": "node scripts/outreach-send-batch.mjs",
+    "gmail:check": "node scripts/gmail-imap-check.mjs",
+    "social:check": "node scripts/social-check.mjs",
+    "social:meta:auth-url": "node scripts/meta-auth-url.mjs",
+    "social:meta:exchange-code": "node scripts/meta-exchange-code.mjs",
+    "social:meta:oauth": "node scripts/meta-oauth-callback.mjs",
+    "social:meta:check": "node scripts/meta-publishing-check.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "imapflow": "^1.3.3",
+    "mailparser": "^3.9.8",
+    "nodemailer": "^8.0.7"
+  }
+}

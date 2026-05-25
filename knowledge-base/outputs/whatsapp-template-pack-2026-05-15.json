@@ -1,0 +1,629 @@
+{
+  "created_at": "2026-05-15",
+  "status": "draft_owner_review_required",
+  "templates": [
+    {
+      "name": "gc_abandoned_checkout_help_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Your Golden Collections cart"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, you left {{2}} in your Golden Collections cart.\n\nIf you are unsure about size, delivery date, or matching pieces, reply here and we will help before you order.\n\nCheckout link: {{3}}. Reply here if you need help.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "a Bharatanatyam jewellery set",
+                "https://www.goldencollections.com/cart"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need help"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Still interested"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_abandoned_checkout_size_help_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Need help checking size?"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, many customers pause because they want to confirm fit before ordering {{2}}.\n\nSend us the product link or your size question here. For deity jewellery, idol height and a front photo help us guide you better.\n\nCart link: {{3}}. Reply here if you want us to check fit.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "deity jewellery",
+                "https://www.goldencollections.com/cart"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Check size"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask delivery"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_abandoned_checkout_final_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Still deciding?"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, a gentle reminder from Golden Collections.\n\nYour cart with {{2}} is still available. If you need help choosing the right set or confirming delivery, just reply here.\n\nCart link: {{3}}. We are here if you need support.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "a real kemp necklace",
+                "https://www.goldencollections.com/cart"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Complete order"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need support"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_deity_measurement_request_v1",
+      "language": "en",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Deity jewellery fit check"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, to help check fit for {{2}}, please send:\n\n1. Idol height\n2. Face or head width\n3. A clear front photo of the idol\n\nIdol posture and crown style can affect fit, so these details help us suggest the safest option.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "an Amman crown"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections support"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Send photo"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask question"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_real_kemp_consultation_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Choosing real kemp jewellery"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, choosing real kemp jewellery is easier when we know the use case.\n\nTell us if you are buying for Bharatanatyam, Kuchipudi, bridal wear, or a traditional function. We can help compare weight, components, budget, and delivery timing.\n\nSee the range here: {{2}}. Reply if you want help choosing.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "https://www.goldencollections.com/collections/real-kemp-jewellery"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask about real kemp"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need full set"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_real_kemp_inquiry_followup_v1",
+      "language": "en",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Real kemp enquiry follow-up"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, following up on your real kemp jewellery enquiry.\n\nTo guide you better, please tell us whether you need it for Bharatanatyam, Kuchipudi, bridal wear, or a traditional function. We can help with weight, components, budget, and delivery timing.",
+          "example": {
+            "body_text": [
+              [
+                "Priya"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections support"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Share use case"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Talk to support"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_arangetram_planning_help_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Arangetram jewellery help"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, planning jewellery for an arangetram?\n\nGolden Collections can help you check the key pieces: short necklace, long haram, headset, earrings, vanki, oddiyanam, jada pieces, and accessories.\n\nGuide link: {{2}}. Reply here if you need checklist help.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "https://www.goldencollections.com/blogs/news"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need checklist"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask set question"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_varalakshmi_seasonal_ready_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Varalakshmi alankaram help"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, Varalakshmi season pieces are easier to choose early, especially faces, hands and legs, crowns, harams, vaddanam, and decor accessories.\n\nIf you are preparing an alankaram setup, reply with your idol size and we can help you shortlist.\n\nShop link: {{2}}. Reply here for fit guidance.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "https://www.goldencollections.com/collections/varalakshmi"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need fit help"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "View collection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_new_arrival_category_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "New arrivals at Golden Collections"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, new {{2}} pieces are now available at Golden Collections.\n\nIf you want help choosing by size, use case, or delivery timeline, reply here and our team will guide you.\n\nCollection link: {{3}}. Reply here for help choosing.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "Bharatanatyam jewellery",
+                "https://www.goldencollections.com/collections/bharatanatyam-jewellery"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "View new arrivals"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask for help"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_back_in_stock_interest_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Back in stock"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, the {{2}} you were interested in is available again at Golden Collections.\n\nYou can check it here: {{3}}\n\nIf you want us to confirm size, finish, or delivery before ordering, reply here.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "deity crown",
+                "https://www.goldencollections.com/"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Check product"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need help"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_post_purchase_review_neutral_v1",
+      "language": "en",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "How was your order?"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, we hope your Golden Collections order {{2}} reached safely.\n\nYour honest feedback helps other customers and helps us improve.\n\nReview link: {{3}}. Reply here if you need support.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "#GC1234",
+                "https://www.goldencollections.com/"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Thank you for choosing Golden Collections"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Give feedback"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Need support"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_shipping_delay_support_v1",
+      "language": "en",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Order update"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, update for your Golden Collections order {{2}}:\n\n{{3}}\n\nIf you need help with delivery timing or address details, reply here and we will assist.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "#GC1234",
+                "Your order is packed and will be handed to the courier today."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections support"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Get update"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Contact support"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_product_fit_followup_v1",
+      "language": "en",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "One detail needed"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, we can help you choose the right {{2}}, but we still need one detail:\n\n{{3}}\n\nPlease reply here with the information and we will guide you.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "deity haram",
+                "Please share idol height in inches."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections support"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Send details"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Talk to support"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_dance_institute_bulk_help_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Dance institute order help"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, Golden Collections can help with {{2}} for dance students, institutions, or stage programs.\n\nReply with the number of sets, age group, jewellery type, and required date. We will help with options and availability.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "Bharatanatyam jewellery sets"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Send requirement"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask availability"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gc_guide_release_category_v1",
+      "language": "en",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "New Golden Collections guide"
+        },
+        {
+          "type": "BODY",
+          "text": "Hi {{1}}, we published a Golden Collections guide on {{2}}.\n\nIt may help you choose the right jewellery before ordering, especially if you are comparing size, material, use case, or care.\n\nRead here: {{3}}. Reply here if you have a question.",
+          "example": {
+            "body_text": [
+              [
+                "Priya",
+                "real kemp jewellery",
+                "https://www.goldencollections.com/blogs/news"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Golden Collections | Reply STOP to opt out"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Read guide"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ask a question"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,6 +6,10 @@ Usage: {% render 'auto-link-glossary', content: article.content %}
 {% assign terms = pages['jewelry-glossary'].metafields.custom.glossary_terms.value %}
 {% assign new_content = content | default: '' %}
 
+{%- capture real_kemp_old_weight_text -%}Real kemp pieces are also noticeably heavier than regular alloy-metal dance jewellery because of the brass and copper base. For young dancers or long performance days, that weight is worth considering along with the stage look.{%- endcapture -%}
+{%- capture real_kemp_new_weight_text -%}In Anil Tunk's hands-on experience, real kemp pieces of similar size often feel noticeably heavier and more substantial than regular alloy-metal dance jewellery because of the brass and copper base. For young dancers or long performance days, that weight is worth considering along with the stage look.{%- endcapture -%}
+{%- assign new_content = new_content | replace: real_kemp_old_weight_text, real_kemp_new_weight_text -%}
+
 {% if terms and terms.size > 0 %}
   {% for term in terms %}
     {% assign link = '<a href="/pages/jewelry-glossary" class="gc-glossary-link" target="_blank" rel="noopener">' | append: term.name | append: '</a>' %}

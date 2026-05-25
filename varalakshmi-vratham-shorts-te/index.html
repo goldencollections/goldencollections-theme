@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #130b06;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #130b06;
+        color: #fff3d6;
+        font-family: "Noto Sans Telugu", "Trebuchet MS", Arial, sans-serif;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: #130b06;
+      }
+
+      .scene-1 {
+        opacity: 1;
+      }
+
+      .bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center;
+      }
+
+      .shade {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 45% 28%, rgba(243, 162, 58, 0.14), rgba(42, 22, 12, 0) 34%),
+          linear-gradient(180deg, rgba(19, 11, 6, 0.08), rgba(19, 11, 6, 0.78) 66%, rgba(19, 11, 6, 0.94));
+      }
+
+      .scene-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        padding: 104px 78px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 26px;
+      }
+
+      .top-content {
+        justify-content: flex-start;
+        padding-top: 128px;
+      }
+
+      .center-content {
+        justify-content: center;
+      }
+
+      .kicker {
+        align-self: flex-start;
+        border: 2px solid rgba(214, 174, 76, 0.72);
+        color: #fff3d6;
+        background: rgba(91, 23, 32, 0.78);
+        border-radius: 999px;
+        padding: 14px 26px;
+        font-size: 28px;
+        line-height: 1.1;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Noto Sans Telugu", Georgia, "Times New Roman", serif;
+        color: #fff3d6;
+        letter-spacing: 0;
+        text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+      }
+
+      h1 {
+        max-width: 920px;
+        font-size: 88px;
+        line-height: 1.08;
+      }
+
+      h2 {
+        max-width: 880px;
+        font-size: 68px;
+        line-height: 1.12;
+      }
+
+      .body-copy {
+        max-width: 870px;
+        margin: 0;
+        color: #f8f2e5;
+        font-size: 36px;
+        line-height: 1.28;
+        text-shadow: 0 5px 18px rgba(0, 0, 0, 0.62);
+      }
+
+      .checklist {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        width: 100%;
+      }
+
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        min-height: 82px;
+        padding: 18px 24px;
+        border-radius: 22px;
+        border: 1px solid rgba(214, 174, 76, 0.45);
+        background: rgba(42, 22, 12, 0.78);
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+        color: #fff3d6;
+        font-size: 32px;
+        line-height: 1.18;
+        font-weight: 700;
+      }
+
+      .check::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #d6ae4c;
+        box-shadow: 0 0 24px rgba(214, 174, 76, 0.7);
+      }
+
+      .caption-bar {
+        width: 100%;
+        padding: 26px 30px;
+        border-left: 6px solid #d6ae4c;
+        background: rgba(91, 23, 32, 0.82);
+        color: #fff3d6;
+        font-size: 38px;
+        line-height: 1.24;
+        font-weight: 700;
+      }
+
+      .split {
+        display: grid;
+        grid-template-rows: 860px auto;
+        gap: 44px;
+        height: 100%;
+        padding: 104px 66px 96px;
+      }
+
+      .image-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 34px;
+        border: 2px solid rgba(214, 174, 76, 0.5);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+        background: #2a160c;
+      }
+
+      .image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-card.contain img {
+        object-fit: contain;
+        background: #1f1009;
+      }
+
+      .small-note {
+        color: #f8f2e5;
+        font-size: 30px;
+        line-height: 1.36;
+        margin: 0;
+      }
+
+      .brand {
+        color: #d6ae4c;
+        font-size: 34px;
+        font-weight: 700;
+      }
+
+      .url {
+        display: inline-block;
+        margin-top: 16px;
+        color: #fff3d6;
+        font-size: 36px;
+        font-weight: 700;
+      }
+
+      .gold-wipe {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        transform-origin: left center;
+        transform: scaleX(0);
+        background:
+          linear-gradient(90deg, rgba(91, 23, 32, 0), rgba(243, 162, 58, 0.94) 44%, rgba(255, 243, 214, 0.9) 52%, rgba(91, 23, 32, 0));
+        filter: blur(0.2px);
+        pointer-events: none;
+      }
+
+      .lamp-glow {
+        position: absolute;
+        right: -130px;
+        top: -140px;
+        z-index: 2;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(243, 162, 58, 0.44), rgba(243, 162, 58, 0.1) 42%, rgba(243, 162, 58, 0) 68%);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="48"
+      data-width="1080"
+      data-height="1920"
+    >
+      <audio
+        id="narration"
+        data-start="0"
+        data-duration="48"
+        data-track-index="1"
+        src="assets/narration-te.mp3"
+        data-volume="1"
+      ></audio>
+
+      <section id="scene-1" class="scene scene-1">
+        <img class="bg" id="s1-bg" src="assets/gc-varalakshmi-alankaram-hero-2026.png" alt="వరలక్ష్మీ వ్రతం 2026 అలంకారం" data-layout-allow-overflow />
+        <div class="shade"></div>
+        <div class="lamp-glow" data-layout-allow-overflow></div>
+        <div class="scene-content">
+          <div class="kicker" id="s1-kicker">Golden Collections</div>
+          <h1 id="s1-title">వరలక్ష్మీ అలంకార చెక్‌లిస్ట్ 2026</h1>
+          <p class="body-copy" id="s1-copy">పూజకు ముందు మీ సెటప్ ఏదో ముందుగా నిర్ణయించండి.</p>
+        </div>
+      </section>
+
+      <section id="scene-2" class="scene">
+        <img class="bg" id="s2-bg" src="assets/gc-varalakshmi-face-crown-2026.png" alt="వరలక్ష్మీ ముఖం మరియు కిరీటం" data-layout-allow-overflow />
+        <div class="shade"></div>
+        <div class="scene-content top-content">
+          <div class="kicker" id="s2-kicker">1వ దశ</div>
+          <h2 id="s2-title">ముందుగా సెటప్ ఎంచుకోండి</h2>
+          <div class="checklist">
+            <div class="check s2-check">పూర్తి విగ్రహం</div>
+            <div class="check s2-check">అమ్మవారి ముఖం</div>
+            <div class="check s2-check">కలశం</div>
+            <div class="check s2-check">పూజా మండపం</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-3" class="scene">
+        <div class="split">
+          <div class="image-card contain" id="s3-card">
+            <img src="assets/gc-varalakshmi-alankaram-components-2026.png" alt="వరలక్ష్మీ అలంకార ఆభరణాలు" />
+          </div>
+          <div>
+            <div class="kicker" id="s3-kicker">2వ దశ</div>
+            <h2 id="s3-title">ప్రధాన ఆభరణాలు సిద్ధం చేసుకోండి</h2>
+            <p class="small-note" id="s3-copy">ముఖం, కిరీటం, హారం, హస్తం, పాదం, చెవిపోగులు, వడ్డాణం, తోమాల లేదా వాగమాల.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-4" class="scene">
+        <div class="split">
+          <div class="image-card contain" id="s4-card">
+            <img src="assets/gc-varalakshmi-pooja-decor-2026.png" alt="వరలక్ష్మీ పూజ డెకర్ వస్తువులు" />
+          </div>
+          <div>
+            <div class="kicker" id="s4-kicker">3వ దశ</div>
+            <h2 id="s4-title">డెకర్‌ను స్థలాన్ని బట్టి ఎంచుకోండి</h2>
+            <p class="small-note" id="s4-copy">అరటి చెట్లు, కొబ్బరి స్టాండ్, కమలాసనం, ఆర్చ్ మీ పూజా స్థలం మరియు సంప్రదాయానికి సరిపోవాలి.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-5" class="scene">
+        <img class="bg" id="s5-bg" src="assets/gc-varalakshmi-sizing-tip-2026.png" alt="వరలక్ష్మీ అలంకారం సైజింగ్ సూచన" data-layout-allow-overflow />
+        <div class="shade"></div>
+        <div class="scene-content center-content">
+          <div class="kicker" id="s5-kicker">ముఖ్య సూచన</div>
+          <h2 id="s5-title">సైజింగ్‌ను చివరి వారానికి వదిలేయకండి</h2>
+          <div class="caption-bar" id="s5-copy">తోమాల, వాగమాల ఐడల్ ఎత్తుతో పాటు భుజాల వెడల్పు మరియు డ్రేప్ స్థలంపై ఆధారపడి ఉంటాయి.</div>
+        </div>
+      </section>
+
+      <section id="scene-6" class="scene">
+        <img class="bg" id="s6-bg" src="assets/gc-varalakshmi-guide-cta-2026.png" alt="Golden Collections వరలక్ష్మీ వ్రతం అలంకారం గైడ్" data-layout-allow-overflow />
+        <div class="shade"></div>
+        <div class="scene-content center-content">
+          <div class="kicker" id="s6-kicker">పూర్తి గైడ్ చదవండి</div>
+          <h2 id="s6-title">వరలక్ష్మీ అలంకార చెక్‌లిస్ట్ 2026</h2>
+          <p class="body-copy" id="s6-copy"><span class="brand">Golden Collections</span><span class="url">goldencollections.com</span></p>
+        </div>
+      </section>
+
+      <div class="gold-wipe" id="gold-wipe" data-layout-ignore></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const scenes = ["#scene-1", "#scene-2", "#scene-3", "#scene-4", "#scene-5", "#scene-6"];
+
+      function addFrom(target, vars, at) {
+        if (document.querySelectorAll(target).length > 0) {
+          tl.from(target, vars, at);
+        }
+      }
+
+      function enterScene(selector, at) {
+        addFrom(`${selector} .kicker`, { y: 34, opacity: 0, duration: 0.58, ease: "power3.out" }, at + 0.16);
+        addFrom(`${selector} h1, ${selector} h2`, { y: 54, opacity: 0, duration: 0.74, ease: "expo.out" }, at + 0.34);
+        addFrom(`${selector} p, ${selector} .caption-bar`, { y: 36, opacity: 0, duration: 0.58, ease: "sine.out" }, at + 0.72);
+        addFrom(`${selector} .image-card`, { scale: 0.96, opacity: 0, duration: 0.76, ease: "power2.out" }, at + 0.2);
+        addFrom(`${selector} .check`, { x: -34, opacity: 0, duration: 0.5, stagger: 0.12, ease: "back.out(1.4)" }, at + 0.72);
+      }
+
+      function transition(fromScene, toScene, at) {
+        tl.to("#gold-wipe", { scaleX: 1, duration: 0.42, ease: "sine.inOut", overwrite: "auto" }, at);
+        tl.set(fromScene, { opacity: 0 }, at + 0.43);
+        tl.set(toScene, { opacity: 1 }, at + 0.43);
+        tl.set("#gold-wipe", { transformOrigin: "right center" }, at + 0.43);
+        tl.to("#gold-wipe", { scaleX: 0, duration: 0.42, ease: "sine.inOut", overwrite: "auto" }, at + 0.44);
+        tl.set("#gold-wipe", { transformOrigin: "left center" }, at + 0.9);
+      }
+
+      tl.from("#s1-bg", { scale: 1.06, duration: 7.8, ease: "none" }, 0);
+      enterScene("#scene-1", 0);
+      transition("#scene-1", "#scene-2", 7.3);
+      tl.from("#s2-bg", { scale: 1.07, x: -26, duration: 7.4, ease: "none" }, 7.8);
+      enterScene("#scene-2", 7.8);
+      transition("#scene-2", "#scene-3", 15.2);
+      enterScene("#scene-3", 15.7);
+      transition("#scene-3", "#scene-4", 23.2);
+      enterScene("#scene-4", 23.7);
+      transition("#scene-4", "#scene-5", 31.0);
+      tl.from("#s5-bg", { scale: 1.08, x: 24, duration: 7.5, ease: "none" }, 31.5);
+      enterScene("#scene-5", 31.5);
+      transition("#scene-5", "#scene-6", 39.0);
+      tl.from("#s6-bg", { scale: 1.05, duration: 8.4, ease: "none" }, 39.5);
+      enterScene("#scene-6", 39.5);
+      tl.to("#scene-6 .scene-content", { opacity: 0, y: -24, duration: 0.8, ease: "power2.in" }, 47.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,587 @@
+{%- liquid
+  assign collection_handle_lc = collection.handle | downcase
+  assign collection_title_lc = collection.title | downcase
+  assign collection_ornament_type_ref = collection.metafields.custom.ornament_type_ref.value | default: collection.metafields.custom.ornament_type.value
+  assign collection_ornament_type = collection_ornament_type_ref.name.value | default: collection_ornament_type_ref.name | default: collection.metafields.custom.ornament_type.value | default: collection.metafields.custom.ornament_type
+  assign related_collections = collection.metafields.custom.related_collection_refs.value
+  assign regional_keyword_list = collection.metafields.custom.regional_keyword_cluster.value
+  assign regional_keyword_text = collection.metafields.custom.regional_keyword_cluster | metafield_text
+  assign ornament_aliases = collection_ornament_type_ref.aliases.value
+  assign is_short_haram_collection = false
+  assign is_long_haram_collection = false
+  assign has_related_collections = false
+  assign has_regional_terms = false
+  assign is_performance_crown_collection = false
+  assign is_varalakshmi_idol_collection = false
+
+  if collection_handle_lc contains 'short-haram' or collection_handle_lc contains 'short-necklace' or collection_title_lc contains 'short necklace'
+    assign is_short_haram_collection = true
+  endif
+  if collection_handle_lc contains 'long-haram' or collection_handle_lc contains 'long-necklace' or collection_title_lc contains 'long haram' or collection_title_lc contains 'long necklace'
+    assign is_long_haram_collection = true
+  endif
+  if collection_handle_lc contains 'drama-dance-crowns' or collection_title_lc contains 'drama crown' or collection_title_lc contains 'dance crown'
+    assign is_performance_crown_collection = true
+  endif
+  if collection_handle_lc contains 'vara-lakshmi-dolls' or collection_handle_lc contains 'varalakshmi-dolls' or collection_title_lc contains 'varalakshmi idol' or collection_title_lc contains 'varamahalakshmi'
+    assign is_varalakshmi_idol_collection = true
+  endif
+
+  if related_collections != blank and related_collections.size > 0
+    assign has_related_collections = true
+  endif
+
+  if regional_keyword_list != blank or regional_keyword_text != blank or ornament_aliases != blank
+    assign has_regional_terms = true
+  endif
+
+  assign family_label = collection_ornament_type | default: collection.title
+  assign size_answer = 'Open the size guide and compare the product measurement photos with your idol or placement area before ordering.'
+  assign regional_fallback = 'Customers may search using regional names such as mukut, kireedam, kirita, haram, vaddanam, oddiyanam or alankaram depending on the product type and region.'
+  assign usage_question = 'Can I use these products for different deity idols?'
+  assign usage_answer = 'Yes, many deity ornaments can work across different idols when the size, placement and design style match. Deity-specific products should be checked against the product title and photos.'
+  assign check_answer = 'Check product photos, measurement-tape images, material, color, availability and the likely placement on your idol. If unsure, share idol photos and measurements on WhatsApp before ordering.'
+  assign included_answer = ''
+  assign measure_url = '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign fit_process_url = '/pages/how-golden-collections-checks-deity-jewellery-fit'
+  assign proof_hub_url = '/pages/temple-alankaram-proof'
+  assign whatsapp_fit_text = 'Hello Golden Collections, I need Anil help choosing deity jewellery size for ' | append: collection.title
+  assign whatsapp_fit_encoded = whatsapp_fit_text | url_encode
+  assign whatsapp_fit_url = 'https://wa.me/917337294499?text=' | append: whatsapp_fit_encoded
+
+  if is_varalakshmi_idol_collection
+    assign family_label = 'Varalakshmi idols and dolls'
+    assign size_answer = 'For Varalakshmi idols and dolls, Height means the finished setup height including crown, hair and decoration where shown. Compare the height with your mandapam, kalasam area, altar shelf, base space and display depth before ordering.'
+    assign regional_fallback = 'Customers may search using names such as Varalakshmi idol, Varamahalakshmi doll, Ammavaru bommai, Amman doll, Lakshmi idol, Lakshmi Devi vigraham, Varalakshmi bommai and Varamahalakshmi Habba doll.'
+    assign usage_question = 'What pooja are these Varalakshmi idols used for?'
+    assign usage_answer = 'These idols and dolls are used for Varalakshmi Vratham, Varamahalakshmi Habba, Lakshmi Pooja, Friday pooja, Navaratri golu and festive Amman alankaram setups.'
+    assign check_answer = 'Check product photos, selected height, base space, display depth, color, saree or dress style, visible jewellery, crown and your mandapam or kalasam placement. If unsure, share pooja space measurements on WhatsApp before ordering.'
+    assign included_answer = 'Each product includes the Varalakshmi idol or doll setup shown in the product photos. Full set styles include the visible idol body, face, jewellery pieces, saree or dress, crown and decorations shown in the photos.'
+  elsif is_performance_crown_collection
+    assign family_label = 'drama and dance crowns'
+    assign size_answer = 'For drama and dance crowns, Height means the vertical crown height and Width means the front/head width. If a product uses L x W x D, treat L as crown height. Compare crown height, front width, depth, hairstyle, bun size and fastening before ordering.'
+    assign regional_fallback = 'Customers may search using names such as drama crown, dance crown, Bharatanatyam crown, Kuchipudi crown, kireedam, kreedam, mukut, kirita, stage crown and mythological play crown.'
+    assign usage_question = 'Are these crowns for deity idols or human performers?'
+    assign usage_answer = 'These crowns are for human performers in Bharatanatyam, Kuchipudi, dance drama and mythological stage roles. They may be used for deity portrayal on stage, but they are not sized as idol crowns.'
+    assign check_answer = 'Check product photos, measurement-tape images, Height, Width, Depth where shown, material, color, head placement, hairstyle or bun size and movement comfort. If unsure, share performer measurements and role details on WhatsApp before ordering.'
+    assign included_answer = 'Each product includes one drama or dance crown unless the product page clearly says it includes a combo item such as Shanku Chakra and earrings.'
+  elsif collection_handle_lc contains 'crown' or collection_title_lc contains 'crown' or collection_handle_lc contains 'mukut' or collection_title_lc contains 'mukut' or collection_handle_lc contains 'kireed' or collection_title_lc contains 'kireed'
+    assign family_label = collection_ornament_type | default: 'deity crowns'
+    assign size_answer = 'For deity crowns, read H x W x D as Height x Width x Diameter/Depth. Compare height with the space above the idol head, width with the head or face area, and diameter/depth with how the crown sits on the head. Half, full round and Andal tilted crowns should be matched by style and placement.'
+    assign regional_fallback = 'Deity crowns may also be called mukut, kireedam, kirita, makuta, crown or thalapaga depending on region and language.'
+    assign usage_answer = 'Gold plated deity crowns can be used for different god and goddess idols when the crown height, width, diameter/depth, head shape and style match. Deity-specific names in the title or photos are helpful guidance, but measured fit is the final check.'
+    assign check_answer = 'Check product photos, measurement-tape images, Height x Width x Diameter/Depth, material, style, tilt direction and the available crown placement on your idol. If unsure, share idol photos and measurements on WhatsApp before ordering.'
+    assign included_answer = 'Each product includes one deity crown.'
+    if collection_handle_lc contains 'stone-crowns' or collection_title_lc contains 'stone crown'
+      assign included_answer = 'Each product includes one deity stone crown. Stone crowns in this collection are alloy metal with gold plating unless a product page says otherwise.'
+    elsif collection_handle_lc contains 'premium' or collection_title_lc contains 'premium'
+      assign included_answer = 'Each product includes one premium deity crown. DGC027 is Impon, also known as Panchaloha; DGC018 and DGC148 are premium brass crown styles.'
+    elsif collection_handle_lc == 'deity-crowns'
+      assign included_answer = 'Each product includes one deity crown. Gold plated deity crowns in this collection are brass with gold plating.'
+    endif
+  elsif collection_handle_lc contains 'banana' or collection_title_lc contains 'banana' or collection_title_lc contains 'plantain' or collection_handle_lc contains 'vazhai'
+    assign family_label = 'banana tree and banana bunch pooja decor'
+    assign size_answer = 'Measure the space beside your idol, kalasam, altar, doorway or mandapam. Compare the product height, width and placement style with the measurement photos before ordering.'
+    assign regional_fallback = 'Customers may search using names such as banana tree, plantain tree, banana bunch, artificial banana tree, vazhai maram, vazhamaram, Varalakshmi banana tree, Varamahalakshmi Habba decoration and Lakshmi Pooja decoration.'
+    assign usage_question = 'Can I use banana tree decor for weddings, housewarming and temple pooja?'
+    assign usage_answer = 'Yes. These reusable artificial banana tree and banana bunch pieces can be used for Varalakshmi Vratham, Lakshmi Pooja, temple rituals, Gruhapravesam, weddings, Navratri, Diwali and festive mandapam decoration.'
+    assign check_answer = 'Check product height, width, quantity, material, placement style and measurement photos. For a complete setup, pair banana tree decor with kalasam stands, lotus asana, Varalakshmi idol faces, thomala or deity jewellery.'
+  elsif collection_handle_lc contains 'haram' or collection_title_lc contains 'haram' or collection_handle_lc contains 'necklace' or collection_title_lc contains 'necklace'
+    assign family_label = collection_ornament_type | default: 'deity necklaces and harams'
+    if is_short_haram_collection
+      assign size_answer = 'For short necklaces, compare the product Length x Width with the idol neck or upper chest area. 1 Step, 2 Step and 3 Step mean the number of necklace rows/layers.'
+      assign usage_answer = 'Most short necklaces can work for different god and goddess idols when length, width and placement match. Chest Necklace styles are only for Venkateshwara, Balaji, Vishnu, Perumal and goddess idols.'
+      assign check_answer = 'Check product photos, measurement-tape images, Length x Width, color, material, step style and the exact neck or upper chest placement on your idol. If unsure, share idol photos and measurements on WhatsApp before ordering.'
+    elsif is_long_haram_collection
+      assign size_answer = 'For long harams, compare the product Length x Width with idol height, chest width, dress drape and lower body placement. 1 Step, 2 Step, 3 Step and 5 Step mean the number of necklace rows/layers.'
+      assign usage_answer = 'Most long harams can work for different god and goddess idols when length, width and placement match. Chest style long harams are only for Venkateshwara, Balaji, Vishnu, Perumal and goddess idols.'
+      assign check_answer = 'Check product photos, measurement-tape images, Length x Width, color, material, step style and where the long haram will fall on the idol body or dress. If unsure, share idol photos and measurements on WhatsApp before ordering.'
+    else
+      assign size_answer = 'Measure where the necklace or haram should sit on the idol, then compare product length and width in the measurement photos.'
+    endif
+    assign regional_fallback = 'Customers may search using names such as haram, mala, necklace, kasulaperu, pustal, necklace set or alankaram chain.'
+  elsif collection_handle_lc contains 'earring' or collection_title_lc contains 'earring' or collection_title_lc contains 'karna'
+    assign family_label = collection_ornament_type | default: 'deity earrings'
+    assign size_answer = 'For deity earrings, compare the product Height x Width or height value with the idol ear and face area. Check both sides of the idol if the ear shape or crown position is different.'
+    assign regional_fallback = 'Deity earrings may also be called karna pathakam, karnapathakam, ear ornaments, ear studs, jhumki or jhumka depending on style and region.'
+    assign usage_answer = 'Many deity earrings can work for different god and goddess idols when the measured size, ear placement and decoration style match. Deity-specific designs should be checked against the product title and photos.'
+    assign check_answer = 'Check product photos, measurement-tape images, Height x Width or height, color, material, style and the available ear placement on your idol. If unsure, share idol photos and measurements on WhatsApp before ordering.'
+  elsif collection_handle_lc contains 'vaddanam' or collection_title_lc contains 'vaddanam' or collection_handle_lc contains 'waist' or collection_title_lc contains 'waist'
+    assign family_label = collection_ornament_type | default: 'deity vaddanam'
+    assign size_answer = 'Measure the idol waist placement area. Use front width for a front-display vaddanam and full circumference if the belt needs to wrap around.'
+    assign regional_fallback = 'Vaddanam may also be called oddiyanam, waist belt, kamarbandh or waist ornament depending on region and language.'
+  endif
+-%}
+{%- capture regional_answer -%}
+  {%- if has_regional_terms -%}
+    {%- if regional_keyword_list != blank -%}
+      {%- for term in regional_keyword_list limit: 10 -%}
+        {{ term }}{%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    {%- elsif regional_keyword_text != blank -%}
+      {{ regional_keyword_text }}
+    {%- elsif ornament_aliases != blank -%}
+      {%- for term in ornament_aliases limit: 10 -%}
+        {{ term }}{%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- else -%}
+    {{ regional_fallback }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign regional_answer = regional_answer | strip -%}
+
+<section class="gc-ornament-footer color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if has_related_collections -%}
+      <div class="gc-ornament-footer__related">
+        {%- if section.settings.related_eyebrow != blank or section.settings.related_heading != blank -%}
+          <div class="gc-ornament-footer__head">
+            {%- if section.settings.related_eyebrow != blank -%}
+              <p>{{ section.settings.related_eyebrow }}</p>
+            {%- endif -%}
+            {%- if section.settings.related_heading != blank -%}
+              <h2>{{ section.settings.related_heading }}</h2>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        <ul class="gc-ornament-footer__related-list subcollection-nav list-unstyled" role="list">
+          {%- for related_collection in related_collections limit: 8 -%}
+            {%- if related_collection != blank -%}
+              {%- liquid
+                assign related_title = related_collection.metafields.custom.display_title.value | default: related_collection.metafields.custom.display_title | default: related_collection.title
+                assign related_image = related_collection.featured_image | default: related_collection.products.first.featured_media.preview_image
+              -%}
+              {% render 'category-circle-nav', title: related_title, url: related_collection.url, image: related_image %}
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="gc-ornament-footer__faq" aria-label="Collection FAQ">
+      <div class="gc-ornament-footer__head">
+        <p>{{ section.settings.faq_eyebrow }}</p>
+        <h2>{{ section.settings.faq_heading | default: 'Frequently asked questions' }}</h2>
+      </div>
+
+      <div class="gc-ornament-footer__faq-list">
+        {%- if collection_handle_lc contains 'crown' or collection_title_lc contains 'crown' or collection_handle_lc contains 'mukut' or collection_title_lc contains 'mukut' or collection_handle_lc contains 'kireed' or collection_title_lc contains 'kireed' -%}
+          <div class="gc-ornament-footer__guide-callout">
+            <strong>Choosing a crown?</strong>
+            <span>Use the crown, mukut and kireedam guide to compare idol height, head width, crown height, depth and crown style before ordering.</span>
+            <a href="/pages/deity-crown-mukut-kireedam-size-guide">Open crown size guide</a>
+          </div>
+        {%- endif -%}
+
+        <div class="gc-ornament-footer__fit-help">
+          <div>
+            <span>Fit help before ordering</span>
+            <strong>Not sure which size or use case works?</strong>
+            <p>Share idol height, the product link and a front photo. Anil can help compare size, placement and deity compatibility before you order.</p>
+          </div>
+          <div class="gc-ornament-footer__fit-actions">
+            <a href="{{ whatsapp_fit_url }}" target="_blank" rel="noopener">Ask Anil on WhatsApp</a>
+            <a href="{{ measure_url }}">How to choose size</a>
+            <a href="{{ fit_process_url }}">See fit process</a>
+            <a href="{{ proof_hub_url }}">Real alankaram examples</a>
+          </div>
+        </div>
+
+        <details>
+          <summary>How do I choose the right size for {{ family_label }}?</summary>
+          <p>{{ size_answer }} <a href="/pages/how-to-measure-idol-for-deity-jewellery">Open the full size guide</a>.</p>
+        </details>
+
+        <details>
+          <summary>What regional names do customers use for this collection?</summary>
+          <p>{{ regional_answer }}</p>
+        </details>
+
+        <details>
+          <summary>{{ usage_question }}</summary>
+          <p>{{ usage_answer }}</p>
+        </details>
+
+        {%- if is_short_haram_collection -%}
+          <details>
+            <summary>What is the difference between short necklace, long haram and Chest Necklace?</summary>
+            <p>Short necklaces sit near the neck or upper chest. Long harams fall lower on the idol body or dress. Chest Necklace styles are broader upper-chest pieces and should be used only for Venkateshwara, Balaji, Vishnu, Perumal and goddess idols.</p>
+          </details>
+        {%- elsif is_long_haram_collection -%}
+          <details>
+            <summary>How is a long haram different from a short necklace?</summary>
+            <p>Long harams fall lower across the idol body, chest or dress. Short necklaces sit closer to the neck or upper chest. Choose a long haram when you want a fuller alankaram look or a lower necklace placement.</p>
+          </details>
+        {%- elsif is_varalakshmi_idol_collection -%}
+          <details>
+            <summary>What is included with Varalakshmi idols and dolls?</summary>
+            <p>{{ included_answer }}</p>
+          </details>
+        {%- elsif collection_handle_lc contains 'earring' or collection_title_lc contains 'earring' or collection_title_lc contains 'karna' -%}
+          <details>
+            <summary>What is included with deity earrings?</summary>
+            <p>Each product includes a pair of deity earrings. Most styles are alloy metal with stone work; gold earrings are alloy metal with gold plating.</p>
+          </details>
+        {%- elsif is_performance_crown_collection -%}
+          <details>
+            <summary>What is included with drama and dance crowns?</summary>
+            <p>{{ included_answer }}</p>
+          </details>
+        {%- elsif collection_handle_lc contains 'crown' or collection_title_lc contains 'crown' or collection_handle_lc contains 'mukut' or collection_title_lc contains 'mukut' or collection_handle_lc contains 'kireed' or collection_title_lc contains 'kireed' -%}
+          <details>
+            <summary>What is included with deity crowns?</summary>
+            <p>{{ included_answer }}</p>
+          </details>
+        {%- endif -%}
+
+        <details>
+          <summary>What should I check before ordering?</summary>
+          <p>{{ check_answer }}</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": {{ 'How do I choose the right size for ' | append: family_label | append: '?' | json }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+            "text": {{ size_answer | append: ' Open the full size guide for detailed measuring help.' | json }}
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What regional names do customers use for this collection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ regional_answer | json }}
+        }
+      },
+      {
+        "@type": "Question",
+        "name": {{ usage_question | json }},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ usage_answer | json }}
+        }
+      }
+      {%- if is_short_haram_collection -%},
+      {
+        "@type": "Question",
+        "name": "What is the difference between short necklace, long haram and Chest Necklace?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Short necklaces sit near the neck or upper chest. Long harams fall lower on the idol body or dress. Chest Necklace styles are broader upper-chest pieces and should be used only for Venkateshwara, Balaji, Vishnu, Perumal and goddess idols."
+        }
+      }
+      {%- elsif is_long_haram_collection -%},
+      {
+        "@type": "Question",
+        "name": "How is a long haram different from a short necklace?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Long harams fall lower across the idol body, chest or dress. Short necklaces sit closer to the neck or upper chest. Choose a long haram when you want a fuller alankaram look or a lower necklace placement."
+        }
+      }
+      {%- elsif is_varalakshmi_idol_collection -%},
+      {
+        "@type": "Question",
+        "name": "What is included with Varalakshmi idols and dolls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ included_answer | json }}
+        }
+      }
+      {%- elsif collection_handle_lc contains 'earring' or collection_title_lc contains 'earring' or collection_title_lc contains 'karna' -%},
+      {
+        "@type": "Question",
+        "name": "What is included with deity earrings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each product includes a pair of deity earrings. Most styles are alloy metal with stone work; gold earrings are alloy metal with gold plating."
+        }
+      }
+      {%- elsif is_performance_crown_collection -%},
+      {
+        "@type": "Question",
+        "name": "What is included with drama and dance crowns?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ included_answer | json }}
+        }
+      }
+      {%- elsif collection_handle_lc contains 'crown' or collection_title_lc contains 'crown' or collection_handle_lc contains 'mukut' or collection_title_lc contains 'mukut' or collection_handle_lc contains 'kireed' or collection_title_lc contains 'kireed' -%},
+      {
+        "@type": "Question",
+        "name": "What is included with deity crowns?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ included_answer | json }}
+        }
+      }
+      {%- endif -%},
+      {
+        "@type": "Question",
+        "name": "What should I check before ordering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {{ check_answer | json }}
+        }
+      }
+    ]
+  }
+</script>
+
+<style>
+  .gc-ornament-footer {
+    background: #fffaf0;
+    color: #21180d;
+    padding: 2rem 0 3rem;
+  }
+
+  .gc-ornament-footer__related {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding: 1.5rem 0 1.2rem;
+  }
+
+  .gc-ornament-footer__faq {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    padding-top: 1.5rem;
+  }
+
+  .gc-ornament-footer__head {
+    margin-bottom: 1rem;
+  }
+
+  .gc-ornament-footer__head p {
+    color: #8f5f11;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .gc-ornament-footer h2 {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 2.3rem;
+    line-height: 1.12;
+    margin: 0;
+  }
+
+  .gc-ornament-footer__related-list {
+    display: flex;
+    gap: 0.9rem;
+    margin: 0 -1.5rem;
+    overflow-x: auto;
+    padding: 0 1.5rem 0.4rem;
+  }
+
+  .gc-ornament-footer__related-list .subcollection-item {
+    flex: 0 0 108px;
+  }
+
+  .gc-ornament-footer__faq-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gc-ornament-footer__guide-callout {
+    background: #fff7e8;
+    border: 1px solid rgba(143, 31, 24, 0.18);
+    border-left: 4px solid #8f1f18;
+    border-radius: 8px;
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+  }
+
+  .gc-ornament-footer__fit-help {
+    background: #241508;
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    padding: 1.1rem;
+  }
+
+  .gc-ornament-footer__fit-help span {
+    color: #d2a849;
+    display: block;
+    font-size: 1.04rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .gc-ornament-footer__fit-help strong {
+    color: #fff6e8;
+    display: block;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 1.55rem;
+    line-height: 1.18;
+  }
+
+  .gc-ornament-footer__fit-help p {
+    color: rgba(255, 246, 232, 0.82);
+    font-size: 1.16rem;
+    line-height: 1.42;
+    margin: 0.55rem 0 0;
+  }
+
+  .gc-ornament-footer__fit-actions {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .gc-ornament-footer__fit-actions a {
+    background: rgba(255, 250, 240, 0.08);
+    border: 1px solid rgba(201, 151, 42, 0.28);
+    border-radius: 6px;
+    color: #fff6e8;
+    display: flex;
+    font-size: 1.14rem;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.7rem 0.9rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .gc-ornament-footer__guide-callout strong {
+    color: #21180d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 1.45rem;
+    line-height: 1.16;
+  }
+
+  .gc-ornament-footer__guide-callout span {
+    color: #5f5549;
+    font-size: 1.16rem;
+    line-height: 1.35;
+  }
+
+  .gc-ornament-footer__guide-callout a {
+    color: #8f1f18;
+    font-size: 1.14rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .gc-ornament-footer details {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    padding: 0.95rem 1rem;
+  }
+
+  .gc-ornament-footer summary {
+    color: #21180d;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .gc-ornament-footer details p {
+    color: #4f463c;
+    font-size: 1.18rem;
+    line-height: 1.42;
+    margin: 0.7rem 0 0;
+  }
+
+  .gc-ornament-footer a {
+    color: #8f1f18;
+    font-weight: 700;
+  }
+
+  .gc-ornament-footer .gc-ornament-footer__fit-actions a {
+    color: #fff6e8;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-ornament-footer {
+      padding: 2.5rem 0 4rem;
+    }
+
+    .gc-ornament-footer__related-list {
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+
+    .gc-ornament-footer__related-list .subcollection-item {
+      flex-basis: 128px;
+    }
+
+    .gc-ornament-footer__faq-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-ornament-footer__guide-callout {
+      grid-column: 1 / -1;
+    }
+
+    .gc-ornament-footer__fit-help {
+      align-items: center;
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    }
+
+    .gc-ornament-footer__fit-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ornament footer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "related_eyebrow",
+      "label": "Related eyebrow",
+      "default": "Related collections"
+    },
+    {
+      "type": "text",
+      "id": "related_heading",
+      "label": "Related heading",
+      "default": "Continue browsing similar deity ornaments"
+    },
+    {
+      "type": "text",
+      "id": "faq_eyebrow",
+      "label": "FAQ eyebrow",
+      "default": "Helpful answers"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Frequently asked questions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ornament collection footer"
+    }
+  ]
+}
+{% endschema %}

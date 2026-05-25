@@ -3,22 +3,112 @@
   assign collection_title = collection.title | downcase
   assign family_menu_handle = collection.metafields.custom.parent_menu_handles.value | default: ''
   assign family_menu_handle = family_menu_handle | downcase | strip | split: ',' | first | strip
-  assign faq_family = 'amman'
+  assign faq_family_metafield = collection.metafields.custom.faq_family.value | default: collection.metafields.custom.faq_family
+  assign collection_deity_group_ref = collection.metafields.custom.primary_deity_ref.value | default: collection.metafields.custom.deity_group.value
+  assign collection_deity_group = collection_deity_group_ref.name.value | default: collection_deity_group_ref.name | default: collection.metafields.custom.deity_group.value | default: collection.metafields.custom.deity_group
+  assign collection_ornament_type_ref = collection.metafields.custom.ornament_type_ref.value | default: collection.metafields.custom.ornament_type.value
+  assign collection_ornament_type = collection_ornament_type_ref.name.value | default: collection_ornament_type_ref.name | default: collection.metafields.custom.ornament_type.value | default: collection.metafields.custom.ornament_type
+  assign ornament_placement = collection_ornament_type_ref.placement.value | default: collection_ornament_type_ref.placement
+  assign ornament_fit_notes = collection_ornament_type_ref.fit_notes.value | default: collection_ornament_type_ref.fit_notes
+  assign size_fit_intro = collection.metafields.custom.size_fit_intro.value | default: collection.metafields.custom.size_fit_intro | default: collection.metafields.custom.size_guide_copy.value | default: collection.metafields.custom.size_guide_copy
+  assign guide_body = size_fit_intro | default: section.settings.body
 
-  if collection_handle contains 'varalakshmi' or collection_handle contains 'vara-lakshmi' or collection_handle contains 'vagamalai' or collection_handle contains 'hands-legs-for-varalakshmi' or collection_title contains 'varalakshmi' or collection_title contains 'varamahalakshmi' or family_menu_handle contains 'varalakshmi'
+  assign size_profile_ref = collection.metafields.custom.size_profile_ref.value | default: collection.metafields.custom.size_profile_ref
+  assign size_profile_label = size_profile_ref.label.value | default: size_profile_ref.label
+  assign size_profile_min = size_profile_ref.idol_height_min_in.value | default: size_profile_ref.idol_height_min_in
+  assign size_profile_max = size_profile_ref.idol_height_max_in.value | default: size_profile_ref.idol_height_max_in
+  assign size_profile_fit_notes = size_profile_ref.fit_notes.value | default: size_profile_ref.fit_notes
+  assign size_profile_confidence = size_profile_ref.confidence.value | default: size_profile_ref.confidence
+  assign crown_standard_ref = collection.metafields.custom.crown_size_standard_ref.value | default: collection.metafields.custom.crown_size_standard_ref
+  assign crown_standard_label = crown_standard_ref.label.value | default: crown_standard_ref.label
+  assign crown_head_min = crown_standard_ref.head_width_min_in.value | default: crown_standard_ref.head_width_min_in
+  assign crown_head_max = crown_standard_ref.head_width_max_in.value | default: crown_standard_ref.head_width_max_in
+  assign crown_fit_caveats = crown_standard_ref.fit_caveats.value | default: crown_standard_ref.fit_caveats
+
+  assign regional_keyword_list = collection.metafields.custom.regional_keyword_cluster.value
+  assign regional_keyword_text = collection.metafields.custom.regional_keyword_cluster | metafield_text
+  assign deity_regional_names = collection_deity_group_ref.regional_names.value
+  assign deity_aliases = collection_deity_group_ref.aliases.value
+  assign ornament_aliases = collection_ornament_type_ref.aliases.value
+  assign has_regional_terms = false
+  if regional_keyword_list != blank or regional_keyword_text != blank or deity_regional_names != blank or deity_aliases != blank or ornament_aliases != blank
+    assign has_regional_terms = true
+  endif
+
+  assign setup_collections = collection.metafields.custom.related_collection_refs.value
+  assign has_setup_collections = false
+  if setup_collections != blank and setup_collections.size > 0
+    assign has_setup_collections = true
+  endif
+  assign faq_family_hint = faq_family_metafield | downcase | strip
+  assign collection_role = collection.metafields.custom.collection_role.value | default: collection.metafields.custom.collection_role | downcase | strip
+  assign template_mode = section.settings.template_mode | default: 'auto'
+  if template_mode == 'auto'
+    if collection_role == 'ornament_first' or collection_role == 'deity_ornament' or collection_role == 'accessory'
+      assign template_mode = 'ornament'
+    elsif collection_ornament_type != blank and collection_deity_group == blank
+      assign template_mode = 'ornament'
+    elsif faq_family_hint contains 'crown' or faq_family_hint contains 'necklace' or faq_family_hint contains 'haram' or faq_family_hint contains 'waist' or faq_family_hint contains 'accessory'
+      assign template_mode = 'ornament'
+    else
+      assign template_mode = 'deity_first'
+    endif
+  endif
+  assign bundle_collection = collections['varalakshmi-deity-jewellery']
+  assign deity_root_collection = collections['deity-jewelry']
+  assign crown_collection = collections['deity-crowns']
+  assign haram_collection = collections['deity-long-harams']
+  assign measure_url = '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign fit_process_url = '/pages/how-golden-collections-checks-deity-jewellery-fit'
+  assign proof_hub_url = '/pages/temple-alankaram-proof'
+  assign varalakshmi_examples_url = '/pages/varalakshmi-alankaram-examples'
+  assign whatsapp_fit_text = 'Hello Golden Collections, I need Anil help choosing deity jewellery size for ' | append: collection.title
+  assign whatsapp_fit_encoded = whatsapp_fit_text | url_encode
+  assign whatsapp_fit_url = 'https://wa.me/917337294499?text=' | append: whatsapp_fit_encoded
+
+  assign faq_family_source = faq_family_metafield
+  if faq_family_source == blank
+    assign faq_family_source = collection_deity_group | append: ' ' | append: collection_ornament_type
+  endif
+  assign faq_family_source = faq_family_source | downcase | strip
+  assign faq_family = ''
+
+  if faq_family_source contains 'varalakshmi' or faq_family_source contains 'vara lakshmi' or faq_family_source contains 'vara-lakshmi' or faq_family_source contains 'lakshmi'
     assign faq_family = 'varalakshmi'
-  elsif collection_handle contains 'banana' or collection_handle contains 'lotus' or collection_handle contains 'stand' or collection_handle contains 'asana' or collection_handle contains 'sanctum' or collection_handle contains 'singhasan' or collection_handle contains 'cushions'
+  elsif faq_family_source contains 'decor' or faq_family_source contains 'decoration' or faq_family_source contains 'arch' or faq_family_source contains 'prabhavali' or faq_family_source contains 'stand' or faq_family_source contains 'asana'
     assign faq_family = 'decor'
-  elsif collection_handle contains 'shankh' or collection_handle contains 'chakra' or collection_handle contains 'vishnu' or collection_handle contains 'perumal' or family_menu_handle contains 'vishnu'
+  elsif faq_family_source contains 'vishnu' or faq_family_source contains 'perumal' or faq_family_source contains 'balaji' or faq_family_source contains 'venkateswara' or faq_family_source contains 'shankh' or faq_family_source contains 'chakra'
     assign faq_family = 'vishnu'
-  elsif collection_handle contains 'crown' or collection_handle contains 'mukut' or collection_title contains 'crown' or collection_title contains 'mukut'
+  elsif faq_family_source contains 'crown' or faq_family_source contains 'mukut' or faq_family_source contains 'kireed'
     assign faq_family = 'crown'
-  elsif collection_handle contains 'necklace' or collection_handle contains 'haram' or collection_handle contains 'pustal' or collection_handle contains 'pendant' or collection_title contains 'necklace' or collection_title contains 'haram'
+  elsif faq_family_source contains 'necklace' or faq_family_source contains 'haram' or faq_family_source contains 'pustal' or faq_family_source contains 'pendant'
     assign faq_family = 'necklace'
-  elsif collection_handle contains 'waist' or collection_handle contains 'vaddanam' or collection_title contains 'waist' or collection_title contains 'vaddanam'
+  elsif faq_family_source contains 'waist' or faq_family_source contains 'vaddanam' or faq_family_source contains 'oddiyanam'
     assign faq_family = 'waist'
-  elsif collection_handle contains 'earring' or collection_handle contains 'eyes' or collection_handle contains 'nose' or collection_handle contains 'bindi' or collection_handle contains 'tilak' or collection_handle contains 'thiruman' or collection_handle contains 'taira' or collection_handle contains 'mustache' or collection_handle contains 'weapons' or collection_handle contains 'accessories'
+  elsif faq_family_source contains 'accessory' or faq_family_source contains 'earring' or faq_family_source contains 'eyes' or faq_family_source contains 'nose' or faq_family_source contains 'bindi' or faq_family_source contains 'tilak' or faq_family_source contains 'thiruman' or faq_family_source contains 'taira' or faq_family_source contains 'weapon' or faq_family_source contains 'hands' or faq_family_source contains 'legs'
     assign faq_family = 'accessory'
+  endif
+
+  if faq_family == blank
+    if collection_handle contains 'varalakshmi' or collection_handle contains 'vara-lakshmi' or collection_handle contains 'vagamalai' or collection_handle contains 'hands-legs-for-varalakshmi' or collection_title contains 'varalakshmi' or collection_title contains 'varamahalakshmi' or family_menu_handle contains 'varalakshmi'
+      assign faq_family = 'varalakshmi'
+    elsif collection_handle contains 'banana' or collection_handle contains 'lotus' or collection_handle contains 'stand' or collection_handle contains 'asana' or collection_handle contains 'sanctum' or collection_handle contains 'singhasan' or collection_handle contains 'cushions'
+      assign faq_family = 'decor'
+    elsif collection_handle contains 'shankh' or collection_handle contains 'chakra' or collection_handle contains 'vishnu' or collection_handle contains 'perumal' or family_menu_handle contains 'vishnu'
+      assign faq_family = 'vishnu'
+    elsif collection_handle contains 'crown' or collection_handle contains 'mukut' or collection_title contains 'crown' or collection_title contains 'mukut'
+      assign faq_family = 'crown'
+    elsif collection_handle contains 'necklace' or collection_handle contains 'haram' or collection_handle contains 'pustal' or collection_handle contains 'pendant' or collection_title contains 'necklace' or collection_title contains 'haram'
+      assign faq_family = 'necklace'
+    elsif collection_handle contains 'waist' or collection_handle contains 'vaddanam' or collection_title contains 'waist' or collection_title contains 'vaddanam'
+      assign faq_family = 'waist'
+    elsif collection_handle contains 'earring' or collection_handle contains 'eyes' or collection_handle contains 'nose' or collection_handle contains 'bindi' or collection_handle contains 'tilak' or collection_handle contains 'thiruman' or collection_handle contains 'taira' or collection_handle contains 'mustache' or collection_handle contains 'weapons' or collection_handle contains 'accessories'
+      assign faq_family = 'accessory'
+    endif
+  endif
+
+  if faq_family == blank
+    assign faq_family = 'amman'
   endif
 
   assign dynamic_faq_heading = section.settings.faq_heading
@@ -38,40 +128,272 @@
     when 'decor'
       assign dynamic_faq_heading = 'Deity decoration size FAQ'
   endcase
+
+  assign guide_eyebrow = section.settings.eyebrow
+  assign guide_heading = section.settings.heading
+  assign bundle_label = 'Bundles and full setup'
+  assign bundle_heading = section.settings.bundle_heading | default: 'Complete the alankaram lower on the page'
+  assign bundle_body = section.settings.bundle_body | default: 'After choosing the right fit, use these paths for full deity setup, festival bundles or matching ornament families.'
+  if template_mode == 'ornament'
+    assign guide_eyebrow = 'Crown sizing guide'
+    if faq_family != 'crown'
+      assign guide_eyebrow = 'Ornament fit guide'
+    endif
+    assign guide_heading = 'Measure right, buy right'
+    assign bundle_label = 'Related collections'
+    assign bundle_heading = 'Continue after the fit is clear'
+    assign bundle_body = 'Move to necklaces, vaddanam, harams or matching accessories only after the current ornament size is likely to fit.'
+  endif
 -%}
 
-<section class="gc-deity-guide" id="gc-deity-size-guide">
+{%- capture size_profile_text -%}
+  {%- if size_profile_label != blank -%}
+    {{ size_profile_label }}
+  {%- elsif size_profile_min != blank and size_profile_max != blank -%}
+    {{ size_profile_min }}-{{ size_profile_max }} inch idols
+  {%- elsif size_profile_min != blank -%}
+    {{ size_profile_min }} inch idols and above
+  {%- elsif size_profile_max != blank -%}
+    Up to {{ size_profile_max }} inch idols
+  {%- else -%}
+    Use the idol height shown on each product.
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture crown_standard_text -%}
+  {%- if crown_standard_label != blank -%}
+    {{ crown_standard_label }}
+  {%- elsif crown_head_min != blank and crown_head_max != blank -%}
+    Head width {{ crown_head_min }}-{{ crown_head_max }} in
+  {%- elsif crown_head_min != blank -%}
+    Head width from {{ crown_head_min }} in
+  {%- elsif crown_head_max != blank -%}
+    Head width up to {{ crown_head_max }} in
+  {%- else -%}
+    Compare crown width and height with the measuring tape image.
+  {%- endif -%}
+{%- endcapture -%}
+
+<section class="gc-deity-guide gc-deity-guide--{{ template_mode }}" id="gc-deity-size-guide">
   <div class="page-width">
     <div class="gc-deity-guide__layout">
       <div class="gc-deity-guide__main">
-        <p class="gc-deity-guide__eyebrow">{{ section.settings.eyebrow }}</p>
-        <h2>{{ section.settings.heading }}</h2>
-        <p>{{ section.settings.body }}</p>
+        <p class="gc-deity-guide__eyebrow">{{ guide_eyebrow }}</p>
+        <h2>{{ guide_heading }}</h2>
+        <p>{{ guide_body }}</p>
       </div>
 
-      <div class="gc-deity-guide__steps" aria-label="How to choose deity jewellery size">
-        <div>
-          <span>1</span>
-          <strong>Start with idol height</strong>
-          <p>Use the idol height as the first filter, especially for crowns, harams and waist belts.</p>
+      <div class="gc-deity-guide__panel" aria-label="Collection size guidance">
+        <div class="gc-deity-guide__panel-head">
+          <span>Size guidance</span>
+          <strong>{{ size_profile_text | strip }}</strong>
         </div>
+        <dl class="gc-deity-guide__facts">
+          <div>
+            <dt>Made for</dt>
+            <dd>{{ collection_deity_group | default: 'Match the deity shown on each product' }}</dd>
+          </div>
+          <div>
+            <dt>Ornament path</dt>
+            <dd>{{ collection_ornament_type | default: 'Choose by placement and measured size' }}</dd>
+          </div>
+          <div>
+            <dt>Placement</dt>
+            <dd>{{ ornament_placement | default: 'Head, neck, chest, waist or decoration area' }}</dd>
+          </div>
+          <div>
+            <dt>Crown check</dt>
+            <dd>{{ crown_standard_text | strip }}</dd>
+          </div>
+        </dl>
+        <p>
+          {%- if size_profile_fit_notes != blank -%}
+            {{ size_profile_fit_notes }}
+          {%- elsif ornament_fit_notes != blank -%}
+            {{ ornament_fit_notes }}
+          {%- elsif crown_fit_caveats != blank -%}
+            {{ crown_fit_caveats }}
+          {%- else -%}
+            Idol posture, head width, crown shape and cloth draping can change fit. Use product measurements before ordering.
+          {%- endif -%}
+        </p>
+        {%- if size_profile_confidence != blank -%}
+          <span class="gc-deity-guide__confidence">Fit confidence: {{ size_profile_confidence }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="gc-deity-guide__steps" aria-label="How to choose deity jewellery size">
+      <div>
+        <span>1</span>
+        <strong>
+          {%- if template_mode == 'ornament' -%}
+            Start with the placement measurement
+          {%- else -%}
+            Start with idol height
+          {%- endif -%}
+        </strong>
+        <p>
+          {%- if template_mode == 'ornament' -%}
+            Measure the head, neck, chest, waist or setup area where this ornament will sit.
+          {%- else -%}
+            Use the idol height from the product card or product fit panel as the first size signal.
+          {%- endif -%}
+        </p>
+      </div>
+      <div>
+        <span>2</span>
+        <strong>Check actual ornament measurement</strong>
+        <p>Compare width, height, depth or arc with your idol's head, neck, chest, waist or setup area.</p>
+      </div>
+      <div>
+        <span>3</span>
+        <strong>
+          {%- if template_mode == 'ornament' -%}
+            Confirm deity compatibility
+          {%- else -%}
+            Match deity and placement
+          {%- endif -%}
+        </strong>
+        <p>Deity-specific pieces should match the deity. General pieces can work when size and placement are right.</p>
+      </div>
+    </div>
+
+    <div class="gc-deity-guide__fit-help" aria-label="Fit help before ordering">
+      <div class="gc-deity-guide__fit-copy">
+        <span>Fit help before ordering</span>
+        <h3>Ask Anil to check size and use case</h3>
+        <p>Share idol height, head or face width, the product link and one clear front photo. Golden Collections can help you compare the likely size, deity compatibility and placement before you order.</p>
+      </div>
+      <div class="gc-deity-guide__fit-links">
+        <a href="{{ whatsapp_fit_url }}" target="_blank" rel="noopener">
+          <strong>Ask Anil on WhatsApp</strong>
+          <span>Best when you are unsure about size, deity match or ornament placement.</span>
+        </a>
+        <a href="{{ measure_url }}">
+          <strong>How to choose size</strong>
+          <span>Measure idol height, head width, chest, waist and altar space.</span>
+        </a>
+        <a href="{{ fit_process_url }}">
+          <strong>How fit is checked</strong>
+          <span>See the Golden Collections fit-check process used for deity jewellery.</span>
+        </a>
+        {%- if faq_family == 'varalakshmi' -%}
+          <a href="{{ varalakshmi_examples_url }}">
+            <strong>Varalakshmi fit examples</strong>
+            <span>Watch real alankaram examples and the visible jewellery fit notes.</span>
+          </a>
+        {%- else -%}
+          <a href="{{ proof_hub_url }}">
+            <strong>Real alankaram examples</strong>
+            <span>See permitted temple and festival examples where fit and placement are visible.</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if template_mode == 'ornament' -%}
+      <div class="gc-deity-guide__advanced" aria-label="Advanced fit help">
         <div>
-          <span>2</span>
-          <strong>Check measured ornament size</strong>
-          <p>Compare the product's measuring tape image with your idol's head, neck, chest or waist.</p>
+          <span>Advanced fit</span>
+          <h3>Need a precise fit?</h3>
+          <p>For close-fit crowns and custom idol setups, check arc length, inner circumference, depth and fastening method. If unsure, share idol photos and measurements before ordering.</p>
         </div>
+        <div class="gc-deity-guide__measure-list" aria-label="Measurements to compare">
+          <span>Head width</span>
+          <span>Crown height</span>
+          <span>Inner circumference</span>
+          <span>Depth / fastening</span>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if has_regional_terms -%}
+      <div class="gc-deity-guide__regional" aria-label="Regional and alternate names">
         <div>
-          <span>3</span>
-          <strong>Match placement and deity</strong>
-          <p>Some ornaments are deity-specific, while General/Common pieces work if the size fits.</p>
+          <span>Regional names</span>
+          <h3>{{ section.settings.regional_heading | default: 'Names customers may search for' }}</h3>
         </div>
+        <ul role="list">
+          {%- if regional_keyword_list != blank -%}
+            {%- for term in regional_keyword_list limit: 10 -%}
+              <li>{{ term }}</li>
+            {%- endfor -%}
+          {%- elsif regional_keyword_text != blank -%}
+            <li>{{ regional_keyword_text }}</li>
+          {%- endif -%}
+          {%- if deity_regional_names != blank -%}
+            {%- for term in deity_regional_names limit: 8 -%}
+              <li>{{ term }}</li>
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if deity_aliases != blank -%}
+            {%- for term in deity_aliases limit: 6 -%}
+              <li>{{ term }}</li>
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if ornament_aliases != blank -%}
+            {%- for term in ornament_aliases limit: 6 -%}
+              <li>{{ term }}</li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="gc-deity-guide__bundles" aria-label="{% if template_mode == 'ornament' %}Related deity ornament collections{% else %}Complete alankaram setup{% endif %}">
+      <div class="gc-deity-guide__bundles-head">
+        <span>{{ bundle_label }}</span>
+        <h3>{{ bundle_heading }}</h3>
+        <p>{{ bundle_body }}</p>
+      </div>
+      <div class="gc-deity-guide__bundle-grid">
+        <a href="{{ collection.url }}#ProductGridContainer">
+          <strong>Choose exact-fit pieces</strong>
+          <span>Stay in this collection and use the product grid filters for size, price and availability.</span>
+        </a>
+        {%- if has_setup_collections -%}
+          {%- for setup_collection in setup_collections limit: 3 -%}
+            {%- if setup_collection != blank and setup_collection.handle != collection.handle -%}
+              {%- assign setup_title = setup_collection.metafields.custom.display_title.value | default: setup_collection.metafields.custom.display_title | default: setup_collection.title -%}
+              <a href="{{ setup_collection.url }}">
+                <strong>{{ setup_title | truncate: 48 }}</strong>
+                <span>{{ setup_collection.metafields.custom.shopping_path_label.value | default: setup_collection.metafields.custom.collection_intro.value | default: setup_collection.description | strip_html | truncate: 90 }}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- if bundle_collection != blank and bundle_collection.handle != collection.handle -%}
+            <a href="{{ bundle_collection.url }}">
+              <strong>Varalakshmi setup</strong>
+              <span>Full alankaram direction for festival dolls, idols, hands, legs and decoration.</span>
+            </a>
+          {%- endif -%}
+          {%- if deity_root_collection != blank and deity_root_collection.handle != collection.handle -%}
+            <a href="{{ deity_root_collection.url }}">
+              <strong>All deity jewellery</strong>
+              <span>Browse deity-first paths when you need crowns, harams, earrings and accessories together.</span>
+            </a>
+          {%- endif -%}
+          {%- if crown_collection != blank and crown_collection.handle != collection.handle -%}
+            <a href="{{ crown_collection.url }}">
+              <strong>Add a crown</strong>
+              <span>Check head width, crown height and idol posture before pairing with other ornaments.</span>
+            </a>
+          {%- elsif haram_collection != blank and haram_collection.handle != collection.handle -%}
+            <a href="{{ haram_collection.url }}">
+              <strong>Add a haram</strong>
+              <span>Use chest width and drape length to complete the alankaram proportion.</span>
+            </a>
+          {%- endif -%}
+        {%- endif -%}
       </div>
     </div>
 
     <div class="gc-deity-guide__faq" aria-label="Deity jewellery size questions">
       <h3>{{ dynamic_faq_heading }}</h3>
       <div class="gc-deity-guide__faq-grid">
-        <details open>
+        <details>
           <summary>How do I choose deity jewellery size?</summary>
           <p>Start with the generally suitable idol size shown on the product, then compare the actual ornament measurement with your idol's head, neck, chest, waist or decoration area.</p>
         </details>
@@ -195,110 +517,394 @@
 <style>
   .gc-deity-guide {
     background: #ffffff;
-    padding: 4rem 0;
+    padding: 2.8rem 0;
   }
 
   .gc-deity-guide__layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 2rem;
-    align-items: start;
+    gap: 1.2rem;
   }
 
-  .gc-deity-guide__eyebrow {
+  .gc-deity-guide__eyebrow,
+  .gc-deity-guide__regional span,
+  .gc-deity-guide__bundles-head span,
+  .gc-deity-guide__panel-head span {
     color: #986918;
-    font-size: 1.2rem;
+    font-size: 1.12rem;
     font-weight: 700;
-    margin: 0 0 0.6rem;
+    letter-spacing: 0;
+    margin: 0 0 0.55rem;
     text-transform: uppercase;
   }
 
-  .gc-deity-guide h2 {
+  .gc-deity-guide h2,
+  .gc-deity-guide h3 {
     color: #1f170d;
     font-family: 'New York', 'Times New Roman', serif;
-    font-size: clamp(2.8rem, 4vw, 4.4rem);
-    line-height: 1.05;
-    margin: 0 0 1rem;
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .gc-deity-guide h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .gc-deity-guide h3 {
+    font-size: 2.1rem;
   }
 
   .gc-deity-guide p {
     color: #4f463c;
-    font-size: 1.45rem;
+    font-size: 1.38rem;
     line-height: 1.5;
     margin: 0;
   }
 
-  .gc-deity-guide__steps {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .gc-deity-guide__steps div,
-  .gc-deity-guide__faq details {
+  .gc-deity-guide__panel {
+    background: #fffaf0;
     border: 1px solid rgba(151, 99, 16, 0.15);
     border-radius: 8px;
+    padding: 1.2rem;
+  }
+
+  .gc-deity-guide__panel-head {
+    display: grid;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .gc-deity-guide__panel-head strong {
+    color: #21180d;
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .gc-deity-guide__facts {
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: 1fr;
+    margin: 0 0 1rem;
+  }
+
+  .gc-deity-guide__facts div {
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.12);
+    border-radius: 8px;
+    padding: 0.85rem;
+  }
+
+  .gc-deity-guide__facts dt {
+    color: #7d5b1d;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-guide__facts dd {
+    color: #21180d;
+    font-size: 1.28rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .gc-deity-guide__confidence {
+    color: #8f5f11;
+    display: inline-block;
+    font-size: 1.16rem;
+    font-weight: 700;
+    margin-top: 0.85rem;
+  }
+
+  .gc-deity-guide__steps {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .gc-deity-guide__steps div {
+    border-left: 3px solid #8f1f18;
     background: #fffaf0;
-    padding: 1.4rem;
+    border-radius: 8px;
+    padding: 1rem;
   }
 
   .gc-deity-guide__steps span {
-    display: inline-grid;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
+    align-items: center;
     background: #8f1f18;
+    border-radius: 999px;
     color: #ffffff;
+    display: inline-flex;
+    font-size: 1.1rem;
     font-weight: 700;
-    margin-bottom: 0.7rem;
+    height: 28px;
+    justify-content: center;
+    margin-bottom: 0.55rem;
+    width: 28px;
   }
 
   .gc-deity-guide__steps strong,
-  .gc-deity-guide__faq h3,
   .gc-deity-guide__faq summary {
     color: #21180d;
     display: block;
-    font-size: 1.55rem;
+    font-size: 1.42rem;
     line-height: 1.25;
-    margin: 0 0 0.55rem;
+    margin: 0 0 0.45rem;
+  }
+
+  .gc-deity-guide__regional,
+  .gc-deity-guide__bundles,
+  .gc-deity-guide__advanced,
+  .gc-deity-guide__fit-help {
+    border-top: 1px solid rgba(151, 99, 16, 0.15);
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.6rem;
+  }
+
+  .gc-deity-guide__advanced {
+    background: #fffaf0;
+    border: 1px solid rgba(151, 99, 16, 0.15);
+    border-left: 4px solid #8f1f18;
+    border-radius: 8px;
+    margin-top: 1.4rem;
+    padding: 1.2rem;
+  }
+
+  .gc-deity-guide__fit-help {
+    background: #241508;
+    border: 0;
+    border-radius: 8px;
+    color: #f7ead4;
+    padding: 1.2rem;
+  }
+
+  .gc-deity-guide__fit-copy span {
+    color: #d2a849;
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-guide__fit-help h3 {
+    color: #fff6e8;
+    margin-bottom: 0.55rem;
+  }
+
+  .gc-deity-guide__fit-help p {
+    color: rgba(255, 246, 232, 0.82);
+  }
+
+  .gc-deity-guide__fit-links {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gc-deity-guide__fit-links a {
+    background: rgba(255, 250, 240, 0.08);
+    border: 1px solid rgba(201, 151, 42, 0.32);
+    border-left: 3px solid #c9972a;
+    border-radius: 8px;
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.95rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-guide__fit-links strong {
+    color: #fff6e8;
+    font-size: 1.34rem;
+    line-height: 1.2;
+  }
+
+  .gc-deity-guide__fit-links span {
+    color: rgba(255, 246, 232, 0.78);
+    font-size: 1.16rem;
+    line-height: 1.35;
+  }
+
+  .gc-deity-guide__advanced span {
+    color: #986918;
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-guide__measure-list {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .gc-deity-guide__measure-list span {
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.14);
+    border-radius: 8px;
+    color: #4f3421;
+    font-size: 1.22rem;
+    margin: 0;
+    padding: 0.8rem;
+    text-transform: none;
+  }
+
+  .gc-deity-guide__regional ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-deity-guide__regional li {
+    background: #f6f0e6;
+    border: 1px solid rgba(151, 99, 16, 0.14);
+    border-radius: 999px;
+    color: #5f4630;
+    font-size: 1.16rem;
+    line-height: 1.2;
+    padding: 0.48rem 0.75rem;
+  }
+
+  .gc-deity-guide__bundles-head {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .gc-deity-guide__bundle-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gc-deity-guide__bundle-grid a {
+    background: #23170c;
+    border-radius: 8px;
+    color: #ffffff;
+    display: grid;
+    gap: 0.35rem;
+    min-height: 108px;
+    padding: 1rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-guide__bundle-grid a:nth-child(2n) {
+    background: #8f1f18;
+  }
+
+  .gc-deity-guide__bundle-grid strong {
+    color: #ffffff;
+    font-size: 1.42rem;
+    line-height: 1.2;
+  }
+
+  .gc-deity-guide__bundle-grid span {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.16rem;
+    line-height: 1.35;
   }
 
   .gc-deity-guide__faq {
-    margin-top: 1.8rem;
+    border-top: 1px solid rgba(31, 23, 13, 0.12);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
   }
 
   .gc-deity-guide__faq h3 {
-    font-family: 'New York', 'Times New Roman', serif;
-    font-size: 2.3rem;
-    margin-bottom: 1rem;
+    color: #4d4034;
+    font-size: 1.85rem;
+    margin-bottom: 0.75rem;
   }
 
   .gc-deity-guide__faq-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 0;
+  }
+
+  .gc-deity-guide__faq details {
+    border-bottom: 1px solid rgba(31, 23, 13, 0.1);
+    padding: 0.9rem 0;
   }
 
   .gc-deity-guide__faq summary {
     cursor: pointer;
+    font-size: 1.28rem;
     font-weight: 700;
     margin: 0;
   }
 
   .gc-deity-guide__faq details p {
-    margin-top: 0.75rem;
+    color: #5f5548;
+    font-size: 1.24rem;
+    margin-top: 0.55rem;
   }
 
-  @media screen and (max-width: 989px) {
-    .gc-deity-guide__layout,
+  @media screen and (min-width: 750px) {
+    .gc-deity-guide {
+      padding: 3.6rem 0;
+    }
+
+    .gc-deity-guide h2 {
+      font-size: clamp(3.2rem, 4vw, 4.5rem);
+    }
+
+    .gc-deity-guide__layout {
+      align-items: start;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 2rem;
+    }
+
+    .gc-deity-guide__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-deity-guide__steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1.6rem;
+    }
+
+    .gc-deity-guide__regional,
+    .gc-deity-guide__bundles,
+    .gc-deity-guide__advanced,
+    .gc-deity-guide__fit-help {
+      grid-template-columns: minmax(220px, 0.45fr) minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 2.4rem;
+      padding-top: 2rem;
+    }
+
+    .gc-deity-guide__advanced {
+      align-items: center;
+      grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1fr);
+      padding: 1.4rem;
+    }
+
+    .gc-deity-guide__measure-list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gc-deity-guide__bundle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-deity-guide__fit-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .gc-deity-guide__faq-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 1.6rem;
     }
   }
 
-  @media screen and (max-width: 749px) {
-    .gc-deity-guide {
-      padding: 2.8rem 0;
+  @media screen and (min-width: 990px) {
+    .gc-deity-guide__bundle-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 </style>
@@ -326,6 +932,24 @@
       "id": "body",
       "label": "Body",
       "default": "For deity jewellery, the correct fit depends on idol height, ornament width, ornament height, posture and placement. Use measured product images and the fit notes before ordering."
+    },
+    {
+      "type": "text",
+      "id": "regional_heading",
+      "label": "Regional names heading",
+      "default": "Names customers may search for"
+    },
+    {
+      "type": "text",
+      "id": "bundle_heading",
+      "label": "Bundle heading",
+      "default": "Complete the alankaram lower on the page"
+    },
+    {
+      "type": "textarea",
+      "id": "bundle_body",
+      "label": "Bundle body",
+      "default": "After choosing the right fit, use these paths for full deity setup, festival bundles or matching ornament families."
     },
     {
       "type": "text",

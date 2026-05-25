@@ -1,0 +1,104 @@
+{%- liquid
+  assign primary_deity_ref = product.metafields.custom.primary_deity_ref.value | default: product.metafields.custom.primary_deity.value
+  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity
+  assign ornament_ref = product.metafields.custom.ornament_type_ref.value | default: product.metafields.custom.ornament_type.value
+  assign ornament_type = ornament_ref.name.value | default: ornament_ref.name | default: product.metafields.custom.ornament_type.value | default: product.metafields.custom.ornament_type | default: product.type
+  assign product_title_lc = product.title | downcase
+  assign is_crown_product = false
+  if product_title_lc contains 'crown' or product_title_lc contains 'mukut' or product_title_lc contains 'kireed' or product_title_lc contains 'kirita' or ornament_type contains 'Crown' or ornament_type contains 'Mukut' or ornament_type contains 'Kireed'
+    assign is_crown_product = true
+  endif
+  assign whatsapp_fit_text = 'Hello Golden Collections, I need Anil help checking deity jewellery size for ' | append: product.title
+  assign whatsapp_fit_encoded = whatsapp_fit_text | url_encode
+  assign whatsapp_fit_url = 'https://wa.me/917337294499?text=' | append: whatsapp_fit_encoded
+-%}
+
+<div class="gc-deity-lite-help" aria-label="Deity jewellery size help">
+  <div>
+    <strong>Need size help?</strong>
+    <span>
+      {%- if primary_deity != blank or ornament_type != blank -%}
+        Check idol size, placement and measured product photos before ordering.
+      {%- else -%}
+        Compare your idol with the measured product photos before ordering.
+      {%- endif -%}
+    </span>
+  </div>
+  <div class="gc-deity-lite-help__actions">
+    {%- if is_crown_product -%}
+      <a href="/pages/deity-crown-mukut-kireedam-size-guide">Crown Guide</a>
+    {%- endif -%}
+    <a href="/pages/how-to-measure-idol-for-deity-jewellery">Size Help</a>
+    <a href="/pages/how-golden-collections-checks-deity-jewellery-fit">Fit Process</a>
+    <a href="{{ whatsapp_fit_url }}" target="_blank" rel="noopener">Ask Anil</a>
+  </div>
+</div>
+
+<style>
+  .gc-deity-lite-help {
+    align-items: center;
+    background: #fffaf0;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 8px;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .gc-deity-lite-help strong,
+  .gc-deity-lite-help span {
+    display: block;
+  }
+
+  .gc-deity-lite-help strong {
+    color: #21180d;
+    font-size: 1.45rem;
+  }
+
+  .gc-deity-lite-help span {
+    color: #5f5549;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin-top: 0.2rem;
+  }
+
+  .gc-deity-lite-help a {
+    align-items: center;
+    background: #8f1f18;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-height: 40px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-lite-help__actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-deity-lite-help {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .gc-deity-lite-help__actions {
+      flex-direction: column;
+    }
+
+    .gc-deity-lite-help a {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,611 @@
+{%- liquid
+  assign page_handle = page.handle
+  assign knowledge_url = pages['golden-collections-knowledge-hub'].url | default: '/pages/golden-collections-knowledge-hub'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign glossary_url = pages['jewelry-glossary'].url | default: '/pages/jewelry-glossary'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign process_url = pages['how-golden-collections-checks-deity-jewellery-fit'].url | default: '/pages/how-golden-collections-checks-deity-jewellery-fit'
+  assign proof_url = pages['temple-alankaram-proof'].url | default: '/pages/temple-alankaram-proof'
+  assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples'
+  assign hanuman_proof_url = '/blogs/jewellery-guides/hanuman-jayanti-alankaram-sri-vijaya-vinayaka-swamy-temple-malkajgiri-2026'
+  assign deity_collection_url = collections['deity-god-jewellery'].url | default: '/collections/deity-god-jewellery'
+  assign crown_collection_url = collections['deity-crowns-1'].url | default: '/collections/deity-crowns-1'
+  assign varalakshmi_collection_url = collections['varalakshmi-deity-jewellery'].url | default: '/collections/varalakshmi-deity-jewellery'
+
+  assign eyebrow = 'Deity compatibility guide'
+  assign heading = page.title
+  assign intro = 'Use deity, measurement, placement and ornament type together before choosing Hindu idol jewellery.'
+  assign direct_answer = 'Choose jewellery only after matching the deity form, idol size, ornament placement and available altar space.'
+  assign names = 'mukut | kireedam | haram | vaddanam | thomala'
+  assign primary_items = 'Crown or kireedam | Short necklace or haram | Long haram where body height allows | Waist belt or vaddanam when the idol shape supports it'
+  assign fit_checks = 'Idol height | Head or face width | Crown clearance | Chest width | Desired necklace drop | Altar depth'
+  assign caution = 'Do not buy only by design. A beautiful ornament still needs the right deity context, size and placement.'
+  assign shop_primary_url = deity_collection_url
+  assign shop_primary_label = 'Shop deity jewellery'
+  assign faq1_q = 'Can the same ornament be used for different deities?'
+  assign faq1_a = 'Sometimes, but only when size, placement, style and symbols match. Deity-specific marks should not be treated as universal.'
+  assign faq2_q = 'What should I measure first?'
+  assign faq2_a = 'Start with idol height, head or face width, chest width, waist placement and altar depth. For crowns, also check height and depth.'
+
+  case page_handle
+    when 'lakshmi-varalakshmi-deity-jewellery-guide'
+      assign eyebrow = 'Lakshmi and Varalakshmi guide'
+      assign heading = 'Lakshmi and Varalakshmi Deity Jewellery Compatibility Guide'
+      assign intro = 'Choose Lakshmi, Varalakshmi and Amman jewellery by face or idol type, crown placement, hastham, padam, haram, vaddanam and altar setup.'
+      assign direct_answer = 'For Lakshmi and Varalakshmi, start with setup type: full idol, doll, Amman mugham or kalasam. Then choose crown, haram, hastham, padam and waist ornaments by size and placement.'
+      assign names = 'Lakshmi | Varalakshmi | Amman | mugham | hastham | padam | vaddanam | oddiyanam | haram'
+      assign primary_items = 'Crown, mukut or kireedam | Short necklace near face or upper chest | Long haram for vertical fullness | Hastham and padam for setup-specific use | Vaddanam or oddiyanam when waist placement is visible'
+      assign fit_checks = 'Face width | Crown height clearance | Shoulder width | Chest width | Waist placement | Saree or vastram volume | Altar depth'
+      assign caution = 'Hastham and padam are setup-dependent. Do not force them into a small altar or a setup that does not show hands and feet clearly.'
+      assign shop_primary_url = varalakshmi_collection_url
+      assign shop_primary_label = 'Shop Varalakshmi jewellery'
+      assign faq1_q = 'Is Varalakshmi jewellery the same as Lakshmi jewellery?'
+      assign faq1_a = 'Many ornaments overlap, but Varalakshmi setups often need setup-specific items such as hastham, padam, mugham and kalasam-friendly decoration.'
+      assign faq2_q = 'What should I buy first for Varalakshmi alankaram?'
+      assign faq2_a = 'Decide whether you have an idol, doll, mugham or kalasam setup. Then choose crown, necklace, hastham, padam and waist items by size.'
+    when 'balaji-vishnu-perumal-deity-jewellery-guide'
+      assign eyebrow = 'Balaji, Vishnu and Perumal guide'
+      assign heading = 'Balaji, Vishnu and Perumal Deity Jewellery Compatibility Guide'
+      assign intro = 'Plan jewellery for Balaji, Vishnu, Venkateswara and Perumal idols with crown height, namam, shanku chakra, haram placement and shoulder clearance in mind.'
+      assign direct_answer = 'For Balaji, Vishnu and Perumal, protect the deity identity first: crown, namam or thiruman, shanku chakra and necklace placement should remain visible and proportionate.'
+      assign names = 'Balaji | Vishnu | Venkateswara | Perumal | namam | thiruman | shanku chakra | kireedam | haram'
+      assign primary_items = 'Tall crown or kireedam when clearance allows | Namam or thiruman where appropriate | Shanku chakra when the deity form supports it | Short necklace plus long haram by body height | Shoulder ornaments only when width allows'
+      assign fit_checks = 'Head width | Crown height | Namam visibility | Shoulder width | Haram drop | Backdrop clearance | Idol posture'
+      assign caution = 'Do not let a crown or haram cover namam, thiruman, face details or deity marks that define the form.'
+      assign shop_primary_url = crown_collection_url
+      assign shop_primary_label = 'Shop deity crowns'
+      assign faq1_q = 'Is shanku chakra suitable for every deity?'
+      assign faq1_a = 'No. Shanku chakra is usually Vishnu, Balaji, Venkateswara or Perumal context and should not be treated as a universal accessory.'
+      assign faq2_q = 'What matters most for Balaji crown fit?'
+      assign faq2_a = 'Check head width, crown height, namam visibility, altar height and whether the crown visually overpowers the idol.'
+    when 'ganesha-deity-crown-ornament-guide'
+      assign eyebrow = 'Ganesha jewellery guide'
+      assign heading = 'Ganesha Deity Crown and Ornament Compatibility Guide'
+      assign intro = 'Choose Ganesha crowns and ornaments by broad head shape, ears, trunk direction, seated posture and altar clearance.'
+      assign direct_answer = 'For Ganesha, head width and trunk clearance matter more than general idol height. A crown that fits a narrow deity may not suit a broad Ganesha head.'
+      assign names = 'Ganesha | Ganapati | Vinayaka | mukut | kireedam | crown | haram'
+      assign primary_items = 'Open crown or mukut by head width | Short necklace for compact idols | Long haram only when seated height allows | Waist or chest ornaments only after checking trunk and belly space'
+      assign fit_checks = 'Head width | Ear width | Trunk direction | Crown depth | Seated height | Chest or belly width | Altar side clearance'
+      assign caution = 'Avoid crowns that push into the ears or fight with the trunk line. Ganesha needs width checks, not only height checks.'
+      assign shop_primary_url = crown_collection_url
+      assign shop_primary_label = 'Shop deity crowns'
+      assign faq1_q = 'Can I use a regular deity crown for Ganesha?'
+      assign faq1_a = 'Only if head width, ear clearance, crown depth and trunk placement match. Many regular crowns are too narrow for broad Ganesha idols.'
+      assign faq2_q = 'Which Ganesha measurement is most important?'
+      assign faq2_a = 'Head width is usually the first check, followed by ear clearance, trunk direction and crown depth.'
+    when 'krishna-deity-jewellery-guide'
+      assign eyebrow = 'Krishna jewellery guide'
+      assign heading = 'Krishna Deity Jewellery Compatibility Guide'
+      assign intro = 'Choose Krishna jewellery by head angle, peacock feather, flute position, child or standing form, necklace drop and ornament scale.'
+      assign direct_answer = 'For Krishna, crown style and flute clearance are the first compatibility checks. Jewellery should support the Krishna form without hiding the face, feather or flute.'
+      assign names = 'Krishna | Radha Krishna | peacock feather | mukut | bansuri | haram | mala'
+      assign primary_items = 'Krishna-style crown or mukut | Short necklace or mala | Long haram for standing idols | Waist belt when posture and dress allow | Arm or shoulder pieces only when flute position allows'
+      assign fit_checks = 'Head angle | Crown width | Feather height | Flute position | Chest width | Dress volume | Standing or seated posture'
+      assign caution = 'Do not choose a tall crown without checking feather height and altar clearance. Flute and hand position can block necklace placement.'
+      assign shop_primary_url = deity_collection_url
+      assign shop_primary_label = 'Shop deity jewellery'
+      assign faq1_q = 'Does Krishna need a different crown style?'
+      assign faq1_a = 'Often yes. Krishna crowns may include peacock feather or Krishna-specific styling, so shape and symbolism matter along with size.'
+      assign faq2_q = 'What can interfere with Krishna jewellery fit?'
+      assign faq2_a = 'Flute position, hand angle, head tilt, feather height and dress volume can all affect crown and necklace placement.'
+    when 'amman-devi-alankaram-jewellery-guide'
+      assign eyebrow = 'Amman and Devi guide'
+      assign heading = 'Amman and Devi Alankaram Jewellery Compatibility Guide'
+      assign intro = 'Choose Amman and Devi jewellery with crown, face ornament, nose ring, haram, vaddanam, saree drape and festival alankaram style in mind.'
+      assign direct_answer = 'For Amman and Devi, match the goddess form and festival setup first, then size crown, face ornaments, haram and vaddanam around saree or vastram volume.'
+      assign names = 'Amman | Devi | Durga | Parvati | Lakshmi | nose ring | vaddanam | oddiyanam | haram'
+      assign primary_items = 'Crown or kireedam | Face ornaments where appropriate | Nose ring by face size | Short and long haram by chest coverage | Vaddanam or oddiyanam by waist placement'
+      assign fit_checks = 'Face width | Crown placement | Nose ring position | Shoulder width | Chest width | Waist height | Saree drape thickness'
+      assign caution = 'Face ornaments and nose rings must match face size. A large ornament can hide expression or sit awkwardly on smaller goddess idols.'
+      assign shop_primary_url = deity_collection_url
+      assign shop_primary_label = 'Shop goddess jewellery'
+      assign faq1_q = 'Is Amman jewellery the same as Devi jewellery?'
+      assign faq1_a = 'Some ornaments overlap, but the exact selection depends on the goddess form, festival use, face size, saree drape and family tradition.'
+      assign faq2_q = 'How do I choose an Amman vaddanam?'
+      assign faq2_a = 'Measure waist placement over the dressed idol or saree drape, not only the bare idol width.'
+    when 'how-golden-collections-checks-deity-jewellery-fit'
+      assign eyebrow = 'Process documentation'
+      assign heading = 'How Golden Collections Checks Deity Jewellery Fit'
+      assign intro = 'A practical look at the Golden Collections fit-first process for deity crowns, harams, vaddanam, hastham, padam and alankaram accessories.'
+      assign direct_answer = 'Golden Collections checks fit by matching the product type to deity form, idol measurements, placement photos, altar space and practical use before recommending jewellery.'
+      assign names = 'measurement | fit check | crown sizing | haram placement | deity compatibility | customer photos'
+      assign primary_items = 'Confirm deity and setup type | Ask for idol measurements | Review front and side photos | Compare product dimensions | Check placement and clearance | Recommend a safer option when fit is doubtful'
+      assign fit_checks = 'Idol height | Head or face width | Chest width | Waist placement | Crown clearance | Altar depth | Photo with measuring tape'
+      assign caution = 'A fit check is guidance, not a guarantee, because handmade idols, dress volume and altar setups differ. Measurements and photos make the guidance much stronger.'
+      assign shop_primary_url = measure_url
+      assign shop_primary_label = 'Use measurement guide'
+      assign faq1_q = 'What photos help with deity jewellery fit?'
+      assign faq1_a = 'Send a front photo, side photo and one photo with measuring tape visible at the head, chest or waist depending on the ornament.'
+      assign faq2_q = 'Can fit be checked without measurements?'
+      assign faq2_a = 'Only roughly. Measurements are needed for crowns, long harams, vaddanam and setup-specific accessories.'
+  endcase
+
+  assign name_list = names | split: '|'
+  assign item_list = primary_items | split: '|'
+  assign check_list = fit_checks | split: '|'
+-%}
+
+<section class="gc-compat">
+  <div class="gc-compat__hero">
+    <div class="page-width gc-compat__hero-grid">
+      <div>
+        <nav class="gc-compat__breadcrumb" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span>/</span>
+          <a href="{{ knowledge_url }}">Knowledge Hub</a>
+          <span>/</span>
+          <span>{{ page.title }}</span>
+        </nav>
+        <p class="gc-compat__eyebrow">{{ eyebrow }}</p>
+        <h1>{{ heading }}</h1>
+        <p class="gc-compat__intro">{{ intro }}</p>
+        <div class="gc-compat__actions">
+          <a href="{{ shop_primary_url }}">{{ shop_primary_label }}</a>
+          <a href="{{ measure_url }}" class="gc-compat__secondary">Measure your idol</a>
+        </div>
+      </div>
+      <aside class="gc-compat__answer" aria-label="Direct answer">
+        <span>Direct answer</span>
+        <p>{{ direct_answer }}</p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="gc-compat__body">
+    <div class="page-width">
+      <div class="gc-compat__proof">
+        <article>
+          <strong>Reviewed for fit</strong>
+          <span>Built around idol measurements, placement and product type.</span>
+        </article>
+        <article>
+          <strong>Grounded in vocabulary</strong>
+          <span>Uses regional names customers search and ask about.</span>
+        </article>
+        <article>
+          <strong>Connected to Anil Tunk</strong>
+          <span>Part of Golden Collections' public authority system.</span>
+        </article>
+      </div>
+
+      {%- if page_handle == 'how-golden-collections-checks-deity-jewellery-fit' -%}
+        <section class="gc-compat__card gc-compat__card--warning" aria-labelledby="gc-compat-real-proof">
+          <p class="gc-compat__eyebrow">Real fit example</p>
+          <h2 id="gc-compat-real-proof">Hanuman Jayanti temple alankaram</h2>
+          <p>On May 12, 2026, Golden Collections deity jewellery was used for Hanuman Jayanti alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri, coordinated with Ayyagaru Ram Sharma. The example shows why deity jewellery fit is checked through crown height, face visibility, body ornament scale, hand or gada placement and arch clearance.</p>
+          <div class="gc-compat__mini-links">
+            <a href="{{ hanuman_proof_url }}">See proof story</a>
+            <a href="{{ proof_url }}">View proof hub</a>
+          </div>
+        </section>
+      {%- endif -%}
+
+      {%- if page_handle == 'lakshmi-varalakshmi-deity-jewellery-guide' or page_handle == 'how-golden-collections-checks-deity-jewellery-fit' -%}
+        <section class="gc-compat__card gc-compat__card--warning" aria-labelledby="gc-compat-vara-examples">
+          <p class="gc-compat__eyebrow">Varalakshmi examples</p>
+          <h2 id="gc-compat-vara-examples">Previous alankaram examples and fit notes</h2>
+          <p>Use the Varalakshmi examples page to compare crown scale, face visibility, haram drop, stone colour visibility, saree drape and altar space before choosing jewellery for your own setup.</p>
+          <div class="gc-compat__mini-links">
+            <a href="{{ varalakshmi_examples_url }}">View Varalakshmi examples</a>
+            <a href="{{ varalakshmi_collection_url }}">Shop Varalakshmi jewellery</a>
+          </div>
+        </section>
+      {%- endif -%}
+
+      {%- if page_handle == 'how-golden-collections-checks-deity-jewellery-fit' -%}
+        {%- render 'gc-anil-half-crown-fit-video',
+          eyebrow: 'Real fit process',
+          heading: 'How Anil checks half crown placement',
+          intro: 'This video shows the fit-first process in a simple way: measure the deity face, compare the crown width, and check that the crown does not hide the eyes, tilak or facial detail.',
+          caption: 'A real Golden Collections fit-check example for deity face width and half crown placement.',
+          schema_name: 'Golden Collections Half Crown Fit Check By Anil Tunk',
+          whatsapp_number: whatsapp_number
+        -%}
+      {%- endif -%}
+
+      <div class="gc-compat__grid">
+        <section class="gc-compat__card">
+          <p class="gc-compat__eyebrow">Search names</p>
+          <h2>Names and terms to check</h2>
+          <ul>
+            {%- for name in name_list -%}
+              <li>{{ name | strip }}</li>
+            {%- endfor -%}
+          </ul>
+          <a href="{{ glossary_url }}">Open jewellery glossary</a>
+        </section>
+
+        <section class="gc-compat__card">
+          <p class="gc-compat__eyebrow">Ornaments</p>
+          <h2>Items to consider</h2>
+          <ul>
+            {%- for item in item_list -%}
+              <li>{{ item | strip }}</li>
+            {%- endfor -%}
+          </ul>
+        </section>
+
+        <section class="gc-compat__card">
+          <p class="gc-compat__eyebrow">Measurements</p>
+          <h2>Fit checks before ordering</h2>
+          <ul>
+            {%- for check in check_list -%}
+              <li>{{ check | strip }}</li>
+            {%- endfor -%}
+          </ul>
+          <a href="{{ process_url }}">See Golden Collections fit process</a>
+        </section>
+
+        <section class="gc-compat__card gc-compat__card--warning">
+          <p class="gc-compat__eyebrow">Important caution</p>
+          <h2>Do not skip compatibility</h2>
+          <p>{{ caution }}</p>
+          <div class="gc-compat__mini-links">
+            <a href="{{ crown_url }}">Crown sizing</a>
+            <a href="{{ anil_url }}">Anil Tunk profile</a>
+          </div>
+        </section>
+      </div>
+
+      <section class="gc-compat__faq" aria-labelledby="gc-compat-faq">
+        <p class="gc-compat__eyebrow">Answered clearly</p>
+        <h2 id="gc-compat-faq">Common questions</h2>
+        <details open>
+          <summary>{{ faq1_q }}</summary>
+          <p>{{ faq1_a }}</p>
+        </details>
+        <details>
+          <summary>{{ faq2_q }}</summary>
+          <p>{{ faq2_a }}</p>
+        </details>
+      </section>
+
+      <section class="gc-compat__cta" aria-label="Next steps">
+        <div>
+          <p class="gc-compat__eyebrow">Next step</p>
+          <h2>Start with measurement, then choose jewellery</h2>
+          <p>Use the measurement guide for size, the glossary for naming confusion and the Knowledge Hub for the full Golden Collections authority map.</p>
+        </div>
+        <div class="gc-compat__actions gc-compat__actions--light">
+          <a href="{{ measure_url }}">Measure your idol</a>
+          <a href="{{ knowledge_url }}" class="gc-compat__secondary">Knowledge Hub</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ page.url }}#webpage",
+      "url": "{{ shop.url }}{{ page.url }}",
+      "name": {{ heading | json }},
+      "description": {{ intro | json }},
+      "author": { "@id": "{{ shop.url }}{{ anil_url }}#person" },
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "isPartOf": { "@id": "{{ shop.url }}{{ knowledge_url }}#webpage" },
+      "about": {{ names | json }}
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}{{ page.url }}#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": {{ faq1_q | json }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ faq1_a | json }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ faq2_q | json }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ faq2_a | json }} }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ shop.url }}{{ page.url }}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ shop.url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Knowledge Hub", "item": "{{ shop.url }}{{ knowledge_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ heading | json }}, "item": "{{ shop.url }}{{ page.url }}" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-compat {
+    background: #fdf6ec;
+    color: #1f170d;
+    font-family: var(--font-body-family);
+  }
+
+  .gc-compat__hero {
+    background: #1a0e05;
+    color: #f5ede0;
+  }
+
+  .gc-compat__hero-grid {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(2rem, 5vw, 4.5rem) 0;
+  }
+
+  .gc-compat__breadcrumb {
+    color: rgba(245, 237, 224, 0.72);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .gc-compat__breadcrumb a {
+    color: #c9972a;
+    text-decoration: none;
+  }
+
+  .gc-compat__eyebrow {
+    color: #c9972a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
+  }
+
+  .gc-compat h1,
+  .gc-compat h2,
+  .gc-compat summary {
+    font-family: var(--font-heading-family), Georgia, serif;
+    letter-spacing: 0;
+  }
+
+  .gc-compat h1 {
+    color: #f5ede0;
+    font-size: clamp(2.7rem, 5.6vw, 6.4rem);
+    line-height: 0.98;
+    margin: 0;
+    max-width: 920px;
+  }
+
+  .gc-compat__intro {
+    color: rgba(245, 237, 224, 0.88);
+    font-size: clamp(1.18rem, 1.4vw, 1.45rem);
+    line-height: 1.58;
+    margin: 1.2rem 0 0;
+    max-width: 860px;
+  }
+
+  .gc-compat__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .gc-compat__actions a {
+    align-items: center;
+    background: #8b1c1c;
+    border: 1px solid #8b1c1c;
+    border-radius: 8px;
+    color: #fffaf2;
+    display: inline-flex;
+    font-weight: 800;
+    min-height: 48px;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-compat__actions .gc-compat__secondary {
+    background: transparent;
+    border-color: rgba(201, 151, 42, 0.7);
+    color: #f5ede0;
+  }
+
+  .gc-compat__actions--light .gc-compat__secondary {
+    color: #1f170d;
+  }
+
+  .gc-compat__answer {
+    align-self: end;
+    background: #241508;
+    border-left: 4px solid #c9972a;
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+
+  .gc-compat__answer span {
+    color: #c9972a;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gc-compat__answer p {
+    color: #f5ede0;
+    font-size: 1.28rem;
+    line-height: 1.55;
+    margin: 0.65rem 0 0;
+  }
+
+  .gc-compat__body {
+    padding: clamp(1.6rem, 4vw, 3.2rem) 0;
+  }
+
+  .gc-compat__proof,
+  .gc-compat__grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gc-compat__proof article,
+  .gc-compat__card,
+  .gc-compat__faq,
+  .gc-compat__cta {
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(26, 14, 4, 0.06);
+    padding: 1.1rem;
+  }
+
+  .gc-compat__proof article {
+    border-left: 3px solid #c9972a;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .gc-compat__proof strong {
+    font-size: 1.2rem;
+  }
+
+  .gc-compat__proof span,
+  .gc-compat__card p,
+  .gc-compat__faq p,
+  .gc-compat__cta p,
+  .gc-compat li {
+    color: #4e4438;
+    font-size: 1.06rem;
+    line-height: 1.65;
+  }
+
+  .gc-compat__grid,
+  .gc-compat__faq,
+  .gc-compat__cta {
+    margin-top: 1.2rem;
+  }
+
+  .gc-compat__card {
+    border-top: 3px solid #c9972a;
+  }
+
+  .gc-compat__card--warning {
+    border-left: 4px solid #8b1c1c;
+  }
+
+  .gc-compat h2 {
+    font-size: clamp(1.8rem, 2.4vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 0.8rem;
+  }
+
+  .gc-compat ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .gc-compat li::marker {
+    color: #c9972a;
+  }
+
+  .gc-compat__card a,
+  .gc-compat__mini-links a {
+    color: #8b1c1c;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .gc-compat__mini-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .gc-compat details {
+    border-top: 1px solid rgba(201, 151, 42, 0.24);
+    padding: 1rem 0;
+  }
+
+  .gc-compat summary {
+    cursor: pointer;
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .gc-compat__cta {
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .gc-compat__hero-grid > *,
+    .gc-compat__proof article,
+    .gc-compat__card {
+      animation: gc-compat-fade-up 0.55s ease-out both;
+    }
+
+    .gc-compat__answer,
+    .gc-compat__proof article:nth-child(2),
+    .gc-compat__card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .gc-compat__proof article:nth-child(3),
+    .gc-compat__card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+  }
+
+  @keyframes gc-compat-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-compat__hero-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    }
+
+    .gc-compat__proof {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-compat__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-compat__cta {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-compat__actions a {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC Deity Compatibility",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "GC Deity Compatibility"
+    }
+  ]
+}
+{% endschema %}

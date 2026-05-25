@@ -1,5 +1,58 @@
+{%- liquid
+  assign breadcrumb_collection = blank
+  if collection != blank and collection.url != blank and collection.title != blank
+    assign breadcrumb_collection = collection
+  endif
 
-{% assign collection = product.collections.first %}
+  if breadcrumb_collection == blank
+    assign primary_collection_ref = product.metafields.custom.primary_collection_ref.value
+    if primary_collection_ref != blank and primary_collection_ref.url != blank and primary_collection_ref.title != blank
+      assign breadcrumb_collection = primary_collection_ref
+    endif
+  endif
+
+  if breadcrumb_collection == blank
+    assign breadcrumb_collection_ref = product.metafields.custom.breadcrumb_collection_ref.value
+    if breadcrumb_collection_ref != blank and breadcrumb_collection_ref.url != blank and breadcrumb_collection_ref.title != blank
+      assign breadcrumb_collection = breadcrumb_collection_ref
+    endif
+  endif
+
+  if breadcrumb_collection == blank
+    assign primary_collection_handle = product.metafields.custom.primary_collection.value
+    assign primary_collection = collections[primary_collection_handle]
+    if primary_collection != blank and primary_collection.url != blank and primary_collection.title != blank
+      assign breadcrumb_collection = primary_collection
+    endif
+  endif
+
+  if breadcrumb_collection == blank
+    assign breadcrumb_collection_handle = product.metafields.custom.breadcrumb_collection.value
+    assign breadcrumb_collection_from_handle = collections[breadcrumb_collection_handle]
+    if breadcrumb_collection_from_handle != blank and breadcrumb_collection_from_handle.url != blank and breadcrumb_collection_from_handle.title != blank
+      assign breadcrumb_collection = breadcrumb_collection_from_handle
+    endif
+  endif
+
+  assign product_context_lc = product.title | append: ' ' | append: product.type | append: ' ' | append: product.tags | downcase
+  if breadcrumb_collection == blank
+    if product_context_lc contains 'black kemp' or product_context_lc contains 'black-kemp'
+      assign breadcrumb_collection = collections['kemp-black-jewellery']
+    elsif product_context_lc contains 'real kemp' or product_context_lc contains 'kempu'
+      assign breadcrumb_collection = collections['kemp-jewellery']
+    elsif product_context_lc contains 'varalakshmi' or product_context_lc contains 'varamahalakshmi'
+      assign breadcrumb_collection = collections['varalakshmi-deity-jewellery']
+    elsif product.template_suffix contains 'deity' or product_context_lc contains 'deity' or product_context_lc contains 'god idol' or product_context_lc contains 'alankaram'
+      assign breadcrumb_collection = collections['deity-jewelry'] | default: collections['deity-god-jewellery']
+    elsif product_context_lc contains 'bharatanatyam' or product_context_lc contains 'kuchipudi' or product_context_lc contains 'dance jewellery' or product_context_lc contains 'dance jewelry'
+      assign breadcrumb_collection = collections['bharatanatyam-jewellery']
+    endif
+  endif
+
+  if breadcrumb_collection == blank and product.collections.first != blank
+    assign breadcrumb_collection = product.collections.first
+  endif
+-%}
 
 <nav class="breadcrumb-container page-width breadcrumb-visible" role="navigation" aria-label="Breadcrumb">
   <ol class="breadcrumb-list">
@@ -9,10 +62,10 @@
       </a>
     </li>
 
-    {% if collection %}
+    {% if breadcrumb_collection %}
     <li>
-      <a href="{{ shop.url }}/collections/{{ collection.handle }}">
-        <span>{{ collection.title }}</span>
+      <a href="{{ shop.url }}{{ breadcrumb_collection.url }}">
+        <span>{{ breadcrumb_collection.title }}</span>
       </a>
     </li>
     {% endif %}
@@ -44,7 +97,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-  {% if product.template_suffix == 'deity' %}
+  {% if product.template_suffix == 'deity' or template.suffix == 'deity' %}
     {{ 'gc-deity-product.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
@@ -106,7 +159,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% if product.template_suffix == 'deity' %} product--deity-template{% endif %} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% if product.template_suffix == 'deity' or template.suffix == 'deity' %} product--deity-template{% endif %} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -1044,7 +1097,24 @@
 </script>
 {% render 'deity-product-schema' %}
 {% # theme-check-disable-next-line unreferenced-settings %}
-{% render 'product-faq-accordion', product: product %}       
+{% liquid
+  assign suppress_product_faq_for_dance = false
+  if product.type contains 'Bharatanatyam'
+    assign suppress_product_faq_for_dance = true
+  endif
+  if product.title contains 'Bharatanatyam'
+    assign suppress_product_faq_for_dance = true
+  endif
+  if product.title contains 'Kuchipudi'
+    assign suppress_product_faq_for_dance = true
+  endif
+  if product.type == 'Drama Crowns'
+    assign suppress_product_faq_for_dance = true
+  endif
+%}
+{% unless suppress_product_faq_for_dance %}
+  {% render 'product-faq-accordion', product: product %}
+{% endunless %}
 
 
 
@@ -2596,18 +2666,6 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://goldencollections.com/#organization",
-      "name": "Golden Collections",
-      "url": "https://goldencollections.com",
-      "logo": "{{ settings.logo | image_url: width: 500 | prepend: 'https:' }}",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-7337294499",
-        "contactType": "customer service"
-      }
-    },
-    {
       "@type": "BreadcrumbList",
       "@id": "{{ shop.url }}{{ product.url }}#breadcrumb",
       "itemListElement": [
@@ -2617,17 +2675,17 @@
           "name": "Home",
           "item": "{{ shop.url }}"
         }
-        {% if product.collections.first %}
+        {% if breadcrumb_collection %}
         ,{
           "@type": "ListItem",
           "position": 2,
-          "name": "{{ product.collections.first.title | escape }}",
-          "item": "{{ shop.url }}{{ product.collections.first.url }}"
+          "name": "{{ breadcrumb_collection.title | escape }}",
+          "item": "{{ shop.url }}{{ breadcrumb_collection.url }}"
         }
         {% endif %}
         ,{
           "@type": "ListItem",
-          "position": {% if product.collections.first %}3{% else %}2{% endif %},
+          "position": {% if breadcrumb_collection %}3{% else %}2{% endif %},
           "name": "{{ product.title | escape }}",
           "item": "{{ shop.url }}{{ product.url }}"
         }
@@ -2641,7 +2699,7 @@
       
       {% comment %} ✅ BUG FIX APPLIED HERE: Safe Description Capture {% endcomment %}
       {%- capture seo_description -%}
-        Authentic {{ product.metafields.custom.product_details.value.gen_ai_context.jewelry_type | default: 'South Indian' }} heritage jewelry. {{ product.description | strip_html | strip_newlines | truncate: 160 }}
+        Traditional {{ product.metafields.custom.product_details.value.gen_ai_context.jewelry_type | default: 'South Indian jewellery' }} from Golden Collections. {{ product.description | strip_html | strip_newlines | truncate: 160 }}
       {%- endcapture -%}
       "description": {{ seo_description | json }},
 
@@ -2651,7 +2709,7 @@
         {%- endfor -%}
       ],
       "brand": {
-        "@id": "https://goldencollections.com/#organization"
+        "@id": "https://www.goldencollections.com/#organization"
       },
       "sku": "{{ product.selected_or_first_available_variant.sku }}",
       "offers": {
@@ -2662,26 +2720,42 @@
         "itemCondition": "https://schema.org/NewCondition",
         "url": "{{ shop.url }}{{ product.url }}",
         "seller": {
-          "@id": "https://goldencollections.com/#organization"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "INR"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "IN"
-          }
+          "@id": "https://www.goldencollections.com/#organization"
         }
       }
-      {% if product.metafields.judgeme.rating.value != blank %}
+      {%- assign dance_matching_products = product.metafields.dance.matching_product_refs.value -%}
+      {%- if dance_matching_products != blank -%}
+      ,"isRelatedTo": [
+        {%- for matched_product in dance_matching_products limit: 4 -%}
+          {
+            "@type": "Product",
+            "@id": "{{ shop.url }}{{ matched_product.url }}#product",
+            "name": {{ matched_product.title | json }},
+            "url": "{{ shop.url }}{{ matched_product.url }}",
+            {%- if matched_product.featured_image != blank -%}
+            "image": "{{ matched_product.featured_image | image_url: width: 1200 | prepend: 'https:' }}",
+            {%- endif -%}
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "{{ cart.currency.iso_code }}",
+              "price": "{{ matched_product.selected_or_first_available_variant.price | money_without_currency | replace: ',', '' }}",
+              "availability": "{% if matched_product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+              "url": "{{ shop.url }}{{ matched_product.url }}"
+            }
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+      {%- endif -%}
+      {%- liquid
+        assign product_review_rating = product.metafields.reviews.rating.value
+        assign product_review_count = product.metafields.reviews.rating_count.value | default: product.metafields.reviews.rating_count
+        assign product_review_count_number = product_review_count | plus: 0
+      -%}
+      {% if product_review_rating != blank and product_review_count_number > 0 %}
       ,"aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "{{ product.metafields.judgeme.rating.value }}",
-        "reviewCount": "{{ product.metafields.judgeme.rating_count.value }}",
+        "ratingValue": "{{ product_review_rating.rating }}",
+        "reviewCount": "{{ product_review_count_number }}",
         "bestRating": "5",
         "worstRating": "1"
       }
@@ -2694,24 +2768,200 @@
           "@type": "PropertyValue",
           "name": "Jewelry Type",
           "value": "{{ product.metafields.custom.product_details.value.gen_ai_context.jewelry_type }}"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Authenticity",
-          "value": "Handcrafted Heritage"
         }
+      ]
+      {%- elsif product.metafields.dance.dance_product_role.value != blank -%}
+      ,"additionalProperty": [
+        {%- assign dance_schema_property_count = 0 -%}
+        {%- if product.metafields.dance.dance_form_suitable.value != blank -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Dance form suitable",
+            "value": {{ product.metafields.dance.dance_form_suitable.value | join: ', ' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.dance_product_role.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Dance product role",
+            "value": {{ product.metafields.dance.dance_product_role.value | join: ', ' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.dance_range.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Dance range",
+            "value": {{ product.metafields.dance.dance_range.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.product_tier.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Product tier",
+            "value": {{ product.metafields.dance.product_tier.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.performance_context.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Performance context",
+            "value": {{ product.metafields.dance.performance_context.value | join: ', ' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.buyer_context.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Buyer context",
+            "value": {{ product.metafields.dance.buyer_context.value | join: ', ' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.placement.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Placement",
+            "value": {{ product.metafields.dance.placement.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.size_notes.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Fit guidance",
+            "value": {{ product.metafields.dance.size_notes.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.measurement_confidence.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Measurement confidence",
+            "value": {{ product.metafields.dance.measurement_confidence.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.necklace_drop_in.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Necklace drop inches",
+            "value": {{ product.metafields.dance.necklace_drop_in.value | append: ' in' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.haram_drop_in.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Haram drop inches",
+            "value": {{ product.metafields.dance.haram_drop_in.value | append: ' in' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.waist_belt_adjustable_range.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Waist belt adjustable range",
+            "value": {{ product.metafields.dance.waist_belt_adjustable_range.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.mattal_length_in.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Mattal length inches",
+            "value": {{ product.metafields.dance.mattal_length_in.value | append: ' in' | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.bangle_size.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Bangle size",
+            "value": {{ product.metafields.dance.bangle_size.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.ghungroo_bell_count.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Ghungroo bell count",
+            "value": {{ product.metafields.dance.ghungroo_bell_count.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.component_count.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Component count",
+            "value": {{ product.metafields.dance.component_count.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.stone_color.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {%- assign dance_schema_property_count = dance_schema_property_count | plus: 1 -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Stone color",
+            "value": {{ product.metafields.dance.stone_color.value | json }}
+          }
+        {%- endif -%}
+        {%- if product.metafields.dance.finish.value != blank -%}
+          {%- if dance_schema_property_count > 0 -%},{%- endif -%}
+          {
+            "@type": "PropertyValue",
+            "name": "Finish",
+            "value": {{ product.metafields.dance.finish.value | json }}
+          }
+        {%- endif -%}
       ]
       {%- endif -%}
       
       {%- if product.metafields.custom.product_details.value.material -%}
       ,"material": {{ product.metafields.custom.product_details.value.material | json }}
+      {%- elsif product.metafields.dance.material.value != blank -%}
+      ,"material": {{ product.metafields.dance.material.value | json }}
       {%- endif -%}
       {%- if product.metafields.custom.product_details.value.country_of_origin -%}
       ,"countryOfOrigin": {{ product.metafields.custom.product_details.value.country_of_origin | json }}
       {%- endif -%}
     }
     {% comment %} FAQ INJECTION: Connects FAQs to the Product Graph {% endcomment %}
-    {% if product.metafields.custom.product_faqs.value != blank %}
+    {%- liquid
+      assign suppress_product_faq_for_dance_schema = false
+      if product.type contains 'Bharatanatyam'
+        assign suppress_product_faq_for_dance_schema = true
+      endif
+      if product.title contains 'Bharatanatyam'
+        assign suppress_product_faq_for_dance_schema = true
+      endif
+      if product.title contains 'Kuchipudi'
+        assign suppress_product_faq_for_dance_schema = true
+      endif
+      if product.type == 'Drama Crowns'
+        assign suppress_product_faq_for_dance_schema = true
+      endif
+    -%}
+    {% if product.metafields.custom.product_faqs.value != blank and suppress_product_faq_for_dance_schema == false %}
     ,{
       "@type": "FAQPage",
       "@id": "{{ shop.url }}{{ product.url }}#faq",

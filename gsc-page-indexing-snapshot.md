@@ -1,0 +1,34 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - button "Main menu" [ref=e7] [cursor=pointer]
+        - link "Google Search Console" [ref=e12] [cursor=pointer]:
+          - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+      - generic [ref=e14]:
+        - search [ref=e16]
+        - generic [ref=e29]
+      - generic [ref=e52]:
+        - button "Google apps" [ref=e56] [cursor=pointer]
+        - 'button "Google Account: Golden Collections Indian Jewelry online Store (goldencollections9@gmail.com)" [ref=e62] [cursor=pointer]'
+  - dialog "navigational drawer" [ref=e68]:
+    - navigation "Primary" [ref=e71]:
+      - button "Search property" [ref=e75] [cursor=pointer]:
+        - img [ref=e77]
+        - combobox "goldencollections.com" [ref=e84]
+        - generic [ref=e85]: 
+      - generic [ref=e86]:
+        - generic [ref=e87]
+        - generic [ref=e318]
+  - generic [ref=e344]:
+    - generic [ref=e347]:
+      - navigation "Breadcrumbs" [ref=e349]:
+        - heading "Page indexing" [level=1] [ref=e352]
+      - button "EXPORT" [ref=e355] [cursor=pointer]:
+        - generic [ref=e358]
+    - generic [ref=e361]:
+      - generic [ref=e363]:
+        - listbox [ref=e366] [cursor=pointer]
+        - generic [ref=e370]: "Last update: 5/18/26"
+      - main [ref=e372]:
+        - generic [ref=e373]

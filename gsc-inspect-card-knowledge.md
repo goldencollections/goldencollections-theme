@@ -1,0 +1,16 @@
+- generic [ref=e783] [box=378,217,631,178]:
+  - generic [ref=e784] [box=378,217,631,114]:
+    - generic [ref=e785] [box=398,235,40,72]: info
+    - generic [ref=e786] [box=462,235,527,72]:
+      - generic [ref=e787] [box=462,235,527,28]: URL is not on Google
+      - generic [ref=e788] [box=462,267,527,40]:
+        - text: This page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed.
+        - link "Learn more" [ref=e790] [cursor=pointer] [box=809,288,76,18]:
+          - /url: https://support.google.com/webmasters/answer/9012289#url_not_on_google
+  - generic [ref=e792] [box=378,331,631,64]:
+    - button "View crawled page" [disabled] [ref=e796] [box=454,345,163,36]:
+      - generic [ref=e801] [box=462,353,147,20]: View crawled page
+    - generic [ref=e802] [box=732,345,261,36]:
+      - generic [ref=e803] [box=732,345,102,36]: Page changed?
+      - button "Request indexingRequest again" [ref=e806] [cursor=pointer] [box=842,345,151,36]:
+        - generic [ref=e812] [box=850,353,135,20]: Request indexing

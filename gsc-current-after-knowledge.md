@@ -1,0 +1,13 @@
+- generic [ref=e1] [box=0,0,1048,714]:
+  - generic [ref=e2] [box=0,0,1048,714]:
+    - banner [ref=e4] [box=0,0,1048,64]:
+      - generic [ref=e5] [box=0,0,1048,64]
+    - dialog "navigational drawer" [ref=e1014] [box=0,64,280,650]:
+      - navigation "Primary" [ref=e1015] [box=0,64,280,650]
+    - generic [ref=e754] [box=280,64,768,650]:
+      - generic [ref=e762] [box=382,84,536,24]: https://www.goldencollections.com/pages/golden-collections-knowledge-hub
+      - generic [ref=e763] [box=280,129,768,585]
+  - iframe [ref=e990] [box=978,640,256,60]:
+    - generic [ref=f3e6] [box=86,20,154,20]:
+      - text: protected by
+      - strong [ref=f3e7] [box=161,22,71,15]: reCAPTCHA

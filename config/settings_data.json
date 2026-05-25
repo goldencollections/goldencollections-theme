@@ -110,11 +110,11 @@
     "brand_headline": "",
     "brand_description": "",
     "brand_image_width": 100,
-    "social_facebook_link": "https://www.facebook.com/goldencolletions/",
+    "social_facebook_link": "https://www.facebook.com/goldencollections/",
     "social_instagram_link": "https://www.instagram.com/goldencollections_gbs",
     "social_youtube_link": "https://www.youtube.com/@Goldencollections",
     "social_tiktok_link": "",
-    "social_twitter_link": "",
+    "social_twitter_link": "https://x.com/GCJewellery",
     "social_snapchat_link": "",
     "social_pinterest_link": "https://dk.pinterest.com/goldencollectionsjewelry",
     "social_tumblr_link": "",
@@ -180,7 +180,7 @@
             "type": "text",
             "settings": {
               "heading": "Get in Touch with Golden Collections.",
-              "subtext": "<p><br/><strong>     Phone / WhatsApp</strong>: +91 7337294499<br/><br/><strong>     Email</strong>: <a>support@goldencollections.com</a><br/><br/>    <strong>Live Chat Support</strong>: Mon – Sat (11 AM – 8 PM)<br/><br/>    <strong>Call Support</strong>: Mon – Sat (11 AM – 8 PM)<br/><br/></p>"
+              "subtext": "<p><br/><strong>     Phone / WhatsApp</strong>: +91 7337294499<br/><br/><strong>     Email</strong>: <a>support@goldencollections.com</a><br/><br/>    <strong>Live Chat Support</strong>: Mon-Sat (11:00 AM-8:30 PM IST); Sun (1:00 PM-8:00 PM IST)<br/><br/>    <strong>Call Support</strong>: Mon-Sat (11:00 AM-8:30 PM IST); Sun (1:00 PM-8:00 PM IST)<br/><br/></p>"
             }
           },
           "text_aiMhwM": {
@@ -441,7 +441,7 @@
       "brand_headline": "",
       "brand_description": "<p></p>",
       "brand_image_width": 100,
-      "social_twitter_link": "",
+      "social_twitter_link": "https://x.com/GCJewellery",
       "social_facebook_link": "",
       "social_pinterest_link": "",
       "social_instagram_link": "",
@@ -476,4 +476,3 @@
     }
   }
 }
-

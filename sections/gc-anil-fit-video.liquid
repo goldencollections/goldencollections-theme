@@ -1,0 +1,305 @@
+{%- liquid
+  assign video_url = section.settings.video_url
+  assign poster_url = section.settings.poster_url
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign whatsapp_number = section.settings.whatsapp_number | default: '917337294499'
+  assign whatsapp_text_default = 'Hello Golden Collections, I watched Anil explain deity crown measurement and need help choosing deity crown size.'
+  assign whatsapp_text = section.settings.whatsapp_text | default: whatsapp_text_default | url_encode
+  assign video_name = section.settings.schema_name | default: section.settings.heading
+  assign video_description = section.settings.video_alt | default: section.settings.intro
+  assign section_anchor = 'anil-fit-video-' | append: section.id
+-%}
+
+{%- if video_url != blank -%}
+  <section id="{{ section_anchor }}" class="gc-anil-fit-video color-{{ section.settings.color_scheme }}" aria-labelledby="gc-anil-fit-video-heading-{{ section.id }}">
+    <div class="page-width gc-anil-fit-video__inner">
+      <div class="gc-anil-fit-video__copy">
+        <p class="gc-anil-fit-video__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 id="gc-anil-fit-video-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.intro }}</p>
+
+        <ul class="gc-anil-fit-video__checks" aria-label="What this video demonstrates">
+          <li>{{ section.settings.check_1 }}</li>
+          <li>{{ section.settings.check_2 }}</li>
+          <li>{{ section.settings.check_3 }}</li>
+          <li>{{ section.settings.check_4 }}</li>
+        </ul>
+
+        <div class="gc-anil-fit-video__actions">
+          <a href="{{ measure_url }}">Measurement guide</a>
+          <a href="{{ crown_url }}" class="gc-anil-fit-video__secondary">Crown size guide</a>
+          <a href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_text }}" target="_blank" rel="noopener" class="gc-anil-fit-video__secondary">Ask Anil</a>
+        </div>
+      </div>
+
+      <figure class="gc-anil-fit-video__media">
+        <video controls playsinline preload="metadata"{% if poster_url != blank %} poster="{{ poster_url }}"{% endif %} aria-label="{{ section.settings.video_alt | escape }}">
+          <source src="{{ video_url }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <figcaption>{{ section.settings.caption }}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": "{{ shop.url }}{{ request.path }}#{{ section_anchor }}",
+    "name": {{ video_name | json }},
+    "description": {{ video_description | json }},
+    "thumbnailUrl": [{% if poster_url != blank %}{{ poster_url | json }}{% else %}{{ '' | json }}{% endif %}],
+    "uploadDate": {{ section.settings.upload_date | json }},
+    "contentUrl": {{ video_url | json }},
+    "embedUrl": "{{ shop.url }}{{ request.path }}#{{ section_anchor }}",
+    "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+    "creator": { "@id": "{{ shop.url }}{{ anil_url }}#person" }
+  }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Anil fit video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Fit proof video"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Watch Anil measure half crown fit"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Anil Tunk demonstrates how Golden Collections checks a deity face and half crown together before recommending crown size."
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "MP4 video URL"
+    },
+    {
+      "type": "url",
+      "id": "poster_url",
+      "label": "Poster image URL"
+    },
+    {
+      "type": "text",
+      "id": "video_alt",
+      "label": "Video alt text",
+      "default": "Anil Tunk of Golden Collections demonstrating how to measure a deity face and compare half crown size for better crown fit, face visibility and alankaram placement."
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Anil Tunk demonstrates deity face measurement and half crown placement using a real product example from Golden Collections."
+    },
+    {
+      "type": "text",
+      "id": "schema_name",
+      "label": "Schema video name",
+      "default": "How to Measure a Deity Face for Half Crown Fit"
+    },
+    {
+      "type": "text",
+      "id": "upload_date",
+      "label": "Schema upload date",
+      "default": "2026-05-20"
+    },
+    {
+      "type": "text",
+      "id": "check_1",
+      "label": "Check 1",
+      "default": "Measure the deity face or crown area."
+    },
+    {
+      "type": "text",
+      "id": "check_2",
+      "label": "Check 2",
+      "default": "Compare crown width before choosing size."
+    },
+    {
+      "type": "text",
+      "id": "check_3",
+      "label": "Check 3",
+      "default": "Keep eyes, tilak and face details visible."
+    },
+    {
+      "type": "text",
+      "id": "check_4",
+      "label": "Check 4",
+      "default": "Use photos and measurements when fit is unclear."
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number",
+      "default": "917337294499"
+    },
+    {
+      "type": "textarea",
+      "id": "whatsapp_text",
+      "label": "WhatsApp message text",
+      "default": "Hello Golden Collections, I watched Anil explain deity crown measurement and need help choosing deity crown size."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Anil fit video"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .gc-anil-fit-video {
+    background: #fffaf0;
+    color: #20170d;
+    padding: 2.5rem 0;
+  }
+
+  .gc-anil-fit-video,
+  .gc-anil-fit-video * {
+    box-sizing: border-box;
+  }
+
+  .gc-anil-fit-video__inner {
+    align-items: center;
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .gc-anil-fit-video__copy {
+    max-width: 760px;
+  }
+
+  .gc-anil-fit-video__eyebrow {
+    color: #8f5f11;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 0.45rem;
+    text-transform: uppercase;
+  }
+
+  .gc-anil-fit-video h2,
+  .gc-anil-fit-video strong {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-anil-fit-video h2 {
+    font-size: 2.55rem;
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .gc-anil-fit-video p,
+  .gc-anil-fit-video li,
+  .gc-anil-fit-video figcaption {
+    color: #4f463c;
+    font-size: 1.16rem;
+    line-height: 1.45;
+  }
+
+  .gc-anil-fit-video__checks {
+    display: grid;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .gc-anil-fit-video__checks li {
+    border-left: 3px solid #c9972a;
+    padding-left: 0.75rem;
+  }
+
+  .gc-anil-fit-video__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.15rem;
+  }
+
+  .gc-anil-fit-video__actions a {
+    align-items: center;
+    background: #8f1f18;
+    border: 1px solid #8f1f18;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.08rem;
+    font-weight: 700;
+    min-height: 44px;
+    padding: 0.72rem 0.95rem;
+    text-decoration: none;
+  }
+
+  .gc-anil-fit-video__actions .gc-anil-fit-video__secondary {
+    background: #fffdf8;
+    border-color: rgba(143, 31, 24, 0.28);
+    color: #8f1f18;
+  }
+
+  .gc-anil-fit-video__media {
+    margin: 0;
+  }
+
+  .gc-anil-fit-video__media video {
+    aspect-ratio: 9 / 16;
+    background: #1a0e05;
+    border-radius: 8px;
+    box-shadow: 0 18px 42px rgba(32, 23, 13, 0.16);
+    display: block;
+    height: auto;
+    max-height: 760px;
+    object-fit: contain;
+    width: min(100%, 420px);
+  }
+
+  .gc-anil-fit-video__media figcaption {
+    max-width: 460px;
+    margin: 0.75rem 0 0;
+  }
+
+  @media screen and (min-width: 900px) {
+    .gc-anil-fit-video__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    }
+
+    .gc-anil-fit-video {
+      padding: 3.25rem 0;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-anil-fit-video h2 {
+      font-size: 2.05rem;
+    }
+
+    .gc-anil-fit-video__media video {
+      margin: 0 auto;
+      max-height: 70vh;
+    }
+  }
+</style>

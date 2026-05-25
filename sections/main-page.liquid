@@ -19,7 +19,77 @@
     {{ page.title | escape }}
   </h1>
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    {{ page.content }}
+    {%- if page.handle == 'about-us' -%}
+      <div style="max-width:1100px;margin:0 auto;padding:28px 20px 56px;font-family:Georgia,'Times New Roman',serif;color:#1f170d;line-height:1.8;">
+        <p style="margin:0 0 10px;color:#9b781f;text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:14px;">About Golden Collections</p>
+        <h1 style="margin:0 0 18px;color:#1a0e05;font-size:42px;line-height:1.12;">Golden Collections: deity jewellery, dance jewellery and alankaram guidance from Secunderabad</h1>
+        <p style="font-size:20px;color:#4e4438;margin:0 0 28px;max-width:900px;">Golden Collections is rooted in a family jewellery tradition since 1961. The Golden Collections store was established by Anil Tunk in 2012 in Secunderabad/Hyderabad to serve customers looking for Bharatanatyam jewellery, Kuchipudi jewellery, real kemp temple jewellery, deity jewellery and Hindu idol alankaram accessories.</p>
+        <hr style="border:0;border-top:1px solid rgba(201,151,42,.28);margin:34px 0;">
+        <h2 style="color:#8b1c1c;font-size:28px;margin:0 0 12px;">Led by Anil Tunk</h2>
+        <p>Anil Tunk is the founder and public leader of Golden Collections. His guidance focuses on practical buying decisions: how to choose the right ornament by use case, size, placement, tradition and finish rather than by product name alone.</p>
+        <p>For deity jewellery, the team helps customers think through idol height, face or head width, crown space, necklace drop, waist placement, altar clearance and deity-specific compatibility. For dance jewellery, the focus is on Bharatanatyam and Kuchipudi stage use, set completeness, comfort, visibility and durability.</p>
+        <h2 style="color:#8b1c1c;font-size:28px;margin:34px 0 12px;">What We Specialise In</h2>
+        <ul style="padding-left:24px;margin:0 0 24px;color:#4e4438;">
+          <li>Bharatanatyam jewellery sets, head ornaments, earrings, mattal, vanki, oddiyanam, jada accessories and salangai.</li>
+          <li>Kuchipudi jewellery and classical dance accessories for performances, classes and arangetram planning.</li>
+          <li>Real kemp and kemp temple jewellery with traditional South Indian styling.</li>
+          <li>Deity jewellery for Hindu god and goddess idols, including crowns, mukut, kireedam, harams, vaddanam, earrings, namam, shanku chakra, hastham, padam, thomala and alankaram accessories.</li>
+          <li>Varalakshmi pooja jewellery, Amman mugham support items, dolls, faces and decoration accessories.</li>
+        </ul>
+        <h2 style="color:#8b1c1c;font-size:28px;margin:34px 0 12px;">Our Working Standard</h2>
+        <p>Golden Collections works with skilled partner artisans and performs practical quality checks before shipping, including stone quality, gold plating, finishing, joints, packing and related checks. Materials vary by product, so customers should refer to each product page for the specific material, finish and size guidance.</p>
+        <p>Customers can contact Golden Collections for deity jewellery and alankaram fit help, especially when an idol, crown, haram or vaddanam size needs to be checked before ordering.</p>
+        <div style="background:#fdf6ec;border-left:4px solid #c9972a;padding:18px 20px;margin-top:34px;">
+          <h2 style="color:#1a0e05;font-size:24px;margin:0 0 10px;">Visit or Contact</h2>
+          <p style="margin:0;"><strong>Address:</strong> Plot no: 9, Krishnapuri Colony, Lakshmi Nagar, West Marredpally, Secunderabad, Telangana 500026<br><strong>Phone / WhatsApp:</strong> +91 7337294499<br><strong>Email:</strong> support@goldencollections.com</p>
+        </div>
+      </div>
+    {%- else -%}
+      {{ page.content }}
+    {%- endif -%}
+
+    {%- if page.handle == 'deity-crown-mukut-kireedam-size-guide' -%}
+      <h2>Crown measurement checklist before buying</h2>
+      <p>Use this checklist when comparing a deity crown, mukut, kireedam or kirita. Idol height gives visual scale, but head or face width, crown height, depth, circumference or arc decide whether the crown is likely to sit properly.</p>
+
+      <h3>Open-back or half crown</h3>
+      <p>Measure the idol head or face width where the crown will sit. Compare this with the product width, then check height and depth so the crown does not cover the face, namam, hairstyle, trunk, hands or backdrop.</p>
+
+      <h3>Full-round crown</h3>
+      <p>Measure the full circumference around the idol head. Front width alone is not enough for a full-round crown because the crown must pass around the head comfortably.</p>
+
+      <h3>Curved crown or hair crown</h3>
+      <p>Measure the visible front arc and the depth needed for hair, bun, saree drape or goddess-style back placement. Check side photos when the idol head is tilted or has raised hair detail.</p>
+
+      <h2>Deity-specific fit notes</h2>
+      <ul>
+        <li><strong>Lakshmi, Varalakshmi and Amman:</strong> check face width, hairstyle, saree drape and whether the crown should sit upright, tilted or with a hair-crown look.</li>
+        <li><strong>Balaji, Vishnu and Perumal:</strong> check crown height with namam or thiruman, shanku chakra, shoulder ornaments and long haram placement.</li>
+        <li><strong>Krishna and Radha Krishna:</strong> check peacock feather, flute position, head angle and whether the style is Krishna-specific or a general crown by size.</li>
+        <li><strong>Ganesha and Ganapati:</strong> check trunk direction, ear width and head shape. A crown that fits a narrow idol may not fit a broad Ganesha head.</li>
+      </ul>
+
+      <h2>Useful next pages</h2>
+      <ul>
+        <li><a href="/collections/deity-crowns-1">Shop deity crowns</a></li>
+        <li><a href="/collections/deity-crowns">Shop gold plated deity crowns</a></li>
+        <li><a href="/collections/deity-stone-crowns">Shop deity stone crowns</a></li>
+        <li><a href="/pages/how-to-measure-idol-for-deity-jewellery">How to measure your idol before choosing jewellery</a></li>
+        <li><a href="/pages/anil-tunk">About Anil Tunk</a></li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is mukut the same as kireedam?</h3>
+      <p>Mukut, kireedam, kirita and crown are often used for similar deity head ornaments, but regional usage and crown style can differ. Always check the product photo and measurements.</p>
+
+      <h3>Can one deity crown fit different gods and goddesses?</h3>
+      <p>Some general crowns can fit different idols when the head width, crown height, depth, posture and style match. Deity-specific symbols or shapes should not be treated as universal.</p>
+
+      <h3>Can Golden Collections help check crown size?</h3>
+      <p>Yes. Share idol height, face or head width, front and side photos, and one photo with measuring tape visible. Golden Collections can help check likely fit before ordering.</p>
+
+      <p>This guide is part of the Golden Collections deity jewellery authority hub and is reviewed for practical fit guidance connected to Anil Tunk and Golden Collections' deity jewellery compatibility model.</p>
+    {%- endif -%}
   </div>
 </div>
 

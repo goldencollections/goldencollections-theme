@@ -1,0 +1,8 @@
+- generic [active] [ref=e1] [box=0,0,1425,11609]:
+  - banner [ref=e2] [box=0,0,1425,60]:
+    - generic [ref=e3] [box=18,24,1389,25]: Golden Collections
+  - main [ref=e4] [box=104,60,1216,11550]:
+    - heading "Hanuman Jayanti Alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri" [level=1] [ref=e5] [box=122,120,1180,220]
+    - paragraph [ref=e6] [box=122,358,840,61]: A real Hanuman Jayanti 2026 temple alankaram example from Sri Vijaya Vinayaka Swamy Temple, Malkajgiri, coordinated with Ayyagaru Ram Sharma and Golden Collections.
+    - article [ref=e7] [box=122,447,1180,11114]:
+      - generic [ref=e8] [box=122,447,1180,11114]

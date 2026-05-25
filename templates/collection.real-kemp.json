@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "title": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "collection_circles": {
+      "type": "collection-subcollection-circles",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "",
+        "subcollection_menu": "",
+        "max_items": 12,
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
+    "dance_hub": {
+      "type": "dance-collection-hub",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "mode": "real_kemp",
+        "intro": "Shop real kemp jewellery collections for Bharatanatyam, Kuchipudi, arangetram ceremonies, senior stage performances and premium classical styling.",
+        "collections_eyebrow": "Shop real kemp",
+        "collections_heading": "Choose a real kemp collection",
+        "max_collections": 12,
+        "guide_eyebrow": "Premium performance help",
+        "guide_heading": "Choose real kemp by performance use, set role and care needs",
+        "guide_body": "Real kemp is the premium Golden Collections dance range for arangetram, senior stage performances and long-term classical use. Start with the full set or main necklace path, then match mattal, headset, vaddanam and earrings by finish, Kemp/Kempu stone colour, scale and stage visibility. Store pieces dry, avoid perfume and water, and pack heavier premium pieces separately after performance.",
+        "faq_eyebrow": "Helpful answers",
+        "faq_heading": "Real kemp jewellery buying questions"
+      }
+    }
+  },
+  "order": [
+    "title",
+    "collection_circles",
+    "dance_hub"
+  ]
+}

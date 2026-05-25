@@ -1,0 +1,389 @@
+{%- liquid
+  assign selected_blog = section.settings.blog
+  assign tag_filter = section.settings.tag_filter | default: 'temple alankaram proof'
+  assign max_posts = section.settings.post_limit | default: 3
+  assign found_count = 0
+  assign varalakshmi_examples_url = pages['varalakshmi-alankaram-examples'].url | default: '/pages/varalakshmi-alankaram-examples'
+-%}
+
+<section class="gc-proof-stories gc-proof-stories--{{ section.settings.layout_variant }} color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="gc-proof-stories__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="gc-proof-stories__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.layout_variant == 'page' -%}
+        <h1>{{ section.settings.heading }}</h1>
+      {%- else -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <div class="gc-proof-stories__subheading">{{ section.settings.subheading }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="gc-proof-stories__featured">
+      <div>
+        <span>Festival examples</span>
+        <strong>Varalakshmi Alankaram Examples and Jewellery Fit Notes</strong>
+        <p>Previous Golden Collections Varalakshmi and Varamahalakshmi examples shared with permission, with practical notes on crown scale, face visibility, haram placement and altar setup.</p>
+      </div>
+      <a href="{{ varalakshmi_examples_url }}">View examples</a>
+    </div>
+
+    <div class="gc-proof-stories__grid">
+      {%- if selected_blog != blank and selected_blog.articles_count > 0 -%}
+        {%- for article in selected_blog.articles -%}
+          {%- if tag_filter == blank or article.tags contains tag_filter -%}
+            {%- assign found_count = found_count | plus: 1 -%}
+            <article class="gc-proof-stories__card">
+              <a href="{{ article.url }}" class="gc-proof-stories__media" aria-label="{{ article.title | escape }}">
+                {%- if article.image -%}
+                  {{
+                    article.image
+                    | image_url: width: 900
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '360, 540, 720, 900',
+                      sizes: '(min-width: 990px) 32vw, 100vw',
+                      alt: article.image.alt | default: article.title
+                  }}
+                {%- endif -%}
+              </a>
+              <div class="gc-proof-stories__content">
+                <span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+                <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+                {%- if article.excerpt != blank -%}
+                  <p>{{ article.excerpt | strip_html | truncatewords: 28 }}</p>
+                {%- else -%}
+                  <p>{{ article.content | strip_html | truncatewords: 28 }}</p>
+                {%- endif -%}
+                <a class="gc-proof-stories__link" href="{{ article.url }}">Read proof story</a>
+              </div>
+            </article>
+            {%- if found_count >= max_posts -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if found_count == 0 -%}
+      <div class="gc-proof-stories__empty">
+        <p>Temple alankaram proof stories will appear here after they are published with permission.</p>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_view_all and section.settings.view_all_link != blank -%}
+      <div class="gc-proof-stories__actions">
+        <a class="button" href="{{ section.settings.view_all_link }}">{{ section.settings.view_all_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .gc-proof-stories {
+    background: #fdf6ec;
+    padding: clamp(36px, 5vw, 72px) 0;
+  }
+
+  .gc-proof-stories--home {
+    border-top: 1px solid rgba(201, 151, 42, 0.18);
+    border-bottom: 1px solid rgba(201, 151, 42, 0.18);
+  }
+
+  .gc-proof-stories__header {
+    margin: 0 auto 28px;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .gc-proof-stories__eyebrow {
+    color: #c9972a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+  }
+
+  .gc-proof-stories__header h1,
+  .gc-proof-stories__header h2 {
+    color: #1a0e05;
+    font-family: var(--font-heading-family);
+    font-size: clamp(2.3rem, 4vw, 4.8rem);
+    line-height: 1.02;
+    margin: 0;
+  }
+
+  .gc-proof-stories__header p:not(.gc-proof-stories__eyebrow) {
+    color: #4e4438;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    margin: 14px auto 0;
+    max-width: 760px;
+  }
+
+  .gc-proof-stories__grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gc-proof-stories__featured {
+    align-items: center;
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.22);
+    border-left: 4px solid #8b1c1c;
+    border-radius: 8px;
+    display: grid;
+    gap: 16px;
+    margin: 0 0 18px;
+    padding: 18px;
+  }
+
+  .gc-proof-stories__featured span {
+    color: #c9972a;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .gc-proof-stories__featured strong {
+    color: #1f170d;
+    display: block;
+    font-family: var(--font-heading-family);
+    font-size: 1.55rem;
+    line-height: 1.12;
+  }
+
+  .gc-proof-stories__featured p {
+    color: #4e4438;
+    font-size: 1rem;
+    line-height: 1.58;
+    margin: 8px 0 0;
+  }
+
+  .gc-proof-stories__featured a {
+    background: #8b1c1c;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 800;
+    justify-self: start;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-proof-stories--page .gc-proof-stories__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gc-proof-stories__card {
+    background: #fffaf2;
+    border: 1px solid rgba(201, 151, 42, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(26, 14, 5, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .gc-proof-stories__media {
+    background: #1a0e05;
+    display: block;
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .gc-proof-stories--page .gc-proof-stories__media {
+    height: 360px;
+  }
+
+  .gc-proof-stories__media img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .gc-proof-stories__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .gc-proof-stories__content span {
+    color: #8b1c1c;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .gc-proof-stories__content h3 {
+    font-family: var(--font-heading-family);
+    font-size: 1.45rem;
+    line-height: 1.16;
+    margin: 10px 0;
+  }
+
+  .gc-proof-stories__content h3 a {
+    color: #1f170d;
+    text-decoration: none;
+  }
+
+  .gc-proof-stories__content p {
+    color: #4e4438;
+    font-size: 1rem;
+    line-height: 1.58;
+    margin: 0 0 18px;
+  }
+
+  .gc-proof-stories__link {
+    color: #8b1c1c;
+    font-weight: 700;
+    margin-top: auto;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .gc-proof-stories__empty {
+    background: #fffaf2;
+    border-left: 4px solid #c9972a;
+    color: #4e4438;
+    margin: 0 auto;
+    max-width: 760px;
+    padding: 18px;
+  }
+
+  .gc-proof-stories__actions {
+    margin-top: 26px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 989px) {
+    .gc-proof-stories__grid,
+    .gc-proof-stories--page .gc-proof-stories__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-proof-stories__media,
+    .gc-proof-stories--page .gc-proof-stories__media {
+      height: min(68vh, 520px);
+    }
+
+    .gc-proof-stories__header {
+      text-align: left;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .gc-proof-stories__featured {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+</style>
+
+{%- if request.page_type == 'page' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ section.settings.heading | json }},
+      "description": {{ section.settings.subheading | strip_html | json }},
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "about": ["Temple alankaram", "Deity jewellery", "Hindu idol alankaram", "Golden Collections proof stories"]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Proof stories hub",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout_variant",
+      "label": "Layout variant",
+      "default": "home",
+      "options": [
+        { "value": "home", "label": "Home" },
+        { "value": "page", "label": "Page" }
+      ]
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "tag_filter",
+      "label": "Tag filter",
+      "default": "temple alankaram proof"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Real alankaram proof"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Temple alankaram proof stories"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Real deity jewellery and alankaram examples shared with permission, showing practical fit, measurement and festival preparation.</p>"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "label": "Post limit",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show view all button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "View all proof stories"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Proof stories hub"
+    }
+  ]
+}
+{% endschema %}

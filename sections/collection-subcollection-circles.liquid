@@ -1,0 +1,311 @@
+{%- liquid
+  assign current_node = collection.metafields.custom.category_node_ref.value
+  assign node_children = blank
+  if current_node != blank
+    assign node_children = current_node.children.value | default: current_node.children
+  endif
+
+  assign direct_subcollection_handles = collection.metafields.custom.subcollection_handles.value
+  assign direct_subcollections = collection.metafields.custom.subcollections.value
+  assign max_items = section.settings.max_items | default: 12
+  assign has_direct_subcollection_handles = false
+  assign has_direct_subcollections = false
+  assign has_node_children = false
+  assign has_menu_children = false
+
+  if direct_subcollection_handles != blank and direct_subcollection_handles.size > 0
+    assign has_direct_subcollection_handles = true
+  endif
+
+  if direct_subcollections != blank and direct_subcollections.size > 0
+    assign has_direct_subcollections = true
+  endif
+
+  if node_children != blank and node_children.size > 0
+    assign has_node_children = true
+  endif
+
+  assign collection_menu_handle = collection.metafields.custom.parent_menu_handles.value | default: section.settings.subcollection_menu
+  assign collection_menu_handle = collection_menu_handle | strip | split: ',' | first | strip
+  assign subcollection_menu = linklists[collection_menu_handle]
+
+  if subcollection_menu != blank and subcollection_menu.links.size > 0
+    assign has_menu_children = true
+  endif
+
+  assign show_nav = false
+  if has_direct_subcollection_handles or has_direct_subcollections or has_node_children or has_menu_children
+    assign show_nav = true
+  endif
+-%}
+
+{%- if show_nav -%}
+  <section class="gc-subcollection-circles color-{{ section.settings.color_scheme }}" data-gc-circles-source="{% if has_direct_subcollection_handles %}handles{% elsif has_direct_subcollections %}references{% elsif has_node_children %}nodes{% else %}menu{% endif %}">
+    <div class="page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="gc-subcollection-circles__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      <ul class="subcollection-nav list-unstyled" role="list" aria-label="Collection types">
+        {%- if has_direct_subcollection_handles -%}
+          {%- for nav_collection_handle in direct_subcollection_handles limit: max_items -%}
+            {%- liquid
+              assign nav_collection = collections[nav_collection_handle]
+            -%}
+            {%- if nav_collection != blank -%}
+              {%- liquid
+                assign nav_title = nav_collection.metafields.custom.display_title | default: nav_collection.title
+                assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+                assign nav_title = nav_title | truncate: 60
+                assign is_current = false
+                if nav_collection.handle == collection.handle
+                  assign is_current = true
+                endif
+              -%}
+              {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image, is_current: is_current %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif has_direct_subcollections -%}
+          {%- for nav_collection in direct_subcollections limit: max_items -%}
+            {%- if nav_collection != blank -%}
+              {%- liquid
+                assign nav_title = nav_collection.metafields.custom.display_title | default: nav_collection.title
+                assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+                assign nav_title = nav_title | truncate: 60
+                assign is_current = false
+                if nav_collection.handle == collection.handle
+                  assign is_current = true
+                endif
+              -%}
+              {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image, is_current: is_current %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif has_node_children -%}
+          {%- for child_node in node_children limit: max_items -%}
+            {%- liquid
+              assign node_title = child_node.title.value | default: child_node.title | default: child_node.display_name | default: child_node.handle
+              assign node_slug = child_node.slug.value | default: child_node.slug
+              assign node_icon = child_node.icon.value | default: child_node.icon
+
+              assign nav_collection = child_node.collection_ref.value | default: child_node.collection_ref
+              assign nav_url = blank
+              assign is_current = false
+
+              if nav_collection == blank
+                assign node_collection_handle = child_node.collection_handle.value | default: child_node.collection_handle
+                if node_collection_handle != blank
+                  assign nav_collection = collections[node_collection_handle]
+                endif
+              endif
+
+              if nav_collection != blank
+                assign nav_url = nav_collection.url
+                assign node_title = nav_collection.metafields.custom.display_title | default: nav_collection.title | default: node_title
+                assign node_icon = node_icon | default: nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+                if nav_collection.handle == collection.handle
+                  assign is_current = true
+                endif
+              else
+                assign node_collection_url = child_node.collection_url.value | default: child_node.collection_url
+                if node_collection_url != blank
+                  assign nav_url = node_collection_url
+                  if nav_url == collection.url
+                    assign is_current = true
+                  endif
+                elsif node_slug != blank and collections[node_slug] != blank
+                  assign nav_collection = collections[node_slug]
+                  assign nav_url = nav_collection.url
+                  assign node_title = nav_collection.metafields.custom.display_title | default: nav_collection.title | default: node_title
+                  assign node_icon = node_icon | default: nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+                  if nav_collection.handle == collection.handle
+                    assign is_current = true
+                  endif
+                endif
+              endif
+
+              assign node_title = node_title | truncate: 60
+            -%}
+            {% render 'category-circle-nav', title: node_title, url: nav_url, image: node_icon, is_current: is_current %}
+          {%- endfor -%}
+        {%- else -%}
+          {%- for menu_link in subcollection_menu.links limit: max_items -%}
+            {%- assign nav_collection = menu_link.object -%}
+            {%- if nav_collection != blank -%}
+              {%- liquid
+                assign nav_title = nav_collection.metafields.custom.display_title | default: nav_collection.title
+                assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+                assign nav_title = nav_title | truncate: 60
+                assign is_current = false
+                if nav_collection.handle == collection.handle
+                  assign is_current = true
+                endif
+              -%}
+              {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image, is_current: is_current %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+<script>
+  (function () {
+    function resetCircleNavScroll(root) {
+      var scope = root || document;
+      var navs = scope.querySelectorAll('.gc-subcollection-circles .subcollection-nav');
+
+      navs.forEach(function (nav) {
+        var reset = function () {
+          nav.scrollLeft = 0;
+        };
+
+        reset();
+        window.requestAnimationFrame(reset);
+        window.setTimeout(reset, 120);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        resetCircleNavScroll(document);
+      }, { once: true });
+    } else {
+      resetCircleNavScroll(document);
+    }
+
+    window.addEventListener('pageshow', function () {
+      resetCircleNavScroll(document);
+    });
+
+    document.addEventListener('shopify:section:load', function (event) {
+      resetCircleNavScroll(event.target);
+    });
+  })();
+</script>
+
+<style>
+  .gc-subcollection-circles {
+    background: #fff8ea;
+    padding: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px 0 {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .gc-subcollection-circles__heading {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin: 0 0 1.2rem;
+    text-align: center;
+  }
+
+  .gc-subcollection-circles .subcollection-nav {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-subcollection-circles .page-width {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .gc-subcollection-circles__heading {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .gc-subcollection-circles .subcollection-nav {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 15px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0 1.5rem 1rem;
+      scroll-padding-inline: 1.5rem;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .gc-subcollection-circles .subcollection-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gc-subcollection-circles .subcollection-item {
+      flex: 0 0 calc((100vw - 3rem - 30px) / 3);
+      margin-right: 0;
+      scroll-snap-align: start;
+      width: calc((100vw - 3rem - 30px) / 3);
+    }
+
+    .gc-subcollection-circles .subcollection-item:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-subcollection-circles {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection circles",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "link_list",
+      "id": "subcollection_menu",
+      "label": "Fallback menu"
+    },
+    {
+      "type": "range",
+      "id": "max_items",
+      "min": 3,
+      "max": 16,
+      "step": 1,
+      "label": "Maximum items",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection circles"
+    }
+  ]
+}
+{% endschema %}

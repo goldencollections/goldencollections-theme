@@ -1,0 +1,59 @@
+- generic [active] [ref=e1] [box=0,0,375,7449]:
+  - banner [ref=e2] [box=0,0,375,60]:
+    - generic [ref=e3] [box=18,24,339,25]: Golden Collections
+  - main [ref=e4] [box=0,60,375,7390]:
+    - heading "Hanuman Jayanti Alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri" [level=1] [ref=e5] [box=18,120,339,171]
+    - paragraph [ref=e6] [box=18,309,339,152]: A real Hanuman Jayanti 2026 temple alankaram example from Sri Vijaya Vinayaka Swamy Temple, Malkajgiri, coordinated with Ayyagaru Ram Sharma and Golden Collections.
+    - article [ref=e7] [box=18,489,339,6912]:
+      - generic [ref=e8] [box=18,489,339,6912]:
+        - paragraph [ref=e9] [box=18,489,339,141]: On May 12, 2026, Telugu Hanuman Jayanti alankaram was performed at Sri Vijaya Vinayaka Swamy Temple in Vani Nagar, Malkajgiri, Secunderabad, Telangana. Golden Collections was fortunate to be entrusted with the responsibility of supporting the deity jewellery side of this alankaram, with permission to share the temple example.
+        - paragraph [ref=e11] [box=38,678,303,106]
+        - paragraph [ref=e13] [box=18,838,339,176]: We are grateful to Sri Vijaya Vinayaka Swamy Temple and to Ayyagaru Ram Sharma for the trust, coordination and support during the measurement and alankaram planning process. This is not a studio shoot or a generic product display. The photos show a real temple setting, the preparation context, and the final decorated Hanuman idol with crown, body ornamentation, arch framing and visible festival alankaram details.
+        - figure "Final Hanuman Jayanti alankaram at Sri Vijaya Vinayaka Swamy Temple, Malkajgiri." [ref=e14] [box=18,1036,339,506]
+        - heading "Why This Hanuman Jayanti Example Matters" [level=2] [ref=e17] [box=18,1565,339,56]
+        - paragraph [ref=e18] [box=18,1640,339,106]: For deity jewellery, the final look depends on more than ornament design. Fit, deity form, idol size, face visibility, crown height, chest coverage, hand position, gada placement and backdrop space all affect whether the alankaram feels balanced.
+        - paragraph [ref=e19] [box=18,1762,339,35]: "Hanuman alankaram has its own practical fit concerns:"
+        - list [ref=e20] [box=18,1813,339,211]
+        - paragraph [ref=e27] [box=18,2040,339,88]: In this temple example, the final decorated idol shows how gold-tone deity jewellery, red stone accents and a framed arch can create a strong Hanuman Jayanti festival look while keeping the deity face and posture visible.
+        - figure "Temple preparation context before the final alankaram." [ref=e28] [box=18,2151,339,506]
+        - heading "Temple And Occasion" [level=2] [ref=e31] [box=18,2679,339,28]
+        - paragraph [ref=e32] [box=18,2727,339,53]: The alankaram took place at Sri Vijaya Vinayaka Swamy Temple, Vani Nagar, Malkajgiri, Secunderabad, Telangana 500047.
+        - paragraph [ref=e33] [box=18,2796,339,141]: The occasion was Telugu Hanuman Jayanti on May 12, 2026. The coordination was handled with Ayyagaru Ram Sharma and Anil Tunk of Golden Collections. Golden Collections is thankful for the opportunity to support this alankaram responsibility and for the temple team's cooperation during measurements and fit checks.
+        - paragraph [ref=e34] [box=18,2953,339,88]: Golden Collections is sharing this as a real alankaram proof example with permission. It should be understood as a deity jewellery and alankaram use case, not as a claim of temple endorsement or ritual instruction.
+        - heading "What The Final Alankaram Shows" [level=2] [ref=e35] [box=18,3061,339,56]
+        - paragraph [ref=e36] [box=18,3136,339,35]: The final images show several practical jewellery and fit lessons.
+        - figure "Close-up of the crown, face and deity jewellery details." [ref=e37] [box=18,3194,339,506]
+        - heading "Crown Or Kireedam Fit" [level=3] [ref=e40] [box=18,3722,339,21]
+        - paragraph [ref=e41] [box=18,3762,339,106]: The crown is one of the most visible parts of Hanuman alankaram. It needs enough height to create a festival look, but it should not cover the face, eyes or forehead details. The halo-like upper framing also needs space so it does not clash with the arch or backdrop.
+        - paragraph [ref=e42] [box=18,3883,339,70]: For home idols and temple idols, this is why crown fit should be checked with head width, crown height and available backdrop space, not only by choosing the most decorative design.
+        - heading "Face Visibility" [level=3] [ref=e43] [box=18,3973,339,21]
+        - paragraph [ref=e44] [box=18,4012,339,106]: Hanuman's face, eyes and expression are central to the alankaram. Jewellery around the head and chest should support the deity form instead of distracting from it. In this example, the face remains visible even with a rich crown and body ornamentation.
+        - heading "Kavacham And Body Ornamentation" [level=3] [ref=e45] [box=18,4136,339,42]
+        - paragraph [ref=e46] [box=18,4197,339,88]: Body coverage or kavacham-style ornamentation changes the entire visual scale of the idol. It can create a grand temple look, but it needs to match the idol's height, shoulder width, chest form and hand position.
+        - heading "Gada And Posture" [level=3] [ref=e47] [box=18,4303,339,21]
+        - paragraph [ref=e48] [box=18,4343,339,70]: Hanuman idols often include gada placement or a hand posture that affects jewellery choice. Ornaments should not crowd the hand, weapon, shoulder or side profile of the idol.
+        - heading "Arch Or Prabhavali Framing" [level=3] [ref=e49] [box=18,4432,339,21]
+        - paragraph [ref=e50] [box=18,4472,339,106]: The arch frames the deity and gives height to the altar. When the arch is large and decorative, crown height and top clearance become more important. The jewellery and arch should read as one complete alankaram rather than competing elements.
+        - figure "Preparation context showing why placement and fit matter before final decoration." [ref=e51] [box=18,4600,339,506]
+        - heading "What Buyers Can Learn From This Example" [level=2] [ref=e54] [box=18,5128,339,56]
+        - paragraph [ref=e55] [box=18,5204,339,70]: This temple alankaram is useful for families, devotees and temple coordinators choosing Hanuman deity jewellery because it shows the importance of planning the whole setup.
+        - paragraph [ref=e56] [box=18,5290,339,18]: "Before ordering Hanuman jewellery, check:"
+        - list [ref=e57] [box=18,5324,339,158]
+        - paragraph [ref=e66] [box=18,5498,339,53]: If you are unsure, send clear front and side photos with measurements. Golden Collections can help review likely fit before ordering.
+        - heading "Related Golden Collections Guides" [level=2] [ref=e67] [box=18,5571,339,56]
+        - paragraph [ref=e68] [box=18,5647,339,18]: "For sizing and fit guidance, start with:"
+        - list [ref=e69] [box=18,5680,339,106]
+        - paragraph [ref=e78] [box=18,5802,339,18]: "For shopping, browse:"
+        - list [ref=e79] [box=18,5836,339,53]
+        - figure "Hanuman Jayanti 2026 alankaram video at Sri Vijaya Vinayaka Swamy Temple, shared with permission." [ref=e86] [box=18,5911,339,692]
+        - heading "FAQ" [level=2] [ref=e89] [box=18,6625,339,28]
+        - heading "What jewellery is used for Hanuman alankaram?" [level=3] [ref=e90] [box=18,6673,339,42]
+        - paragraph [ref=e91] [box=18,6733,339,88]: Hanuman alankaram may include a crown or kireedam, chest ornamentation, kavacham-style body coverage, garlands, arch or prabhavali framing, and deity-specific accessories depending on the idol and tradition.
+        - heading "How should a Hanuman crown fit?" [level=3] [ref=e92] [box=18,6840,339,21]
+        - paragraph [ref=e93] [box=18,6879,339,70]: A Hanuman crown should match the head width, crown height space and altar clearance while keeping the face and eyes visible. Do not choose only by design.
+        - heading "What should I measure before choosing Hanuman deity jewellery?" [level=3] [ref=e94] [box=18,6968,339,62]
+        - paragraph [ref=e95] [box=18,7049,339,53]: Measure idol height, head or face width, chest width, shoulder width, hand or gada position, and available arch or backdrop space.
+        - heading "Can one Hanuman jewellery set fit every idol?" [level=3] [ref=e96] [box=18,7121,339,42]
+        - paragraph [ref=e97] [box=18,7181,339,53]: No. Fit depends on idol size, posture, head shape, chest width, hand position and altar space. Treat each idol as a separate fit decision.
+        - heading "Can Golden Collections help check fit before ordering?" [level=3] [ref=e98] [box=18,7253,339,42]
+        - paragraph [ref=e99] [box=18,7313,339,88]: Yes. Share clear front and side photos with measuring tape visible, along with the idol height and placement measurements. Golden Collections can help review likely fit before ordering.

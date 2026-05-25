@@ -1330,3 +1330,56 @@ class CartPerformance {
     );
   }
 }
+
+(function () {
+  function resetSubcollectionCircleScroll(root) {
+    const scope = root || document;
+    const navs = scope.querySelectorAll('.gc-subcollection-circles .subcollection-nav');
+
+    navs.forEach((nav) => {
+      const reset = () => {
+        nav.scrollLeft = 0;
+      };
+
+      reset();
+      window.requestAnimationFrame(reset);
+      window.setTimeout(reset, 120);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => resetSubcollectionCircleScroll(document), { once: true });
+  } else {
+    resetSubcollectionCircleScroll(document);
+  }
+
+  window.addEventListener('pageshow', () => resetSubcollectionCircleScroll(document));
+  document.addEventListener('shopify:section:load', (event) => resetSubcollectionCircleScroll(event.target));
+})();
+
+(function () {
+  const paymentNoteText =
+    'Secure checkout with Razorpay and PayPal. International card payments are accepted through Razorpay where available.';
+
+  function addPaymentNote(root) {
+    const scope = root || document;
+    const paymentBlocks = scope.querySelectorAll('.footer__payment');
+
+    paymentBlocks.forEach((block) => {
+      if (block.querySelector('.footer__payment-note')) return;
+
+      const note = document.createElement('p');
+      note.className = 'footer__payment-note';
+      note.textContent = paymentNoteText;
+      block.appendChild(note);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => addPaymentNote(document), { once: true });
+  } else {
+    addPaymentNote(document);
+  }
+
+  document.addEventListener('shopify:section:load', (event) => addPaymentNote(event.target));
+})();

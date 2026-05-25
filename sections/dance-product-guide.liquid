@@ -1,0 +1,764 @@
+{%- liquid
+  assign family = section.settings.product_family
+  assign product_context = product.title | append: ' ' | append: product.type | downcase
+  assign placement = product.metafields.dance.placement.value | default: product.metafields.dance.placement | default: product.metafields.custom.placement.value | default: product.metafields.custom.placement
+  assign material = product.metafields.dance.material.value | default: product.metafields.dance.material | default: product.metafields.custom.material.value | default: product.metafields.custom.material
+  assign fit_notes = product.metafields.dance.fit_notes.value | default: product.metafields.dance.fit_notes | default: product.metafields.custom.fit_notes.value | default: product.metafields.custom.fit_notes
+  assign care_instructions = product.metafields.dance.care_instructions.value | default: product.metafields.dance.care_instructions
+  assign quality_checks = product.metafields.dance.quality_checks.value | default: product.metafields.dance.quality_checks | default: product.metafields.custom.quality_checks.value | default: product.metafields.custom.quality_checks
+  assign range_type = product.metafields.dance.dance_range.value | default: product.metafields.dance.dance_range | default: product.metafields.custom.range_type.value | default: product.metafields.custom.range_type
+  assign size_notes = product.metafields.dance.size_notes.value | default: product.metafields.dance.size_notes
+  assign measurement_confidence = product.metafields.dance.measurement_confidence.value | default: product.metafields.dance.measurement_confidence
+  assign necklace_drop = product.metafields.dance.necklace_drop_in.value | default: product.metafields.dance.necklace_drop_in
+  assign haram_drop = product.metafields.dance.haram_drop_in.value | default: product.metafields.dance.haram_drop_in
+  assign waist_range = product.metafields.dance.waist_belt_adjustable_range.value | default: product.metafields.dance.waist_belt_adjustable_range
+  assign jada_length = product.metafields.dance.jada_length_in.value | default: product.metafields.dance.jada_length_in
+  assign mattal_length = product.metafields.dance.mattal_length_in.value | default: product.metafields.dance.mattal_length_in
+  assign bangle_size = product.metafields.dance.bangle_size.value | default: product.metafields.dance.bangle_size
+  assign ghungroo_bell_count = product.metafields.dance.ghungroo_bell_count.value | default: product.metafields.dance.ghungroo_bell_count
+  assign matching_products = product.metafields.dance.matching_product_refs.value
+  assign matching_collections = product.metafields.dance.matching_collection_refs.value
+  assign is_premium_kemp_family = false
+  if family contains 'kemp'
+    assign is_premium_kemp_family = true
+  endif
+  assign has_measurement_details = false
+  unless measurement_confidence == 'Not applicable'
+    if necklace_drop != blank or haram_drop != blank or waist_range != blank or jada_length != blank or mattal_length != blank or bangle_size != blank or ghungroo_bell_count != blank or size_notes != blank
+      assign has_measurement_details = true
+    endif
+  endunless
+  assign is_set = false
+  assign is_short_necklace = false
+  assign is_long_haram = false
+  assign is_head = false
+  assign is_ear = false
+  assign is_waist = false
+  assign is_hair = false
+  assign is_ghungroo = false
+  assign is_bangle = false
+  assign is_arm = false
+  assign is_crown = false
+  assign is_nose = false
+  assign is_instrument = false
+  assign is_makeup = false
+  assign is_practice_wear = false
+
+  if product_context contains 'set'
+    assign is_set = true
+  endif
+
+  if product_context contains 'short necklace' or product_context contains 'short haram' or product_context contains 'addigai' or product_context contains 'padakkam'
+    assign is_short_necklace = true
+  endif
+
+  if product_context contains 'long haram' or product_context contains 'long necklace' or product_context contains 'maalai'
+    assign is_long_haram = true
+  endif
+
+  if product_context contains 'headset' or product_context contains 'nethi' or product_context contains 'maang tikka' or product_context contains 'sun moon' or product_context contains 'surya' or product_context contains 'chandra'
+    assign is_head = true
+  endif
+
+  if product_context contains 'earring' or product_context contains 'jhumki' or product_context contains 'jhumka' or product_context contains 'mattal' or product_context contains 'matil'
+    assign is_ear = true
+  endif
+
+  if product_context contains 'waist' or product_context contains 'vaddanam' or product_context contains 'oddiyanam'
+    assign is_waist = true
+  endif
+
+  if product_context contains 'jada' or product_context contains 'jadai' or product_context contains 'rakodi' or product_context contains 'flower' or product_context contains 'gajra' or product_context contains 'veni' or product_context contains 'bun' or product_context contains 'hair'
+    assign is_hair = true
+  endif
+
+  if product_context contains 'ghungroo' or product_context contains 'salangai'
+    assign is_ghungroo = true
+  endif
+
+  if product_context contains 'bangle'
+    assign is_bangle = true
+  endif
+
+  if product_context contains 'vanki' or product_context contains 'baju' or product_context contains 'bajuband'
+    assign is_arm = true
+  endif
+
+  if product_context contains 'crown' or product_context contains 'kireedam'
+    assign is_crown = true
+  endif
+
+  if product_context contains 'nose'
+    assign is_nose = true
+  endif
+
+  if product_context contains 'nattuvangam' or product_context contains 'thattu' or product_context contains 'kazhi' or product_context contains 'dance plate'
+    assign is_instrument = true
+  endif
+
+  if product_context contains 'makeup' or product_context contains 'pancake' or product_context contains 'panstick' or product_context contains 'alta' or product_context contains 'altha' or product_context contains 'bindi' or product_context contains 'tikli'
+    assign is_makeup = true
+  endif
+
+  if product_context contains 'practice saree' or product_context contains 'practice sari'
+    assign is_practice_wear = true
+  endif
+-%}
+
+<section class="gc-dance-product-guide color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="gc-dance-product-guide__shell">
+      <header class="gc-dance-product-guide__intro">
+        <span>{{ section.settings.eyebrow }}</span>
+        <h2>
+          {%- case family -%}
+            {%- when 'real_kemp' -%}
+              Check this real kemp piece for premium stage use
+            {%- when 'black_kemp' -%}
+              Check this black kemp piece with costume contrast
+            {%- else -%}
+              Check this piece for dance performance use
+          {%- endcase -%}
+        </h2>
+        <p>
+          {%- case family -%}
+            {%- when 'real_kemp' -%}
+              Real kemp jewellery is usually chosen for arangetram, senior Bharatanatyam and Kuchipudi performances, premium stage styling and long-term use.
+            {%- when 'black_kemp' -%}
+              Black kemp jewellery is chosen when the costume direction needs stronger contrast while keeping a classical South Indian temple jewellery look.
+            {%- else -%}
+              Use this guidance to compare placement, comfort, costume matching and teacher requirements before choosing this product for Bharatanatyam or Kuchipudi.
+          {%- endcase -%}
+        </p>
+        {%- if is_premium_kemp_family -%}
+          <div class="gc-dance-product-guide__checkrow" aria-label="Premium dance jewellery checks">
+            <div>
+              <span>Stage Use</span>
+              <strong>
+                {%- if family == 'real_kemp' -%}
+                  Arangetram / senior performance
+                {%- else -%}
+                  Costume contrast / stage lighting
+                {%- endif -%}
+              </strong>
+            </div>
+            <div>
+              <span>Match First</span>
+              <strong>Stone color, finish and scale</strong>
+            </div>
+            <div>
+              <span>Care</span>
+              <strong>Store dry after each use</strong>
+            </div>
+          </div>
+        {%- endif -%}
+      </header>
+
+      <div class="gc-dance-product-guide__accordion">
+        <details class="gc-dance-product-guide__item" open>
+          <summary>
+            <span>Before You Order</span>
+            <strong>Fit and matching checks</strong>
+          </summary>
+          <div class="gc-dance-product-guide__content">
+            <ul>
+              {%- if fit_notes != blank -%}
+                <li>{{ fit_notes | strip_html }}</li>
+              {%- elsif is_short_necklace -%}
+                <li>Compare width, pendant scale and neckline space before pairing with a long haram.</li>
+              {%- elsif is_long_haram -%}
+                <li>Compare drop length with dancer height, costume pleats and short necklace size.</li>
+              {%- elsif is_waist -%}
+                <li>Measure over the costume and check adjustability before choosing waist fit.</li>
+              {%- elsif is_head -%}
+                <li>Check forehead size, center parting, bun position and pinning comfort.</li>
+              {%- elsif is_ear -%}
+                <li>Check earring weight, mattal length and comfort for longer programs.</li>
+              {%- elsif is_hair -%}
+                <li>Check bun size, braid length, flower coverage and jada placement.</li>
+              {%- elsif is_ghungroo -%}
+                <li>Confirm bell count, ankle comfort and teacher preference before ordering.</li>
+              {%- elsif is_arm -%}
+                <li>Check upper-arm comfort, sleeve placement and adjustability.</li>
+              {%- elsif is_makeup -%}
+                <li>Check shade, color, application area and teacher or makeup-artist preference before ordering.</li>
+              {%- elsif is_practice_wear -%}
+                <li>Choose by practice comfort, pleat handling, color option and teacher preference.</li>
+              {%- elsif is_instrument -%}
+                <li>Check teacher preference, grip, sound use and class or stage requirement before ordering.</li>
+              {%- else -%}
+                <li>Compare product photos, size, comfort, costume color and teacher requirements.</li>
+              {%- endif -%}
+              {%- if is_makeup -%}
+                <li>Match makeup color with costume, lighting, dancer age group and final stage look.</li>
+              {%- elsif is_practice_wear -%}
+                <li>Match the practice saree color and drape with class, rehearsal or institute requirements.</li>
+              {%- elsif is_instrument -%}
+                <li>Match the item with the teacher's nattuvangam, rhythm or dance-practice requirement.</li>
+              {%- else -%}
+                <li>Match finish and stone color with the visible jewellery set.</li>
+              {%- endif -%}
+              <li>For arangetram or group programs, confirm the teacher's component list early.</li>
+              {%- if material != blank -%}
+                <li>Material noted: {{ material | strip_html }}.</li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </details>
+
+        <details class="gc-dance-product-guide__item">
+          <summary>
+            <span>Performance Use</span>
+            <strong>When this product helps</strong>
+          </summary>
+          <div class="gc-dance-product-guide__content">
+            <p>
+              {%- if is_set -%}
+                Best when the dancer needs a coordinated jewellery set for arangetram, stage programs, dance institute performances or a complete classical costume look.
+              {%- elsif is_short_necklace -%}
+                Useful for upper-chest and neckline framing, especially when pairing with a long haram, earrings and mattal.
+              {%- elsif is_long_haram -%}
+                Useful for lower costume balance and stage proportion, especially for arangetram and formal performances.
+              {%- elsif is_head -%}
+                Useful for forehead, center-parting or head styling with nethi chutti, headset, sun and moon or related head ornaments.
+              {%- elsif is_ear -%}
+                Useful for completing the side profile with earrings, jhumki or mattal support through rehearsal and stage programs.
+              {%- elsif is_waist -%}
+                Useful for defining the costume waist, pleats and stage silhouette with vaddanam or oddiyanam styling.
+              {%- elsif is_hair -%}
+                Useful for bun, braid, jada, rakodi, flowers or final hair styling after the costume direction is decided.
+              {%- elsif is_ghungroo -%}
+                Useful for practice, class, arangetram preparation and stage performance when the teacher confirms bell style and count.
+              {%- elsif is_bangle -%}
+                Useful for finishing the hand line while keeping mudras clear and comfortable.
+              {%- elsif is_arm -%}
+                Useful for completing the arm line with vanki or bajuband when the costume sleeve supports it.
+              {%- elsif is_crown -%}
+                Useful for role-based dance, drama, deity-inspired character styling and special stage productions.
+              {%- elsif is_nose -%}
+                Useful as a traditional finishing detail when the teacher or costume direction calls for it.
+              {%- elsif is_makeup -%}
+                Useful for stage makeup planning, arangetram preparation, school programs and dance institute performances where facial expression, hands or feet need to read clearly under lights.
+              {%- elsif is_practice_wear -%}
+                Useful for class, rehearsal and practice sessions when the dancer needs a saree that supports movement, posture checks and teacher corrections.
+              {%- elsif is_instrument -%}
+                Useful for teachers, nattuvanars, class use, stage use or ceremony needs.
+              {%- else -%}
+                Useful when this product completes a missing placement in the dancer's costume, jewellery set or stage styling plan.
+              {%- endif -%}
+            </p>
+          </div>
+        </details>
+
+        {%- if has_measurement_details -%}
+          <details class="gc-dance-product-guide__item">
+            <summary>
+              <span>Measurements</span>
+              <strong>Size details to compare</strong>
+            </summary>
+            <div class="gc-dance-product-guide__content">
+              <ul>
+                {%- if necklace_drop != blank -%}<li>Short necklace drop: {{ necklace_drop }} in.</li>{%- endif -%}
+                {%- if haram_drop != blank -%}<li>Long haram drop: {{ haram_drop }} in.</li>{%- endif -%}
+                {%- if waist_range != blank -%}<li>Waist belt range: {{ waist_range }}</li>{%- endif -%}
+                {%- if jada_length != blank -%}<li>Jada length: {{ jada_length }} in.</li>{%- endif -%}
+                {%- if mattal_length != blank -%}<li>Mattal length: {{ mattal_length }} in.</li>{%- endif -%}
+                {%- if bangle_size != blank -%}<li>Bangle size: {{ bangle_size }}</li>{%- endif -%}
+                {%- if ghungroo_bell_count != blank -%}<li>Ghungroo bell count: {{ ghungroo_bell_count }}</li>{%- endif -%}
+                {%- if size_notes != blank -%}<li>{{ size_notes | strip_html }}</li>{%- endif -%}
+                {%- if measurement_confidence != blank -%}<li>Measurement confidence: {{ measurement_confidence }}.</li>{%- endif -%}
+              </ul>
+            </div>
+          </details>
+        {%- endif -%}
+
+        <details class="gc-dance-product-guide__item">
+          <summary>
+            <span>Complete the Look</span>
+            <strong>Match this product with</strong>
+          </summary>
+          <div class="gc-dance-product-guide__content">
+            {%- if matching_products != blank -%}
+              <div class="gc-dance-product-guide__matched-products">
+                {%- for matched_product in matching_products limit: 4 -%}
+                  <a class="gc-dance-product-guide__matched-product" href="{{ matched_product.url }}" aria-label="View {{ matched_product.title | escape }}">
+                    {%- if matched_product.featured_image != blank -%}
+                      <span class="gc-dance-product-guide__matched-media">
+                        <img
+                          src="{{ matched_product.featured_image | image_url: width: 220 }}"
+                          alt="{{ matched_product.featured_image.alt | default: matched_product.title | escape }}"
+                          loading="lazy"
+                          width="110"
+                          height="132"
+                        >
+                      </span>
+                    {%- endif -%}
+                    <span class="gc-dance-product-guide__matched-copy">
+                      <span class="gc-dance-product-guide__matched-label">
+                        {%- if is_short_necklace -%}Matched long haram{%- elsif is_long_haram -%}Matched short necklace{%- else -%}Matched product{%- endif -%}
+                      </span>
+                      <strong>{{ matched_product.title }}</strong>
+                      <span>{{ matched_product.price | money }}</span>
+                    </span>
+                  </a>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+            <div class="gc-dance-product-guide__links">
+              {%- if matching_collections != blank -%}
+                {%- for matched_collection in matching_collections limit: 6 -%}
+                  <a href="{{ matched_collection.url }}">{{ matched_collection.title }}</a>
+                {%- endfor -%}
+              {%- elsif family == 'real_kemp' -%}
+                <a href="/collections/kemp-jewellery">Real Kemp Jewellery</a>
+                <a href="/collections/kemp-short-haram">Real Kemp Short Necklace</a>
+                <a href="/collections/kemp-long-necklace">Real Kemp Long Haram</a>
+                <a href="/collections/kemp-vaddanam-waistbelt">Real Kemp Vaddanam</a>
+              {%- elsif family == 'black_kemp' -%}
+                <a href="/collections/kemp-black-jewellery">Black Kemp Jewellery</a>
+                <a href="/collections/kemp-black-short-necklace">Black Kemp Short Necklace</a>
+                <a href="/collections/kemp-black-long-haram">Black Kemp Long Haram</a>
+                <a href="/collections/black-kemp-vaddanam-temple-jewellery-oddiyanam">Black Kemp Vaddanam</a>
+              {%- else -%}
+                <a href="/collections/bharatanatyam-jewellery-sets">Dance Sets</a>
+                <a href="/collections/bharatanatyam-short-necklaces">Short Necklace</a>
+                <a href="/collections/bharatanatyam-long-necklace">Long Haram</a>
+                <a href="/collections/bharatanatyam-dance-accessories-flower-hair-head-set-maang-tikka-mattal-makeup">Dance Accessories</a>
+              {%- endif -%}
+            </div>
+          </div>
+        </details>
+
+        <details class="gc-dance-product-guide__item">
+          <summary>
+            <span>Care</span>
+            <strong>How to keep it ready for stage</strong>
+          </summary>
+          <div class="gc-dance-product-guide__content">
+            <p>
+              {%- if care_instructions != blank -%}
+                {{ care_instructions | strip_html }}
+              {%- elsif quality_checks != blank -%}
+                {{ quality_checks | strip_html }}
+              {%- else -%}
+                Keep it dry, avoid perfume and water, wipe after use, and store pieces separately so stones and finish do not rub.
+              {%- endif -%}
+            </p>
+            {%- if care_instructions != blank and quality_checks != blank -%}
+              <p>{{ quality_checks | strip_html }}</p>
+            {%- endif -%}
+          </div>
+        </details>
+
+        <details class="gc-dance-product-guide__item">
+          <summary>
+            <span>Helpful Answers</span>
+            <strong>Questions before buying this piece</strong>
+          </summary>
+          <div class="gc-dance-product-guide__content gc-dance-product-guide__answers">
+            <div>
+              <h3>Is this suitable for Bharatanatyam and Kuchipudi?</h3>
+              <p>
+                {%- if family == 'real_kemp' -%}
+                  Yes, real kemp can suit Bharatanatyam and Kuchipudi when the teacher's component list, costume direction and temple jewellery styling match.
+                {%- else -%}
+                  Many pieces work for both when the costume, teacher preference and stage styling match. Check placement, finish and product photos before ordering.
+                {%- endif -%}
+              </p>
+            </div>
+            <div>
+              <h3>What should I match before buying?</h3>
+              <p>
+                {%- if family == 'real_kemp' -%}
+                  Match real kemp stone color, gold finish, product scale, dancer comfort, costume colors and the other visible ornaments before mixing separate pieces.
+                {%- else -%}
+                  Match metal finish, stone color, product scale, dancer age group, costume colors and the other visible ornaments in the set.
+                {%- endif -%}
+              </p>
+            </div>
+            <div>
+              <h3>Can this be used for arangetram?</h3>
+              <p>
+                {%- if family == 'real_kemp' -%}
+                  Real kemp is often chosen for arangetram and senior stage use, but the final choice should still match the teacher's required components, dancer size and costume trial.
+                {%- else -%}
+                  It may be suitable if it matches the teacher's required component list and the dancer's costume. For arangetram, plan the full set early.
+                {%- endif -%}
+              </p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gc-dance-product-guide {
+    background: #fff8ea;
+    color: #21180d;
+    padding: 2.6rem 0 4.2rem;
+  }
+
+  .gc-dance-product-guide .page-width {
+    max-width: 1180px;
+  }
+
+  .gc-dance-product-guide__shell {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(91, 55, 12, 0.06);
+    overflow: hidden;
+  }
+
+  .gc-dance-product-guide__intro {
+    border-bottom: 1px solid rgba(151, 99, 16, 0.14);
+    padding: 1.45rem 1.55rem;
+  }
+
+  .gc-dance-product-guide__checkrow {
+    border-top: 1px solid rgba(151, 99, 16, 0.12);
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1.1rem;
+    padding-top: 1rem;
+  }
+
+  .gc-dance-product-guide__checkrow div {
+    background: #fffaf1;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    min-width: 0;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .gc-dance-product-guide__checkrow strong {
+    color: #21180d;
+    display: block;
+    font-size: 1.02rem;
+    line-height: 1.25;
+  }
+
+  .gc-dance-product-guide span,
+  .gc-dance-product-guide__item summary span {
+    color: #986918;
+    display: block;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .gc-dance-product-guide__checkrow span {
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .gc-dance-product-guide h2,
+  .gc-dance-product-guide h3,
+  .gc-dance-product-guide__item summary strong {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .gc-dance-product-guide h2 {
+    font-size: 2.25rem;
+  }
+
+  .gc-dance-product-guide__item summary strong {
+    display: block;
+    font-size: 1.62rem;
+    font-weight: 500;
+  }
+
+  .gc-dance-product-guide h3 {
+    font-size: 1.22rem;
+  }
+
+  .gc-dance-product-guide p,
+  .gc-dance-product-guide li {
+    color: #5f5548;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .gc-dance-product-guide p {
+    margin: 0.75rem 0 0;
+  }
+
+  .gc-dance-product-guide__item {
+    border-bottom: 1px solid rgba(151, 99, 16, 0.14);
+  }
+
+  .gc-dance-product-guide__item:last-child {
+    border-bottom: 0;
+  }
+
+  .gc-dance-product-guide__item summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    list-style: none;
+    padding: 1.1rem 1.55rem;
+  }
+
+  .gc-dance-product-guide__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .gc-dance-product-guide__item summary::after {
+    align-items: center;
+    background: #fff8ea;
+    border: 1px solid rgba(151, 99, 16, 0.22);
+    border-radius: 999px;
+    color: #986918;
+    content: "+";
+    display: inline-flex;
+    flex: 0 0 2.2rem;
+    font-size: 1.5rem;
+    height: 2.2rem;
+    justify-content: center;
+    line-height: 1;
+    width: 2.2rem;
+  }
+
+  .gc-dance-product-guide__item[open] summary {
+    background: #fffaf1;
+  }
+
+  .gc-dance-product-guide__item[open] summary::after {
+    content: "-";
+  }
+
+  .gc-dance-product-guide__content {
+    border-top: 1px solid rgba(151, 99, 16, 0.1);
+    padding: 1rem 1.55rem 1.35rem;
+  }
+
+  .gc-dance-product-guide__content ul {
+    display: grid;
+    gap: 0.48rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-dance-product-guide__content li {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .gc-dance-product-guide__content li::before {
+    background: #986918;
+    border-radius: 50%;
+    content: "";
+    height: 0.48rem;
+    left: 0.25rem;
+    position: absolute;
+    top: 0.68rem;
+    width: 0.48rem;
+  }
+
+  .gc-dance-product-guide__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+  }
+
+  .gc-dance-product-guide__matched-products {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .gc-dance-product-guide__matched-product {
+    align-items: center;
+    background: #fffaf0;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 8px;
+    color: inherit;
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: 86px minmax(0, 1fr);
+    padding: 0.7rem;
+    text-decoration: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .gc-dance-product-guide__matched-product:hover {
+    border-color: rgba(151, 99, 16, 0.42);
+    box-shadow: 0 12px 24px rgba(91, 55, 12, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .gc-dance-product-guide__matched-media {
+    background: #fffdf8;
+    border-radius: 6px;
+    display: block;
+    overflow: hidden;
+  }
+
+  .gc-dance-product-guide__matched-media img {
+    aspect-ratio: 5 / 6;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .gc-dance-product-guide__matched-copy {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .gc-dance-product-guide__matched-copy .gc-dance-product-guide__matched-label {
+    color: #986918;
+    font-size: 0.96rem;
+    margin: 0;
+  }
+
+  .gc-dance-product-guide__matched-copy strong {
+    color: #21180d;
+    display: -webkit-box;
+    font-size: 1.14rem;
+    line-height: 1.2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .gc-dance-product-guide__matched-copy span:last-child {
+    color: #5f5548;
+    font-size: 1.06rem;
+    line-height: 1.2;
+  }
+
+  .gc-dance-product-guide__links a {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    border-radius: 999px;
+    color: #5e3d13;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    padding: 0.62rem 0.85rem;
+    text-decoration: none;
+  }
+
+  .gc-dance-product-guide__answers {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gc-dance-product-guide__answers div {
+    border-left: 3px solid rgba(151, 99, 16, 0.26);
+    padding-left: 1rem;
+  }
+
+  .gc-dance-product-guide__answers p {
+    margin-top: 0.35rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-dance-product-guide {
+      padding: 3rem 0 4.8rem;
+    }
+
+    .gc-dance-product-guide__matched-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-dance-product-guide {
+      padding: 2rem 0 3.2rem;
+    }
+
+    .gc-dance-product-guide h2 {
+      font-size: 2rem;
+    }
+
+    .gc-dance-product-guide__item summary strong {
+      font-size: 1.4rem;
+    }
+
+    .gc-dance-product-guide__intro,
+    .gc-dance-product-guide__item summary,
+    .gc-dance-product-guide__content {
+      padding: 1rem;
+    }
+
+    .gc-dance-product-guide__links {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .gc-dance-product-guide__checkrow {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-dance-product-guide__links a {
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .gc-dance-product-guide__matched-product {
+      grid-template-columns: 74px minmax(0, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dance product guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "product_family",
+      "label": "Product family",
+      "default": "bharatanatyam",
+      "options": [
+        {
+          "value": "bharatanatyam",
+          "label": "Bharatanatyam / Kuchipudi"
+        },
+        {
+          "value": "real_kemp",
+          "label": "Real Kemp"
+        },
+        {
+          "value": "black_kemp",
+          "label": "Black Kemp"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Dance buying guide"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dance product guide"
+    }
+  ]
+}
+{% endschema %}

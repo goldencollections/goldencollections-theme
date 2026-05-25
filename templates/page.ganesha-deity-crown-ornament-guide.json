@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "gc-deity-compatibility-guide",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

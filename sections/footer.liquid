@@ -25,6 +25,39 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .footer__authority-links {
+    margin: 2rem 0;
+  }
+
+  .footer__authority-links .footer-block__details-content {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .footer__payment-note {
+    margin: 0.75rem 0 0;
+    max-width: min(100%, 52rem);
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: rgba(var(--color-foreground), 0.75);
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .footer__payment {
+    max-width: 52rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .footer__payment {
+      width: 52rem;
+    }
+
+    .footer__payment-note {
+      text-align: right;
+    }
+  }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -158,6 +191,42 @@
             {%- endfor -%}
           </div>
         {%- endif -%}
+
+        <div class="footer__authority-links" aria-label="Golden Collections guides">
+          <h2 class="footer-block__heading inline-richtext">Guides</h2>
+          <ul class="footer-block__details-content list-unstyled">
+            <li>
+              <a href="/pages/golden-collections-knowledge-hub" class="link link--text list-menu__item list-menu__item--link">
+                Golden Collections Knowledge Hub
+              </a>
+            </li>
+            <li>
+              <a href="/pages/bharatanatyam-arangetram-kuchipudi-rangapravesam-jewellery-checklist" class="link link--text list-menu__item list-menu__item--link">
+                Arangetram Jewellery Checklist
+              </a>
+            </li>
+            <li>
+              <a href="/pages/deity-jewellery-alankaram-guide" class="link link--text list-menu__item list-menu__item--link">
+                Deity Jewellery Guides
+              </a>
+            </li>
+            <li>
+              <a href="/pages/how-to-measure-idol-for-deity-jewellery" class="link link--text list-menu__item list-menu__item--link">
+                Measure Your Idol
+              </a>
+            </li>
+            <li>
+              <a href="/pages/deity-crown-mukut-kireedam-size-guide" class="link link--text list-menu__item list-menu__item--link">
+                Crown Size Guide
+              </a>
+            </li>
+            <li>
+              <a href="/pages/anil-tunk" class="link link--text list-menu__item list-menu__item--link">
+                Anil Tunk
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <div
           class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -293,6 +362,9 @@
                 </li>
               {%- endfor -%}
             </ul>
+            <p class="footer__payment-note">
+              Secure checkout with Razorpay and PayPal. International card payments are accepted through Razorpay where available.
+            </p>
           </div>
         {%- endif -%}
       </div>

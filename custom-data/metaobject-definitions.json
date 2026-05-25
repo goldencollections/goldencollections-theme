@@ -3,18 +3,27 @@
     "definition": {
       "type": "deity_group",
       "name": "Deity Group",
-      "description": "Reusable deity groups and aliases for deity jewellery compatibility.",
+      "description": "Reusable deity groups and aliases for deity jewellery compatibility and deity-first shopping.",
       "access": {
         "storefront": "PUBLIC_READ"
       },
+      "displayNameKey": "name",
       "fieldDefinitions": [
         { "key": "name", "name": "Name", "type": "single_line_text_field", "required": true },
+        { "key": "slug", "name": "Slug", "type": "single_line_text_field" },
+        { "key": "status", "name": "Status", "type": "single_line_text_field" },
         { "key": "aliases", "name": "Aliases", "type": "list.single_line_text_field" },
         { "key": "regional_names", "name": "Regional Names", "type": "list.single_line_text_field" },
         { "key": "parent_group", "name": "Parent Group", "type": "single_line_text_field" },
+        { "key": "parent_group_ref", "name": "Parent Group Reference", "type": "metaobject_reference" },
         { "key": "specific_symbols", "name": "Specific Symbols", "type": "list.single_line_text_field" },
+        { "key": "default_ornament_types", "name": "Default Ornament Types", "type": "list.metaobject_reference" },
+        { "key": "shop_by_deity_collection", "name": "Shop By Deity Collection", "type": "collection_reference" },
+        { "key": "featured_collections", "name": "Featured Collections", "type": "list.collection_reference" },
         { "key": "seo_intro", "name": "SEO Intro", "type": "multi_line_text_field" },
-        { "key": "compatibility_notes", "name": "Compatibility Notes", "type": "multi_line_text_field" }
+        { "key": "collection_intro", "name": "Collection Intro", "type": "multi_line_text_field" },
+        { "key": "compatibility_notes", "name": "Compatibility Notes", "type": "multi_line_text_field" },
+        { "key": "sort_priority", "name": "Sort Priority", "type": "number_integer" }
       ]
     }
   },
@@ -26,12 +35,20 @@
       "access": {
         "storefront": "PUBLIC_READ"
       },
+      "displayNameKey": "name",
       "fieldDefinitions": [
         { "key": "name", "name": "Name", "type": "single_line_text_field", "required": true },
+        { "key": "slug", "name": "Slug", "type": "single_line_text_field" },
+        { "key": "status", "name": "Status", "type": "single_line_text_field" },
         { "key": "aliases", "name": "Aliases", "type": "list.single_line_text_field" },
         { "key": "placement", "name": "Placement", "type": "single_line_text_field" },
         { "key": "fit_measurement_needed", "name": "Fit Measurement Needed", "type": "boolean" },
-        { "key": "seo_definition", "name": "SEO Definition", "type": "multi_line_text_field" }
+        { "key": "sizing_standard", "name": "Sizing Standard", "type": "single_line_text_field" },
+        { "key": "deity_first_label", "name": "Deity First Label", "type": "single_line_text_field" },
+        { "key": "collection_handle_suffix", "name": "Collection Handle Suffix", "type": "single_line_text_field" },
+        { "key": "seo_definition", "name": "SEO Definition", "type": "multi_line_text_field" },
+        { "key": "fit_notes", "name": "Fit Notes", "type": "multi_line_text_field" },
+        { "key": "sort_priority", "name": "Sort Priority", "type": "number_integer" }
       ]
     }
   },
@@ -43,12 +60,53 @@
       "access": {
         "storefront": "PUBLIC_READ"
       },
+      "displayNameKey": "label",
       "fieldDefinitions": [
         { "key": "label", "name": "Label", "type": "single_line_text_field", "required": true },
+        { "key": "slug", "name": "Slug", "type": "single_line_text_field" },
+        { "key": "status", "name": "Status", "type": "single_line_text_field" },
         { "key": "idol_height_min_in", "name": "Idol Height Min Inches", "type": "number_decimal" },
         { "key": "idol_height_max_in", "name": "Idol Height Max Inches", "type": "number_decimal" },
+        { "key": "idol_width_min_in", "name": "Idol Width Min Inches", "type": "number_decimal" },
+        { "key": "idol_width_max_in", "name": "Idol Width Max Inches", "type": "number_decimal" },
         { "key": "fit_notes", "name": "Fit Notes", "type": "multi_line_text_field" },
-        { "key": "confidence", "name": "Confidence", "type": "single_line_text_field" }
+        { "key": "confidence", "name": "Confidence", "type": "single_line_text_field" },
+        { "key": "sort_priority", "name": "Sort Priority", "type": "number_integer" }
+      ]
+    }
+  },
+  {
+    "definition": {
+      "type": "deity_crown_size_standard",
+      "name": "Deity Crown Size Standard",
+      "description": "Reusable crown fit standard using idol height, head width, crown inner width, height, depth, and arc.",
+      "access": {
+        "storefront": "PUBLIC_READ"
+      },
+      "displayNameKey": "label",
+      "fieldDefinitions": [
+        { "key": "label", "name": "Label", "type": "single_line_text_field", "required": true },
+        { "key": "slug", "name": "Slug", "type": "single_line_text_field" },
+        { "key": "status", "name": "Status", "type": "single_line_text_field" },
+        { "key": "deity_groups", "name": "Deity Groups", "type": "list.metaobject_reference" },
+        { "key": "ornament_type", "name": "Ornament Type", "type": "metaobject_reference" },
+        { "key": "idol_height_min_in", "name": "Idol Height Min Inches", "type": "number_decimal" },
+        { "key": "idol_height_max_in", "name": "Idol Height Max Inches", "type": "number_decimal" },
+        { "key": "head_width_min_in", "name": "Head Width Min Inches", "type": "number_decimal" },
+        { "key": "head_width_max_in", "name": "Head Width Max Inches", "type": "number_decimal" },
+        { "key": "crown_inner_width_min_in", "name": "Crown Inner Width Min Inches", "type": "number_decimal" },
+        { "key": "crown_inner_width_max_in", "name": "Crown Inner Width Max Inches", "type": "number_decimal" },
+        { "key": "crown_height_min_in", "name": "Crown Height Min Inches", "type": "number_decimal" },
+        { "key": "crown_height_max_in", "name": "Crown Height Max Inches", "type": "number_decimal" },
+        { "key": "crown_depth_min_in", "name": "Crown Depth Min Inches", "type": "number_decimal" },
+        { "key": "crown_depth_max_in", "name": "Crown Depth Max Inches", "type": "number_decimal" },
+        { "key": "crown_arc_length_min_in", "name": "Crown Arc Length Min Inches", "type": "number_decimal" },
+        { "key": "crown_arc_length_max_in", "name": "Crown Arc Length Max Inches", "type": "number_decimal" },
+        { "key": "crown_style", "name": "Crown Style", "type": "single_line_text_field" },
+        { "key": "measuring_points", "name": "Measuring Points", "type": "multi_line_text_field" },
+        { "key": "fit_caveats", "name": "Fit Caveats", "type": "multi_line_text_field" },
+        { "key": "confidence", "name": "Confidence", "type": "single_line_text_field" },
+        { "key": "sort_priority", "name": "Sort Priority", "type": "number_integer" }
       ]
     }
   }

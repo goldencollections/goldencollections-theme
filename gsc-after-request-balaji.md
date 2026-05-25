@@ -1,0 +1,102 @@
+- generic [ref=e1] [box=0,0,1048,714]:
+  - generic [ref=e2] [box=0,0,1048,714]:
+    - banner [ref=e4] [box=0,0,1048,64]:
+      - generic [ref=e5] [box=0,0,1048,64]:
+        - generic [ref=e6] [box=8,8,359,48]:
+          - button [ref=e1688] [cursor=pointer] [box=12,8,48,48]:
+            - img [ref=e8] [box=24,20,24,24]
+          - link [ref=e1689] [cursor=pointer] [box=64,14,278,40]:
+            - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+            - img [ref=e13] [box=64,14,278,40]
+        - generic [ref=e14] [box=367,8,574,48]:
+          - search [ref=e16] [box=377,8,390,48]:
+            - generic [ref=e22] [box=434,9,283,46]:
+              - textbox [disabled] [ref=e23] [box=434,9,283,46]: Inspect any URL in "goldencollections.com"
+              - combobox [ref=e1690] [box=434,9,283,46]
+            - button [ref=e1691] [cursor=pointer] [box=378,9,56,46]:
+              - img [ref=e26] [box=386,12,40,40]
+          - generic [ref=e29] [box=797,8,144,48]:
+            - generic [ref=e31] [box=797,8,96,48]:
+              - button [ref=e1692] [cursor=pointer] [box=797,8,48,48]
+              - button [ref=e1693] [cursor=pointer] [box=845,8,48,48]
+            - button [ref=e1694] [cursor=pointer] [box=893,8,48,48]:
+              - generic [ref=e47] [box=905,20,24,24]
+        - generic [ref=e52] [box=946,8,90,48]:
+          - button [ref=e1695] [cursor=pointer] [box=946,12,40,40]:
+            - img [ref=e57] [box=954,20,24,24]
+          - button [ref=e1696] [cursor=pointer] [box=994,12,40,40]:
+            - img [ref=e64] [box=998,16,32,32]
+    - dialog [ref=e1697] [box=0,64,280,650]:
+      - navigation [ref=e1698] [box=0,64,280,650]:
+        - button [ref=e1699] [cursor=pointer] [box=8,78,256,40]:
+          - img [ref=e77] [box=25,86,24,24]
+          - combobox [ref=e1700] [box=60,86,167,24]: goldencollections.com
+          - generic [ref=e85] [box=227,86,24,24]: 
+        - generic [ref=e86] [box=0,128,280,586]:
+          - generic [ref=e87] [box=0,128,272,1105]:
+            - generic [ref=e88] [box=0,128,264,175]:
+              - link [ref=e1701] [cursor=pointer] [box=8,136,256,40]:
+                - /url: ./search-console?resource_id=sc-domain%3Agoldencollections.com
+              - link [ref=e1702] [cursor=pointer] [box=8,176,256,40]:
+                - /url: ./search-console/performance/insights?resource_id=sc-domain%3Agoldencollections.com
+              - link [ref=e1703] [cursor=pointer] [box=8,216,256,40]:
+                - /url: ./search-console/performance/search-analytics?resource_id=sc-domain%3Agoldencollections.com
+              - button [ref=e1704] [cursor=pointer] [box=8,256,256,40]
+            - generic [ref=e119] [box=0,311,264,200]:
+              - button [expanded] [ref=e1705] [cursor=pointer] [box=0,311,264,40]
+              - generic [ref=e133] [box=0,351,264,160]
+            - generic [ref=e164] [box=0,526,264,120]:
+              - button [expanded] [ref=e1710] [cursor=pointer] [box=0,526,264,40]
+              - generic [ref=e178] [box=0,566,264,80]
+            - generic [ref=e195] [box=0,661,264,160]:
+              - button [expanded] [ref=e1713] [cursor=pointer] [box=0,661,264,40]
+              - generic [ref=e209] [box=0,701,264,120]
+            - generic [ref=e233] [box=0,836,264,200]:
+              - button [expanded] [ref=e1717] [cursor=pointer] [box=0,836,264,40]
+              - generic [ref=e247] [box=0,876,264,160]
+            - button [ref=e1722] [cursor=pointer] [box=0,1051,264,40]:
+              - generic [ref=e280] [box=4,1051,260,40]
+            - generic [ref=e289] [box=0,1098,264,135]:
+              - link [ref=e1723] [cursor=pointer] [box=8,1106,256,40]:
+                - /url: ./search-console/links?resource_id=sc-domain%3Agoldencollections.com
+              - link [ref=e1724] [cursor=pointer] [box=8,1146,256,40]:
+                - /url: ./search-console/achievements?resource_id=sc-domain%3Agoldencollections.com
+              - link [ref=e1725] [cursor=pointer] [box=8,1186,256,40]:
+                - /url: ./search-console/settings?resource_id=sc-domain%3Agoldencollections.com
+          - generic [ref=e311] [box=0,1233,272,143]:
+            - generic [ref=e313] [box=0,1233,264,95]:
+              - button [ref=e1726] [cursor=pointer] [box=8,1241,256,40]
+              - button [ref=e1727] [cursor=pointer] [box=8,1281,256,40]
+            - generic [ref=e330] [box=24,1342,224,20]:
+              - link [ref=e1728] [cursor=pointer] [box=24,1344,45,17]:
+                - /url: https://myaccount.google.com/privacypolicy?hl=en
+              - link [ref=e1729] [cursor=pointer] [box=89,1344,39,17]:
+                - /url: https://myaccount.google.com/termsofservice?hl=en
+    - generic [ref=e1541] [box=280,64,768,650]:
+      - generic [ref=e1549] [box=382,84,600,24]: https://www.goldencollections.com/pages/balaji-vishnu-perumal-deity-jewellery-guide
+      - generic [ref=e1550] [box=280,129,768,585]:
+        - generic [ref=e1552] [box=378,129,655,64]:
+          - navigation [ref=e1730] [box=378,129,514,64]:
+            - heading [level=1] [ref=e1731] [box=382,150,139,25]: URL Inspection
+          - button [ref=e1732] [cursor=pointer] [box=892,143,116,36]:
+            - generic [ref=e1565] [box=900,151,100,20]: Test live URL
+        - main [ref=e1567] [box=378,217,631,974]:
+          - generic [ref=e1568] [box=378,217,631,974]:
+            - generic [ref=e1570] [box=378,217,631,178]:
+              - generic [ref=e1571] [box=378,217,631,114]
+              - generic [ref=e1579] [box=378,331,631,64]
+            - generic [ref=e1604] [box=378,419,631,644]:
+              - button [expanded] [ref=e1736] [cursor=pointer] [box=378,419,631,84]
+              - generic [ref=e1620] [box=378,504,631,559]
+            - generic [ref=e1683] [box=378,1086,631,24]: Enhancements & Experience
+            - generic [ref=e1687] [box=378,1134,616,48]: Only indexed URLs can have enhancements
+    - dialog "Submitting request" [ref=e1755] [box=412,274,224,166]:
+      - generic [ref=e1757] [box=438,312,173,109]:
+        - generic [ref=e1758] [box=442,312,165,26]: Submitting request
+        - progressbar "Submitting request" [ref=e1760] [box=444,351,160,3]
+        - button "Cancel" [active] [ref=e1764] [cursor=pointer] [box=496,386,56,32]:
+          - generic [ref=e1766] [box=506,394,36,16]: Cancel
+  - iframe [ref=e990] [box=978,640,256,60]:
+    - generic [ref=f3e6] [box=86,20,154,20]:
+      - text: protected by
+      - strong [ref=f3e7] [box=161,22,71,15]: reCAPTCHA

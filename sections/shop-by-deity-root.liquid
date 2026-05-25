@@ -1,0 +1,482 @@
+{%- liquid
+  assign display_title = section.settings.heading | default: collection.metafields.custom.display_title.value | default: collection.metafields.custom.display_title | default: collection.title
+  assign intro = collection.metafields.custom.collection_intro.value | default: collection.metafields.custom.collection_intro | default: section.settings.intro
+  assign direct_subcollections = collection.metafields.custom.subcollections.value
+  assign related_collections = collection.metafields.custom.related_collection_refs.value
+  assign menu_handle = section.settings.deity_menu
+  assign deity_menu = linklists[menu_handle]
+  assign has_direct_subcollections = false
+  assign has_related_collections = false
+  assign has_menu_collections = false
+  assign has_block_collections = false
+
+  if direct_subcollections != blank and direct_subcollections.size > 0
+    assign has_direct_subcollections = true
+  endif
+  if related_collections != blank and related_collections.size > 0
+    assign has_related_collections = true
+  endif
+  if deity_menu != blank and deity_menu.links.size > 0
+    assign has_menu_collections = true
+  endif
+  if section.blocks.size > 0
+    assign has_block_collections = true
+  endif
+-%}
+
+<section class="gc-shop-by-deity color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <nav class="gc-shop-by-deity__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <span>{{ display_title }}</span>
+    </nav>
+
+    <header class="gc-shop-by-deity__header">
+      <h1>{{ display_title }}</h1>
+      {%- if intro != blank -%}
+        <p>{{ intro | strip_html | truncate: 180 }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="gc-shop-by-deity__circles" aria-labelledby="gc-shop-by-deity-title">
+      <h2 id="gc-shop-by-deity-title" class="visually-hidden">Choose your deity</h2>
+      <ul class="gc-shop-by-deity__circle-list subcollection-nav list-unstyled" role="list">
+        {%- if has_block_collections -%}
+          {%- for block in section.blocks limit: section.settings.max_deities -%}
+            {%- assign nav_collection = block.settings.collection -%}
+            {%- assign nav_url = block.settings.url | default: nav_collection.url -%}
+            {%- assign nav_title = block.settings.title | default: nav_collection.metafields.custom.display_title.value | default: nav_collection.metafields.custom.display_title | default: nav_collection.title -%}
+            {%- assign nav_image = block.settings.image | default: nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image -%}
+            {%- if nav_title != blank -%}
+              {% render 'category-circle-nav', title: nav_title, url: nav_url, image: nav_image %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- elsif has_direct_subcollections -%}
+          {%- for nav_collection in direct_subcollections limit: section.settings.max_deities -%}
+            {%- liquid
+              assign nav_title = nav_collection.metafields.custom.display_title.value | default: nav_collection.metafields.custom.display_title | default: nav_collection.title
+              assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+            -%}
+            {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image %}
+          {%- endfor -%}
+        {%- elsif has_related_collections -%}
+          {%- for nav_collection in related_collections limit: section.settings.max_deities -%}
+            {%- liquid
+              assign nav_title = nav_collection.metafields.custom.display_title.value | default: nav_collection.metafields.custom.display_title | default: nav_collection.title
+              assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+            -%}
+            {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image %}
+          {%- endfor -%}
+        {%- elsif has_menu_collections -%}
+          {%- for menu_link in deity_menu.links limit: section.settings.max_deities -%}
+            {%- assign nav_collection = menu_link.object -%}
+            {%- if nav_collection != blank -%}
+              {%- liquid
+                assign nav_title = nav_collection.metafields.custom.display_title.value | default: nav_collection.metafields.custom.display_title | default: nav_collection.title | default: menu_link.title
+                assign nav_image = nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image
+              -%}
+              {% render 'category-circle-nav', title: nav_title, url: nav_collection.url, image: nav_image %}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+
+    <div class="gc-shop-by-deity__utility">
+      <a href="/pages/how-to-measure-idol-for-deity-jewellery">Size Help</a>
+    </div>
+
+    <div class="gc-shop-by-deity__flow" aria-label="Shopping flow">
+      <span>Shop by Deity</span>
+      <span>Choose ornament</span>
+      <span>Filter by size</span>
+    </div>
+
+    {%- if section.settings.show_featured_cards -%}
+      <div class="gc-shop-by-deity__featured" aria-labelledby="gc-shop-by-deity-featured">
+        <h2 id="gc-shop-by-deity-featured">{{ section.settings.featured_heading }}</h2>
+        <div class="gc-shop-by-deity__featured-grid">
+          {%- assign featured_rendered = 0 -%}
+          {%- if has_block_collections -%}
+            {%- for block in section.blocks limit: 4 -%}
+              {%- assign nav_collection = block.settings.collection -%}
+              {%- assign nav_url = block.settings.url | default: nav_collection.url -%}
+              {%- assign nav_title = block.settings.title | default: nav_collection.metafields.custom.display_title.value | default: nav_collection.metafields.custom.display_title | default: nav_collection.title -%}
+              {%- assign nav_image = block.settings.image | default: nav_collection.featured_image | default: nav_collection.products.first.featured_media.preview_image -%}
+              {%- if nav_title != blank -%}
+                {%- render 'shop-by-deity-card', nav_collection: nav_collection, title_override: nav_title, image_override: nav_image, url_override: nav_url -%}
+                {%- assign featured_rendered = featured_rendered | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- elsif has_direct_subcollections -%}
+            {%- for nav_collection in direct_subcollections limit: 4 -%}
+              {%- render 'shop-by-deity-card', nav_collection: nav_collection -%}
+              {%- assign featured_rendered = featured_rendered | plus: 1 -%}
+            {%- endfor -%}
+          {%- elsif has_related_collections -%}
+            {%- for nav_collection in related_collections limit: 4 -%}
+              {%- render 'shop-by-deity-card', nav_collection: nav_collection -%}
+              {%- assign featured_rendered = featured_rendered | plus: 1 -%}
+            {%- endfor -%}
+          {%- elsif has_menu_collections -%}
+            {%- for menu_link in deity_menu.links limit: 4 -%}
+              {%- assign nav_collection = menu_link.object -%}
+              {%- if nav_collection != blank -%}
+                {%- render 'shop-by-deity-card', nav_collection: nav_collection -%}
+                {%- assign featured_rendered = featured_rendered | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if featured_rendered == 0 -%}
+            <p class="gc-shop-by-deity__empty">Add deity landing collections in this section or in the collection Subcollections metafield.</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="gc-shop-by-deity__faq" aria-labelledby="gc-shop-by-deity-faq">
+      <h2 id="gc-shop-by-deity-faq">{{ section.settings.faq_heading }}</h2>
+      <details>
+        <summary>How does Shop by Deity work?</summary>
+        <p>Choose the deity first, then use the ornament circles or product filters to narrow to crowns, harams, vaddanam, earrings and other alankaram items.</p>
+      </details>
+      <details>
+        <summary>What if I do not know the size?</summary>
+        <p>You can browse first. Before ordering, use the product measurement photos and the Size Help page to compare idol height, head width, circumference or placement size.</p>
+      </details>
+      <details>
+        <summary>Are regional deity and ornament names included?</summary>
+        <p>Yes. Deity and ornament pages can include common regional names such as mukut, kireedam, kirita, haram, vaddanam and alankaram in the FAQ and page data.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gc-shop-by-deity {
+    background: #fffaf0;
+    border-bottom: 1px solid rgba(151, 99, 16, 0.14);
+    color: #21180d;
+    padding: 1.2rem 0 2.4rem;
+  }
+
+  .gc-shop-by-deity__breadcrumb {
+    color: #6f6254;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.18rem;
+    gap: 0.5rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .gc-shop-by-deity__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-shop-by-deity__header {
+    margin-inline: auto;
+    max-width: 860px;
+    text-align: center;
+  }
+
+  .gc-shop-by-deity__header h1 {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: clamp(3.4rem, 6vw, 6.2rem);
+    line-height: 1.02;
+    margin: 0;
+  }
+
+  .gc-shop-by-deity__header p {
+    color: #4e4438;
+    font-size: 1.42rem;
+    line-height: 1.42;
+    margin: 0.8rem auto 0;
+    max-width: 680px;
+  }
+
+  .gc-shop-by-deity__circles {
+    margin-top: 1.8rem;
+  }
+
+  .gc-shop-by-deity__circle-list {
+    gap: 1.35rem;
+  }
+
+  .gc-shop-by-deity__circle-list .subcollection-item {
+    width: 92px;
+  }
+
+  .gc-shop-by-deity__circle-list .subcollection-image-wrapper {
+    background: #fff3dc;
+    border: 1px solid rgba(151, 99, 16, 0.18);
+    box-shadow: 0 8px 20px rgba(75, 45, 10, 0.08);
+  }
+
+  .gc-shop-by-deity__circle-list .subcollection-title {
+    color: #3d2d1a;
+    font-size: 1.12rem;
+    font-weight: 700;
+  }
+
+  .gc-shop-by-deity__utility {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.1rem;
+  }
+
+  .gc-shop-by-deity__utility a {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.22);
+    border-radius: 999px;
+    color: #8f1f18;
+    display: inline-flex;
+    font-size: 1.18rem;
+    font-weight: 700;
+    min-height: 3.8rem;
+    padding: 0.6rem 1.15rem;
+    text-decoration: none;
+  }
+
+  .gc-shop-by-deity__flow {
+    align-items: center;
+    color: #6a5944;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.12rem;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .gc-shop-by-deity__flow span:not(:last-child)::after {
+    color: #a87921;
+    content: ">";
+    margin-left: 0.45rem;
+  }
+
+  .gc-shop-by-deity__featured {
+    margin-top: 2.6rem;
+  }
+
+  .gc-shop-by-deity__featured h2,
+  .gc-shop-by-deity__faq h2 {
+    color: #21180d;
+    font-family: 'New York', 'Times New Roman', serif;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    text-align: center;
+  }
+
+  .gc-shop-by-deity__featured-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gc-shop-by-deity-card {
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    color: #21180d;
+    display: grid;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .gc-shop-by-deity-card__media {
+    aspect-ratio: 1 / 1;
+    background: #fff3dc;
+    overflow: hidden;
+  }
+
+  .gc-shop-by-deity-card__media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .gc-shop-by-deity-card__body {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.9rem;
+  }
+
+  .gc-shop-by-deity-card__body strong {
+    color: #21180d;
+    font-size: 1.35rem;
+    line-height: 1.18;
+  }
+
+  .gc-shop-by-deity-card__body span {
+    color: #8f1f18;
+    font-size: 1.14rem;
+    font-weight: 700;
+  }
+
+  .gc-shop-by-deity__empty {
+    color: #6a5944;
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+  }
+
+  .gc-shop-by-deity__faq {
+    border-top: 1px solid rgba(151, 99, 16, 0.14);
+    margin-top: 2.4rem;
+    padding-top: 1.6rem;
+  }
+
+  .gc-shop-by-deity__faq details {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.14);
+    border-radius: 8px;
+    margin: 0.7rem auto 0;
+    max-width: 880px;
+    padding: 0.95rem 1rem;
+  }
+
+  .gc-shop-by-deity__faq summary {
+    color: #21180d;
+    cursor: pointer;
+    font-size: 1.24rem;
+    font-weight: 700;
+  }
+
+  .gc-shop-by-deity__faq p {
+    color: #5f5548;
+    font-size: 1.18rem;
+    line-height: 1.42;
+    margin: 0.55rem 0 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-shop-by-deity {
+      padding: 1.8rem 0 3.4rem;
+    }
+
+    .gc-shop-by-deity__circle-list .subcollection-item {
+      width: 122px;
+    }
+
+    .gc-shop-by-deity__featured-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .gc-shop-by-deity__circle-list {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      margin: 0 -1.5rem;
+      overflow-x: auto;
+      padding: 0 1.5rem 0.7rem;
+      scrollbar-width: none;
+    }
+
+    .gc-shop-by-deity__circle-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gc-shop-by-deity__featured-grid {
+      gap: 0.8rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Shop by deity root",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Fallback heading",
+      "default": "Shop by Deity"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Choose your deity, then find the right ornament and size."
+    },
+    {
+      "type": "link_list",
+      "id": "deity_menu",
+      "label": "Fallback deity menu"
+    },
+    {
+      "type": "range",
+      "id": "max_deities",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 12,
+      "label": "Maximum deity circles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_cards",
+      "default": true,
+      "label": "Show featured deity cards"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Featured heading",
+      "default": "Popular deity collections"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Shop by Deity FAQ"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "deity_collection",
+      "name": "Deity collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL override"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image override"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by deity root"
+    }
+  ]
+}
+{% endschema %}

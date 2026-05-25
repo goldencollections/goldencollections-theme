@@ -126,6 +126,12 @@
 }
 {% endschema %}
 
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}
+{%- if settings.predictive_search_enabled -%}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
 {% comment %} Determine if transparent mode should be active {% endcomment %}
 {%- liquid
   assign is_transparent = false
@@ -170,11 +176,13 @@
   .feelori-mega-menu--transparent .feelori-mega-menu__link,
   .feelori-mega-menu--transparent .feelori-mega-menu__utility-btn,
   .feelori-mega-menu--transparent .feelori-mega-menu__utility-item > a,
+  .feelori-mega-menu--transparent .feelori-mega-menu__search .header__icon--search,
   .feelori-mega-menu--transparent .feelori-mega-menu__mobile-toggle span {
     color: var(--transparent-text-color);
   }
 
-  .feelori-mega-menu--transparent .feelori-mega-menu__utility-icon {
+  .feelori-mega-menu--transparent .feelori-mega-menu__utility-icon,
+  .feelori-mega-menu--transparent .feelori-mega-menu__search .header__icon--search svg {
     stroke: var(--transparent-text-color);
   }
 
@@ -201,11 +209,13 @@
 
   .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__link,
   .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__utility-btn,
-  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__utility-item > a {
+  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__utility-item > a,
+  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__search .header__icon--search {
     color: var(--menu-text-color);
   }
 
-  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__utility-icon {
+  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__utility-icon,
+  .feelori-mega-menu--transparent.feelori-mega-menu--fixed .feelori-mega-menu__search .header__icon--search svg {
     stroke: var(--menu-text-color);
   }
 
@@ -382,9 +392,9 @@
     {% comment %} Utilities (Search, Account, Cart) {% endcomment %}
     <div class="feelori-mega-menu__utilities">
       <div class="feelori-mega-menu__utility-item feelori-mega-menu__search">
-        <a href="{{ routes.search_url }}" class="feelori-mega-menu__utility-btn" aria-label="{{ 'general.search.search' | t: default: 'Search' }}">
+        <button type="button" class="feelori-mega-menu__utility-btn gc-feelori-search-trigger" data-feelori-search-trigger aria-label="{{ 'general.search.search' | t: default: 'Search' }}">
           <svg class="feelori-mega-menu__utility-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </a>
+        </button>
       </div>
       <div class="feelori-mega-menu__utility-item feelori-mega-menu__account">
         {% if shop.customer_accounts_enabled %}
@@ -496,11 +506,17 @@
           </li>
         {% endif %}
         <li class="feelori-mega-menu__mobile-item feelori-mega-menu__mobile-item--l1" role="listitem">
-          <a href="{{ routes.search_url }}" class="feelori-mega-menu__mobile-link feelori-mega-menu__mobile-link--l1">{{ 'general.search.search' | t: default: 'Search' }}</a>
+          <button type="button" class="feelori-mega-menu__mobile-link feelori-mega-menu__mobile-link--l1 gc-feelori-search-trigger" data-feelori-search-trigger>
+            {{ 'general.search.search' | t: default: 'Search' }}
+          </button>
         </li>
       </ul>
     </nav>
   </div>
 
   <div class="feelori-mega-menu__overlay"></div>
+
+  <div class="gc-feelori-search-modal-host">
+    {% render 'header-search', input_id: 'Search-In-Feelori' %}
+  </div>
 </div>

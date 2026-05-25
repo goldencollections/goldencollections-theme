@@ -1,0 +1,545 @@
+{%- liquid
+  assign knowledge_url = pages['golden-collections-knowledge-hub'].url | default: '/pages/golden-collections-knowledge-hub'
+  assign hub_url = pages['deity-jewellery-alankaram-guide'].url | default: '/pages/deity-jewellery-alankaram-guide'
+  assign anil_url = pages['anil-tunk'].url | default: '/pages/anil-tunk'
+  assign measure_url = pages['how-to-measure-idol-for-deity-jewellery'].url | default: '/pages/how-to-measure-idol-for-deity-jewellery'
+  assign crown_url = pages['deity-crown-mukut-kireedam-size-guide'].url | default: '/pages/deity-crown-mukut-kireedam-size-guide'
+  assign regional_url = pages['deity-jewellery-regional-names'].url | default: '/pages/deity-jewellery-regional-names'
+  assign haram_url = pages['short-haram-vs-long-haram-for-god-idols'].url | default: '/pages/short-haram-vs-long-haram-for-god-idols'
+  assign varalakshmi_url = pages['varalakshmi-alankaram-guide'].url | default: '/blogs/jewellery-guides/varalakshmi-alankaram-checklist-2026'
+  assign deity_crowns_collection = collections['deity-crowns-1']
+  assign deity_necklace_collection = collections['deity-necklace']
+  assign varalakshmi_collection = collections['varalakshmi-deity-jewellery']
+  assign deity_crowns_url = deity_crowns_collection.url | default: '/collections/deity-crowns-1'
+  assign deity_necklace_url = deity_necklace_collection.url | default: '/collections/deity-necklace'
+  assign varalakshmi_collection_url = varalakshmi_collection.url | default: '/collections/varalakshmi-deity-jewellery'
+-%}
+
+<section class="gc-deity-hub color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <nav class="gc-deity-hub__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <a href="{{ knowledge_url }}">Knowledge Hub</a>
+      <span>/</span>
+      <span>Deity jewellery guides</span>
+    </nav>
+
+    <header class="gc-deity-hub__hero">
+      <p class="gc-deity-hub__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.subheading }}</p>
+      <div class="gc-deity-hub__hero-actions">
+        <a href="{{ measure_url }}">Measure your idol</a>
+        <a href="{{ knowledge_url }}" class="gc-deity-hub__secondary">Knowledge hub</a>
+      </div>
+    </header>
+
+    <div class="gc-deity-hub__visual-row" aria-label="Deity jewellery shopping paths">
+      <a href="{{ measure_url }}" class="gc-deity-hub__visual-card gc-deity-hub__visual-card--featured">
+        <span>Fit-first start</span>
+        <strong>Measure before choosing crown, haram or vaddanam</strong>
+        <em>Idol height + placement + product dimensions</em>
+      </a>
+      <a href="{{ deity_crowns_url }}" class="gc-deity-hub__visual-card">
+        {%- if deity_crowns_collection.image != blank -%}
+          {{ deity_crowns_collection.image | image_url: width: 420 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 28vw, 100vw', widths: '260, 420, 640', alt: 'Deity crowns and kireedam at Golden Collections' }}
+        {%- endif -%}
+        <span>Crowns and kireedam</span>
+      </a>
+      <a href="{{ deity_necklace_url }}" class="gc-deity-hub__visual-card">
+        {%- if deity_necklace_collection.image != blank -%}
+          {{ deity_necklace_collection.image | image_url: width: 420 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 28vw, 100vw', widths: '260, 420, 640', alt: 'Deity necklaces and harams at Golden Collections' }}
+        {%- endif -%}
+        <span>Necklaces and harams</span>
+      </a>
+      <a href="{{ varalakshmi_collection_url }}" class="gc-deity-hub__visual-card">
+        {%- if varalakshmi_collection.image != blank -%}
+          {{ varalakshmi_collection.image | image_url: width: 420 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 28vw, 100vw', widths: '260, 420, 640', alt: 'Varalakshmi alankaram jewellery at Golden Collections' }}
+        {%- endif -%}
+        <span>Varalakshmi alankaram</span>
+      </a>
+    </div>
+
+    <section class="gc-deity-hub__answer" aria-labelledby="gc-deity-hub-answer">
+      <p class="gc-deity-hub__eyebrow">Direct Answer</p>
+      <h2 id="gc-deity-hub-answer">What makes deity jewellery fit correctly?</h2>
+      <p>Deity jewellery fit depends on the deity or deity group, idol height, head or face width, ornament type, placement, posture, draping and the actual measured product dimensions. A crown, haram, vaddanam, earring or accessory should be chosen by size and placement first, then by design.</p>
+    </section>
+
+    <section class="gc-deity-hub__primary" aria-labelledby="gc-primary-guides">
+      <div class="gc-deity-hub__section-head">
+        <p class="gc-deity-hub__eyebrow">Start Here</p>
+        <h2 id="gc-primary-guides">Core deity jewellery authority guides</h2>
+      </div>
+      <div class="gc-deity-hub__guide-grid">
+        <a href="{{ measure_url }}">
+          <span>01</span>
+          <strong>How to Measure Your Idol for Deity Jewellery</strong>
+          <p>Use idol height, face width, crown space, chest width, waist width and altar depth before ordering.</p>
+        </a>
+        <a href="{{ crown_url }}">
+          <span>02</span>
+          <strong>Deity Crown, Mukut and Kireedam Size Guide</strong>
+          <p>Compare open-back, half-round, full-round and tall crown styles by the correct measurement.</p>
+        </a>
+        <a href="{{ varalakshmi_url }}">
+          <span>03</span>
+          <strong>Varalakshmi Alankaram Required vs Optional Items</strong>
+          <p>Plan face, crown, hastham, padam, haram, vaddanam, thomala and decor without overbuying.</p>
+        </a>
+        <a href="{{ haram_url }}">
+          <span>04</span>
+          <strong>Short Haram vs Long Haram vs Chest Necklace</strong>
+          <p>Choose the right necklace placement for neck, upper chest, lower chest, body or saree drape.</p>
+        </a>
+        <a href="{{ regional_url }}">
+          <span>05</span>
+          <strong>Regional Names of Deity Jewellery</strong>
+          <p>Understand mukut, kireedam, vaddanam, oddiyanam, thomala, namam, thiruman, haram and more.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="gc-deity-hub__shopping" aria-labelledby="gc-shop-by-need">
+      <div class="gc-deity-hub__section-head">
+        <p class="gc-deity-hub__eyebrow">Shop With Guidance</p>
+        <h2 id="gc-shop-by-need">Use the guide that matches your buying decision</h2>
+      </div>
+      <div class="gc-deity-hub__shopping-grid">
+        <article>
+          <strong>Choosing crowns</strong>
+          <p>Measure head or face width, crown height, depth and circumference or arc where relevant.</p>
+          <a href="{{ deity_crowns_url }}">Shop deity crowns</a>
+        </article>
+        <article>
+          <strong>Choosing necklaces and harams</strong>
+          <p>Measure neck, upper chest, drop length and dress volume before choosing short or long placement.</p>
+          <a href="{{ deity_necklace_url }}">Shop deity necklaces</a>
+        </article>
+        <article>
+          <strong>Planning Varalakshmi alankaram</strong>
+          <p>Start with setup type, then choose face/idol, crown, hastham/padam, haram, vaddanam and thomala.</p>
+          <a href="{{ varalakshmi_collection_url }}">Shop Varalakshmi jewellery</a>
+        </article>
+        <article>
+          <strong>Checking regional names</strong>
+          <p>Use the terms customers search with, including mukut, kireedam, thomala, vaddanam, namam and haram.</p>
+          <a href="/pages/golden-glossary">Open glossary</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="gc-deity-hub__deities" aria-labelledby="gc-deity-groups">
+      <div class="gc-deity-hub__section-head">
+        <p class="gc-deity-hub__eyebrow">Compatibility Model</p>
+        <h2 id="gc-deity-groups">Deity groups we map by ornament, size and placement</h2>
+      </div>
+      <ul>
+        <li>Varalakshmi, Lakshmi, Amman, Ammavaru, Devi and Durga alankaram.</li>
+        <li>Vishnu, Balaji, Venkateswara, Perumal and Srinivasa ornament guidance.</li>
+        <li>Krishna, Radha Krishna, Ganesha, Shiva, Murugan, Ayyappa and Hanuman fit checks.</li>
+        <li>General/common accessories that work across multiple idols only when size and placement match.</li>
+      </ul>
+    </section>
+
+    <section class="gc-deity-hub__trust" aria-labelledby="gc-deity-hub-trust">
+      <div>
+        <p class="gc-deity-hub__eyebrow">Reviewed Guidance</p>
+        <h2 id="gc-deity-hub-trust">Built around practical customer questions</h2>
+        <p>Golden Collections started in 2012 and is led by Anil Tunk from Secunderabad/Hyderabad. The authority guides are designed to answer real shopping questions: what to measure, which ornament is suitable, which terms mean the same item, and when to ask for fit help before ordering.</p>
+      </div>
+      <a href="{{ anil_url }}">Learn about Anil Tunk</a>
+    </section>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ hub_url }}#webpage",
+      "url": "{{ shop.url }}{{ hub_url }}",
+      "name": "Deity Jewellery and Alankaram Guides by Golden Collections",
+      "description": "Golden Collections guide hub for deity jewellery sizing, idol alankaram, regional names, compatibility and festival buying guidance.",
+      "about": [
+        "Deity jewellery",
+        "Hindu idol alankaram",
+        "Deity crown sizing",
+        "Varalakshmi alankaram",
+        "Mukut and kireedam",
+        "Deity haram and vaddanam"
+      ],
+      "author": { "@id": "{{ shop.url }}{{ anil_url }}#person" },
+      "publisher": { "@id": "https://www.goldencollections.com/#organization" },
+      "hasPart": [
+        { "@type": "WebPage", "name": "How to Measure Your Idol for Deity Jewellery", "url": "{{ shop.url }}{{ measure_url }}" },
+        { "@type": "WebPage", "name": "Deity Crown, Mukut and Kireedam Size Guide", "url": "{{ shop.url }}{{ crown_url }}" },
+        { "@type": "WebPage", "name": "Regional Names of Deity Jewellery", "url": "{{ shop.url }}{{ regional_url }}" }
+      ],
+      "isPartOf": { "@id": "https://www.goldencollections.com/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ shop.url }}{{ hub_url }}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ shop.url }}{{ routes.root_url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Deity Jewellery Guides", "item": "{{ shop.url }}{{ hub_url }}" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  .gc-deity-hub {
+    background: #fffaf0;
+    color: #20170d;
+    padding: 1.4rem 0 4rem;
+  }
+
+  .gc-deity-hub__breadcrumb {
+    color: #6f6254;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.16rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .gc-deity-hub__breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .gc-deity-hub__hero {
+    background: #1a0e05;
+    border-radius: 8px;
+    box-shadow: 0 12px 36px rgba(32, 23, 13, 0.12);
+    margin-inline: auto;
+    max-width: 1040px;
+    padding: 1.4rem;
+    text-align: center;
+  }
+
+  .gc-deity-hub__eyebrow {
+    color: #8f5f11;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-hub h1,
+  .gc-deity-hub h2,
+  .gc-deity-hub strong {
+    color: #1f170d;
+    font-family: 'New York', 'Times New Roman', serif;
+    letter-spacing: 0;
+  }
+
+  .gc-deity-hub h1 {
+    color: #f5ede0;
+    font-size: 3.55rem;
+    line-height: 1.02;
+    margin: 0;
+  }
+
+  .gc-deity-hub h2 {
+    font-size: 2.35rem;
+    line-height: 1.12;
+    margin: 0;
+  }
+
+  .gc-deity-hub p,
+  .gc-deity-hub li {
+    color: #4f463c;
+    font-size: 1.18rem;
+    line-height: 1.45;
+  }
+
+  .gc-deity-hub__hero p:not(.gc-deity-hub__eyebrow) {
+    color: #efe1cf;
+    font-size: 1.34rem;
+    margin: 0.85rem auto 0;
+    max-width: 820px;
+  }
+
+  .gc-deity-hub__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.15rem;
+  }
+
+  .gc-deity-hub__hero-actions a,
+  .gc-deity-hub__trust a {
+    align-items: center;
+    background: #8f1f18;
+    border: 1px solid #8f1f18;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    font-size: 1.18rem;
+    font-weight: 700;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-hub__hero-actions .gc-deity-hub__secondary {
+    background: transparent;
+    border-color: rgba(201, 151, 42, 0.55);
+    color: #f5ede0;
+  }
+
+  .gc-deity-hub__visual-row {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  .gc-deity-hub__visual-card {
+    background: #241508;
+    border-radius: 8px;
+    color: #fff8ea;
+    display: grid;
+    min-height: 140px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .gc-deity-hub__visual-card img {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  .gc-deity-hub__visual-card::after {
+    background: linear-gradient(180deg, rgba(26, 14, 5, 0.12), rgba(26, 14, 5, 0.72));
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+
+  .gc-deity-hub__visual-card span,
+  .gc-deity-hub__visual-card strong,
+  .gc-deity-hub__visual-card em {
+    color: #fff8ea;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gc-deity-hub__visual-card span {
+    align-self: end;
+    font-size: 1.08rem;
+    font-weight: 800;
+    padding: 5.7rem 1rem 1rem;
+  }
+
+  .gc-deity-hub__visual-card--featured {
+    align-content: end;
+    background: #1a0e05;
+    border-left: 4px solid #c9972a;
+    gap: 0.35rem;
+    padding: 1rem;
+  }
+
+  .gc-deity-hub__visual-card--featured::after {
+    background: radial-gradient(circle at 90% 10%, rgba(201, 151, 42, 0.2), transparent 34%);
+  }
+
+  .gc-deity-hub__visual-card--featured span {
+    align-self: auto;
+    color: #c9972a;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+  .gc-deity-hub__visual-card--featured strong {
+    font-size: 1.72rem;
+    line-height: 1.12;
+  }
+
+  .gc-deity-hub__visual-card--featured em {
+    color: #efe1cf;
+    font-size: 1.08rem;
+    font-style: normal;
+  }
+
+  .gc-deity-hub__answer,
+  .gc-deity-hub__trust {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-left: 4px solid #8f1f18;
+    border-radius: 8px;
+    margin-top: 1.6rem;
+    padding: 1rem;
+  }
+
+  .gc-deity-hub__primary,
+  .gc-deity-hub__shopping,
+  .gc-deity-hub__deities {
+    border-top: 1px solid rgba(151, 99, 16, 0.16);
+    margin-top: 1.6rem;
+    padding-top: 1.5rem;
+  }
+
+  .gc-deity-hub__section-head {
+    margin-bottom: 1rem;
+  }
+
+  .gc-deity-hub__guide-grid,
+  .gc-deity-hub__shopping-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .gc-deity-hub__guide-grid a,
+  .gc-deity-hub__shopping-grid article {
+    background: #fffaf2;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(32, 23, 13, 0.06);
+    color: inherit;
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+    text-decoration: none;
+  }
+
+  .gc-deity-hub__guide-grid span {
+    color: #8f5f11;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .gc-deity-hub__guide-grid strong,
+  .gc-deity-hub__shopping-grid strong {
+    font-size: 1.55rem;
+    line-height: 1.14;
+  }
+
+  .gc-deity-hub__guide-grid p,
+  .gc-deity-hub__shopping-grid p {
+    margin: 0;
+  }
+
+  .gc-deity-hub__shopping-grid a {
+    color: #8f1f18;
+    font-size: 1.12rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .gc-deity-hub__deities ul {
+    background: #fffdf8;
+    border: 1px solid rgba(151, 99, 16, 0.16);
+    border-radius: 8px;
+    margin: 0;
+    padding: 1rem 1rem 1rem 2.25rem;
+  }
+
+  .gc-deity-hub__deities li + li {
+    margin-top: 0.45rem;
+  }
+
+  .gc-deity-hub__trust {
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gc-deity-hub__trust p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .gc-deity-hub {
+      padding: 1.8rem 0 5rem;
+    }
+
+    .gc-deity-hub h1 {
+      font-size: clamp(4.2rem, 4.6vw, 5.5rem);
+    }
+
+    .gc-deity-hub__hero {
+      padding: 2rem;
+    }
+
+    .gc-deity-hub__visual-row {
+      grid-template-columns: 1.18fr repeat(3, minmax(0, 1fr));
+    }
+
+    .gc-deity-hub__visual-card {
+      min-height: 210px;
+    }
+
+    .gc-deity-hub__guide-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .gc-deity-hub__guide-grid a {
+      grid-column: span 2;
+    }
+
+    .gc-deity-hub__guide-grid a:nth-child(4),
+    .gc-deity-hub__guide-grid a:nth-child(5) {
+      grid-column: span 3;
+    }
+
+    .gc-deity-hub__shopping-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gc-deity-hub__trust {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GC deity authority hub",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Deity jewellery authority hub"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Deity Jewellery and Alankaram Guides"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Practical Golden Collections guides for choosing deity crowns, harams, vaddanam, earrings, Varalakshmi alankaram items and Hindu idol ornaments by size, placement, deity and regional name."
+    }
+  ],
+  "presets": [
+    {
+      "name": "GC deity authority hub"
+    }
+  ]
+}
+{% endschema %}

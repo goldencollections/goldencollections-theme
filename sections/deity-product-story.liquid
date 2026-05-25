@@ -1,7 +1,7 @@
 {%- liquid
-  assign primary_deity_ref = product.metafields.custom.primary_deity.value
-  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity | default: 'this deity'
-  assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class | default: 'General/Common'
+  assign primary_deity_ref = product.metafields.custom.primary_deity_ref.value | default: product.metafields.custom.primary_deity.value
+  assign primary_deity = primary_deity_ref.name.value | default: primary_deity_ref.name | default: product.metafields.custom.primary_deity.value | default: product.metafields.custom.primary_deity
+  assign compatibility = product.metafields.custom.compatibility_class.value | default: product.metafields.custom.compatibility_class
   assign fit_notes = product.metafields.custom.fit_notes.value | default: product.metafields.custom.fit_notes
   assign material = product.metafields.custom.material.value | default: product.metafields.custom.material
   assign regional_names_metafield = product.metafields.custom.regional_names
@@ -29,12 +29,24 @@
   <div class="page-width">
     <div class="gc-deity-product-story__grid">
       <div class="gc-deity-product-story__answer">
-        <p class="gc-deity-product-story__eyebrow">Size answer</p>
-        <h2>Will this fit my idol?</h2>
+        <p class="gc-deity-product-story__eyebrow">Before ordering</p>
+        <h2>Confirm the size with your idol</h2>
         <p>
-          This product is marked for {{ primary_deity }} and classified as {{ compatibility }}. Check the measured image, placement and fit notes before ordering because idol posture, head width and draping can affect the final fit.
+          {%- if primary_deity != blank and compatibility != blank -%}
+            This product is marked for {{ primary_deity }} and classified as {{ compatibility }}.
+          {%- elsif primary_deity != blank -%}
+            This product is marked for {{ primary_deity }}.
+          {%- elsif compatibility != blank -%}
+            This product is classified as {{ compatibility }}.
+          {%- else -%}
+            Check the product details and measured images before selecting it for your idol.
+          {%- endif -%}
+          Use the selected size, measurement photos and placement notes before ordering because idol posture, head width and draping can affect the final fit.
         </p>
-        <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need size help for ' | append: product.title | url_encode }}">Ask size help on WhatsApp</a>
+        <div class="gc-deity-product-story__actions">
+          <a href="/pages/how-to-measure-idol-for-deity-jewellery">Open size guide</a>
+          <a href="https://wa.me/917337294499?text={{ 'Hello Golden Collections, I need size help for ' | append: product.title | url_encode }}">Ask size help on WhatsApp</a>
+        </div>
       </div>
 
       <div class="gc-deity-product-story__accordions">
@@ -44,7 +56,7 @@
             {%- if fit_notes != blank -%}
               {{ fit_notes }}
             {%- else -%}
-              Use the idol size range, measured ornament dimensions and product images with measuring tape to check fit.
+              Use the selected size, measured ornament dimensions and product images with measuring tape to check fit.
             {%- endif -%}
           </div>
         </details>
@@ -104,25 +116,6 @@
       </div>
     </div>
   </div>
-
-  <div class="gc-deity-product-story__sticky" aria-label="Mobile add to cart">
-    <div>
-      <strong>{{ product.selected_or_first_available_variant.price | money }}</strong>
-      <span>{{ product.title | truncate: 34 }}</span>
-    </div>
-    <button
-      type="submit"
-      form="product-form-main"
-      class="button"
-      {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
-    >
-      {%- if product.selected_or_first_available_variant.available -%}
-        Add to cart
-      {%- else -%}
-        Sold out
-      {%- endif -%}
-    </button>
-  </div>
 </section>
 
 <style>
@@ -176,11 +169,23 @@
     align-items: center;
     min-height: 44px;
     border-radius: 6px;
-    background: #1f7a4d;
+    background: #8f1f18;
     color: #ffffff;
     font-weight: 700;
     padding: 0.75rem 1.1rem;
     text-decoration: none;
+  }
+
+  .gc-deity-product-story__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .gc-deity-product-story__actions a:first-child {
+    background: #ffffff;
+    border: 1px solid rgba(151, 99, 16, 0.22);
+    color: #5e3d13;
   }
 
   .gc-deity-product-story details {
@@ -240,10 +245,6 @@
     color: #5e3d13;
   }
 
-  .gc-deity-product-story__sticky {
-    display: none;
-  }
-
   @media screen and (max-width: 989px) {
     .gc-deity-product-story__grid,
     .gc-deity-product-story__complete {
@@ -253,46 +254,11 @@
 
   @media screen and (max-width: 749px) {
     .gc-deity-product-story {
-      padding-bottom: 8.5rem;
+      padding-bottom: 3rem;
     }
 
-    .gc-deity-product-story__sticky {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 20;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 1rem;
-      align-items: center;
-      border-top: 1px solid rgba(151, 99, 16, 0.2);
-      background: #ffffff;
-      box-shadow: 0 -10px 30px rgba(42, 28, 8, 0.12);
-      padding: 0.85rem 1rem;
-    }
-
-    .gc-deity-product-story__sticky strong,
-    .gc-deity-product-story__sticky span {
-      display: block;
-    }
-
-    .gc-deity-product-story__sticky strong {
-      color: #1f170d;
-      font-size: 1.55rem;
-      line-height: 1.1;
-    }
-
-    .gc-deity-product-story__sticky span {
-      color: #6b5f51;
-      font-size: 1.15rem;
-      line-height: 1.25;
-      margin-top: 0.25rem;
-    }
-
-    .gc-deity-product-story__sticky .button {
-      min-height: 48px;
-      min-width: 132px;
+    .gc-deity-product-story__actions a {
+      width: 100%;
     }
   }
 </style>

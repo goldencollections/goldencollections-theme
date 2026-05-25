@@ -52,7 +52,7 @@ Primary page candidates:
 Answer-engine questions to satisfy:
 
 - What is kemp jewellery?
-- What is the difference between real kemp and imitation kemp?
+- What is the difference between premium real kemp and regular Bharatanatyam/Kuchipudi jewellery?
 - Is kemp jewellery used for Bharatanatyam?
 - Which kemp set is best for arangetram?
 - How do I care for kemp stones and gold plating?
@@ -63,7 +63,7 @@ Primary page candidates:
 
 - Deity jewellery
 - Deity crown / mukut / kireedam
-- Deity short haram
+- Deity short necklace
 - Deity long haram
 - Deity earrings
 - Deity waist belt / vaddanam
@@ -87,6 +87,7 @@ To improve answer-engine confidence, the site should make the same facts consist
 
 - Name: Golden Collections.
 - URL: `https://www.goldencollections.com/`.
+- X/Twitter: `@GCJewellery` / `https://x.com/GCJewellery`.
 - Location: Secunderabad/Hyderabad, Telangana, India.
 - Phone: `+91 7337294499`.
 - Support email: `support@goldencollections.com`.
