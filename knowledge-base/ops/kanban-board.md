@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 13:49:37
+Last exported from Hermes: 2026-05-25 15:39:21
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -376,6 +376,16 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - https://github.com/goldencollections/goldencollections-theme
   - commit d4193c8 Add Hermes Kanban sync board
+
+### gc-kan-004-simple-codex-viewer - GC-KAN-004 - Create simple Codex Kanban viewer
+
+- Owner: codex
+- Area: operations
+- Result: Created tools/kanban-viewer static page with counts, filters, quick lanes, detail drawer, copyable execution prompt, and README. Verified locally at http://127.0.0.1:8787/tools/kanban-viewer/.
+- Acceptance: Simple visual board renders exported Kanban cards with counts, filters, quick action lanes, details, and copyable execution prompts.
+- Evidence:
+  - tools/kanban-viewer/
+  - knowledge-base/ops/kanban-cards.json
 
 ## Commands
 
