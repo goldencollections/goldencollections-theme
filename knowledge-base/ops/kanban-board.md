@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 19:02:18
+Last exported from Hermes: 2026-05-25 20:04:54
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -169,6 +169,20 @@ Every Codex or Hermes session must close with a board update:
   - `knowledge-base/ops/open-loops.md`
   - `knowledge-base/wiki/business-entity.md`
 
+### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
+
+- Owner: codex / owner
+- Area: Pinterest
+- Next action: Record a true desktop/browser screen recording with visible browser chrome, URL bar, cursor movement, OAuth consent click, localhost callback, live API checks, and created Pin; then upload it in the Pinterest Standard access upgrade flow and submit again.
+- Acceptance: Pinterest receives a visibly continuous screen recording of OAuth and Pin creation, and the app page shows Standard access pending or approved after resubmission.
+- Evidence:
+  - Latest Eloise denial: Gmail message ID `19e5f5ab317b3879`; reviewer says the demo still appears to show screenshots and requests a screen recording of OAuth and Pin creation.
+  - Previous uncut page-viewport video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`
+  - Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`
+  - Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
+  - Created uncut-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972078/`
+  - Support reply sent to Eloise after uncut resubmission: Gmail message ID `19e5f55be049aa62`.
+
 ## Blocked
 
 ### GC-PROOF-001 - Capture seven crown ruler proof SKUs
@@ -251,22 +265,6 @@ Every Codex or Hermes session must close with a board update:
 - Evidence:
   - `knowledge-base/outputs/activation-gap-closeout-2026-05-16.md`
   - `knowledge-base/wiki/content-roadmap.md`
-
-### GC-PIN-002 - Record revised Pinterest OAuth-to-Pin demo
-
-- Owner: codex / owner
-- Area: Pinterest
-- Blocked by: Corrected uncut Standard access demo has been recorded, uploaded, and submitted; waiting for Pinterest review decision.
-- Next action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.
-- Acceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.
-- Evidence:
-  - Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after the uncut MP4 upload.
-  - New uncut video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-uncut-oauth-api-demo-2026-05-25.mp4`
-  - Helper script: `scripts/pinterest-standard-uncut-demo-server.mjs`
-  - Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
-  - Created uncut-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972078/`
-  - Latest denial email that triggered this fix: Gmail message ID `19e5eee4393326fd`.
-  - Support reply sent to Eloise after uncut resubmission: Gmail message ID `19e5f55be049aa62`.
 
 ## Review
 

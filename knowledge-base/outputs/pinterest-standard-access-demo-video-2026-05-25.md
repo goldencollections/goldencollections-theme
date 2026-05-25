@@ -114,3 +114,16 @@ A short reply was sent to Eloise confirming that a new Standard access request w
 
 - Gmail sent message ID: `19e5f55be049aa62`
 - Gmail thread ID: `19e4ae2ca2b6199d`
+
+## Denied again after uncut resubmission - 2026-05-25
+
+Eloise replied again in the same Pinterest support thread:
+
+- Gmail message ID: `19e5f5ab317b3879`
+- Sender: Pinterest support / Eloise
+- Decision: Standard access denied again.
+- Reason given: Pinterest says the submitted demo still appears to show only screenshots. They need to see a screen recording of the OAuth and Pin creation process.
+
+Likely interpretation: the Playwright page-viewport recording is continuous, but it does not show browser chrome, the URL bar, or cursor movement, so the reviewer may still interpret it as a screenshot-style demo. The next attempt should be a true desktop/browser recording with the visible browser window, URL bar, cursor, OAuth consent click, localhost callback, live API checks, and created Pin.
+
+No reply has been sent yet for this latest Eloise message.
