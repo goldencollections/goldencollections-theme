@@ -55,3 +55,25 @@ A reply was sent to the existing Pinterest support thread with Eloise confirming
 - Gmail sent message ID: `19e5ed597f801bad`
 - Gmail thread ID: `19e4ae2ca2b6199d`
 - The reply noted that the uploaded demo shows OAuth consent, redirect/code, server-side token exchange, production board access, Trial production Pin creation restriction, sandbox Pin creation, and the created Pin on Pinterest.
+
+## Denied again - 2026-05-25
+
+Pinterest replied in the same support thread:
+
+- Gmail message ID: `19e5eee4393326fd`
+- Sender: Pinterest support / Eloise
+- Decision: Standard access denied again.
+- Reason: the uploaded video was composed of screenshots and did not show the full uncut process.
+
+This narrows the blocker. Privacy policy, Trial access, OAuth scope, and sandbox use were not called out in the latest denial. The next attempt must be a real continuous screen recording, not a slideshow or stitched screenshot video.
+
+Required next demo:
+
+1. Start recording before opening the OAuth URL.
+2. Show the Pinterest authorization / Give access screen.
+3. Click Give access during the recording.
+4. Show redirect to localhost callback with code in the URL.
+5. Show server-side token exchange success without exposing tokens.
+6. Run the API check live in terminal: production board list, production Trial create restriction, sandbox Pin creation.
+7. Open the created Pin on Pinterest.
+8. Stop recording only after the created Pin is visible.
