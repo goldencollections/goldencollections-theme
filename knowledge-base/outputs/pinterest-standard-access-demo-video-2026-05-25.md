@@ -47,3 +47,11 @@ The owner completed the reCAPTCHA and clicked submit. The Pinterest Developer ap
 - Requested access: `Upgrade to Standard access pending`
 
 The next step is to wait for Pinterest's review decision. A short reply to the support thread is recommended so Eloise has the context that the corrected Standard access request has been submitted.
+
+## Support reply sent - 2026-05-25
+
+A reply was sent to the existing Pinterest support thread with Eloise confirming that the revised Standard access request has been submitted for app `1570604`.
+
+- Gmail sent message ID: `19e5ed597f801bad`
+- Gmail thread ID: `19e4ae2ca2b6199d`
+- The reply noted that the uploaded demo shows OAuth consent, redirect/code, server-side token exchange, production board access, Trial production Pin creation restriction, sandbox Pin creation, and the created Pin on Pinterest.

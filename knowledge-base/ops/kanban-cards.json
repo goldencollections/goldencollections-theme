@@ -366,12 +366,13 @@
     "acceptance": "Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.",
     "evidence": [
       "Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.",
+      "Support reply sent in Gmail thread `19e4ae2ca2b6199d`; sent message ID `19e5ed597f801bad`.",
       "`pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`",
       "`knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
       "Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`"
     ],
-    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
-    "blocked_reason": "Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision."
+    "body": "Owner: Codex / owner\nArea: Pinterest\n\nBlocked reason: Corrected Pinterest Standard access request has been submitted and Eloise has been notified; waiting for Pinterest review decision.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.\n- Support reply sent in Gmail thread `19e4ae2ca2b6199d`; sent message ID `19e5ed597f801bad`.\n- `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`\n- `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`",
+    "blocked_reason": "Corrected Pinterest Standard access request has been submitted and Eloise has been notified; waiting for Pinterest review decision."
   },
   {
     "id": "GC-THEME-002",

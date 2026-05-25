@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 16:39:26
+Last exported from Hermes: 2026-05-25 16:42:15
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -253,11 +253,12 @@ Every Codex or Hermes session must close with a board update:
 
 - Owner: codex / owner
 - Area: Pinterest
-- Blocked by: Corrected Pinterest Standard access request has been submitted; waiting for Pinterest review decision.
+- Blocked by: Corrected Pinterest Standard access request has been submitted and Eloise has been notified; waiting for Pinterest review decision.
 - Next action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.
 - Acceptance: Pinterest grants Standard access, or any reviewer feedback is converted into a follow-up card.
 - Evidence:
   - Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending`.
+  - Support reply sent in Gmail thread `19e4ae2ca2b6199d`; sent message ID `19e5ed597f801bad`.
   - `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-live-oauth-sandbox-demo-2026-05-25.mp4`
   - `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
   - Sandbox Pin: `https://www.pinterest.com/pin/485825878576971431/`
