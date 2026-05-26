@@ -1,6 +1,6 @@
 # Golden Collections Kanban Board
 
-Last exported from Hermes: 2026-05-25 20:51:04
+Last exported from Hermes: 2026-05-27 00:27:49
 
 Hermes is authoritative for live task status. This repo file is the durable backup/export and Codex-readable context.
 
@@ -256,15 +256,15 @@ Every Codex or Hermes session must close with a board update:
 
 - Owner: codex / owner
 - Area: Pinterest
-- Blocked by: Full desktop recording has been uploaded and Standard access request is pending Pinterest review.
-- Next action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.
-- Acceptance: Pinterest grants Standard access, or any new reviewer feedback is converted into the next concrete follow-up action.
+- Blocked by: Pinterest rejected the full desktop recording again as if it were screenshots, despite local evidence that the MP4 shows Chrome, OAuth, callback, API checks, and created Pin.
+- Next action: Reply to Pinterest support asking them to confirm they reviewed the full desktop MP4 submitted after 2026-05-25 15:18 UTC and to identify the exact missing timestamp/step; if needed, open a new Developer Tools ticket with the MP4 and frame-by-frame timestamps.
+- Acceptance: Pinterest either identifies the exact missing requirement/timestamp or reopens/re-reviews the full desktop recording; no further blind resubmission is attempted.
 - Evidence:
-  - Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after full desktop MP4 upload.
-  - New full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`
+  - Automated rejection email: Gmail message ID `19e607b60f691d05`, timestamp `2026-05-25T18:52:37+00:00`.
+  - Support rejection reply: Gmail message ID `19e607b819169fac`, timestamp `2026-05-25T18:52:46+00:00`; Omaira says the video is still considered screenshots and asks for full uncut recording.
+  - Submitted full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`
   - Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`
   - Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`
-  - Support reply sent to Eloise after desktop resubmission: Gmail message ID `19e5fb8f34de93a5`.
 
 ## Review
 

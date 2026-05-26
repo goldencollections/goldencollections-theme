@@ -362,17 +362,17 @@
     "status": "blocked",
     "owner": "codex / owner",
     "area": "Pinterest",
-    "next_action": "Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.",
-    "acceptance": "Pinterest grants Standard access, or any new reviewer feedback is converted into the next concrete follow-up action.",
+    "next_action": "Reply to Pinterest support asking them to confirm they reviewed the full desktop MP4 submitted after 2026-05-25 15:18 UTC and to identify the exact missing timestamp/step; if needed, open a new Developer Tools ticket with the MP4 and frame-by-frame timestamps.",
+    "acceptance": "Pinterest either identifies the exact missing requirement/timestamp or reopens/re-reviews the full desktop recording; no further blind resubmission is attempted.",
     "evidence": [
-      "Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after full desktop MP4 upload.",
-      "New full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`",
+      "Automated rejection email: Gmail message ID `19e607b60f691d05`, timestamp `2026-05-25T18:52:37+00:00`.",
+      "Support rejection reply: Gmail message ID `19e607b819169fac`, timestamp `2026-05-25T18:52:46+00:00`; Omaira says the video is still considered screenshots and asks for full uncut recording.",
+      "Submitted full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`",
       "Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`",
-      "Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
-      "Support reply sent to Eloise after desktop resubmission: Gmail message ID `19e5fb8f34de93a5`."
+      "Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`"
     ],
-    "body": "Owner: codex / owner\nArea: Pinterest\n\nBlocked reason: Full desktop recording has been uploaded and Standard access request is pending Pinterest review.\n\nNext action: Monitor Pinterest email/support response and app page for Standard access approval or reviewer feedback.\n\nAcceptance: Pinterest grants Standard access, or any new reviewer feedback is converted into the next concrete follow-up action.\n\nEvidence:\n- Pinterest Developer app page shows `Requested access: Upgrade to Standard access pending` after full desktop MP4 upload.\n- New full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`\n- Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`\n- Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`\n- Support reply sent to Eloise after desktop resubmission: Gmail message ID `19e5fb8f34de93a5`.",
-    "blocked_reason": "Full desktop recording has been uploaded and Standard access request is pending Pinterest review."
+    "body": "Owner: codex / owner\nArea: Pinterest\n\nBlocked reason: Pinterest rejected the full desktop recording again as if it were screenshots, despite local evidence that the MP4 shows Chrome, OAuth, callback, API checks, and created Pin.\n\nNext action: Reply to Pinterest support asking them to confirm they reviewed the full desktop MP4 submitted after 2026-05-25 15:18 UTC and to identify the exact missing timestamp/step; if needed, open a new Developer Tools ticket with the MP4 and frame-by-frame timestamps.\n\nAcceptance: Pinterest either identifies the exact missing requirement/timestamp or reopens/re-reviews the full desktop recording; no further blind resubmission is attempted.\n\nEvidence:\n- Automated rejection email: Gmail message ID `19e607b60f691d05`, timestamp `2026-05-25T18:52:37+00:00`.\n- Support rejection reply: Gmail message ID `19e607b819169fac`, timestamp `2026-05-25T18:52:46+00:00`; Omaira says the video is still considered screenshots and asks for full uncut recording.\n- Submitted full desktop video: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`\n- Created desktop-demo sandbox Pin: `https://www.pinterest.com/pin/485825878576972966/`\n- Evidence note: `knowledge-base/outputs/pinterest-standard-access-demo-video-2026-05-25.md`",
+    "blocked_reason": "Pinterest rejected the full desktop recording again as if it were screenshots, despite local evidence that the MP4 shows Chrome, OAuth, callback, API checks, and created Pin."
   },
   {
     "id": "GC-THEME-002",

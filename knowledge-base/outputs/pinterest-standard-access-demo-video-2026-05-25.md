@@ -168,3 +168,24 @@ Support reply:
 - A reply was sent to Eloise confirming the new full desktop screen recording and resubmission.
 - Gmail sent message ID: `19e5fb8f34de93a5`
 - Gmail thread ID: `19e4ae2ca2b6199d`
+
+## Rejected after full desktop recording - 2026-05-25
+
+Pinterest rejected the Standard access request again after the full desktop MP4 was uploaded and submitted.
+
+Automated platform email:
+
+- Gmail message ID: `19e607b60f691d05`
+- Sender: Pinterest Developer Platform Team / `pinbot@account.pinterest.com`
+- Timestamp: `2026-05-25T18:52:37+00:00`
+- Subject: `Update to your application status`
+- Reason given: request not approved; common reasons listed were that the demo did not show Pinterest integration and did not show the full OAuth flow.
+
+Support thread reply:
+
+- Gmail message ID: `19e607b819169fac`
+- Sender: Pinterest support / Omaira
+- Timestamp: `2026-05-25T18:52:46+00:00`
+- Reason given: app `1570604` was denied because the provided video was still considered incorrect and "only shows screenshots"; Pinterest wants a full, uncut recording of the entire process from start to finish.
+
+Important interpretation: this conflicts with the local evidence. The submitted MP4 was a valid 90-second desktop capture with visible Chrome browser chrome, URL bar, OAuth consent, localhost callback, API checks, and created Pin page. The next step should not be another blind resubmission. Ask Pinterest support to confirm they reviewed the file uploaded after the desktop resubmission and to identify the exact missing timestamp/step, or open a new Developer Tools ticket with the video file and frame-by-frame timestamps.
