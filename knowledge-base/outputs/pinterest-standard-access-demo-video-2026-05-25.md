@@ -189,3 +189,11 @@ Support thread reply:
 - Reason given: app `1570604` was denied because the provided video was still considered incorrect and "only shows screenshots"; Pinterest wants a full, uncut recording of the entire process from start to finish.
 
 Important interpretation: this conflicts with the local evidence. The submitted MP4 was a valid 90-second desktop capture with visible Chrome browser chrome, URL bar, OAuth consent, localhost callback, API checks, and created Pin page. The next step should not be another blind resubmission. Ask Pinterest support to confirm they reviewed the file uploaded after the desktop resubmission and to identify the exact missing timestamp/step, or open a new Developer Tools ticket with the video file and frame-by-frame timestamps.
+
+Follow-up sent:
+
+- Gmail sent message ID: `19e65adba8714e01`
+- Gmail thread ID: `19e4ae2ca2b6199d`
+- Sent to: `support@pinterest2.zendesk.com`
+- Attachment: `pinterest-upgrade-demo/renders/golden-collections-pinterest-standard-access-desktop-oauth-pin-demo-2026-05-25.mp4`
+- Reply summary: asked Pinterest to confirm the review team is seeing the attached full desktop MP4 and, if still incomplete, identify the exact timestamp or step that does not satisfy the Standard access demo requirement.
